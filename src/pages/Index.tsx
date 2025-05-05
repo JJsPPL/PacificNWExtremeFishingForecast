@@ -6,29 +6,34 @@ import { FishingDetailsView } from "@/components/FishingDetailsView";
 import { CurrentConditions } from "@/components/CurrentConditions";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Settings } from "lucide-react";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const navigate = useNavigate();
   const isAdmin = localStorage.getItem("isAdmin") === "true";
 
+  const goToAdmin = () => {
+    navigate("/admin");
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 py-6 max-w-3xl">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold">
             PNW Fishing Forecast
           </h1>
-          {isAdmin && (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => navigate("/admin")}
-              className="mb-4"
-            >
-              Admin
-            </Button>
-          )}
+          
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={goToAdmin}
+            className="flex items-center gap-1"
+          >
+            <Settings className="h-4 w-4" />
+            Admin
+          </Button>
         </div>
         
         <p className="text-center text-muted-foreground mb-6">
