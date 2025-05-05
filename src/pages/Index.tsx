@@ -4,16 +4,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
 import { FishingDetailsView } from "@/components/FishingDetailsView";
 import { CurrentConditions } from "@/components/CurrentConditions";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const navigate = useNavigate();
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 py-6 max-w-3xl">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
-          PNW Fishing Forecast
-        </h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
+            PNW Fishing Forecast
+          </h1>
+          {isAdmin && (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => navigate("/admin")}
+              className="mb-4"
+            >
+              Admin
+            </Button>
+          )}
+        </div>
+        
         <p className="text-center text-muted-foreground mb-6">
           Daily forecasts for fishing conditions in Washington and Oregon
         </p>
