@@ -1,5 +1,5 @@
 
-# PNW Fishing Forecast
+# Pacific NW Extreme Fishing
 
 A web application designed to help anglers in the Pacific Northwest find the best times and locations to fish based on environmental conditions and seasonal patterns.
 
@@ -24,14 +24,6 @@ This project is built with:
 - TypeScript
 - Tailwind CSS
 - shadcn/ui components
-
-## Live Demo
-
-The application is hosted on GitHub Pages at: https://[your-github-username].github.io/pnw-fishing-forecast/
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
