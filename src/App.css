@@ -56,6 +56,15 @@
   object-fit: contain; /* Ensure the entire image is visible */
 }
 
+/* Responsive logo sizing for mobile */
+@media (max-width: 768px) {
+  .app-logo {
+    height: 160px !important;
+    width: 160px !important;
+    box-shadow: 0 0 10px 10px rgba(135, 206, 235, 0.6) !important;
+  }
+}
+
 /* White overlay to hide text in the logo */
 .app-logo::after {
   content: '';
@@ -80,6 +89,13 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .header-container {
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+}
+
 .logo-container {
   display: flex;
   align-items: flex-start;
@@ -90,4 +106,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    gap: 0.25rem;
+  }
 }

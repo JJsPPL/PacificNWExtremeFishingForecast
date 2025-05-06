@@ -10,6 +10,7 @@ import { Settings } from "lucide-react";
 import { SearchFilters } from "@/components/SearchFilters";
 import { getForecastForDate } from "@/lib/fishingForecast";
 import Advertisement from "@/components/Advertisement";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
@@ -21,6 +22,7 @@ const Index = () => {
   });
   const navigate = useNavigate();
   const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const isMobile = useIsMobile();
 
   const goToAdmin = () => {
     navigate("/admin");
@@ -58,7 +60,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen sky-gradient-bg">
-      <div className="container mx-auto px-4 py-6 max-w-3xl">
+      <div className="container mx-auto px-2 md:px-4 py-4 md:py-6 max-w-3xl">
         {/* Header with logo on far left, admin button on far right */}
         <div className="header-container">
           <div className="logo-container">
@@ -80,12 +82,12 @@ const Index = () => {
           </Button>
         </div>
         
-        <div className="text-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">
+        <div className="text-center mb-4 md:mb-6">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
             Pacific NW Extreme Fishing Forecast
           </h1>
           
-          <p className="text-center text-muted-foreground mt-2">
+          <p className="text-center text-muted-foreground text-sm md:text-base mt-2">
             Daily forecasts for fishing conditions in Washington and Oregon
           </p>
         </div>
@@ -129,6 +131,11 @@ const Index = () => {
             />
           </TabsContent>
         </Tabs>
+      </div>
+      
+      {/* Add additional bottom padding on mobile to prevent ads from covering content */}
+      <div className={isMobile ? "pb-40" : "pb-4"}>
+        {/* This is an empty div that adds padding at the bottom for mobile */}
       </div>
       
       {/* Advertisements */}
