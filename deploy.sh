@@ -10,8 +10,12 @@ npm run build
 # navigate into the build output directory
 cd dist
 
-echo "Deployment script complete. The project is no longer connected to GitHub."
-echo "Use the built files in the 'dist' directory for manual deployment."
+# create a .nojekyll file to prevent GitHub Pages from ignoring files that begin with an underscore
+touch .nojekyll
+
+echo "Deployment build completed successfully."
+echo "To deploy to GitHub Pages:"
+echo "1. Commit the dist folder to your gh-pages branch"
+echo "2. Or upload these files to your web hosting service"
 
 cd -
-
