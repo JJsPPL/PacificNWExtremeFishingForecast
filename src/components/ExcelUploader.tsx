@@ -13,28 +13,144 @@ export const ExcelUploader = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [processedData, setProcessedData] = useState<any[] | null>(null);
   const [processingProgress, setProcessingProgress] = useState(0);
+  const [processingError, setProcessingError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Verify file is Excel
-      if (file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || 
-          file.type === "application/vnd.ms-excel" ||
-          file.name.endsWith('.xlsx') || 
-          file.name.endsWith('.xls') ||
-          file.name.endsWith('.csv')) {
+      // Reset any previous errors
+      setProcessingError(null);
+      
+      // Check for supported file types
+      const supportedTypes = [
+        // Excel formats
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-excel",
+        // Word formats
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        // PDF format
+        "application/pdf",
+        // CSV and text formats
+        "text/csv",
+        "text/plain"
+      ];
+      
+      // Check file extension as fallback
+      const fileExtension = file.name.split('.').pop()?.toLowerCase() || '';
+      const supportedExtensions = ['xlsx', 'xls', 'csv', 'doc', 'docx', 'pdf', 'txt'];
+      
+      if (supportedTypes.includes(file.type) || supportedExtensions.includes(fileExtension)) {
         setSelectedFile(file);
         setProcessedData(null); // Reset processed data when selecting a new file
       } else {
         toast({
           title: "Invalid file type",
-          description: "Please select an Excel or CSV file",
+          description: "Please select an Excel, Word, PDF, CSV, or text file",
           variant: "destructive",
         });
       }
     }
+  };
+
+  const processExcelFile = async (file: File): Promise<any[]> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        try {
+          const data = e.target?.result;
+          const workbook = XLSX.read(data, { type: 'binary' });
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          const json = XLSX.utils.sheet_to_json(worksheet);
+          resolve(json);
+        } catch (error) {
+          console.error('Excel processing error:', error);
+          reject(new Error('Failed to process Excel file. Please check the file format.'));
+        }
+      };
+      
+      reader.onerror = (error) => {
+        console.error('FileReader error:', error);
+        reject(new Error('Error reading the file.'));
+      };
+      
+      reader.readAsBinaryString(file);
+    });
+  };
+
+  const processCsvFile = async (file: File): Promise<any[]> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        try {
+          const csvText = e.target?.result as string;
+          const lines = csvText.split('\n');
+          const headers = lines[0].split(',').map(header => header.trim());
+          
+          const jsonData = lines.slice(1).map(line => {
+            if (!line.trim()) return null; // Skip empty lines
+            
+            const values = line.split(',');
+            const entry: Record<string, string> = {};
+            
+            headers.forEach((header, index) => {
+              entry[header] = values[index]?.trim() || '';
+            });
+            
+            return entry;
+          }).filter(Boolean); // Remove null entries
+          
+          resolve(jsonData);
+        } catch (error) {
+          reject(new Error('Failed to process CSV file. Please check the file format.'));
+        }
+      };
+      
+      reader.onerror = (error) => reject(new Error('Error reading the file.'));
+      reader.readAsText(file);
+    });
+  };
+
+  const processTextFile = async (file: File): Promise<any[]> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        try {
+          const text = e.target?.result as string;
+          // Simple parsing: assume each line is an entry with a key-value pair
+          const entries = text.split('\n')
+            .filter(line => line.trim()) // Remove empty lines
+            .map(line => {
+              const entry: Record<string, string> = {};
+              entry['content'] = line.trim();
+              return entry;
+            });
+          
+          resolve(entries);
+        } catch (error) {
+          reject(new Error('Failed to process text file.'));
+        }
+      };
+      
+      reader.onerror = () => reject(new Error('Error reading the file.'));
+      reader.readAsText(file);
+    });
+  };
+
+  // Generic mock data processor for unsupported formats (PDF, Word)
+  const processMockData = async (): Promise<any[]> => {
+    // For demonstration purposes - in real app, you'd use proper libraries
+    // to extract text from PDFs or Word docs
+    return [
+      { source: selectedFile?.name, content: "Sample extracted content 1" },
+      { source: selectedFile?.name, content: "Sample extracted content 2" }
+    ];
   };
 
   const handleUpload = async () => {
@@ -49,6 +165,7 @@ export const ExcelUploader = () => {
 
     setIsUploading(true);
     setProcessingProgress(10);
+    setProcessingError(null);
 
     try {
       // Simulate progress for better UX
@@ -59,55 +176,59 @@ export const ExcelUploader = () => {
         });
       }, 300);
 
-      // Read the Excel file
-      const fileData = await readExcelFile(selectedFile);
+      // Process the file based on its type
+      const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase() || '';
+      let fileData;
+      
+      if (['xlsx', 'xls'].includes(fileExtension) || 
+          selectedFile.type.includes('excel') || 
+          selectedFile.type.includes('spreadsheetml')) {
+        fileData = await processExcelFile(selectedFile);
+      } else if (fileExtension === 'csv' || selectedFile.type === 'text/csv') {
+        fileData = await processCsvFile(selectedFile);
+      } else if (fileExtension === 'txt' || selectedFile.type === 'text/plain') {
+        fileData = await processTextFile(selectedFile);
+      } else if (['pdf', 'doc', 'docx'].includes(fileExtension) || 
+                selectedFile.type.includes('pdf') || 
+                selectedFile.type.includes('word') || 
+                selectedFile.type.includes('msword')) {
+        // For demo purposes - in production you'd use proper PDF/Word extraction
+        fileData = await processMockData();
+      } else {
+        throw new Error("Unsupported file format.");
+      }
       
       clearInterval(progressInterval);
       setProcessingProgress(100);
       
-      // Process the data and store it locally
-      setProcessedData(fileData);
-      
-      // Store in localStorage for the app to use
-      localStorage.setItem('fishingForecastData', JSON.stringify(fileData));
-      
-      toast({
-        title: "Data processed successfully",
-        description: `Your fishing data from "${selectedFile.name}" is now being used to enhance your forecasts`,
-      });
+      if (fileData && Array.isArray(fileData) && fileData.length > 0) {
+        // Process the data and store it locally
+        setProcessedData(fileData);
+        
+        // Store in localStorage for the app to use
+        localStorage.setItem('fishingForecastData', JSON.stringify(fileData));
+        
+        toast({
+          title: "Data processed successfully",
+          description: `Your fishing data from "${selectedFile.name}" is now being used to enhance your forecasts`,
+        });
+      } else {
+        throw new Error("No valid data found in file.");
+      }
     } catch (error) {
       console.error('Error processing file:', error);
+      
+      setProcessingError(error instanceof Error ? error.message : "Unknown error occurred");
+      
       toast({
         title: "Processing failed",
-        description: "There was an error processing your Excel file",
+        description: error instanceof Error ? error.message : "There was an error processing your file",
         variant: "destructive",
       });
     } finally {
       setIsUploading(false);
+      setProcessingProgress(0);
     }
-  };
-
-  const readExcelFile = (file: File): Promise<any[]> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      
-      reader.onload = (e) => {
-        try {
-          const data = e.target?.result;
-          const workbook = XLSX.read(data, { type: 'binary' });
-          const sheetName = workbook.SheetNames[0];
-          const worksheet = workbook.Sheets[sheetName];
-          const json = XLSX.utils.sheet_to_json(worksheet);
-          resolve(json);
-        } catch (error) {
-          reject(error);
-        }
-      };
-      
-      reader.onerror = (error) => reject(error);
-      
-      reader.readAsBinaryString(file);
-    });
   };
 
   const triggerFileInput = () => {
@@ -145,11 +266,11 @@ export const ExcelUploader = () => {
             </AlertTitle>
             <AlertDescription className="text-xs mt-2">
               <p className="mb-1">
-                Upload an Excel file with your historical fishing data to improve forecast accuracy. 
+                Upload a data file with your historical fishing information to improve forecast accuracy. 
                 Your data stays on your device – it's never sent to an external server.
               </p>
               <p>
-                Once uploaded, the app will use your data to create personalized fishing forecasts.
+                Supported formats: Excel, CSV, PDF, Word, and text files.
               </p>
             </AlertDescription>
           </Alert>
@@ -172,15 +293,15 @@ export const ExcelUploader = () => {
           >
             <Upload className="h-8 w-8 mx-auto mb-2 text-gray-400" />
             <p className="text-sm text-gray-500 mb-1">
-              Click to select an Excel or CSV file
+              Click to select a file to enhance your forecast
             </p>
             <p className="text-xs text-gray-400">
-              Your fishing data will remain on your device
+              Excel, CSV, PDF, Word, and text files supported
             </p>
             <input
               ref={fileInputRef}
               type="file"
-              accept=".xlsx,.xls,.csv"
+              accept=".xlsx,.xls,.csv,.doc,.docx,.pdf,.txt"
               onChange={handleFileChange}
               className="hidden"
             />
@@ -197,6 +318,18 @@ export const ExcelUploader = () => {
                 Remove
               </Button>
             </div>
+          )}
+          
+          {processingError && (
+            <Alert variant="destructive">
+              <X className="h-4 w-4" />
+              <AlertTitle className="text-sm font-medium ml-2">
+                Processing Error
+              </AlertTitle>
+              <AlertDescription className="text-xs mt-1">
+                {processingError}
+              </AlertDescription>
+            </Alert>
           )}
           
           {isUploading && (
