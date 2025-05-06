@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/PacNWSSFishing/", // This is correct for your repository name
+  base: "./", // Using relative path instead of absolute
   server: {
     host: "::",
     port: 8080,
