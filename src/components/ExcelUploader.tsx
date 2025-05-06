@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Database, File } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { 
   FileItem, 
   ProcessingProgress, 
@@ -79,6 +78,24 @@ export const ExcelUploader = () => {
         
         // Store in localStorage for the app to use
         localStorage.setItem('fishingForecastData', JSON.stringify(fileData));
+        
+        // Record this upload in history
+        const uploadRecord = {
+          filename: selectedFile.name,
+          timestamp: Date.now(),
+          recordCount: fileData.length,
+          fileType: selectedFile.type || selectedFile.name.split('.').pop() || 'unknown'
+        };
+        
+        // Get existing history or create new array
+        const existingHistory = localStorage.getItem('uploadHistory');
+        const history = existingHistory ? JSON.parse(existingHistory) : [];
+        
+        // Add new record at the beginning
+        history.unshift(uploadRecord);
+        
+        // Store back to localStorage
+        localStorage.setItem('uploadHistory', JSON.stringify(history));
         
         toast({
           title: "Data processed successfully",

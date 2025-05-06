@@ -4,6 +4,8 @@ import { AdminLogin } from "@/components/AdminLogin";
 import { ExcelUploader } from "@/components/ExcelUploader";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { DashboardSummary } from "@/components/admin/DashboardSummary";
+import { UploadHistory } from "@/components/admin/UploadHistory";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -22,7 +24,7 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto px-4 py-6 max-w-3xl">
+      <div className="container mx-auto px-4 py-6 max-w-5xl">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl md:text-3xl font-bold">Admin Panel</h1>
           {isAdmin && (
@@ -39,7 +41,11 @@ const Admin = () => {
 
         {isAdmin ? (
           <div className="space-y-6">
-            <ExcelUploader />
+            <DashboardSummary />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <ExcelUploader />
+              <UploadHistory />
+            </div>
           </div>
         ) : (
           <AdminLogin onSuccess={() => setIsAdmin(true)} />
