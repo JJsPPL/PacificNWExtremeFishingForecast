@@ -28,8 +28,8 @@ const Admin = () => {
         <div className="header-container">
           <div className="logo-container">
             <img 
-              src="/lovable-uploads/2883dd2d-d538-4105-baf2-08537d6ace8d.png" 
-              alt="Fishing Rod Logo" 
+              src="/lovable-uploads/81b6303d-2414-4baa-9253-4c162f323271.png" 
+              alt="Fishing on Moon Logo" 
               className="app-logo"
             />
           </div>

@@ -21,7 +21,7 @@ const Advertisement = ({ title, description, url, position, color }: Advertiseme
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed ${positionClasses[position]} z-10 max-w-[300px] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-blue-500`}
+      className={`fixed ${positionClasses[position]} z-10 max-w-[240px] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-blue-500`}
     >
       <div 
         className={`${color} rounded-lg p-4 text-white backdrop-blur-sm bg-opacity-90 border border-white border-opacity-20`}

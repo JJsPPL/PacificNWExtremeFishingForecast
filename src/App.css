@@ -44,13 +44,13 @@
 
 /* Logo styling */
 .app-logo {
-  height: 240px !important; /* Increased from 180px to show more of the rod */
-  width: auto;
+  height: 220px !important; /* Adjusted for new moon logo */
+  width: 220px !important; /* Make it more circular */
   position: relative;
   margin: 0;
   padding: 0;
   z-index: 10;
-  border-radius: 50%; /* Make the logo more oval/circular */
+  border-radius: 50%; /* Make the logo circular */
   box-shadow: 0 0 15px 15px rgba(135, 206, 235, 0.6); /* Soft blue glow that blends with sky background */
   background-color: transparent;
   object-fit: contain; /* Ensure the entire image is visible */

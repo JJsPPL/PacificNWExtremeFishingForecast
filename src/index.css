@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -119,12 +120,12 @@
 
 /* IMPORTANT: Override any other styling to ensure our logo shows correctly */
 .app-logo {
-  height: 240px !important;
-  width: auto !important;
+  height: 220px !important;
+  width: 220px !important;
   position: relative !important;
   margin: 0 !important;
   padding: 0 !important;
-  border-radius: 50% !important; /* Make the logo oval/circular */
+  border-radius: 50% !important; /* Make the logo circular */
   box-shadow: 0 0 15px 15px rgba(135, 206, 235, 0.6) !important; /* Blend with background */
   object-fit: contain !important; /* Ensure the entire image is visible */
 }
