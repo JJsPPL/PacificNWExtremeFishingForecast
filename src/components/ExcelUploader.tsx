@@ -3,13 +3,16 @@ import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Check, X, FileX } from "lucide-react";
+import { Upload, Check, X, FileX, File, Database } from "lucide-react";
 import * as XLSX from 'xlsx';
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Progress } from "@/components/ui/progress";
 
 export const ExcelUploader = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [processedData, setProcessedData] = useState<any[] | null>(null);
+  const [processingProgress, setProcessingProgress] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -45,21 +48,32 @@ export const ExcelUploader = () => {
     }
 
     setIsUploading(true);
+    setProcessingProgress(10);
 
     try {
+      // Simulate progress for better UX
+      const progressInterval = setInterval(() => {
+        setProcessingProgress(prev => {
+          const newProgress = prev + Math.random() * 20;
+          return newProgress < 90 ? newProgress : 90;
+        });
+      }, 300);
+
       // Read the Excel file
       const fileData = await readExcelFile(selectedFile);
+      
+      clearInterval(progressInterval);
+      setProcessingProgress(100);
       
       // Process the data and store it locally
       setProcessedData(fileData);
       
-      // In a real app, this would send the processed data to a backend
-      // Here we're just storing it in state and localStorage for demonstration
+      // Store in localStorage for the app to use
       localStorage.setItem('fishingForecastData', JSON.stringify(fileData));
       
       toast({
-        title: "Upload successful",
-        description: `Processed ${fileData.length} rows from "${selectedFile.name}"`,
+        title: "Data processed successfully",
+        description: `Your fishing data from "${selectedFile.name}" is now being used to enhance your forecasts`,
       });
     } catch (error) {
       console.error('Error processing file:', error);
@@ -105,27 +119,63 @@ export const ExcelUploader = () => {
     localStorage.removeItem('fishingForecastData');
     toast({
       title: "Data cleared",
-      description: "The processed fishing forecast data has been cleared",
+      description: "The fishing forecast will now use default predictions",
     });
   };
+
+  const isForecastEnhanced = localStorage.getItem('fishingForecastData') !== null;
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Upload Fishing Data</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <Database className="h-5 w-5" />
+          Enhance Fishing Forecast
+        </CardTitle>
         <CardDescription>
-          Upload Excel or CSV files to improve the fishing forecast
+          Upload your fishing data to personalize forecasts
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
+          <Alert className="bg-blue-50 border-blue-200 dark:bg-blue-950/30 dark:border-blue-800">
+            <AlertTitle className="text-sm font-medium flex items-center gap-2">
+              <File className="h-4 w-4" />
+              How This Works
+            </AlertTitle>
+            <AlertDescription className="text-xs mt-2">
+              <p className="mb-1">
+                Upload an Excel file with your historical fishing data to improve forecast accuracy. 
+                Your data stays on your device – it's never sent to an external server.
+              </p>
+              <p>
+                Once uploaded, the app will use your data to create personalized fishing forecasts.
+              </p>
+            </AlertDescription>
+          </Alert>
+
+          {isForecastEnhanced && !processedData && (
+            <Alert className="bg-green-50 border-green-200 dark:bg-green-950/30 dark:border-green-800">
+              <Check className="h-4 w-4 text-green-600" />
+              <AlertTitle className="text-sm font-medium ml-2">
+                Forecast Already Enhanced
+              </AlertTitle>
+              <AlertDescription className="text-xs mt-1">
+                You've already uploaded fishing data. Your forecasts are personalized.
+              </AlertDescription>
+            </Alert>
+          )}
+          
           <div 
             className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50 transition-colors"
             onClick={triggerFileInput}
           >
             <Upload className="h-8 w-8 mx-auto mb-2 text-gray-400" />
-            <p className="text-sm text-gray-500">
-              Click to select or drop Excel files here
+            <p className="text-sm text-gray-500 mb-1">
+              Click to select an Excel or CSV file
+            </p>
+            <p className="text-xs text-gray-400">
+              Your fishing data will remain on your device
             </p>
             <input
               ref={fileInputRef}
@@ -149,12 +199,22 @@ export const ExcelUploader = () => {
             </div>
           )}
           
+          {isUploading && (
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span>Processing data...</span>
+                <span>{Math.round(processingProgress)}%</span>
+              </div>
+              <Progress value={processingProgress} className="h-2" />
+            </div>
+          )}
+          
           <Button 
             className="w-full" 
             onClick={handleUpload}
             disabled={!selectedFile || isUploading}
           >
-            {isUploading ? "Processing..." : "Upload & Process Data"}
+            {isUploading ? "Processing..." : "Enhance My Forecast"}
           </Button>
           
           {processedData && processedData.length > 0 && (
@@ -168,23 +228,23 @@ export const ExcelUploader = () => {
                   className="flex items-center gap-1"
                 >
                   <FileX className="h-4 w-4" />
-                  Clear Data
+                  Reset to Default
                 </Button>
               </div>
               
               <div className="p-3 bg-muted rounded">
                 <div className="flex items-center gap-2 text-sm text-green-600">
                   <Check className="h-4 w-4" />
-                  <span>{processedData.length} rows processed from {selectedFile?.name}</span>
+                  <span>{processedData.length} entries processed from {selectedFile?.name}</span>
                 </div>
                 
                 <div className="mt-2 text-xs text-muted-foreground">
-                  <p>The data has been stored and will be used to enhance the fishing forecast.</p>
+                  <p>Your forecast is now personalized. You can visit the Calendar and Details tabs to see your enhanced forecast.</p>
                 </div>
               </div>
               
               <div className="bg-muted rounded p-3 max-h-40 overflow-y-auto">
-                <p className="text-xs font-medium mb-1">Preview (first 5 entries):</p>
+                <p className="text-xs font-medium mb-1">Data Preview (first 5 entries):</p>
                 <pre className="text-xs overflow-x-auto">
                   {JSON.stringify(processedData.slice(0, 5), null, 2)}
                 </pre>
@@ -196,4 +256,3 @@ export const ExcelUploader = () => {
     </Card>
   );
 };
-
