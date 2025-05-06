@@ -10,15 +10,8 @@ npm run build
 # navigate into the build output directory
 cd dist
 
-# place .nojekyll to bypass Jekyll processing
-cp ../public/.nojekyll .
-
-git init
-git checkout -B main
-git add -A
-git commit -m 'deploy'
-
-# deploy to your existing repository
-git push -f git@github.com:JJsPPL/PacNWSSFishing.git main:gh-pages
+echo "Deployment script complete. The project is no longer connected to GitHub."
+echo "Use the built files in the 'dist' directory for manual deployment."
 
 cd -
+
