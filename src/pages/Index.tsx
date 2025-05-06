@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -133,27 +132,26 @@ const Index = () => {
         </Tabs>
       </div>
       
-      {/* Add additional bottom padding on mobile to prevent ads from covering content */}
-      <div className={isMobile ? "pb-40" : "pb-4"}>
-        {/* This is an empty div that adds padding at the bottom for mobile */}
+      {/* Advertisement section at bottom of page */}
+      <div className="container mx-auto px-2 md:px-4 py-8 max-w-4xl">
+        <div className={isMobile ? "flex flex-col items-center space-y-4" : "flex justify-between"}>
+          <Advertisement 
+            title="DINO TRADEZ"
+            description="DinoTradez putting odds in your favor with probabilities on your side"
+            url="https://DINOTRADEZ.COM"
+            position="bottom-left"
+            color="bg-black"
+          />
+          
+          <Advertisement 
+            title="JJ'S CATERS"
+            description="Catering events with premium treats and fiesta plates"
+            url="https://JJSCATERS.COM"
+            position="bottom-right"
+            color="bg-gradient-to-r from-pink-500 to-blue-500"
+          />
+        </div>
       </div>
-      
-      {/* Advertisements */}
-      <Advertisement 
-        title="DINO TRADEZ"
-        description="DinoTradez putting odds in your favor with probabilities on your side"
-        url="https://DINOTRADEZ.COM"
-        position="bottom-left"
-        color="bg-black"
-      />
-      
-      <Advertisement 
-        title="JJ'S CATERS"
-        description="Catering events with premium treats and fiesta plates"
-        url="https://JJSCATERS.COM"
-        position="bottom-right"
-        color="bg-gradient-to-r from-pink-500 to-blue-500"
-      />
     </div>
   );
 };

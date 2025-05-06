@@ -14,25 +14,22 @@ interface AdvertisementProps {
 const Advertisement = ({ title, description, url, position, color }: AdvertisementProps) => {
   const isMobile = useIsMobile();
   
-  // Adjust positions for mobile and desktop layouts
+  // Non-fixed positioning classes
   const positionClasses = isMobile 
-    ? {
-        'bottom-left': 'bottom-1 left-1/2 -translate-x-1/2 mb-20', // Stack on mobile
-        'bottom-right': 'bottom-1 left-1/2 -translate-x-1/2 mb-2',  // Stack on mobile
-      }
+    ? 'mb-4 mx-auto' // Center on mobile
     : {
-        'bottom-left': 'bottom-6 left-6',
-        'bottom-right': 'bottom-6 right-6',
-      };
+        'bottom-left': 'ml-6 mb-6 float-left',
+        'bottom-right': 'mr-6 mb-6 float-right',
+      }[position];
 
-  const widthClass = isMobile ? 'max-w-[80%]' : 'max-w-[240px]';
-
+  const widthClass = isMobile ? 'w-[90%] max-w-[300px]' : 'w-[280px]';
+  
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed ${positionClasses[position]} z-10 ${widthClass} rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-blue-500`}
+      className={`block ${isMobile ? positionClasses : positionClasses} ${widthClass} rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-blue-500`}
     >
       <div 
         className={`${color} rounded-lg p-3 text-white backdrop-blur-sm bg-opacity-90 border border-white border-opacity-20`}

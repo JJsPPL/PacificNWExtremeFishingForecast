@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { AdminLogin } from "@/components/AdminLogin";
 import { ExcelUploader } from "@/components/ExcelUploader";
@@ -7,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { DashboardSummary } from "@/components/admin/DashboardSummary";
 import { UploadHistory } from "@/components/admin/UploadHistory";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Advertisement from "@/components/Advertisement";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -65,8 +65,26 @@ const Admin = () => {
         )}
       </div>
       
-      {/* Add padding at bottom for mobile */}
-      {isMobile && <div className="pb-40"></div>}
+      {/* Advertisement section at bottom of page */}
+      <div className="container mx-auto px-2 md:px-4 py-8 max-w-4xl">
+        <div className={isMobile ? "flex flex-col items-center space-y-4" : "flex justify-between"}>
+          <Advertisement 
+            title="DINO TRADEZ"
+            description="DinoTradez putting odds in your favor with probabilities on your side"
+            url="https://DINOTRADEZ.COM"
+            position="bottom-left"
+            color="bg-black"
+          />
+          
+          <Advertisement 
+            title="JJ'S CATERS"
+            description="Catering events with premium treats and fiesta plates"
+            url="https://JJSCATERS.COM"
+            position="bottom-right"
+            color="bg-gradient-to-r from-pink-500 to-blue-500"
+          />
+        </div>
+      </div>
     </div>
   );
 };
