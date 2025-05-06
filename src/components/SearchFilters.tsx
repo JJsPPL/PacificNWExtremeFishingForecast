@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { getForecastForDate } from "@/lib/fishingForecast";
 
-// Get unique species and locations from forecast data
+// Get unique filters and sort them alphabetically
 const getUniqueFilters = () => {
   const today = new Date();
   const thirtyDaysLater = new Date();
@@ -36,8 +36,8 @@ const getUniqueFilters = () => {
   }
   
   return {
-    species: Array.from(species),
-    locations: Array.from(locations)
+    species: Array.from(species).sort(),
+    locations: Array.from(locations).sort()
   };
 };
 
