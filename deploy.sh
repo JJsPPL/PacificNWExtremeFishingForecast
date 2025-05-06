@@ -11,7 +11,7 @@ npm run build
 cd dist
 
 # place .nojekyll to bypass Jekyll processing
-echo > .nojekyll
+cp ../public/.nojekyll .
 
 git init
 git checkout -B main
