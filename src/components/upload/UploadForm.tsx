@@ -1,5 +1,4 @@
-
-import { useState, RefObject } from "react";
+import { useState, RefObject, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   FileItem, 
@@ -9,7 +8,13 @@ import {
   DataPreview 
 } from "@/components/upload/UploadStatusIndicators";
 import { FileDropZone } from "@/components/upload/FileDropZone";
-import { processFile, isFileTypeSupported } from "@/utils/fileProcessors";
+import { 
+  processFile, 
+  isFileTypeSupported, 
+  compressData, 
+  decompressData,
+  optimizeData
+} from "@/utils/fileProcessors";
 import { LoaderCircle } from "lucide-react";
 
 interface UploadFormProps {
@@ -20,6 +25,9 @@ interface UploadFormProps {
 
 // Maximum number of records to store in localStorage to prevent quota errors
 const MAX_RECORDS = 500;
+
+// Maximum storage size in bytes (4.5MB to stay under 5MB quota)
+const MAX_STORAGE_SIZE = 4.5 * 1024 * 1024;
 
 export const UploadForm: React.FC<UploadFormProps> = ({ 
   fileInputRef, 
@@ -32,6 +40,39 @@ export const UploadForm: React.FC<UploadFormProps> = ({
   const [processingError, setProcessingError] = useState<string | null>(null);
   const [processedData, setLocalProcessedData] = useState<any[] | null>(null);
   const [originalRecordCount, setOriginalRecordCount] = useState(0);
+  const [dataFields, setDataFields] = useState<string[]>([]);
+
+  // Load existing data on mount
+  useEffect(() => {
+    const loadExistingData = () => {
+      try {
+        const storedData = localStorage.getItem('fishingForecastData');
+        if (storedData) {
+          // Check if the data is compressed (starts with base64 characters)
+          if (/^[A-Za-z0-9+/]+=*$/.test(storedData)) {
+            const decompressedData = decompressData(storedData);
+            setLocalProcessedData(decompressedData);
+            setProcessedData(decompressedData);
+            if (decompressedData.length > 0) {
+              setDataFields(Object.keys(decompressedData[0]));
+            }
+          } else {
+            // Handle legacy uncompressed data
+            const parsedData = JSON.parse(storedData);
+            setLocalProcessedData(parsedData);
+            setProcessedData(parsedData);
+            if (parsedData.length > 0) {
+              setDataFields(Object.keys(parsedData[0]));
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error loading stored data:', error);
+      }
+    };
+
+    loadExistingData();
+  }, [setProcessedData]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -71,7 +112,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({
       // Simulate progress for better UX
       const progressInterval = setInterval(() => {
         setProcessingProgress(prev => {
-          const newProgress = prev + Math.random() * 20;
+          const newProgress = prev + Math.random() * 15;
           return newProgress < 90 ? newProgress : 90;
         });
       }, 300);
@@ -80,7 +121,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({
       const fileData = await processFile(selectedFile);
       
       clearInterval(progressInterval);
-      setProcessingProgress(100);
+      setProcessingProgress(95);
       
       if (fileData && Array.isArray(fileData) && fileData.length > 0) {
         // Store original record count before truncation
@@ -91,23 +132,35 @@ export const UploadForm: React.FC<UploadFormProps> = ({
           ? fileData.slice(0, MAX_RECORDS) 
           : fileData;
         
+        // Optimize data structure if needed to reduce storage size
+        const optimizedData = optimizeData(truncatedData, MAX_STORAGE_SIZE);
+        
+        // Extract field names for display
+        if (optimizedData.length > 0) {
+          setDataFields(Object.keys(optimizedData[0]));
+        }
+        
         // Process the truncated data and store it locally
-        setLocalProcessedData(truncatedData);
-        setProcessedData(truncatedData);
+        setLocalProcessedData(optimizedData);
+        setProcessedData(optimizedData);
+        setProcessingProgress(100);
         
         try {
-          // Try to store in localStorage - with proper error handling
-          const dataToStore = JSON.stringify(truncatedData);
-          localStorage.setItem('fishingForecastData', dataToStore);
+          // Compress data before storing in localStorage
+          const compressedData = compressData(optimizedData);
+          
+          // Store compressed data in localStorage
+          localStorage.setItem('fishingForecastData', compressedData);
           
           // Record this upload in history
           const uploadRecord = {
             filename: selectedFile.name,
             timestamp: Date.now(),
-            recordCount: truncatedData.length,
+            recordCount: optimizedData.length,
             originalCount: fileData.length,
             fileType: selectedFile.type || selectedFile.name.split('.').pop() || 'unknown',
-            truncated: fileData.length > MAX_RECORDS
+            truncated: fileData.length > optimizedData.length,
+            fields: optimizedData.length > 0 ? Object.keys(optimizedData[0]).length : 0
           };
           
           // Get existing history or create new array
@@ -125,8 +178,8 @@ export const UploadForm: React.FC<UploadFormProps> = ({
           
           let message = `Your fishing data from "${selectedFile.name}" is now being used to enhance your forecasts`;
           
-          if (fileData.length > MAX_RECORDS) {
-            message += `. Note: Only ${MAX_RECORDS} of ${fileData.length} records were kept due to storage limitations`;
+          if (fileData.length > optimizedData.length) {
+            message += `. Note: ${optimizedData.length} of ${fileData.length} records were processed due to storage limitations`;
           }
           
           toast({
@@ -137,10 +190,13 @@ export const UploadForm: React.FC<UploadFormProps> = ({
           console.error('Storage error:', storageError);
           
           toast({
-            title: "Storage warning",
-            description: "Your data was processed but couldn't be saved permanently due to browser storage limitations. It will remain available until you refresh the page.",
             variant: "destructive",
+            title: "Storage error",
+            description: "Your data was too large to store. Try uploading a smaller file or with fewer columns.",
           });
+          
+          // Fallback - keep data in memory only for this session
+          setProcessingError("Data processed but too large to save permanently. It will be available until you refresh the page.");
         }
       } else {
         throw new Error("No valid data found in file.");
@@ -157,7 +213,6 @@ export const UploadForm: React.FC<UploadFormProps> = ({
       });
     } finally {
       setIsUploading(false);
-      setProcessingProgress(0);
     }
   };
 
@@ -168,6 +223,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({
   const clearProcessedData = () => {
     setLocalProcessedData(null);
     setProcessedData(null);
+    setDataFields([]);
     localStorage.removeItem('fishingForecastData');
     toast({
       title: "Data cleared",
@@ -218,6 +274,7 @@ export const UploadForm: React.FC<UploadFormProps> = ({
             dataLength={processedData.length} 
             fileName={selectedFile?.name || ''} 
             originalCount={originalRecordCount}
+            dataFields={dataFields}
             onReset={clearProcessedData} 
           />
           <DataPreview data={processedData} />

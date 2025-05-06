@@ -2,7 +2,7 @@
 import React from "react";
 import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { Check, X, FileX, LoaderCircle, AlertTriangle } from "lucide-react";
+import { Check, X, FileX, LoaderCircle, AlertTriangle, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface FileItemProps {
@@ -86,6 +86,7 @@ interface ProcessedDataSummaryProps {
   dataLength: number;
   fileName: string;
   originalCount?: number;
+  dataFields?: string[];
   onReset: () => void;
 }
 
@@ -93,6 +94,7 @@ export const ProcessedDataSummary: React.FC<ProcessedDataSummaryProps> = ({
   dataLength, 
   fileName,
   originalCount,
+  dataFields = [],
   onReset 
 }) => {
   const wasTruncated = originalCount && originalCount > dataLength;
@@ -117,6 +119,13 @@ export const ProcessedDataSummary: React.FC<ProcessedDataSummaryProps> = ({
           <Check className="h-4 w-4" />
           <span>{dataLength} entries processed from {fileName}</span>
         </div>
+        
+        {dataFields.length > 0 && (
+          <div className="mt-2 flex items-center gap-2 text-xs text-blue-600">
+            <Database className="h-4 w-4" />
+            <span>{dataFields.length} data fields included</span>
+          </div>
+        )}
         
         {wasTruncated && (
           <div className="mt-2 flex items-center gap-2 text-xs text-amber-600">
