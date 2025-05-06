@@ -44,7 +44,7 @@
 
 /* Logo styling */
 .app-logo {
-  height: 180px !important; /* 3x the original 60px size */
+  height: 240px !important; /* Increased from 180px to show more of the rod */
   width: auto;
   position: relative;
   margin: 0;
@@ -53,6 +53,7 @@
   border-radius: 50%; /* Make the logo more oval/circular */
   box-shadow: 0 0 15px 15px rgba(135, 206, 235, 0.6); /* Soft blue glow that blends with sky background */
   background-color: transparent;
+  object-fit: contain; /* Ensure the entire image is visible */
 }
 
 /* White overlay to hide text in the logo */
