@@ -15,7 +15,7 @@ export const ExcelUploader = () => {
   const isForecastEnhanced = localStorage.getItem('fishingForecastData') !== null;
 
   return (
-    <Card className="w-full">
+    <Card className="w-full relative">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Database className="h-5 w-5" />

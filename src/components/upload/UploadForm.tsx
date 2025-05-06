@@ -10,6 +10,7 @@ import {
 } from "@/components/upload/UploadStatusIndicators";
 import { FileDropZone } from "@/components/upload/FileDropZone";
 import { processFile, isFileTypeSupported } from "@/utils/fileProcessors";
+import { LoaderCircle } from "lucide-react";
 
 interface UploadFormProps {
   fileInputRef: RefObject<HTMLInputElement>;
@@ -169,7 +170,12 @@ export const UploadForm: React.FC<UploadFormProps> = ({
         onClick={handleUpload}
         disabled={!selectedFile || isUploading}
       >
-        {isUploading ? "Processing..." : "Enhance My Forecast"}
+        {isUploading ? (
+          <>
+            <LoaderCircle className="h-4 w-4 mr-2 animate-spin" />
+            Processing...
+          </>
+        ) : "Enhance My Forecast"}
       </Button>
       
       {processedData && processedData.length > 0 && (

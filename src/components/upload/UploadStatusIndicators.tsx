@@ -1,8 +1,7 @@
-
 import React from "react";
 import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { Check, X, FileX } from "lucide-react";
+import { Check, X, FileX, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface FileItemProps {
@@ -32,8 +31,11 @@ interface ProcessingProgressProps {
 export const ProcessingProgress: React.FC<ProcessingProgressProps> = ({ progress }) => {
   return (
     <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span>Processing data...</span>
+      <div className="flex justify-between items-center text-sm">
+        <span className="flex items-center">
+          <LoaderCircle className="h-4 w-4 mr-2 animate-spin text-primary" />
+          Processing data...
+        </span>
         <span>{Math.round(progress)}%</span>
       </div>
       <Progress value={progress} className="h-2" />
