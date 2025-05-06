@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -152,6 +153,28 @@ const Index = () => {
           />
         </div>
       </div>
+      
+      {/* Disclaimer section */}
+      <footer className="mt-8 pt-6 pb-8 bg-slate-800 text-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="border-t border-slate-600 pt-6">
+            <h3 className="text-lg font-semibold mb-2">Disclaimer</h3>
+            <p className="text-sm text-slate-300">
+              Created using multiple AI data models synthesized into a unified dataset to forecast fishing conditions 
+              and fish run probabilities in the Pacific Northwest. Our forecasts analyze environmental factors and 
+              historical patterns to provide guidance for anglers.
+            </p>
+            <p className="text-sm text-slate-300 mt-2">
+              <strong>Important:</strong> Past performance is not indicative of future results. This application is 
+              provided for educational and entertainment purposes only. Always check local regulations, weather forecasts, 
+              and fishing reports before heading out.
+            </p>
+            <p className="text-sm font-semibold text-slate-300 mt-3">
+              Tight lines & Fish on!
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
