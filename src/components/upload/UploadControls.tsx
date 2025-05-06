@@ -1,8 +1,7 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
-import { isFileTypeSupported } from "@/utils/fileProcessors";
+import { isFileTypeSupported } from "@/utils/fileHelpers";
 
 interface UploadControlsProps {
   selectedFile: File | null;

@@ -109,12 +109,10 @@ export const useFileUpload = ({ setProcessedData, toast }: UseFileUploadProps): 
     try {
       // Simulate progress for better UX
       const progressInterval = setInterval(() => {
-        updateState({
-          processingProgress: prev => {
-            const newProgress = state.processingProgress + Math.random() * 15;
-            return newProgress < 90 ? newProgress : 90;
-          }
-        });
+        setState(prev => ({
+          ...prev,
+          processingProgress: Math.min(90, prev.processingProgress + Math.random() * 15)
+        }));
       }, 300);
 
       // Process the file
