@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -123,18 +122,18 @@ const Index = () => {
       {/* Advertisements */}
       <Advertisement 
         title="DINO TRADEZ"
-        description="Premium Fishing Gear & Trading Accessories for Extreme Anglers"
+        description="DinoTradez putting odds in your favor with probabilities on your side"
         url="https://DINOTRADEZ.COM"
         position="bottom-left"
-        color="bg-gradient-to-r from-green-700 to-blue-700"
+        color="bg-black"
       />
       
       <Advertisement 
         title="JJ'S CATERS"
-        description="Premier Fishing Event Catering & Fresh Catch Preparation"
+        description="Catering events with premium treats and fiesta plates"
         url="https://JJSCATERS.COM"
         position="bottom-right"
-        color="bg-gradient-to-r from-amber-700 to-red-700"
+        color="bg-gradient-to-r from-pink-500 to-blue-500"
       />
     </div>
   );
