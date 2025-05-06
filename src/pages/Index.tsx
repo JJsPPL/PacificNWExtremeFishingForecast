@@ -59,9 +59,9 @@ const Index = () => {
   return (
     <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-4 py-6 max-w-3xl">
-        {/* Repositioned header with logo on far left, admin button on far right */}
-        <div className="flex justify-between items-center mb-8 w-full">
-          <div className="flex items-start">
+        {/* Header with logo on far left, admin button on far right */}
+        <div className="header-container">
+          <div className="logo-container">
             <img 
               src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
               alt="Fishing Rod Logo" 

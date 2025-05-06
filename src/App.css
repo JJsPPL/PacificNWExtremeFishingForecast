@@ -42,11 +42,14 @@
   color: #888;
 }
 
-/* Added logo styling */
+/* Logo styling */
 .app-logo {
-  height: 180px; /* Enlarged 3x from original 60px */
+  height: 180px; /* 3x the original 60px size */
   width: auto;
   position: relative;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
 }
 
 /* White overlay to hide text in the logo */
@@ -60,4 +63,26 @@
   background-color: #ffffff;
   pointer-events: none;
   mix-blend-mode: lighten;
+  z-index: 20;
+}
+
+/* Container styles to ensure proper spacing */
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

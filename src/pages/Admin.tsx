@@ -25,8 +25,8 @@ const Admin = () => {
   return (
     <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-4 py-6 max-w-5xl">
-        <div className="flex justify-between items-center mb-8 w-full">
-          <div className="flex items-start">
+        <div className="header-container">
+          <div className="logo-container">
             <img 
               src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
               alt="Fishing Rod Logo" 
@@ -35,7 +35,7 @@ const Admin = () => {
           </div>
           
           {isAdmin && (
-            <div className="flex gap-2">
+            <div className="button-container">
               <Button variant="outline" onClick={() => navigate("/")}>
                 Back to App
               </Button>
