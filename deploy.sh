@@ -18,7 +18,7 @@ git checkout -B main
 git add -A
 git commit -m 'deploy'
 
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:<USERNAME>/pnw-fishing-forecast.git main:gh-pages
+# deploy to your existing repository
+git push -f git@github.com:JJsPPL/PacNWSSFishing.git main:gh-pages
 
 cd -
