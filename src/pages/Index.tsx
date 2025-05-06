@@ -60,7 +60,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-6 max-w-3xl">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl md:text-3xl font-bold">
-            Pacific NW Extreme Fishing
+            Pacific NW Extreme Fishing Forecast
           </h1>
           
           <Button 
