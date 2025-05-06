@@ -1,0 +1,43 @@
+
+import React from 'react';
+import { ExternalLink } from 'lucide-react';
+
+interface AdvertisementProps {
+  title: string;
+  description: string;
+  url: string;
+  position: 'bottom-left' | 'bottom-right';
+  color: string;
+}
+
+const Advertisement = ({ title, description, url, position, color }: AdvertisementProps) => {
+  const positionClasses = {
+    'bottom-left': 'bottom-4 left-4',
+    'bottom-right': 'bottom-4 right-4',
+  };
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`fixed ${positionClasses[position]} z-10 max-w-[220px] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:ring-blue-500`}
+    >
+      <div 
+        className={`${color} rounded-lg p-3 text-white backdrop-blur-sm bg-opacity-90 border border-white border-opacity-20`}
+        style={{
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05)'
+        }}
+      >
+        <div className="flex items-start justify-between">
+          <h3 className="font-bold text-sm mb-1">{title}</h3>
+          <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 opacity-70" />
+        </div>
+        <p className="text-xs opacity-90 mb-2">{description}</p>
+        <div className="text-[10px] opacity-70 text-right font-medium">Advertisement</div>
+      </div>
+    </a>
+  );
+};
+
+export default Advertisement;

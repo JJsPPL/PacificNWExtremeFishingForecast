@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { Settings } from "lucide-react";
 import { SearchFilters } from "@/components/SearchFilters";
 import { getForecastForDate } from "@/lib/fishingForecast";
+import Advertisement from "@/components/Advertisement";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
@@ -118,6 +119,23 @@ const Index = () => {
           </TabsContent>
         </Tabs>
       </div>
+      
+      {/* Advertisements */}
+      <Advertisement 
+        title="DINO TRADEZ"
+        description="Premium Fishing Gear & Trading Accessories for Extreme Anglers"
+        url="https://DINOTRADEZ.COM"
+        position="bottom-left"
+        color="bg-gradient-to-r from-green-700 to-blue-700"
+      />
+      
+      <Advertisement 
+        title="JJ'S CATERS"
+        description="Premier Fishing Event Catering & Fresh Catch Preparation"
+        url="https://JJSCATERS.COM"
+        position="bottom-right"
+        color="bg-gradient-to-r from-amber-700 to-red-700"
+      />
     </div>
   );
 };
