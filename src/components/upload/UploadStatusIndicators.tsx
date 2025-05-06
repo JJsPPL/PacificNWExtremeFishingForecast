@@ -1,7 +1,8 @@
+
 import React from "react";
 import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { Check, X, FileX, LoaderCircle } from "lucide-react";
+import { Check, X, FileX, LoaderCircle, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface FileItemProps {
@@ -84,14 +85,18 @@ export const ForecastEnhancedAlert: React.FC<ForecastEnhancedAlertProps> = ({ is
 interface ProcessedDataSummaryProps {
   dataLength: number;
   fileName: string;
+  originalCount?: number;
   onReset: () => void;
 }
 
 export const ProcessedDataSummary: React.FC<ProcessedDataSummaryProps> = ({ 
   dataLength, 
   fileName,
+  originalCount,
   onReset 
 }) => {
+  const wasTruncated = originalCount && originalCount > dataLength;
+  
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -112,6 +117,13 @@ export const ProcessedDataSummary: React.FC<ProcessedDataSummaryProps> = ({
           <Check className="h-4 w-4" />
           <span>{dataLength} entries processed from {fileName}</span>
         </div>
+        
+        {wasTruncated && (
+          <div className="mt-2 flex items-center gap-2 text-xs text-amber-600">
+            <AlertTriangle className="h-4 w-4" />
+            <span>Note: Only {dataLength} of {originalCount} entries were kept due to storage limitations</span>
+          </div>
+        )}
         
         <div className="mt-2 text-xs text-muted-foreground">
           <p>Your forecast is now personalized. You can visit the Calendar and Details tabs to see your enhanced forecast.</p>
