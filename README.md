@@ -1,73 +1,38 @@
-# Welcome to your Lovable project
 
-## Project info
+# PNW Fishing Forecast
 
-**URL**: https://lovable.dev/projects/c8c92c59-5cf1-4b15-9d15-7d2aac2a4e4f
+A web application designed to help anglers in the Pacific Northwest find the best times and locations to fish based on environmental conditions and seasonal patterns.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Today's Forecast**: Get current fishing conditions and recommendations
+- **Calendar View**: Plan your fishing trips with a monthly forecast view
+- **Search & Filters**: Find specific fish species, locations, and more
+- **Mobile Friendly**: Use on your phone while on the water
 
-**Use Lovable**
+## How to Use
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c8c92c59-5cf1-4b15-9d15-7d2aac2a4e4f) and start prompting.
+1. **View Today's Forecast**: The home page shows today's fishing conditions and top recommendations.
+2. **Browse the Calendar**: Check the best fishing days for the month.
+3. **Use Filters**: Filter by fish species, location, or other keywords to find what you're looking for.
+4. **Admin Panel**: Upload custom fishing data through the admin panel (requires login).
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Development
 
 This project is built with:
-
-- Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
+- shadcn/ui components
 
-## How can I deploy this project?
+## Live Demo
 
-Simply open [Lovable](https://lovable.dev/projects/c8c92c59-5cf1-4b15-9d15-7d2aac2a4e4f) and click on Share -> Publish.
+The application is hosted on GitHub Pages at: https://[your-github-username].github.io/pnw-fishing-forecast/
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes, you can!
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT
