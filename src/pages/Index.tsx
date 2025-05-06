@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -160,9 +159,10 @@ const Index = () => {
           <div className="border-t border-slate-600 pt-6">
             <h3 className="text-lg font-semibold mb-2">Disclaimer</h3>
             <p className="text-sm text-slate-300">
-              Created using multiple AI data models synthesized into a unified dataset to forecast fishing conditions 
-              and fish run probabilities in the Pacific Northwest. Our forecasts analyze environmental factors and 
-              historical patterns to provide guidance for anglers.
+              Created using multiple AI Models synthesized into a unified dataset to forecast prime fishing conditions 
+              and fish run probabilities in the Pacific Northwest. Our goal is to provide insights for anglers to be 
+              productive by not wasting time and money going out fishing when there's no fish or they're simply just 
+              not biting. The forecasts generated are from environmental factors and successful historical harvesting patterns.
             </p>
             <p className="text-sm text-slate-300 mt-2">
               <strong>Important:</strong> Past performance is not indicative of future results. This application is 
