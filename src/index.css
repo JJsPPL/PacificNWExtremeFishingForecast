@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Add the sky-themed gradient background */
+.sky-gradient-bg {
+  background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
+}
+
+.dark .sky-gradient-bg {
+  background: linear-gradient(to bottom, #1e3a8a, #1e40af);
+}
+
+/* Logo styling */
+.app-logo {
+  height: 60px;
+  width: auto;
 }

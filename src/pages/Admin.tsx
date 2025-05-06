@@ -23,10 +23,18 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-4 py-6 max-w-5xl">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">Admin Panel</h1>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
+              alt="Fishing Rod and Fish Logo" 
+              className="app-logo"
+            />
+            <h1 className="text-2xl md:text-3xl font-bold">Admin Panel</h1>
+          </div>
+          
           {isAdmin && (
             <div className="flex gap-2">
               <Button variant="outline" onClick={() => navigate("/")}>

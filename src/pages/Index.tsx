@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -56,22 +57,30 @@ const Index = () => {
   }, [filters, activeTab, selectedDate]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-4 py-6 max-w-3xl">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl md:text-3xl font-bold">
+        {/* Header section with logo, title and admin button */}
+        <div className="flex flex-col items-center mb-4 relative">
+          <div className="w-full flex justify-between items-center mb-4">
+            <img 
+              src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
+              alt="Fishing Rod and Fish Logo" 
+              className="app-logo"
+            />
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={goToAdmin}
+              className="flex items-center gap-1"
+            >
+              <Settings className="h-4 w-4" />
+              Admin
+            </Button>
+          </div>
+          
+          <h1 className="text-2xl md:text-3xl font-bold text-center">
             Pacific NW Extreme Fishing Forecast
           </h1>
-          
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={goToAdmin}
-            className="flex items-center gap-1"
-          >
-            <Settings className="h-4 w-4" />
-            Admin
-          </Button>
         </div>
         
         <p className="text-center text-muted-foreground mb-6">
