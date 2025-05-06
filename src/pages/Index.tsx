@@ -63,7 +63,7 @@ const Index = () => {
         <div className="header-container">
           <div className="logo-container">
             <img 
-              src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
+              src="/lovable-uploads/2883dd2d-d538-4105-baf2-08537d6ace8d.png" 
               alt="Fishing Rod Logo" 
               className="app-logo"
             />

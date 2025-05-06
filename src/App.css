@@ -44,12 +44,15 @@
 
 /* Logo styling */
 .app-logo {
-  height: 180px; /* 3x the original 60px size */
+  height: 180px !important; /* 3x the original 60px size */
   width: auto;
   position: relative;
   margin: 0;
   padding: 0;
   z-index: 10;
+  border-radius: 50%; /* Make the logo more oval/circular */
+  box-shadow: 0 0 15px 15px rgba(135, 206, 235, 0.6); /* Soft blue glow that blends with sky background */
+  background-color: transparent;
 }
 
 /* White overlay to hide text in the logo */
@@ -60,10 +63,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
   pointer-events: none;
   mix-blend-mode: lighten;
   z-index: 20;
+  border-radius: 50%; /* Match the border radius of the logo */
 }
 
 /* Container styles to ensure proper spacing */
@@ -79,6 +82,7 @@
 .logo-container {
   display: flex;
   align-items: flex-start;
+  overflow: visible; /* Allow the glow to extend beyond container */
 }
 
 .button-container {
