@@ -59,33 +59,36 @@ const Index = () => {
   return (
     <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-4 py-6 max-w-3xl">
-        {/* Header section with logo, title and admin button */}
-        <div className="flex flex-col items-center mb-4 relative">
-          <div className="w-full flex justify-between items-center mb-4">
+        {/* Repositioned header with logo on far left, admin button on far right */}
+        <div className="flex justify-between items-center mb-8 w-full">
+          <div className="flex items-start">
             <img 
               src="/lovable-uploads/679012c2-7caf-48b4-9a7c-240099f54020.png" 
-              alt="Fishing Rod and Fish Logo" 
+              alt="Fishing Rod Logo" 
               className="app-logo"
             />
-            <Button 
-              variant="outline" 
-              size="sm"
-              onClick={goToAdmin}
-              className="flex items-center gap-1"
-            >
-              <Settings className="h-4 w-4" />
-              Admin
-            </Button>
           </div>
           
-          <h1 className="text-2xl md:text-3xl font-bold text-center">
-            Pacific NW Extreme Fishing Forecast
-          </h1>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={goToAdmin}
+            className="flex items-center gap-1"
+          >
+            <Settings className="h-4 w-4" />
+            Admin
+          </Button>
         </div>
         
-        <p className="text-center text-muted-foreground mb-6">
-          Daily forecasts for fishing conditions in Washington and Oregon
-        </p>
+        <div className="text-center mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold">
+            Pacific NW Extreme Fishing Forecast
+          </h1>
+          
+          <p className="text-center text-muted-foreground mt-2">
+            Daily forecasts for fishing conditions in Washington and Oregon
+          </p>
+        </div>
         
         <SearchFilters onFilterChange={setFilters} />
         
