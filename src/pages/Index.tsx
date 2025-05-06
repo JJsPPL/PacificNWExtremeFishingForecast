@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
 import { FishingDetailsView } from "@/components/FishingDetailsView";
@@ -7,15 +7,53 @@ import { CurrentConditions } from "@/components/CurrentConditions";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Settings } from "lucide-react";
+import { SearchFilters } from "@/components/SearchFilters";
+import { getForecastForDate } from "@/lib/fishingForecast";
 
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [activeTab, setActiveTab] = useState("today");
+  const [filters, setFilters] = useState({
+    searchTerm: "",
+    species: null as string | null,
+    location: null as string | null
+  });
   const navigate = useNavigate();
   const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   const goToAdmin = () => {
     navigate("/admin");
   };
+
+  // Filter forecast data based on search/filters
+  const filterMatches = (date: Date): boolean => {
+    if (!filters.searchTerm && !filters.species && !filters.location) {
+      return true; // No filters applied
+    }
+
+    const forecast = getForecastForDate(date);
+    
+    // Check if any recommendation matches all filters
+    return forecast.recommendations.some(rec => {
+      const searchTermMatch = !filters.searchTerm || 
+        rec.species.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+        rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+        rec.tactics.toLowerCase().includes(filters.searchTerm.toLowerCase());
+      
+      const speciesMatch = !filters.species || rec.species === filters.species;
+      const locationMatch = !filters.location || rec.location === filters.location;
+      
+      return searchTermMatch && speciesMatch && locationMatch;
+    });
+  };
+
+  // When filters change and we're in calendar view, we might need to update the calendar
+  useEffect(() => {
+    if (activeTab === "calendar" && selectedDate) {
+      // If the current selected date doesn't match filters, we could handle that here
+      // For now, we'll just let the calendar highlight valid dates
+    }
+  }, [filters, activeTab, selectedDate]);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
@@ -40,7 +78,14 @@ const Index = () => {
           Daily forecasts for fishing conditions in Washington and Oregon
         </p>
         
-        <Tabs defaultValue="today" className="w-full">
+        <SearchFilters onFilterChange={setFilters} />
+        
+        <Tabs 
+          defaultValue="today" 
+          className="w-full"
+          onValueChange={setActiveTab}
+          value={activeTab}
+        >
           <TabsList className="grid w-full grid-cols-3 mb-4">
             <TabsTrigger value="today">Today</TabsTrigger>
             <TabsTrigger value="calendar">Calendar</TabsTrigger>
@@ -48,7 +93,7 @@ const Index = () => {
           </TabsList>
           
           <TabsContent value="today" className="mt-0">
-            <CurrentConditions />
+            <CurrentConditions filterCondition={filterMatches(new Date())} />
           </TabsContent>
           
           <TabsContent value="calendar" className="mt-0">
@@ -60,12 +105,16 @@ const Index = () => {
                 if (tabsList) {
                   (tabsList as HTMLElement).click();
                 }
-              }} 
+              }}
+              filterFunction={filterMatches}
             />
           </TabsContent>
           
           <TabsContent value="details" className="mt-0">
-            <FishingDetailsView selectedDate={selectedDate} />
+            <FishingDetailsView 
+              selectedDate={selectedDate}
+              filters={filters}
+            />
           </TabsContent>
         </Tabs>
       </div>

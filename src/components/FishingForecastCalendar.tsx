@@ -11,11 +11,13 @@ import { ForecastDayContent } from "./ForecastDayContent";
 interface FishingForecastCalendarProps {
   selectedDate: Date | undefined;
   onSelectDate: (date: Date | undefined) => void;
+  filterFunction?: (date: Date) => boolean;
 }
 
 export const FishingForecastCalendar = ({
   selectedDate,
   onSelectDate,
+  filterFunction
 }: FishingForecastCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
@@ -25,6 +27,12 @@ export const FishingForecastCalendar = ({
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
+  };
+
+  // Apply filters to calendar days
+  const isDayEnabled = (day: Date): boolean => {
+    if (!filterFunction) return true;
+    return filterFunction(day);
   };
 
   return (
@@ -50,16 +58,18 @@ export const FishingForecastCalendar = ({
           onMonthChange={setCurrentMonth}
           className="p-0 pointer-events-auto"
           modifiers={{
-            excellent: (date) => getForecastForDate(date).rating >= 80,
-            good: (date) => getForecastForDate(date).rating >= 60 && getForecastForDate(date).rating < 80,
-            moderate: (date) => getForecastForDate(date).rating >= 40 && getForecastForDate(date).rating < 60,
-            poor: (date) => getForecastForDate(date).rating < 40,
+            excellent: (date) => getForecastForDate(date).rating >= 80 && isDayEnabled(date),
+            good: (date) => getForecastForDate(date).rating >= 60 && getForecastForDate(date).rating < 80 && isDayEnabled(date),
+            moderate: (date) => getForecastForDate(date).rating >= 40 && getForecastForDate(date).rating < 60 && isDayEnabled(date),
+            poor: (date) => getForecastForDate(date).rating < 40 && isDayEnabled(date),
+            disabled: (date) => filterFunction ? !isDayEnabled(date) : false
           }}
           modifiersClassNames={{
             excellent: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200",
             good: "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200",
             moderate: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200",
             poor: "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200",
+            disabled: "opacity-30 cursor-not-allowed"
           }}
           components={{
             DayContent: ({ date }) => <ForecastDayContent date={date} selectedDate={selectedDate} />,

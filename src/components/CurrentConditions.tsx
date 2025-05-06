@@ -6,12 +6,32 @@ import { FishScoreIndicator } from "./FishScoreIndicator";
 import { getForecastForDate } from "@/lib/fishingForecast";
 import { MapPin } from "lucide-react";
 
-export const CurrentConditions = () => {
+interface CurrentConditionsProps {
+  filterCondition?: boolean;
+}
+
+export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsProps) => {
   const today = new Date();
   const forecast = getForecastForDate(today);
   
   // Get top recommendation
   const topRecommendation = forecast.recommendations[0];
+  
+  if (!filterCondition) {
+    return (
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle>Today's Fishing Forecast</CardTitle>
+          <CardDescription>{format(today, "EEEE, MMMM d, yyyy")}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-center text-muted-foreground py-6">
+            No matches found for your filters. Try adjusting your search criteria.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
   
   return (
     <div className="space-y-4">

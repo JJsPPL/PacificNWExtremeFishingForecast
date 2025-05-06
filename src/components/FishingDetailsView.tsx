@@ -7,9 +7,14 @@ import { getForecastForDate } from "@/lib/fishingForecast";
 
 interface FishingDetailsViewProps {
   selectedDate: Date | undefined;
+  filters?: {
+    searchTerm: string;
+    species: string | null;
+    location: string | null;
+  };
 }
 
-export const FishingDetailsView = ({ selectedDate }: FishingDetailsViewProps) => {
+export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsViewProps) => {
   if (!selectedDate) {
     return (
       <Card>
@@ -23,6 +28,37 @@ export const FishingDetailsView = ({ selectedDate }: FishingDetailsViewProps) =>
   }
 
   const forecast = getForecastForDate(selectedDate);
+  
+  // Filter recommendations based on filters
+  const filteredRecommendations = filters 
+    ? forecast.recommendations.filter(rec => {
+        const searchTermMatch = !filters.searchTerm || 
+          rec.species.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+          rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+          rec.tactics.toLowerCase().includes(filters.searchTerm.toLowerCase());
+        
+        const speciesMatch = !filters.species || rec.species === filters.species;
+        const locationMatch = !filters.location || rec.location === filters.location;
+        
+        return searchTermMatch && speciesMatch && locationMatch;
+      })
+    : forecast.recommendations;
+
+  if (filteredRecommendations.length === 0 && filters) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>{format(selectedDate, "MMMM d, yyyy")}</CardTitle>
+          <CardDescription>No matches found for your filters</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-center text-muted-foreground">
+            Try adjusting your search or filter criteria
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
   
   return (
     <Card>
@@ -54,7 +90,11 @@ export const FishingDetailsView = ({ selectedDate }: FishingDetailsViewProps) =>
           />
         </div>
 
-        <h3 className="text-lg font-medium mb-3">Recommended Species & Locations</h3>
+        <h3 className="text-lg font-medium mb-3">
+          {filteredRecommendations.length < forecast.recommendations.length 
+            ? "Filtered Species & Locations" 
+            : "Recommended Species & Locations"}
+        </h3>
         <Table>
           <TableHeader>
             <TableRow>
@@ -64,7 +104,7 @@ export const FishingDetailsView = ({ selectedDate }: FishingDetailsViewProps) =>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {forecast.recommendations.map((rec, index) => (
+            {filteredRecommendations.map((rec, index) => (
               <TableRow key={index}>
                 <TableCell className="font-medium">{rec.species}</TableCell>
                 <TableCell>{rec.location}</TableCell>
