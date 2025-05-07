@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -12,6 +11,16 @@ import { getForecastForDate } from "@/lib/fishingForecast";
 import Advertisement from "@/components/Advertisement";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+// Check if we're in development mode (Lovable.dev or Preview)
+const isDevelopmentMode = () => {
+  return (
+    window.location.hostname === 'localhost' || 
+    window.location.hostname.includes('127.0.0.1') ||
+    window.location.hostname.includes('lovable.dev') ||
+    window.location.hostname.includes('lovable.app')
+  );
+};
+
 const Index = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [activeTab, setActiveTab] = useState("today");
@@ -23,6 +32,7 @@ const Index = () => {
   const navigate = useNavigate();
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const isMobile = useIsMobile();
+  const showAdminButton = isDevelopmentMode(); // Only show in development/preview mode
 
   const goToAdmin = () => {
     navigate("/admin");
@@ -60,7 +70,7 @@ const Index = () => {
   return (
     <div className="min-h-screen sky-gradient-bg">
       <div className="container mx-auto px-2 md:px-4 py-4 md:py-6 max-w-3xl">
-        {/* Header with logo on far left, admin button on far right */}
+        {/* Header with logo on far left, admin button on far right (only in dev mode) */}
         <div className="header-container">
           <div className="logo-container">
             <img 
@@ -70,15 +80,17 @@ const Index = () => {
             />
           </div>
           
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={goToAdmin}
-            className="flex items-center gap-1"
-          >
-            <Settings className="h-4 w-4" />
-            Admin
-          </Button>
+          {showAdminButton && (
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={goToAdmin}
+              className="flex items-center gap-1"
+            >
+              <Settings className="h-4 w-4" />
+              Admin
+            </Button>
+          )}
         </div>
         
         <div className="text-center mb-4 md:mb-6">
