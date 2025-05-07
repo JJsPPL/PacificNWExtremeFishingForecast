@@ -42,10 +42,16 @@ const PNW_FISH_SPECIES = [
   "Halibut",
   "Lingcod",
   "Dungeness Crab",
-  "Shrimp"
+  "Shrimp",
+  "Sturgeon",
+  "Smallmouth Bass",
+  "Largemouth Bass",
+  "Cutthroat Trout",
+  "Rainbow Trout",
+  "Brown Trout"
 ];
 
-// List of popular fishing locations
+// Enhanced list of popular fishing locations
 const FISHING_LOCATIONS = {
   washington: [
     "Puget Sound",
@@ -58,7 +64,14 @@ const FISHING_LOCATIONS = {
     "Kalama River",
     "Wynoochee River",
     "Humptulips River",
-    "Chehalis River"
+    "Chehalis River",
+    "Willapa Bay",
+    "Grays Harbor",
+    "Washougal River",
+    "Wind River",
+    "Skagit River",
+    "Snohomish River",
+    "Yakima River"
   ],
   oregon: [
     "Columbia River",
@@ -67,14 +80,32 @@ const FISHING_LOCATIONS = {
     "Clackamas River",
     "Tillamook Bay",
     "Nehalem River",
-    "Nestucca River",
+    // Enhanced Nestucca River Information
+    "Nestucca River - First Bridge",
+    "Nestucca River - Three Rivers",
+    "Nestucca River - Blaine",
+    "Nestucca River - Beaver",
+    "Nestucca River - Farmer Creek",
+    "Nestucca River - Hebo",
+    "Nestucca River - Cloverdale",
+    // Enhanced Columbia River Tributaries
+    "Deschutes River",
+    "John Day River",
+    "Umatilla River",
+    "Grande Ronde River",
+    "Hood River",
     "Siletz River",
     "Alsea River",
-    "Umpqua River"
+    "Umpqua River",
+    "Rogue River",
+    "Chetco River",
+    "Siuslaw River",
+    "Yaquina River",
+    "Salmon River"
   ]
 };
 
-// Fishing tactics based on species
+// Extended fishing tactics based on species
 const FISHING_TACTICS = {
   salmon: [
     "Trolling with flashers and herring",
@@ -83,31 +114,112 @@ const FISHING_TACTICS = {
     "Bobber fishing with eggs",
     "Back-bouncing roe",
     "Plunking with Spin-N-Glo",
-    "Float fishing with sand shrimp"
+    "Float fishing with sand shrimp",
+    "Pulling plugs in deep holes",
+    "Side drifting with yarn balls",
+    "Trolling with Cut Plug herring",
+    "Trolling with hoochies",
+    "Backtrolling with Kwikfish",
+    "Backtrolling with sardine-wrapped plugs",
+    "Casting spinners in tailouts",
+    "Fishing tidewater with herring"
   ],
   steelhead: [
     "Drift fishing with eggs",
     "Swinging flies",
     "Float fishing with jigs",
     "Side drifting with yarn balls",
-    "Casting spinners in pocket water"
+    "Casting spinners in pocket water",
+    "Plunking with Spin-N-Glo in high water",
+    "Bobber dogging with beads",
+    "Float fishing with prawns",
+    "Run-and-gun with spoons",
+    "Swinging intruder patterns on sink tips",
+    "Nymphing with stonefly patterns",
+    "High-sticking pocket water"
   ],
   halibut: [
     "Jigging with large jigs",
     "Drift fishing with herring",
-    "Weighted bait near bottom"
+    "Weighted bait near bottom",
+    "Trolling with heavy spreader bars",
+    "Bouncing scented squid"
+  ],
+  trout: [
+    "Dry fly fishing",
+    "Nymphing with indicators",
+    "Euro nymphing",
+    "Streamer fishing",
+    "Spinner casting",
+    "Spoon casting",
+    "Bait fishing with worms",
+    "Trolling with wedding rings",
+    "Trolling with flashers and worms"
+  ],
+  bass: [
+    "Drop shotting soft plastics",
+    "Crankbait fishing around structure",
+    "Topwater at dawn and dusk",
+    "Jerkbait fishing in clear water",
+    "Jig fishing around rocks",
+    "Carolina rig in deeper water",
+    "Spinnerbait in murky water"
   ],
   crab: [
     "Pot fishing with chicken or turkey",
-    "Ring nets in estuaries"
+    "Ring nets in estuaries",
+    "Baiting with fish carcasses",
+    "Night fishing with lanterns"
+  ],
+  sturgeon: [
+    "Bottom fishing with smelt",
+    "Bottom fishing with sand shrimp",
+    "Bottom fishing with lamprey",
+    "Anchoring in deep holes",
+    "Fishing mudlines during tide changes"
   ]
 };
 
-// Baits commonly used
+// Enhanced baits commonly used
 const FISHING_BAITS = {
-  salmon: ["Herring", "Anchovy", "Sand shrimp", "Eggs", "Prawns", "Spinners", "Plugs"],
-  steelhead: ["Eggs", "Yarn", "Worms", "Jigs", "Spinners", "Flies"],
-  bottomfish: ["Herring", "Squid", "Octopus", "Jigs"]
+  salmon: ["Herring", "Anchovy", "Sand shrimp", "Eggs", "Prawns", "Spinners", "Plugs", "Cured eggs", "Sardine-wrapped plugs", "Tuna belly", "Sardines"],
+  steelhead: ["Eggs", "Yarn", "Worms", "Jigs", "Spinners", "Flies", "Beads", "Prawns", "Corkies", "Shrimp"],
+  bottomfish: ["Herring", "Squid", "Octopus", "Jigs", "Anchovies", "Clams", "Sand shrimp"],
+  trout: ["Worms", "Powerbait", "Corn", "Spinners", "Spoons", "Flies", "Eggs", "Mealworms", "Maggots", "Nightcrawlers"],
+  bass: ["Soft plastics", "Crankbaits", "Topwater lures", "Spinnerbaits", "Jigs", "Swimbaits", "Frogs", "Crawfish imitations"],
+  sturgeon: ["Smelt", "Sand shrimp", "Lamprey", "Squid", "Herring", "Anchovies", "Salmon eggs", "Crawfish", "Pikeminnow"]
+};
+
+// Oregon peak fishing seasons by river system
+const OREGON_RIVER_SEASONS = {
+  "Nestucca River": {
+    "Winter Steelhead": { start: 11, end: 2 }, // Dec-Mar
+    "Spring Chinook": { start: 3, end: 5 },    // Apr-Jun
+    "Fall Chinook": { start: 7, end: 10 },     // Aug-Nov
+    "Summer Steelhead": { start: 5, end: 7 },  // Jun-Aug
+    "Coho Salmon": { start: 8, end: 11 }       // Sep-Dec
+  },
+  "Columbia River": {
+    "Spring Chinook": { start: 2, end: 4 },    // Mar-May
+    "Summer Chinook": { start: 5, end: 6 },    // Jun-Jul
+    "Fall Chinook": { start: 7, end: 9 },      // Aug-Oct
+    "Coho Salmon": { start: 7, end: 10 },      // Aug-Nov
+    "Sockeye": { start: 5, end: 6 },           // Jun-Jul
+    "Steelhead": { start: 5, end: 9 },         // Jun-Oct
+    "Sturgeon": { start: 4, end: 8 }           // May-Sep
+  }
+};
+
+// Enhanced description of fishing locations
+const LOCATION_DETAILS = {
+  "Nestucca River - First Bridge": "Access point with deep holes just downstream. Good for winter steelhead and fall Chinook.",
+  "Nestucca River - Three Rivers": "Confluence area with added water volume. Excellent holding water for steelhead.",
+  "Nestucca River - Blaine": "Series of riffles and pools. Great for drift fishing or fly fishing.",
+  "Nestucca River - Beaver": "Boat ramp access with long drifts downstream. Prime spring Chinook water.",
+  "Nestucca River - Farmer Creek": "Natural pinch point that concentrates fish. Good in high water conditions.",
+  "Nestucca River - Hebo": "Public access with classic steelhead runs. Works well during winter months.",
+  "Nestucca River - Cloverdale": "Tidewater section with sloughs and deeper channels. Great for bobber fishing.",
+  "Columbia River": "Massive system with numerous salmon runs. Fish different sections based on season."
 };
 
 // Generate mock data for a fishing forecast
@@ -232,18 +344,36 @@ const generateRecommendations = (
   const recommendations: FishingRecommendation[] = [];
   
   // Number of recommendations based on rating
-  const numRecommendations = rating >= 70 ? 3 : (rating >= 40 ? 2 : 1);
+  const numRecommendations = rating >= 70 ? 4 : (rating >= 40 ? 3 : 2);
   
   // Seasonal species availability (simplified)
   let availableSpecies: string[] = [];
   
   // Winter (Dec-Feb): Winter steelhead, resident Chinook
   if (month === 11 || month === 0 || month === 1) {
-    availableSpecies = ["Steelhead", "Chinook Salmon (resident)", "Dungeness Crab"];
+    availableSpecies = ["Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout"];
+    
+    // Special winter steelhead focus for Oregon rivers
+    if (date.getDate() % 3 === 0) {
+      recommendations.push({
+        species: "Steelhead",
+        location: "Nestucca River - Beaver",
+        tactics: "Drift fishing with eggs or yarn balls in deeper slots"
+      });
+    }
   } 
   // Spring (Mar-May): Spring Chinook, early steelhead, halibut
   else if (month >= 2 && month <= 4) {
-    availableSpecies = ["Chinook Salmon (Spring)", "Steelhead", "Halibut", "Lingcod"];
+    availableSpecies = ["Chinook Salmon (Spring)", "Steelhead", "Halibut", "Lingcod", "Sturgeon"];
+    
+    // Special spring Chinook focus for Columbia River
+    if (date.getDate() % 4 === 0) {
+      recommendations.push({
+        species: "Chinook Salmon (Spring)",
+        location: "Columbia River",
+        tactics: "Trolling with herring near deep channel edges. Target incoming tide for best results."
+      });
+    }
   }
   // Summer (Jun-Aug): Summer Chinook, sockeye, pink (odd years), coho
   else if (month >= 5 && month <= 7) {
@@ -252,44 +382,83 @@ const generateRecommendations = (
       "Sockeye Salmon", 
       date.getFullYear() % 2 === 1 ? "Pink Salmon" : "Coho Salmon (early)",
       "Halibut",
-      "Lingcod"
+      "Lingcod",
+      "Smallmouth Bass",
+      "Sturgeon"
     ];
+    
+    // Special summer steelhead focus for Nestucca
+    if (date.getDate() % 3 === 1) {
+      recommendations.push({
+        species: "Summer Steelhead",
+        location: "Nestucca River - Three Rivers",
+        tactics: "Early morning with small spinners or flies in riffles and tailouts"
+      });
+    }
   }
   // Fall (Sep-Nov): Fall Chinook, coho, chum
   else {
-    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Dungeness Crab"];
+    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Dungeness Crab", "Cutthroat Trout"];
+    
+    // Special fall Chinook and coho focus for Oregon coastal rivers
+    if (date.getDate() % 2 === 0) {
+      recommendations.push({
+        species: "Coho Salmon",
+        location: "Nestucca River - Cloverdale",
+        tactics: "Tidewater bobber fishing with eggs or spinners during the first push of tide"
+      });
+    }
   }
   
   // Generate unique recommendations
-  for (let i = 0; i < numRecommendations; i++) {
+  while (recommendations.length < numRecommendations) {
     if (availableSpecies.length === 0) break;
     
     // Select a species
-    const speciesIndex = (date.getDate() + i) % availableSpecies.length;
+    const speciesIndex = (date.getDate() + recommendations.length) % availableSpecies.length;
     const species = availableSpecies[speciesIndex];
     availableSpecies.splice(speciesIndex, 1); // Remove to avoid duplicates
     
     // Select appropriate location based on species and time of year
     let locationPool: string[];
+    
+    // Enhanced location selection logic with focus on Oregon rivers
     if (species.includes("Salmon") || species === "Steelhead") {
       // For salmon/steelhead - choose rivers in fall/winter, sound/ocean in summer
       if (month >= 5 && month <= 7) { // Summer
-        locationPool = [...FISHING_LOCATIONS.washington.slice(0, 4)]; // Ocean/sound locations
+        if (date.getDate() % 5 === 0) {
+          // Focus on Oregon locations sometimes
+          locationPool = FISHING_LOCATIONS.oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia"));
+        } else {
+          locationPool = [...FISHING_LOCATIONS.washington.slice(0, 4)]; // Ocean/sound locations
+        }
       } else {
-        locationPool = [
-          ...FISHING_LOCATIONS.washington.slice(4), 
-          ...FISHING_LOCATIONS.oregon
-        ]; // River locations
+        // In non-summer months, increase focus on Oregon rivers
+        if (date.getDate() % 3 === 0) {
+          // Focus on Oregon locations
+          locationPool = FISHING_LOCATIONS.oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia"));
+        } else {
+          locationPool = [
+            ...FISHING_LOCATIONS.oregon,
+            ...FISHING_LOCATIONS.washington.slice(4)
+          ]; // River locations
+        }
       }
     } else if (species === "Halibut" || species === "Lingcod") {
       // Saltwater species
       locationPool = FISHING_LOCATIONS.washington.slice(0, 4);
+    } else if (species.includes("Bass")) {
+      // Bass in Columbia River or its sloughs
+      locationPool = ["Columbia River", "John Day River", "Umatilla River"];
+    } else if (species === "Sturgeon") {
+      // Sturgeon in deeper holes and channel edges
+      locationPool = ["Columbia River", "Willamette River", "John Day River"];
     } else {
       // Crab, shrimp, etc.
       locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay"];
     }
     
-    const locationIndex = (date.getDate() * (i+1)) % locationPool.length;
+    const locationIndex = (date.getDate() * (recommendations.length+1)) % locationPool.length;
     const location = locationPool[locationIndex];
     
     // Select appropriate tactics
@@ -300,11 +469,17 @@ const generateRecommendations = (
       tacticsPool = FISHING_TACTICS.steelhead;
     } else if (species === "Halibut" || species === "Lingcod") {
       tacticsPool = FISHING_TACTICS.halibut;
+    } else if (species.includes("Trout")) {
+      tacticsPool = FISHING_TACTICS.trout;
+    } else if (species.includes("Bass")) {
+      tacticsPool = FISHING_TACTICS.bass;
+    } else if (species === "Sturgeon") {
+      tacticsPool = FISHING_TACTICS.sturgeon;
     } else {
       tacticsPool = FISHING_TACTICS.crab;
     }
     
-    const tacticIndex = (date.getDate() * (i+2)) % tacticsPool.length;
+    const tacticIndex = (date.getDate() * (recommendations.length+2)) % tacticsPool.length;
     const tactics = tacticsPool[tacticIndex];
     
     // Select bait
@@ -313,11 +488,17 @@ const generateRecommendations = (
       baitPool = FISHING_BAITS.salmon;
     } else if (species === "Steelhead") {
       baitPool = FISHING_BAITS.steelhead;
+    } else if (species.includes("Trout")) {
+      baitPool = FISHING_BAITS.trout;
+    } else if (species.includes("Bass")) {
+      baitPool = FISHING_BAITS.bass;
+    } else if (species === "Sturgeon") {
+      baitPool = FISHING_BAITS.sturgeon;
     } else {
       baitPool = FISHING_BAITS.bottomfish;
     }
     
-    const baitIndex = (date.getDate() * (i+3)) % baitPool.length;
+    const baitIndex = (date.getDate() * (recommendations.length+3)) % baitPool.length;
     const bait = baitPool[baitIndex];
     
     // Add recommendation
@@ -330,4 +511,22 @@ const generateRecommendations = (
   }
   
   return recommendations;
+};
+
+// Additional Oregon-specific information for remarkable locations
+const OREGON_HOTSPOTS = {
+  "Nestucca River": [
+    "Known for some of the best winter steelhead fishing in Oregon",
+    "Hatchery releases enhance both winter and summer steelhead returns",
+    "Fall Chinook typically arrive in September and peak in November",
+    "Best access points include Three Rivers, First Bridge, and Cloverdale",
+    "Bobber and jig or bobber and bait work exceptionally well in the slower, deeper sections"
+  ],
+  "Columbia River": [
+    "The largest river system in the PNW with multiple salmon and steelhead runs",
+    "Buoy 10 fishery near the mouth is famous for fall salmon",
+    "The Gorge section offers excellent smallmouth bass fishing",
+    "Sturgeon fishing is productive year-round, with seasonal retention periods",
+    "Tributary mouths concentrate fish during migration periods"
+  ]
 };
