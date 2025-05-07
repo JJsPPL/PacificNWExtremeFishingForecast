@@ -1,4 +1,3 @@
-
 import { addDays, format, isSameDay } from "date-fns";
 
 // Types for our fishing forecast data
@@ -71,7 +70,8 @@ const FISHING_LOCATIONS = {
     "Wind River",
     "Skagit River",
     "Snohomish River",
-    "Yakima River"
+    "Yakima River",
+    "Bogachiel River"
   ],
   oregon: [
     "Columbia River",
@@ -101,7 +101,8 @@ const FISHING_LOCATIONS = {
     "Chetco River",
     "Siuslaw River",
     "Yaquina River",
-    "Salmon River"
+    "Salmon River",
+    "Eagle Creek"
   ]
 };
 
@@ -219,7 +220,11 @@ const LOCATION_DETAILS = {
   "Nestucca River - Farmer Creek": "Natural pinch point that concentrates fish. Good in high water conditions.",
   "Nestucca River - Hebo": "Public access with classic steelhead runs. Works well during winter months.",
   "Nestucca River - Cloverdale": "Tidewater section with sloughs and deeper channels. Great for bobber fishing.",
-  "Columbia River": "Massive system with numerous salmon runs. Fish different sections based on season."
+  "Columbia River": "Massive system with numerous salmon runs. Fish different sections based on season.",
+  
+  "Cowlitz River": "One of Washington's premier salmon and steelhead rivers. Known for its excellent hatchery programs and consistent returns.",
+  "Bogachiel River": "Part of the Quillayute River system in Olympic Peninsula, known for winter steelhead and salmon runs.",
+  "Eagle Creek": "Columbia River tributary offering good fishing for spring Chinook and coho salmon, especially near the Eagle Creek National Fish Hatchery."
 };
 
 // Generate mock data for a fishing forecast
