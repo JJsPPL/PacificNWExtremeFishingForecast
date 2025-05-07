@@ -153,15 +153,15 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Disclaimer section with added fishing logo image */}
+      {/* Disclaimer section with adjusted fishing logo image size */}
       <footer className="mt-8 pt-6 pb-8 bg-slate-800 text-white">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-3xl">
           <div className="border-t border-slate-600 pt-6">
-            <div className="flex items-start">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
               <img 
                 src="/lovable-uploads/ddba0b8a-aada-4edb-b82f-a7e0788057da.png" 
                 alt="Fishing Rod and Bass" 
-                className="w-16 h-16 mr-4 mt-1"
+                className="w-full md:w-1/3 max-w-[250px] object-contain mb-4 md:mb-0 md:mr-4"
               />
               <div>
                 <h3 className="text-lg font-semibold mb-2">Disclaimer</h3>

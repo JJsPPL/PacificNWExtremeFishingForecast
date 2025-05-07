@@ -151,3 +151,12 @@
   align-items: flex-start !important;
   margin-bottom: 2rem !important;
 }
+
+/* Disclaimer image responsiveness */
+@media (max-width: 768px) {
+  footer .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
