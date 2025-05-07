@@ -1,4 +1,3 @@
-
 import { format } from "date-fns";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -32,10 +31,9 @@ export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsView
   // Filter recommendations based on filters
   const filteredRecommendations = filters 
     ? forecast.recommendations.filter(rec => {
+        // Only search location when using the search term
         const searchTermMatch = !filters.searchTerm || 
-          rec.species.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-          rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-          rec.tactics.toLowerCase().includes(filters.searchTerm.toLowerCase());
+          rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase());
         
         const speciesMatch = !filters.species || rec.species === filters.species;
         const locationMatch = !filters.location || rec.location === filters.location;

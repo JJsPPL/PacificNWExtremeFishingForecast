@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FishingForecastCalendar } from "@/components/FishingForecastCalendar";
@@ -38,10 +37,9 @@ const Index = () => {
     
     // Check if any recommendation matches all filters
     return forecast.recommendations.some(rec => {
+      // Only search location when using the search term
       const searchTermMatch = !filters.searchTerm || 
-        rec.species.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-        rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-        rec.tactics.toLowerCase().includes(filters.searchTerm.toLowerCase());
+        rec.location.toLowerCase().includes(filters.searchTerm.toLowerCase());
       
       const speciesMatch = !filters.species || rec.species === filters.species;
       const locationMatch = !filters.location || rec.location === filters.location;

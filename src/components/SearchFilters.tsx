@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Filter, Search } from "lucide-react";
+import { Filter, MapPin, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -97,9 +97,9 @@ export const SearchFilters = ({ onFilterChange }: SearchFiltersProps) => {
   return (
     <div className="mb-6 flex flex-col gap-4">
       <div className="relative">
-        <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+        <MapPin className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
-          placeholder="Search for species, locations, or tactics..."
+          placeholder="Search for locations..."
           value={searchTerm}
           onChange={handleSearchChange}
           className="pl-9"
