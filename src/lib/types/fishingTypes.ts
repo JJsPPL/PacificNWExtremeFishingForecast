@@ -1,4 +1,3 @@
-
 import { Dispatch, SetStateAction } from "react";
 
 // Types for our fishing forecast data
@@ -7,6 +6,8 @@ export interface FishingRecommendation {
   location: string;
   tactics: string;
   bait?: string;
+  waterConditions?: string;
+  bestTime?: string;
 }
 
 export interface FishingForecast {

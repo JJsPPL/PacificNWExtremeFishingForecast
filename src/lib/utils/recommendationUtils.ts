@@ -1,4 +1,3 @@
-
 import { FishingRecommendation } from "../types/fishingTypes";
 import { FISHING_TACTICS, FISHING_BAITS } from "../constants/fishingSpecies";
 import { FISHING_LOCATIONS } from "../constants/fishingLocations";
@@ -28,13 +27,17 @@ export const generateRecommendations = (
       recommendations.push({
         species: "Winter Steelhead",
         location: "Nestucca River - Beaver",
-        tactics: "Drift fishing with eggs or yarn balls in deeper slots"
+        tactics: "Drift fishing with eggs or yarn balls in deeper slots",
+        waterConditions: "Medium flow, slightly turbid",
+        bestTime: "Early morning or late afternoon"
       });
     } else if (date.getDate() % 3 === 1) {
       recommendations.push({
         species: "Winter Steelhead",
         location: "Sequim - Dungeness River",
-        tactics: "Small presentations in clear water. Focus on deeper pools after rainfall."
+        tactics: "Small presentations in clear water. Focus on deeper pools after rainfall.",
+        waterConditions: "Clear to slightly off-color",
+        bestTime: "Mid-morning after frost"
       });
     }
   } 
@@ -47,7 +50,9 @@ export const generateRecommendations = (
       recommendations.push({
         species: "Chinook Salmon (Spring)",
         location: "Columbia River",
-        tactics: "Trolling with herring near deep channel edges. Target incoming tide for best results."
+        tactics: "Trolling with herring near deep channel edges. Target incoming tide for best results.",
+        waterConditions: "Clear water, moderate flow",
+        bestTime: "Early morning or late afternoon"
       });
     }
   }
@@ -68,7 +73,9 @@ export const generateRecommendations = (
       recommendations.push({
         species: "Summer Steelhead",
         location: "Nestucca River - Three Rivers",
-        tactics: "Early morning with small spinners or flies in riffles and tailouts"
+        tactics: "Early morning with small spinners or flies in riffles and tailouts",
+        waterConditions: "Clear water, moderate flow",
+        bestTime: "Early morning or late afternoon"
       });
     }
   }
@@ -81,19 +88,25 @@ export const generateRecommendations = (
       recommendations.push({
         species: "Coho Salmon",
         location: "Nestucca River - Cloverdale",
-        tactics: "Tidewater bobber fishing with eggs or spinners during the first push of tide"
+        tactics: "Tidewater bobber fishing with eggs or spinners during the first push of tide",
+        waterConditions: "Tidal influence, brackish water",
+        bestTime: "First light or on incoming tide"
       });
     } else if (date.getDate() % 3 === 1) {
       recommendations.push({
         species: "Coho Salmon", 
         location: "Sequim - Dungeness River",
-        tactics: "Small pink or orange spinners, focus on early morning or evening bites"
+        tactics: "Small pink or orange spinners, focus on early morning or evening bites",
+        waterConditions: "Clear to slightly stained",
+        bestTime: "First and last light"
       });
     } else if (date.getDate() % 3 === 2) {
       recommendations.push({
         species: "Coho Salmon",
         location: "Cowlitz River",
-        tactics: "Back-bouncing eggs or drift fishing with corkies and yarn in deeper runs"
+        tactics: "Back-bouncing eggs or drift fishing with corkies and yarn in deeper runs",
+        waterConditions: "Medium flow, visibility 2-3 feet",
+        bestTime: "Overcast days during mid-morning"
       });
     }
   }
@@ -206,11 +219,29 @@ export const generateRecommendations = (
     const bait = baitPool[baitIndex];
     
     // Add recommendation
+    const waterConditions = date.getDate() % 2 === 0 ? 
+      "Clear, moderate flow" : 
+      "Slightly turbid, rising water";
+    
+    const bestTimeOptions = [
+      "Early morning", 
+      "Late afternoon",
+      "Overcast conditions",
+      "After light rain",
+      "Incoming tide",
+      "During stable pressure"
+    ];
+    
+    const bestTimeIndex = (date.getDate() * (recommendations.length+5)) % bestTimeOptions.length;
+    
+    // Add recommendation with new fields
     recommendations.push({
       species,
       location,
       tactics,
-      bait
+      bait,
+      waterConditions,
+      bestTime: bestTimeOptions[bestTimeIndex]
     });
   }
   

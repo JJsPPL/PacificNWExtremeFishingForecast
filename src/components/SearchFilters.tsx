@@ -16,6 +16,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getForecastForDate } from "@/lib/fishingForecast";
+import { FISHING_LOCATIONS } from "@/lib/constants/fishingLocations";
+
+// Explicitly add important species that should always be in filters
+const IMPORTANT_SPECIES = ["Coho Salmon", "Winter Steelhead", "Chinook Salmon", "Summer Steelhead"];
 
 // Get unique filters and sort them alphabetically
 const getUniqueFilters = () => {
@@ -23,8 +27,11 @@ const getUniqueFilters = () => {
   const thirtyDaysLater = new Date();
   thirtyDaysLater.setDate(today.getDate() + 30);
   
-  const species = new Set<string>();
+  const species = new Set<string>(IMPORTANT_SPECIES);
   const locations = new Set<string>();
+  
+  // Add Sequim, WA to locations if not already dynamically added
+  locations.add("Sequim, WA");
   
   // Generate dates for the next 30 days
   for (let d = new Date(today); d <= thirtyDaysLater; d.setDate(d.getDate() + 1)) {

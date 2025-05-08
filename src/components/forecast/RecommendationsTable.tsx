@@ -22,6 +22,7 @@ export const RecommendationsTable = ({ recommendations }: RecommendationsTablePr
           <TableHead>Species</TableHead>
           <TableHead>Location</TableHead>
           <TableHead>Tactics</TableHead>
+          <TableHead>Water Conditions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -35,6 +36,20 @@ export const RecommendationsTable = ({ recommendations }: RecommendationsTablePr
                 <div className="text-xs text-muted-foreground mt-1">
                   <span className="font-medium">Recommended bait: </span>{rec.bait}
                 </div>
+              )}
+            </TableCell>
+            <TableCell>
+              {rec.waterConditions ? (
+                <div>
+                  {rec.waterConditions}
+                  {rec.bestTime && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                      <span className="font-medium">Best time: </span>{rec.bestTime}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <span className="text-muted-foreground">No data</span>
               )}
             </TableCell>
           </TableRow>
