@@ -21,14 +21,20 @@ export const generateRecommendations = (
   
   // Winter (Dec-Feb): Winter steelhead, resident Chinook
   if (month === 11 || month === 0 || month === 1) {
-    availableSpecies = ["Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout"];
+    availableSpecies = ["Winter Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout"];
     
-    // Special winter steelhead focus for Oregon rivers
+    // Special winter steelhead focus for Oregon and Washington rivers
     if (date.getDate() % 3 === 0) {
       recommendations.push({
-        species: "Steelhead",
+        species: "Winter Steelhead",
         location: "Nestucca River - Beaver",
         tactics: "Drift fishing with eggs or yarn balls in deeper slots"
+      });
+    } else if (date.getDate() % 3 === 1) {
+      recommendations.push({
+        species: "Winter Steelhead",
+        location: "Sequim - Dungeness River",
+        tactics: "Small presentations in clear water. Focus on deeper pools after rainfall."
       });
     }
   } 
@@ -70,12 +76,24 @@ export const generateRecommendations = (
   else {
     availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Dungeness Crab", "Cutthroat Trout"];
     
-    // Special fall Chinook and coho focus for Oregon coastal rivers
-    if (date.getDate() % 2 === 0) {
+    // Special fall coho focus for Oregon and Washington rivers
+    if (date.getDate() % 3 === 0) {
       recommendations.push({
         species: "Coho Salmon",
         location: "Nestucca River - Cloverdale",
         tactics: "Tidewater bobber fishing with eggs or spinners during the first push of tide"
+      });
+    } else if (date.getDate() % 3 === 1) {
+      recommendations.push({
+        species: "Coho Salmon", 
+        location: "Sequim - Dungeness River",
+        tactics: "Small pink or orange spinners, focus on early morning or evening bites"
+      });
+    } else if (date.getDate() % 3 === 2) {
+      recommendations.push({
+        species: "Coho Salmon",
+        location: "Cowlitz River",
+        tactics: "Back-bouncing eggs or drift fishing with corkies and yarn in deeper runs"
       });
     }
   }
@@ -92,21 +110,37 @@ export const generateRecommendations = (
     // Select appropriate location based on species and time of year
     let locationPool: string[];
     
-    // Enhanced location selection logic with focus on Oregon rivers
-    if (species.includes("Salmon") || species === "Steelhead") {
+    // Enhanced location selection logic with focus on Oregon rivers and Sequim
+    if (species.includes("Salmon") || species.includes("Steelhead")) {
       // For salmon/steelhead - choose rivers in fall/winter, sound/ocean in summer
       if (month >= 5 && month <= 7) { // Summer
         if (date.getDate() % 5 === 0) {
           // Focus on Oregon locations sometimes
           locationPool = FISHING_LOCATIONS.oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia"));
+        } else if (date.getDate() % 5 === 1) {
+          // Sometimes focus on Sequim area
+          locationPool = FISHING_LOCATIONS.washington.filter(loc => loc.includes("Sequim"));
         } else {
           locationPool = [...FISHING_LOCATIONS.washington.slice(0, 4)]; // Ocean/sound locations
         }
       } else {
-        // In non-summer months, increase focus on Oregon rivers
-        if (date.getDate() % 3 === 0) {
+        // In non-summer months, give more weight to river locations
+        if (date.getDate() % 4 === 0) {
           // Focus on Oregon locations
           locationPool = FISHING_LOCATIONS.oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia"));
+        } else if (date.getDate() % 4 === 1) {
+          // Focus on Sequim and Olympic Peninsula
+          locationPool = FISHING_LOCATIONS.washington.filter(loc => loc.includes("Sequim") || loc === "Bogachiel River");
+        } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
+          // Special rivers known for coho and winter steelhead
+          locationPool = [
+            "Cowlitz River", 
+            "Lewis River", 
+            "Kalama River",
+            "Skagit River",
+            "Snohomish River",
+            "Sequim - Dungeness River"
+          ];
         } else {
           locationPool = [
             ...FISHING_LOCATIONS.oregon,
@@ -116,7 +150,7 @@ export const generateRecommendations = (
       }
     } else if (species === "Halibut" || species === "Lingcod") {
       // Saltwater species
-      locationPool = FISHING_LOCATIONS.washington.slice(0, 4);
+      locationPool = ["Puget Sound", "Hood Canal", "Strait of Juan De Fuca", "San Juan Islands", "Sequim - Discovery Bay"];
     } else if (species.includes("Bass")) {
       // Bass in Columbia River or its sloughs
       locationPool = ["Columbia River", "John Day River", "Umatilla River"];
@@ -125,7 +159,7 @@ export const generateRecommendations = (
       locationPool = ["Columbia River", "Willamette River", "John Day River"];
     } else {
       // Crab, shrimp, etc.
-      locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay"];
+      locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay", "Sequim - Washington Harbor", "Sequim - Discovery Bay"];
     }
     
     const locationIndex = (date.getDate() * (recommendations.length+1)) % locationPool.length;
@@ -135,7 +169,7 @@ export const generateRecommendations = (
     let tacticsPool: string[];
     if (species.includes("Salmon")) {
       tacticsPool = FISHING_TACTICS.salmon;
-    } else if (species === "Steelhead") {
+    } else if (species.includes("Steelhead")) {
       tacticsPool = FISHING_TACTICS.steelhead;
     } else if (species === "Halibut" || species === "Lingcod") {
       tacticsPool = FISHING_TACTICS.halibut;
@@ -156,7 +190,7 @@ export const generateRecommendations = (
     let baitPool: string[];
     if (species.includes("Salmon")) {
       baitPool = FISHING_BAITS.salmon;
-    } else if (species === "Steelhead") {
+    } else if (species.includes("Steelhead")) {
       baitPool = FISHING_BAITS.steelhead;
     } else if (species.includes("Trout")) {
       baitPool = FISHING_BAITS.trout;
