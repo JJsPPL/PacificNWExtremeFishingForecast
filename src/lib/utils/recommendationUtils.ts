@@ -177,25 +177,25 @@ export const generateRecommendations = (
       if (month >= 5 && month <= 7) { // Summer
         if (date.getDate() % 5 === 0) {
           // Focus on Oregon locations sometimes
-          locationPool = FISHING_LOCATIONS.oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia") || loc.includes("Wilson"));
+          locationPool = FISHING_LOCATIONS.Oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia") || loc.includes("Wilson"));
         } else if (date.getDate() % 5 === 1) {
           // Sometimes focus on Sequim area
-          locationPool = FISHING_LOCATIONS.washington.filter(loc => loc.includes("Sequim"));
+          locationPool = FISHING_LOCATIONS.Washington.filter(loc => loc.includes("Sequim"));
         } else {
-          locationPool = [...FISHING_LOCATIONS.washington.slice(0, 4)]; // Ocean/sound locations
+          locationPool = [...FISHING_LOCATIONS.Washington.slice(0, 4)]; // Ocean/sound locations
         }
       } else {
         // In non-summer months, give more weight to river locations
         if (date.getDate() % 4 === 0) {
           // Focus on Oregon locations
-          locationPool = FISHING_LOCATIONS.oregon.filter(loc => 
+          locationPool = FISHING_LOCATIONS.Oregon.filter(loc => 
             loc.includes("Nestucca") || 
             loc.includes("Sandy") || 
             loc.includes("Wilson") || 
             loc.includes("Clackamas"));
         } else if (date.getDate() % 4 === 1) {
           // Focus on Sequim and Olympic Peninsula
-          locationPool = FISHING_LOCATIONS.washington.filter(loc => loc.includes("Sequim") || loc === "Bogachiel River");
+          locationPool = FISHING_LOCATIONS.Washington.filter(loc => loc.includes("Sequim") || loc === "Bogachiel River");
         } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
           // Special rivers known for coho and winter steelhead
           locationPool = [
@@ -213,8 +213,8 @@ export const generateRecommendations = (
           ];
         } else {
           locationPool = [
-            ...FISHING_LOCATIONS.oregon,
-            ...FISHING_LOCATIONS.washington.slice(4)
+            ...FISHING_LOCATIONS.Oregon,
+            ...FISHING_LOCATIONS.Washington.slice(4)
           ]; // River locations
         }
       }
@@ -316,7 +316,8 @@ export const generateRecommendations = (
       
       // If we have location details, incorporate them
       if (locationDetail) {
-        waterConditions = `${waterConditions} ${locationDetail.split('.')[0]}.`;
+        const notes = locationDetail.notes || "";
+        waterConditions = `${waterConditions} ${notes.split('.')[0] || ""}.`;
       }
     } else if (location.includes("Sound") || location.includes("Bay")) {
       // More detailed saltwater conditions
@@ -335,7 +336,8 @@ export const generateRecommendations = (
       
       // If we have location details, incorporate them
       if (locationDetail) {
-        waterConditions = `${waterConditions} ${locationDetail.split('.')[0]}.`;
+        const notes = locationDetail.notes || "";
+        waterConditions = `${waterConditions} ${notes.split('.')[0] || ""}.`;
       }
     }
     
