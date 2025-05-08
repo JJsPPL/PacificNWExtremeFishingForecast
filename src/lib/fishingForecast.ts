@@ -1,7 +1,7 @@
 
 import { addDays, format, isSameDay } from "date-fns";
 import { FishingForecast, FishingRecommendation, MoonPhase } from "./types/fishingTypes";
-import { generateRecommendations } from "./utils/recommendationUtils";
+import { generateRecommendations } from "./utils/recommendations";
 
 // Generate mock data for a fishing forecast
 export const getForecastForDate = (date: Date): FishingForecast => {
