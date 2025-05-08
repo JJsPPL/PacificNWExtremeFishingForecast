@@ -47,6 +47,16 @@ export const ForecastTabs = ({ filters }: ForecastTabsProps) => {
     }
   }, [filters, activeTab, selectedDate]);
 
+  // Handle date change (for navigation arrows)
+  const handleDateChange = (date: Date) => {
+    setSelectedDate(date);
+    
+    // Switch to details tab if not already there
+    if (activeTab !== "details") {
+      setActiveTab("details");
+    }
+  };
+
   return (
     <Tabs 
       defaultValue="today" 
@@ -82,6 +92,7 @@ export const ForecastTabs = ({ filters }: ForecastTabsProps) => {
         <FishingDetailsView 
           selectedDate={selectedDate}
           filters={filters}
+          onDateChange={handleDateChange}
         />
       </TabsContent>
     </Tabs>

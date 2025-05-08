@@ -1,13 +1,14 @@
 
-import { format } from "date-fns";
+import { format, addDays, subDays } from "date-fns";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Wind } from "lucide-react";
+import { Moon, Wind, ArrowLeft, ArrowRight } from "lucide-react";
 import { getForecastForDate } from "@/lib/fishingForecast";
 import { RatingStars } from "./ratings/RatingStars";
 import { ForecastFactorCard } from "./forecast/ForecastFactorCard";
 import { RecommendationsTable } from "./forecast/RecommendationsTable";
 import { getRatingDescription } from "@/utils/ratingUtils";
 import { FeaturedLocationTips } from "./forecast/FeaturedLocationTips";
+import { Button } from "./ui/button";
 
 interface FishingDetailsViewProps {
   selectedDate: Date | undefined;
@@ -16,9 +17,14 @@ interface FishingDetailsViewProps {
     species: string | null;
     location: string | null;
   };
+  onDateChange?: (date: Date) => void;
 }
 
-export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsViewProps) => {
+export const FishingDetailsView = ({ 
+  selectedDate, 
+  filters,
+  onDateChange 
+}: FishingDetailsViewProps) => {
   if (!selectedDate) {
     return (
       <Card>
@@ -32,6 +38,19 @@ export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsView
   }
 
   const forecast = getForecastForDate(selectedDate);
+  
+  // Navigation functions
+  const goToPrevDay = () => {
+    if (onDateChange && selectedDate) {
+      onDateChange(subDays(selectedDate, 1));
+    }
+  };
+  
+  const goToNextDay = () => {
+    if (onDateChange && selectedDate) {
+      onDateChange(addDays(selectedDate, 1));
+    }
+  };
   
   // Filter recommendations based on filters
   const filteredRecommendations = filters 
@@ -66,14 +85,36 @@ export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsView
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <span>{format(selectedDate, "MMMM d, yyyy")}</span>
-          <div className="flex items-center">
-            <RatingStars rating={forecast.rating} />
-            <span className="ml-2 text-lg">{forecast.rating}/100</span>
-          </div>
-        </CardTitle>
-        <CardDescription>
+        <div className="flex items-center justify-between mb-2">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={goToPrevDay}
+            disabled={!onDateChange}
+            className="rounded-full"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Previous Day</span>
+          </Button>
+          <CardTitle className="flex items-center justify-center flex-1">
+            <span>{format(selectedDate, "MMMM d, yyyy")}</span>
+          </CardTitle>
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={goToNextDay}
+            disabled={!onDateChange}
+            className="rounded-full"
+          >
+            <ArrowRight className="h-4 w-4" />
+            <span className="sr-only">Next Day</span>
+          </Button>
+        </div>
+        <div className="flex items-center justify-center">
+          <RatingStars rating={forecast.rating} />
+          <span className="ml-2 text-lg">{forecast.rating}/100</span>
+        </div>
+        <CardDescription className="text-center mt-2">
           {getRatingDescription(forecast.rating)}
         </CardDescription>
       </CardHeader>
