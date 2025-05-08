@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Filter, MapPin, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -16,10 +15,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getForecastForDate } from "@/lib/fishingForecast";
-import { FISHING_LOCATIONS } from "@/lib/constants/fishingLocations";
+import { FISHING_LOCATIONS, LOCATION_DETAILS } from "@/lib/constants/fishingLocations";
 
 // Explicitly add important species that should always be in filters
 const IMPORTANT_SPECIES = ["Coho Salmon", "Winter Steelhead", "Chinook Salmon", "Summer Steelhead"];
+
+// Add important locations that should always be in filters
+const IMPORTANT_LOCATIONS = [
+  "Sequim, WA",
+  "Wind River - Mouth",
+  "Wind River - Shipherd Falls", 
+  "Wind River - Trout Creek",
+  "Drano Lake",
+  "Kalama River - Lower",
+  "Kalama River - Upper",
+  "Kalama River - Fallert Creek"
+];
 
 // Get unique filters and sort them alphabetically
 const getUniqueFilters = () => {
@@ -28,10 +39,7 @@ const getUniqueFilters = () => {
   thirtyDaysLater.setDate(today.getDate() + 30);
   
   const species = new Set<string>(IMPORTANT_SPECIES);
-  const locations = new Set<string>();
-  
-  // Add Sequim, WA to locations if not already dynamically added
-  locations.add("Sequim, WA");
+  const locations = new Set<string>(IMPORTANT_LOCATIONS);
   
   // Generate dates for the next 30 days
   for (let d = new Date(today); d <= thirtyDaysLater; d.setDate(d.getDate() + 1)) {
@@ -39,6 +47,18 @@ const getUniqueFilters = () => {
     forecast.recommendations.forEach(rec => {
       species.add(rec.species);
       locations.add(rec.location);
+    });
+  }
+
+  // Also add all location details from our constants
+  Object.keys(LOCATION_DETAILS).forEach(location => {
+    locations.add(location);
+  });
+  
+  // Add all locations from FISHING_LOCATIONS
+  for (const state in FISHING_LOCATIONS) {
+    FISHING_LOCATIONS[state as keyof typeof FISHING_LOCATIONS].forEach(location => {
+      locations.add(location);
     });
   }
   
