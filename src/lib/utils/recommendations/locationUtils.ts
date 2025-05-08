@@ -5,7 +5,7 @@ import { FISHING_LOCATIONS, LOCATION_DETAILS } from "../../constants/fishingLoca
 export const getLocationPool = (species: string, date: Date, month: number): string[] => {
   let locationPool: string[] = [];
   
-  // Enhanced location selection logic with focus on Oregon rivers and Sequim
+  // Enhanced location selection logic with new locations
   if (species.includes("Salmon") || species.includes("Steelhead")) {
     // For salmon/steelhead - choose rivers in fall/winter, sound/ocean in summer
     if (month >= 5 && month <= 7) { // Summer
@@ -13,12 +13,20 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         // Focus on Oregon locations sometimes
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         locationPool = oregonLocations.filter(loc => 
-          loc && (loc.includes("Nestucca") || loc.includes("Columbia") || loc.includes("Wilson"))
+          loc && (loc.includes("Nestucca") || 
+                 loc.includes("Columbia") || 
+                 loc.includes("Willamette") || 
+                 loc.includes("Sandy") || 
+                 loc.includes("Clackamas"))
         );
       } else if (date.getDate() % 5 === 1) {
         // Sometimes focus on Sequim area
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => loc && loc.includes("Sequim"));
+      } else if (date.getDate() % 5 === 2) {
+        // Sometimes focus on Snake River
+        const idahoLocations = FISHING_LOCATIONS.Idaho || [];
+        locationPool = idahoLocations.filter(loc => loc && loc.includes("Snake"));
       } else {
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.length >= 4 ? 
@@ -27,20 +35,34 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       }
     } else {
       // In non-summer months, give more weight to river locations
-      if (date.getDate() % 4 === 0) {
+      const dayMod = date.getDate() % 6;
+      
+      if (dayMod === 0) {
         // Focus on Oregon locations
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         locationPool = oregonLocations.filter(loc => 
           loc && (loc.includes("Nestucca") || 
-          loc.includes("Sandy") || 
-          loc.includes("Wilson") || 
-          loc.includes("Clackamas"))
+                 loc.includes("Sandy") || 
+                 loc.includes("Willamette") ||
+                 loc.includes("Clackamas"))
         );
-      } else if (date.getDate() % 4 === 1) {
+      } else if (dayMod === 1) {
         // Focus on Sequim and Olympic Peninsula
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
           loc && (loc.includes("Sequim") || loc === "Bogachiel River")
+        );
+      } else if (dayMod === 2) {
+        // Focus on Columbia River sections
+        const oregonLocations = FISHING_LOCATIONS.Oregon || [];
+        locationPool = oregonLocations.filter(loc => 
+          loc && loc.includes("Columbia")
+        );
+      } else if (dayMod === 3) {
+        // Focus on Snake River
+        const idahoLocations = FISHING_LOCATIONS.Idaho || [];
+        locationPool = idahoLocations.filter(loc => 
+          loc && loc.includes("Snake")
         );
       } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
         // Special rivers known for coho and winter steelhead
@@ -55,7 +77,10 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           "Skykomish River - Reiter Ponds",
           "Snohomish River",
           "Snohomish River - Pilchuck Mouth",
-          "Sequim - Dungeness River"
+          "Sequim - Dungeness River",
+          "Sandy River - Oxbow Park",
+          "Clackamas River - McIver Park",
+          "Willamette River - Falls"
         ];
       } else {
         // Make sure we have valid data before trying to use it
@@ -73,10 +98,26 @@ export const getLocationPool = (species: string, date: Date, month: number): str
     locationPool = ["Puget Sound", "Hood Canal", "Strait of Juan De Fuca", "San Juan Islands", "Sequim - Discovery Bay"];
   } else if (species.includes("Bass")) {
     // Bass in Columbia River or its sloughs
-    locationPool = ["Columbia River", "John Day River", "Umatilla River"];
+    locationPool = [
+      "Columbia River", 
+      "John Day River", 
+      "Umatilla River",
+      "Snake River - C.J. Strike Reservoir",
+      "Snake River - Twin Falls",
+      "Willamette River - Newberg",
+      "Willamette River - Corvallis"
+    ];
   } else if (species === "Sturgeon") {
     // Sturgeon in deeper holes and channel edges
-    locationPool = ["Columbia River", "Willamette River", "John Day River"];
+    locationPool = [
+      "Columbia River", 
+      "Columbia River - Astoria", 
+      "Columbia River - Bonneville Dam",
+      "Willamette River", 
+      "Willamette River - Downtown Portland",
+      "Snake River - Hells Canyon Dam",
+      "John Day River"
+    ];
   } else {
     // Crab, shrimp, etc.
     locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay", "Sequim - Washington Harbor", "Sequim - Discovery Bay"];
@@ -84,14 +125,14 @@ export const getLocationPool = (species: string, date: Date, month: number): str
   
   // Ensure we have a valid location pool
   if (!locationPool || locationPool.length === 0) {
-    locationPool = ["Columbia River"]; // Fallback location
+    locationPool = ["Columbia River - Portland"]; // Fallback location
   }
   
   return locationPool;
 };
 
 export const enhanceLocationDetails = (location: string | undefined, species: string): string => {
-  if (!location) return "Columbia River"; // Fallback location
+  if (!location) return "Columbia River - Portland"; // Fallback location
   
   // Get the location details if they exist
   const locationDetail = LOCATION_DETAILS[location as keyof typeof LOCATION_DETAILS];

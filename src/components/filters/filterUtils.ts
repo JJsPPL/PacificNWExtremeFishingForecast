@@ -7,6 +7,7 @@ export const IMPORTANT_SPECIES = ["Coho Salmon", "Winter Steelhead", "Chinook Sa
 
 // Add important locations that should always be in filters
 export const IMPORTANT_LOCATIONS = [
+  // Washington locations
   "Sequim, WA",
   "Wind River - Mouth",
   "Wind River - Shipherd Falls", 
@@ -30,7 +31,28 @@ export const IMPORTANT_LOCATIONS = [
   "Toutle River - North Fork",
   "Toutle River - South Fork",
   "Toutle River - Tower Road Bridge",
-  "Toutle River - Hatchery"
+  "Toutle River - Hatchery",
+  
+  // Oregon Locations
+  "Columbia River - Buoy 10",
+  "Columbia River - Astoria",
+  "Columbia River - Portland",
+  "Columbia River - Bonneville Dam",
+  "Willamette River - Downtown Portland",
+  "Willamette River - Oregon City",
+  "Willamette River - Falls",
+  "Sandy River - Mouth",
+  "Sandy River - Oxbow Park",
+  "Sandy River - Cedar Creek",
+  "Clackamas River - McIver Park",
+  "Clackamas River - Carver",
+  "Nestucca River - Mouth",
+  "Nestucca River - Three Rivers",
+  
+  // Idaho Locations
+  "Snake River - Lewiston",
+  "Snake River - Hells Canyon Dam",
+  "Snake River - C.J. Strike Reservoir"
 ];
 
 // Get unique filters and sort them alphabetically
