@@ -17,7 +17,12 @@ export const getLocationPool = (species: string, date: Date, month: number): str
                  loc.includes("Columbia") || 
                  loc.includes("Willamette") || 
                  loc.includes("Sandy") || 
-                 loc.includes("Clackamas"))
+                 loc.includes("Clackamas") ||
+                 loc.includes("Tillamook") ||
+                 loc.includes("Trask") ||
+                 loc.includes("Wilson") ||
+                 loc.includes("Kilchis") ||
+                 loc.includes("Miami"))
         );
       } else if (date.getDate() % 5 === 1) {
         // Sometimes focus on Sequim area
@@ -35,7 +40,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       }
     } else {
       // In non-summer months, give more weight to river locations
-      const dayMod = date.getDate() % 6;
+      const dayMod = date.getDate() % 8; // Changed from 6 to 8 to incorporate Tillamook
       
       if (dayMod === 0) {
         // Focus on Oregon locations
@@ -64,6 +69,16 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         locationPool = idahoLocations.filter(loc => 
           loc && loc.includes("Snake")
         );
+      } else if (dayMod === 4) {
+        // Focus on Tillamook River system
+        const oregonLocations = FISHING_LOCATIONS.Oregon || [];
+        locationPool = oregonLocations.filter(loc => 
+          loc && (loc.includes("Tillamook") || 
+                 loc.includes("Trask") || 
+                 loc.includes("Wilson") || 
+                 loc.includes("Kilchis") ||
+                 loc.includes("Miami"))
+        );
       } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
         // Special rivers known for coho and winter steelhead
         locationPool = [
@@ -80,7 +95,10 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           "Sequim - Dungeness River",
           "Sandy River - Oxbow Park",
           "Clackamas River - McIver Park",
-          "Willamette River - Falls"
+          "Willamette River - Falls",
+          "Wilson River - Sollie Smith Bridge",
+          "Trask River - Loren's Drift",
+          "Kilchis River - Alderbrook"
         ];
       } else {
         // Make sure we have valid data before trying to use it
@@ -95,7 +113,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
     }
   } else if (species === "Halibut" || species === "Lingcod") {
     // Saltwater species
-    locationPool = ["Puget Sound", "Hood Canal", "Strait of Juan De Fuca", "San Juan Islands", "Sequim - Discovery Bay"];
+    locationPool = ["Puget Sound", "Hood Canal", "Strait of Juan De Fuca", "San Juan Islands", "Sequim - Discovery Bay", "Tillamook Bay"];
   } else if (species.includes("Bass")) {
     // Bass in Columbia River or its sloughs
     locationPool = [
@@ -116,7 +134,8 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "Willamette River", 
       "Willamette River - Downtown Portland",
       "Snake River - Hells Canyon Dam",
-      "John Day River"
+      "John Day River",
+      "Tillamook Bay"
     ];
   } else {
     // Crab, shrimp, etc.

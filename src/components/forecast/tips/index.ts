@@ -5,3 +5,4 @@ export * from './willamette-tips';
 export * from './sandy-tips';
 export * from './clackamas-tips';
 export * from './snake-tips';
+export * from './tillamook-tips';

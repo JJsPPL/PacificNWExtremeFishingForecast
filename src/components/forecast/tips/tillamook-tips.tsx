@@ -1,0 +1,20 @@
+
+import React from 'react';
+
+export const TillamookTips = () => {
+  return (
+    <div className="space-y-2">
+      <h5 className="font-semibold text-sm">Tillamook River System Tips:</h5>
+      <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+        <li>The Tillamook River system includes five major rivers: Tillamook, Trask, Wilson, Kilchis, and Miami.</li>
+        <li>Fall Chinook start entering the system in September with peak runs in October and November.</li>
+        <li>Winter steelhead are available from December through March, with peak activity in January.</li>
+        <li>The Wilson and Trask Rivers are considered the premier steelhead fisheries in the system.</li>
+        <li>Drift fishing with roe, bobber and jig, or pulling plugs are all effective tactics.</li>
+        <li>Check river levels before heading out - these rivers fish best when dropping after a rain.</li>
+        <li>The Highway 101 bridges provide good access points for bank anglers on most rivers.</li>
+        <li>Be aware that some sections run through private property - respect posted signs.</li>
+      </ul>
+    </div>
+  );
+};

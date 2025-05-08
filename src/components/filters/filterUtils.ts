@@ -49,6 +49,14 @@ export const IMPORTANT_LOCATIONS = [
   "Nestucca River - Mouth",
   "Nestucca River - Three Rivers",
   
+  // Tillamook System
+  "Tillamook Bay",
+  "Tillamook River - Mouth",
+  "Wilson River - Sollie Smith Bridge",
+  "Trask River - Loren's Drift",
+  "Kilchis River - Alderbrook",
+  "Miami River - Mouth",
+  
   // Idaho Locations
   "Snake River - Lewiston",
   "Snake River - Hells Canyon Dam",
