@@ -35,7 +35,18 @@ const IMPORTANT_LOCATIONS = [
   "Lewis River - North Fork",
   "Lewis River - South Fork",
   "Lewis River - East Fork",
-  "Lewis River - Hatchery"
+  "Lewis River - Hatchery",
+  "Cowlitz River - Mouth",
+  "Cowlitz River - Blue Creek",
+  "Cowlitz River - Mission Bar",
+  "Cowlitz River - Barrier Dam",
+  "Cowlitz River - Salmon Hatchery",
+  "Cowlitz River - Trout Hatchery",
+  "Toutle River - Mouth",
+  "Toutle River - North Fork",
+  "Toutle River - South Fork",
+  "Toutle River - Tower Road Bridge",
+  "Toutle River - Hatchery"
 ];
 
 // Get unique filters and sort them alphabetically
