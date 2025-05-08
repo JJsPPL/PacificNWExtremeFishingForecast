@@ -1,4 +1,3 @@
-
 export const FISHING_LOCATIONS = {
   "Washington": [
     "Sequim, WA",
@@ -24,12 +23,18 @@ export const FISHING_LOCATIONS = {
     "Toutle River - North Fork",
     "Toutle River - South Fork",
     "Toutle River - Tower Road Bridge",
-    "Toutle River - Hatchery"
+    "Toutle River - Hatchery",
+    "Ilwaco North Jetty",
+    "Hansville Light House",
+    "Eglon Rose Point",
+    "Edmonds Pier",
+    "Possession Point"
   ],
   "Oregon": [
     "Portland, OR",
     "Eugene, OR",
-    "Bend, OR"
+    "Bend, OR",
+    "Multnomah Channel"
   ],
   "Idaho": [
     "Boise, ID",
@@ -185,5 +190,41 @@ export const LOCATION_DETAILS = {
     accessType: "Public",
     regulations: "Check for seasonal salmon regulations",
     notes: "Good spot for salmon and bottomfish"
+  },
+  "Ilwaco North Jetty": {
+    waterType: "Saltwater",
+    accessType: "Public",
+    regulations: "Check for seasonal salmon and bottomfish regulations",
+    notes: "Popular spot for salmon, rockfish, and lingcod. Strong currents during tide changes."
+  },
+  "Hansville Light House": {
+    waterType: "Saltwater",
+    accessType: "Public",
+    regulations: "Check for seasonal salmon closures",
+    notes: "Good for salmon during summer runs. Beach access with moderate shore fishing opportunities."
+  },
+  "Eglon Rose Point": {
+    waterType: "Saltwater",
+    accessType: "Public",
+    regulations: "Standard Puget Sound fishing regulations apply",
+    notes: "Good for salmon and sea-run cutthroat. Beach access with limited parking."
+  },
+  "Edmonds Pier": {
+    waterType: "Saltwater",
+    accessType: "Public",
+    regulations: "No fishing license required when fishing from the pier",
+    notes: "Popular for squid fishing at night. Also good for perch, flounder and seasonal salmon."
+  },
+  "Possession Point": {
+    waterType: "Saltwater",
+    accessType: "Mixed",
+    regulations: "Standard Puget Sound regulations apply",
+    notes: "Known for coho and chinook salmon during summer and fall migrations."
+  },
+  "Multnomah Channel": {
+    waterType: "River",
+    accessType: "Public",
+    regulations: "Check for seasonal closures and selective gear rules",
+    notes: "Good for spring chinook, coho, and sturgeon. Multiple access points along the channel."
   }
 };
