@@ -1,3 +1,4 @@
+
 import { format } from "date-fns";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -117,6 +118,7 @@ export const FishingDetailsView = ({ selectedDate, filters }: FishingDetailsView
               </TableRow>
             ))}
           </TableBody>
+        </Table>
 
         {/* Tips for featured Oregon locations */}
         {(filteredRecommendations.some(rec => rec.location.includes("Nestucca")) || 
