@@ -84,7 +84,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center; /* Changed from flex-start to center for vertical alignment */
   margin-bottom: 2rem;
   position: relative;
 }
@@ -98,7 +98,8 @@
 
 .logo-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Changed from flex-start to center */
+  justify-content: center; /* Added to center the logo */
   overflow: visible; /* Allow the glow to extend beyond container */
 }
 
