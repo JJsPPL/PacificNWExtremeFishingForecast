@@ -6,8 +6,8 @@ interface FeaturedLocationTipsProps {
 }
 
 export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) => {
-  const hasNestucca = locations.some(loc => loc.includes("Nestucca"));
-  const hasColumbia = locations.some(loc => loc.includes("Columbia"));
+  const hasNestucca = locations.some(loc => loc && loc.includes("Nestucca"));
+  const hasColumbia = locations.some(loc => loc && loc.includes("Columbia"));
   
   if (!hasNestucca && !hasColumbia) return null;
   
@@ -26,6 +26,10 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
               <li>The First Bridge area fishes best during higher water when fish are moving upriver</li>
               <li>Tidewater fishing at Cloverdale is productive during incoming tides, especially for fall Chinook</li>
               <li>Smaller presentations often work better during low water periods</li>
+              <li>Beaver section has excellent bank access and several well-known steelhead runs</li>
+              <li>Cedar Creek confluence creates a natural holding area for winter steelhead</li>
+              <li>Hester Bridge area has deep pools that hold fish even during low water periods</li>
+              <li>The upper river (Farmer Creek Road) is less pressured and good for fly fishing</li>
             </ul>
           </div>
         )}
