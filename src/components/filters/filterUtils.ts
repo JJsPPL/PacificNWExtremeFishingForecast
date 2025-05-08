@@ -1,4 +1,3 @@
-
 import { FISHING_LOCATIONS, LOCATION_DETAILS } from "@/lib/constants/fishingLocations";
 import { getForecastForDate } from "@/lib/fishingForecast";
 
@@ -32,6 +31,15 @@ export const IMPORTANT_LOCATIONS = [
   "Toutle River - South Fork",
   "Toutle River - Tower Road Bridge",
   "Toutle River - Hatchery",
+  // Adding Wynochee River system
+  "Wynochee River - Mouth",
+  "Wynochee River - Black Creek",
+  "Wynochee River - Schafer State Park",
+  // Adding Bogachiel/Sol Duc/Calawah system
+  "Bogachiel River - Mouth",
+  "Bogachiel River - Leyendecker Park",
+  "Sol Duc River - Salmon Cascades",
+  "Calawah River - Mouth",
   
   // Oregon Locations
   "Columbia River - Buoy 10",

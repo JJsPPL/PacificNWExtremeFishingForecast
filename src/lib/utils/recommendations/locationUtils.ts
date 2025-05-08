@@ -32,6 +32,15 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         // Sometimes focus on Snake River
         const idahoLocations = FISHING_LOCATIONS.Idaho || [];
         locationPool = idahoLocations.filter(loc => loc && loc.includes("Snake"));
+      } else if (date.getDate() % 5 === 3) {
+        // Sometimes focus on Wynochee/Bogachiel system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && (loc.includes("Wynochee") || 
+                loc.includes("Bogachiel") || 
+                loc.includes("Sol Duc") || 
+                loc.includes("Calawah"))
+        );
       } else {
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.length >= 4 ? 
@@ -40,7 +49,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       }
     } else {
       // In non-summer months, give more weight to river locations
-      const dayMod = date.getDate() % 8; // Changed from 6 to 8 to incorporate Tillamook
+      const dayMod = date.getDate() % 9; // Changed from 8 to 9 to incorporate Olympic Peninsula rivers
       
       if (dayMod === 0) {
         // Focus on Oregon locations
@@ -55,7 +64,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         // Focus on Sequim and Olympic Peninsula
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
-          loc && (loc.includes("Sequim") || loc === "Bogachiel River")
+          loc && (loc.includes("Sequim") || loc === "Bogachiel River - Mouth")
         );
       } else if (dayMod === 2) {
         // Focus on Columbia River sections
@@ -79,6 +88,20 @@ export const getLocationPool = (species: string, date: Date, month: number): str
                  loc.includes("Kilchis") ||
                  loc.includes("Miami"))
         );
+      } else if (dayMod === 5) {
+        // Focus on Wynochee River system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && loc.includes("Wynochee")
+        );
+      } else if (dayMod === 6) {
+        // Focus on Bogachiel/Sol Duc/Calawah system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && (loc.includes("Bogachiel") || 
+                loc.includes("Sol Duc") || 
+                loc.includes("Calawah"))
+        );
       } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
         // Special rivers known for coho and winter steelhead
         locationPool = [
@@ -98,7 +121,11 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           "Willamette River - Falls",
           "Wilson River - Sollie Smith Bridge",
           "Trask River - Loren's Drift",
-          "Kilchis River - Alderbrook"
+          "Kilchis River - Alderbrook",
+          "Bogachiel River - Mouth",
+          "Bogachiel River - Leyendecker Park",
+          "Sol Duc River - Salmon Cascades",
+          "Wynochee River - Black Creek"
         ];
       } else {
         // Make sure we have valid data before trying to use it
@@ -123,7 +150,8 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "Snake River - C.J. Strike Reservoir",
       "Snake River - Twin Falls",
       "Willamette River - Newberg",
-      "Willamette River - Corvallis"
+      "Willamette River - Corvallis",
+      "Wynochee Lake"
     ];
   } else if (species === "Sturgeon") {
     // Sturgeon in deeper holes and channel edges
