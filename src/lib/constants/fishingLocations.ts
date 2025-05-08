@@ -11,6 +11,14 @@ export const FISHING_LOCATIONS = {
     "Columbia River - The Dalles to McNary",
     "Cowlitz River",
     "Lewis River",
+    "Lewis River - Mouth",
+    "Lewis River - North Fork",
+    "Lewis River - South Fork",
+    "Lewis River - East Fork",
+    "Lewis River - Hatchery",
+    "Lewis River - Merwin Dam",
+    "Lewis River - Yale Dam",
+    "Lewis River - Swift Reservoir",
     "Kalama River",
     "Wynoochee River",
     "Humptulips River",
@@ -156,5 +164,22 @@ export const LOCATION_DETAILS = {
   // New Kalama River locations
   "Kalama River - Lower": "From the mouth to Modrow Bridge, this section offers excellent bank and boat access. Known for fall Chinook, coho, and winter steelhead. High concentration of hatchery fish makes this a productive section December through February.",
   "Kalama River - Upper": "Above Kalama Falls Hatchery, this section offers more solitude and scenic fishing opportunities. Summer steelhead hold in the deeper pools after spring runoff subsides. Classic fly water with pocket water and riffles.",
-  "Kalama River - Fallert Creek": "Where Fallert Creek enters the Kalama, creating prime holding water for steelhead. Winter fish stack up here from December through February. Good numbers of hatchery fish with some wild fish mixed in."
+  "Kalama River - Fallert Creek": "Where Fallert Creek enters the Kalama, creating prime holding water for steelhead. Winter fish stack up here from December through February. Good numbers of hatchery fish with some wild fish mixed in.",
+  
+  // New Lewis River sections
+  "Lewis River - Mouth": "The confluence of the Lewis and Columbia rivers offers excellent salmon fishing opportunities. During fall, Chinook and coho salmon stage here before moving upstream. Best fished with herring or spinners during incoming tide. Bank access available at several public areas.",
+  
+  "Lewis River - North Fork": "This major tributary offers excellent steelhead fishing, especially during winter months (December through March). The clear waters require stealthy approaches and smaller presentations. Known for both hatchery and wild winter steelhead with some summer steelhead as well.",
+  
+  "Lewis River - South Fork": "Smaller than the North Fork but offers good opportunities for steelhead and resident trout. Features classic riffle-pool structure with good holding water throughout. Best fished with light tackle and smaller presentations.",
+  
+  "Lewis River - East Fork": "Known for its summer steelhead fishery from May through September. The East Fork also hosts a decent population of resident trout and some spring Chinook. Several access points available along East Fork Lewis River Road.",
+  
+  "Lewis River - Hatchery": "The area around the Lewis River Hatchery is a popular fishing spot, especially during steelhead season. Fish concentrate here on their return to the hatchery. Best fished early morning before crowds arrive. Bank access available with designated angler paths.",
+  
+  "Lewis River - Merwin Dam": "The tailrace below Merwin Dam offers excellent fishing for steelhead and Chinook. Deep pools and structure hold fish, especially during high water periods. Access is available through PacifiCorp's Yale Park and other designated areas.",
+  
+  "Lewis River - Yale Dam": "Between Merwin and Swift reservoirs, the Yale Dam area offers good bank fishing opportunities and boat launching facilities. Popular for kokanee fishing in Yale Reservoir and steelhead below the dam when water is being released.",
+  
+  "Lewis River - Swift Reservoir": "This upper reservoir on the Lewis River system offers excellent fishing for kokanee, rainbow trout, and tiger muskie. Best fished by boat, with several launch facilities available. Peak season runs from May through September."
 };

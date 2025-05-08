@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Filter, MapPin, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,12 @@ const IMPORTANT_LOCATIONS = [
   "Drano Lake",
   "Kalama River - Lower",
   "Kalama River - Upper",
-  "Kalama River - Fallert Creek"
+  "Kalama River - Fallert Creek",
+  "Lewis River - Mouth",
+  "Lewis River - North Fork",
+  "Lewis River - South Fork",
+  "Lewis River - East Fork",
+  "Lewis River - Hatchery"
 ];
 
 // Get unique filters and sort them alphabetically
