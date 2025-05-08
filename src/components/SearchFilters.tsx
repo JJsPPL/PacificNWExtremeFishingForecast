@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Filter, MapPin, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -51,41 +50,67 @@ const IMPORTANT_LOCATIONS = [
 
 // Get unique filters and sort them alphabetically
 const getUniqueFilters = () => {
-  const today = new Date();
-  const thirtyDaysLater = new Date();
-  thirtyDaysLater.setDate(today.getDate() + 30);
-  
-  const species = new Set<string>(IMPORTANT_SPECIES);
-  const locations = new Set<string>(IMPORTANT_LOCATIONS);
-  
-  // Generate dates for the next 30 days
-  for (let d = new Date(today); d <= thirtyDaysLater; d.setDate(d.getDate() + 1)) {
-    const forecast = getForecastForDate(new Date(d));
-    forecast.recommendations.forEach(rec => {
-      species.add(rec.species);
-      locations.add(rec.location);
-    });
-  }
+  try {
+    const today = new Date();
+    const thirtyDaysLater = new Date();
+    thirtyDaysLater.setDate(today.getDate() + 30);
+    
+    const species = new Set<string>(IMPORTANT_SPECIES);
+    const locations = new Set<string>(IMPORTANT_LOCATIONS);
+    
+    // Generate dates for the next 30 days
+    for (let d = new Date(today); d <= thirtyDaysLater; d.setDate(d.getDate() + 1)) {
+      try {
+        const forecast = getForecastForDate(new Date(d));
+        forecast.recommendations.forEach(rec => {
+          if (rec.species) species.add(rec.species);
+          if (rec.location) locations.add(rec.location);
+        });
+      } catch (error) {
+        console.error("Error getting forecast for date:", d, error);
+      }
+    }
 
-  // Also add all location details from our constants
-  Object.keys(LOCATION_DETAILS).forEach(location => {
-    locations.add(location);
-  });
-  
-  // Add all locations from FISHING_LOCATIONS
-  for (const state in FISHING_LOCATIONS) {
-    FISHING_LOCATIONS[state as keyof typeof FISHING_LOCATIONS].forEach(location => {
-      locations.add(location);
-    });
+    // Also add all location details from our constants
+    if (LOCATION_DETAILS) {
+      Object.keys(LOCATION_DETAILS).forEach(location => {
+        if (location) locations.add(location);
+      });
+    }
+    
+    // Add all locations from FISHING_LOCATIONS
+    if (FISHING_LOCATIONS) {
+      for (const state in FISHING_LOCATIONS) {
+        const stateLocations = FISHING_LOCATIONS[state as keyof typeof FISHING_LOCATIONS];
+        if (stateLocations && Array.isArray(stateLocations)) {
+          stateLocations.forEach(location => {
+            if (location) locations.add(location);
+          });
+        }
+      }
+    }
+    
+    return {
+      species: Array.from(species).sort(),
+      locations: Array.from(locations).sort()
+    };
+  } catch (error) {
+    console.error("Error in getUniqueFilters:", error);
+    return { species: IMPORTANT_SPECIES, locations: IMPORTANT_LOCATIONS };
   }
-  
-  return {
-    species: Array.from(species).sort(),
-    locations: Array.from(locations).sort()
-  };
 };
 
-const { species, locations } = getUniqueFilters();
+// Use try-catch to safely get filters
+let species: string[] = IMPORTANT_SPECIES;
+let locations: string[] = IMPORTANT_LOCATIONS;
+
+try {
+  const filters = getUniqueFilters();
+  species = filters.species;
+  locations = filters.locations;
+} catch (error) {
+  console.error("Error initializing filters:", error);
+}
 
 interface SearchFiltersProps {
   onFilterChange: (filters: {

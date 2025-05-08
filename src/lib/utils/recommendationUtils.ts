@@ -169,7 +169,7 @@ export const generateRecommendations = (
     availableSpecies.splice(speciesIndex, 1); // Remove to avoid duplicates
     
     // Select appropriate location based on species and time of year
-    let locationPool: string[];
+    let locationPool: string[] = [];
     
     // Enhanced location selection logic with focus on Oregon rivers and Sequim
     if (species.includes("Salmon") || species.includes("Steelhead")) {
@@ -177,25 +177,37 @@ export const generateRecommendations = (
       if (month >= 5 && month <= 7) { // Summer
         if (date.getDate() % 5 === 0) {
           // Focus on Oregon locations sometimes
-          locationPool = FISHING_LOCATIONS.Oregon.filter(loc => loc.includes("Nestucca") || loc.includes("Columbia") || loc.includes("Wilson"));
+          const oregonLocations = FISHING_LOCATIONS.Oregon || [];
+          locationPool = oregonLocations.filter(loc => 
+            loc && (loc.includes("Nestucca") || loc.includes("Columbia") || loc.includes("Wilson"))
+          );
         } else if (date.getDate() % 5 === 1) {
           // Sometimes focus on Sequim area
-          locationPool = FISHING_LOCATIONS.Washington.filter(loc => loc.includes("Sequim"));
+          const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+          locationPool = washingtonLocations.filter(loc => loc && loc.includes("Sequim"));
         } else {
-          locationPool = [...FISHING_LOCATIONS.Washington.slice(0, 4)]; // Ocean/sound locations
+          const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+          locationPool = washingtonLocations.length >= 4 ? 
+            [...washingtonLocations.slice(0, 4)] : 
+            [...washingtonLocations]; // Ocean/sound locations
         }
       } else {
         // In non-summer months, give more weight to river locations
         if (date.getDate() % 4 === 0) {
           // Focus on Oregon locations
-          locationPool = FISHING_LOCATIONS.Oregon.filter(loc => 
-            loc.includes("Nestucca") || 
+          const oregonLocations = FISHING_LOCATIONS.Oregon || [];
+          locationPool = oregonLocations.filter(loc => 
+            loc && (loc.includes("Nestucca") || 
             loc.includes("Sandy") || 
             loc.includes("Wilson") || 
-            loc.includes("Clackamas"));
+            loc.includes("Clackamas"))
+          );
         } else if (date.getDate() % 4 === 1) {
           // Focus on Sequim and Olympic Peninsula
-          locationPool = FISHING_LOCATIONS.Washington.filter(loc => loc.includes("Sequim") || loc === "Bogachiel River");
+          const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+          locationPool = washingtonLocations.filter(loc => 
+            loc && (loc.includes("Sequim") || loc === "Bogachiel River")
+          );
         } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
           // Special rivers known for coho and winter steelhead
           locationPool = [
@@ -212,9 +224,13 @@ export const generateRecommendations = (
             "Sequim - Dungeness River"
           ];
         } else {
+          // Make sure we have valid data before trying to use it
+          const oregonLocations = FISHING_LOCATIONS.Oregon || [];
+          const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+          
           locationPool = [
-            ...FISHING_LOCATIONS.Oregon,
-            ...FISHING_LOCATIONS.Washington.slice(4)
+            ...oregonLocations,
+            ...(washingtonLocations.length >= 4 ? washingtonLocations.slice(4) : washingtonLocations)
           ]; // River locations
         }
       }
@@ -230,6 +246,11 @@ export const generateRecommendations = (
     } else {
       // Crab, shrimp, etc.
       locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay", "Sequim - Washington Harbor", "Sequim - Discovery Bay"];
+    }
+    
+    // Make sure we have locations before proceeding
+    if (locationPool.length === 0) {
+      locationPool = ["Columbia River"]; // Fallback location
     }
     
     const locationIndex = (date.getDate() * (recommendations.length+1)) % locationPool.length;
@@ -258,15 +279,15 @@ export const generateRecommendations = (
     
     // Enhance tactics with more detailed information based on species and location
     if (species === "Winter Steelhead") {
-      if (location.includes("Sandy")) {
+      if (location && location.includes("Sandy")) {
         tactics += " Use 15lb mainline with 10-12lb leader and size 2 hooks. Focus on inside seams where fast water meets slow pools. Look for fish to hold along current breaks.";
-      } else if (location.includes("Cowlitz")) {
+      } else if (location && location.includes("Cowlitz")) {
         tactics += " Target water depths of 4-8 feet with moderate flow. Use 3/8-1/2 oz weights to maintain proper depth. Pink and orange presentations are especially effective during winter months.";
       }
     } else if (species === "Coho Salmon") {
-      if (location.includes("Nestucca")) {
+      if (location && location.includes("Nestucca")) {
         tactics += " Fresh chrome fish respond well to bright colors - chartreuse, hot pink, and orange. Look for fish to hold behind large boulders and along current seams.";
-      } else if (location.includes("Snohomish")) {
+      } else if (location && location.includes("Snohomish")) {
         tactics += " Target the lower sections with tidewater influence. Coho often hold in deeper pools with wood cover. Scent is critical - use additional squid oil or herring scent on lures.";
       }
     }
@@ -291,20 +312,20 @@ export const generateRecommendations = (
     let bait = baitPool[baitIndex];
     
     // Enhance bait recommendations
-    if (species === "Winter Steelhead" && location.includes("Nestucca")) {
+    if (species === "Winter Steelhead" && location && location.includes("Nestucca")) {
       bait += ". Cure eggs with salt, sugar and sodium sulfite for at least 24 hours. Add pink or orange BorX O Fire for additional color.";
-    } else if (species === "Coho Salmon" && location.includes("Cowlitz")) {
+    } else if (species === "Coho Salmon" && location && location.includes("Cowlitz")) {
       bait += ". For spinners, sizes 4-5 work best. Tie cluster eggs in netting material for longer lasting presentations.";
     }
     
     // Get the location details if they exist
-    const locationDetail = LOCATION_DETAILS[location as keyof typeof LOCATION_DETAILS];
+    const locationDetail = location ? (LOCATION_DETAILS[location as keyof typeof LOCATION_DETAILS]) : undefined;
     
     // Generate water conditions based on month and location
     let waterConditions: string;
     let bestTime: string;
     
-    if (location.includes("River") && (month < 5 || month > 8)) {
+    if (location && location.includes("River") && (month < 5 || month > 8)) {
       // More detailed river conditions in fall/winter/spring
       const conditions = [
         `Water levels fluctuating with rainfall, typically 42-46°F in winter months. Focus on periods of dropping water levels after rain.`,
@@ -317,9 +338,9 @@ export const generateRecommendations = (
       // If we have location details, incorporate them
       if (locationDetail) {
         const notes = locationDetail.notes || "";
-        waterConditions = `${waterConditions} ${notes.split('.')[0] || ""}.`;
+        waterConditions = `${waterConditions} ${notes ? notes.split('.')[0] || "" : ""}.`;
       }
-    } else if (location.includes("Sound") || location.includes("Bay")) {
+    } else if (location && (location.includes("Sound") || location.includes("Bay"))) {
       // More detailed saltwater conditions
       const conditions = [
         `Tidal currents moderate with 55-58°F water temperature. Focus on pinnacles and drop-offs during tide changes.`,
@@ -337,7 +358,7 @@ export const generateRecommendations = (
       // If we have location details, incorporate them
       if (locationDetail) {
         const notes = locationDetail.notes || "";
-        waterConditions = `${waterConditions} ${notes.split('.')[0] || ""}.`;
+        waterConditions = `${waterConditions} ${notes ? notes.split('.')[0] || "" : ""}.`;
       }
     }
     
@@ -357,7 +378,7 @@ export const generateRecommendations = (
     // Add recommendation with new fields
     recommendations.push({
       species,
-      location,
+      location: location || "Columbia River", // Provide fallback location
       tactics,
       bait,
       waterConditions,
