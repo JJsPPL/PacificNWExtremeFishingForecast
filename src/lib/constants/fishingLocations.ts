@@ -26,7 +26,17 @@ export const FISHING_LOCATIONS = {
     "Bogachiel River",
     "Sequim - Dungeness River",
     "Sequim - Discovery Bay",
-    "Sequim - Washington Harbor"
+    "Sequim - Washington Harbor",
+    // New detailed Washington river locations
+    "Cowlitz River - Blue Creek",
+    "Cowlitz River - Mission Bar",
+    "Cowlitz River - Barrier Dam",
+    "Snohomish River - Pilchuck Mouth",
+    "Green River - Flaming Geyser",
+    "Skykomish River - Reiter Ponds",
+    "Skagit River - Rockport",
+    "Skagit River - Marblemount",
+    "Nooksack River - Nugent's Corner"
   ],
   oregon: [
     "Columbia River - Astoria to Portland",
@@ -60,7 +70,17 @@ export const FISHING_LOCATIONS = {
     "Siuslaw River",
     "Yaquina River",
     "Salmon River",
-    "Eagle Creek"
+    "Eagle Creek",
+    // New detailed Oregon river locations
+    "Sandy River - Revenue Bridge",
+    "Sandy River - Cedar Creek",
+    "Sandy River - Oxbow Park",
+    "Clackamas River - McIver Park",
+    "Clackamas River - Carver",
+    "Clackamas River - Feldheimer",
+    "Wilson River - Mills Bridge",
+    "Wilson River - Footbridge",
+    "Wilson River - South Fork"
   ]
 };
 
@@ -96,5 +116,27 @@ export const LOCATION_DETAILS = {
   // Sequim area waters
   "Sequim - Dungeness River": "Small but productive river with fall coho runs and winter steelhead. Best fishing after rainfall increases flows. Peak winter steelhead from January through March.",
   "Sequim - Discovery Bay": "Protected saltwater bay offering good salmon fishing. Coho salmon migrate through in September-October en route to the Dungeness River.",
-  "Sequim - Washington Harbor": "Sheltered saltwater fishing area with good access. Known for resident salmon and seasonal coho migration."
+  "Sequim - Washington Harbor": "Sheltered saltwater fishing area with good access. Known for resident salmon and seasonal coho migration.",
+  
+  // New Washington detailed locations
+  "Cowlitz River - Blue Creek": "Confluence area where Blue Creek meets the Cowlitz. Excellent winter steelhead and late coho holding spot from December through February.",
+  "Cowlitz River - Mission Bar": "Long gravel bar with deep channels on the far side. Prime winter steelhead water from January through March.",
+  "Cowlitz River - Barrier Dam": "Area immediately below hatchery with excellent holding water for salmon and steelhead. Often crowded but productive.",
+  "Snohomish River - Pilchuck Mouth": "Where the Pilchuck River joins the Snohomish. Creates a natural pinch point for salmon and steelhead. Excellent for coho in October.",
+  "Green River - Flaming Geyser": "State park with excellent bank access. Winter steelhead concentrate in the deeper runs. Best fished with sink-tip lines or drift gear.",
+  "Skykomish River - Reiter Ponds": "Famous winter steelhead holding area where hatchery releases occur. Best December through February with bobber and jig tactics.",
+  "Skagit River - Rockport": "Classic steelhead water with large boulders creating excellent holding water. Best with floating lines and egg presentations.",
+  "Skagit River - Marblemount": "Upper river section known for early-returning wild steelhead. Selective gear rules apply. February through April is prime time.",
+  "Nooksack River - Nugent's Corner": "Area with good bank access and diverse water. Excellent for winter steelhead from December through March.",
+  
+  // New Oregon detailed locations
+  "Sandy River - Revenue Bridge": "Popular access point with good hole just downstream. Winter steelhead hold here after rainfall, best January through March.",
+  "Sandy River - Cedar Creek": "Where Cedar Creek enters, creating excellent holding water for winter steelhead. Hatchery fish stack up here December to February.",
+  "Sandy River - Oxbow Park": "Long stretch with multiple classic steelhead runs. Best fished with spoons or drifted eggs. Prime for winter steelhead January through March.",
+  "Clackamas River - McIver Park": "State park with excellent bank access for winter steelhead. Peak runs from January through March.",
+  "Clackamas River - Carver": "Lower river section good for late coho in November and early winter steelhead in December.",
+  "Clackamas River - Feldheimer": "Classic steelhead water with deep pools near Eagle Creek. Winter steelhead concentrate here January through March.",
+  "Wilson River - Mills Bridge": "Popular access point on the famous Wilson River. Good for both hatchery and wild winter steelhead January through March.",
+  "Wilson River - Footbridge": "Area with good bank access near the Wilson River Hatchery. Winter steelhead stack up here December through February.",
+  "Wilson River - South Fork": "Smaller tributary that can fish well after rainfall. Good for winter steelhead in January and February."
 };
