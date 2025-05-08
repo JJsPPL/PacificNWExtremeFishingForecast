@@ -1,4 +1,3 @@
-
 // Enhanced list of popular fishing locations
 export const FISHING_LOCATIONS = {
   washington: [
@@ -36,7 +35,15 @@ export const FISHING_LOCATIONS = {
     "Skykomish River - Reiter Ponds",
     "Skagit River - Rockport",
     "Skagit River - Marblemount",
-    "Nooksack River - Nugent's Corner"
+    "Nooksack River - Nugent's Corner",
+    // Adding new locations
+    "Wind River - Mouth",
+    "Wind River - Shipherd Falls",
+    "Wind River - Trout Creek",
+    "Drano Lake",
+    "Kalama River - Lower",
+    "Kalama River - Upper",
+    "Kalama River - Fallert Creek"
   ],
   oregon: [
     "Columbia River - Astoria to Portland",
@@ -138,5 +145,16 @@ export const LOCATION_DETAILS = {
   "Clackamas River - Feldheimer": "Classic steelhead water with deep pools near Eagle Creek. Winter steelhead concentrate here January through March.",
   "Wilson River - Mills Bridge": "Popular access point on the famous Wilson River. Good for both hatchery and wild winter steelhead January through March.",
   "Wilson River - Footbridge": "Area with good bank access near the Wilson River Hatchery. Winter steelhead stack up here December through February.",
-  "Wilson River - South Fork": "Smaller tributary that can fish well after rainfall. Good for winter steelhead in January and February."
+  "Wilson River - South Fork": "Smaller tributary that can fish well after rainfall. Good for winter steelhead in January and February.",
+  
+  // New Wind River locations
+  "Wind River - Mouth": "Known for excellent spring Chinook and steelhead fishing where the Wind River meets the Columbia. Best fished April through June when water temperatures reach 50-55°F. The mouth's fluctuating backwater changes with Columbia River levels.",
+  "Wind River - Shipherd Falls": "First major obstacle for migrating fish, creating an excellent fishing opportunity. Steelhead stack up below the falls from June through September. Public access via trail from parking lot with viewpoints overlooking key holding spots.",
+  "Wind River - Trout Creek": "Popular fly fishing section with special regulations. Wild steelhead sanctuary with catch and release regulations. Classic pocket water with great structure for swinging flies or dry-dropper techniques.",
+  "Drano Lake": "Famous spring Chinook fishery at the mouth of the Little White Salmon River. Thermal refuge attracts migrating salmon and steelhead, especially during warm summer months. Best during the April-May spring Chinook run, with a secondary fall Chinook fishery August-September.",
+  
+  // New Kalama River locations
+  "Kalama River - Lower": "From the mouth to Modrow Bridge, this section offers excellent bank and boat access. Known for fall Chinook, coho, and winter steelhead. High concentration of hatchery fish makes this a productive section December through February.",
+  "Kalama River - Upper": "Above Kalama Falls Hatchery, this section offers more solitude and scenic fishing opportunities. Summer steelhead hold in the deeper pools after spring runoff subsides. Classic fly water with pocket water and riffles.",
+  "Kalama River - Fallert Creek": "Where Fallert Creek enters the Kalama, creating prime holding water for steelhead. Winter fish stack up here from December through February. Good numbers of hatchery fish with some wild fish mixed in."
 };
