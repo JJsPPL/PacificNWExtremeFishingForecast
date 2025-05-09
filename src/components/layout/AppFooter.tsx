@@ -9,15 +9,10 @@ export const AppFooter = () => {
           <div>
             <h3 className="text-lg font-semibold mb-2">Disclaimer</h3>
             <p className="text-sm text-slate-300">
-              Created using multiple AI Models synthesized into a unified dataset to forecast prime fishing conditions 
-              and fish run probabilities in the Pacific Northwest. Our goal is to provide insights for anglers to be 
-              productive by not wasting time and money going out fishing when there's no fish or they're simply just 
-              not biting. The forecasts generated are from environmental factors and successful historical harvesting patterns.
+              This application utilizes multiple AI models to synthesize a unified dataset, forecasting optimal fishing conditions and fish run probabilities across the Pacific Northwest. Our goal is to equip anglers with valuable insights, helping them maximize productivity while minimizing wasted time and expenses on unfruitful outings. These forecasts are based on environmental factors and successful historical harvesting patterns.
             </p>
             <p className="text-sm text-slate-300 mt-2">
-              <strong>Important:</strong> Past performance is not indicative of future results. This application is 
-              provided for educational and entertainment purposes only. Always check local regulations, weather forecasts, 
-              and fishing reports before heading out.
+              <strong>Important:</strong> Past performance is not indicative of future results. This application is intended for educational and entertainment purposes only. Always verify local fishing regulations, weather conditions, and reports before heading out.
             </p>
             <p className="text-sm font-semibold text-slate-300 mt-3">
               Tight lines & Fish on!

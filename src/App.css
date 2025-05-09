@@ -44,8 +44,8 @@
 
 /* Logo styling */
 .app-logo {
-  height: 220px !important; /* Adjusted for new moon logo */
-  width: 220px !important; /* Make it more circular */
+  height: 240px !important; /* Increased from 220px */
+  width: 240px !important; /* Increased from 220px */
   position: relative;
   margin: 0;
   padding: 0;
@@ -59,8 +59,8 @@
 /* Responsive logo sizing for mobile */
 @media (max-width: 768px) {
   .app-logo {
-    height: 160px !important;
-    width: 160px !important;
+    height: 180px !important; /* Increased from 160px */
+    width: 180px !important; /* Increased from 160px */
     box-shadow: 0 0 10px 10px rgba(135, 206, 235, 0.6) !important;
   }
 }

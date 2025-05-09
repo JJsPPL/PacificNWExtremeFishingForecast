@@ -120,8 +120,8 @@
 
 /* IMPORTANT: Override any other styling to ensure our logo shows correctly */
 .app-logo {
-  height: 220px !important;
-  width: 220px !important;
+  height: 240px !important; /* Increased from 220px */
+  width: 240px !important; /* Increased from 220px */
   position: relative !important;
   margin: 0 !important;
   padding: 0 !important;
