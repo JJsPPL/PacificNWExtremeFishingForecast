@@ -1,4 +1,3 @@
-
 // List of fish species in the PNW
 export const PNW_FISH_SPECIES = [
   "Chinook Salmon (King)",
@@ -9,6 +8,10 @@ export const PNW_FISH_SPECIES = [
   "Steelhead",
   "Halibut",
   "Lingcod",
+  "Rockfish",
+  "Black Sea Bass",
+  "Cabezon",
+  "Surfperch",
   "Dungeness Crab",
   "Shrimp",
   "Sturgeon",
@@ -16,7 +19,9 @@ export const PNW_FISH_SPECIES = [
   "Largemouth Bass",
   "Cutthroat Trout",
   "Rainbow Trout",
-  "Brown Trout"
+  "Brown Trout",
+  "Flounder",
+  "Sole"
 ];
 
 // Extended fishing tactics based on species
@@ -59,6 +64,25 @@ export const FISHING_TACTICS = {
     "Trolling with heavy spreader bars",
     "Bouncing scented squid"
   ],
+  lingcod: [
+    "Jigging with heavy lead-head jigs (8-16 oz)",
+    "Trolling with large soft plastics near bottom structure",
+    "Bounce bait fishing with live herring or anchovy",
+    "Vertical jigging near rocky structure and pinnacles",
+    "Drift fishing with large swimbaits over rocky reefs",
+    "Using heavy banana weights with herring or squid",
+    "Slow trolling with downriggers near underwater shelves"
+  ],
+  rockfish: [
+    "Jigging with shrimp flies",
+    "Vertical jigging with metal jigs",
+    "Drift fishing with cut herring or squid",
+    "Trolling close to rocky structure",
+    "Fishing with jig and grub combinations",
+    "Using shrimp or crab for bait in rocky areas",
+    "Float fishing with small pieces of squid",
+    "Bounce bait fishing over rocky reefs"
+  ],
   trout: [
     "Dry fly fishing",
     "Nymphing with indicators",
@@ -98,7 +122,21 @@ export const FISHING_TACTICS = {
 export const FISHING_BAITS = {
   salmon: ["Herring", "Anchovy", "Sand shrimp", "Eggs", "Prawns", "Spinners", "Plugs", "Cured eggs", "Sardine-wrapped plugs", "Tuna belly", "Sardines"],
   steelhead: ["Eggs", "Yarn", "Worms", "Jigs", "Spinners", "Flies", "Beads", "Prawns", "Corkies", "Shrimp"],
-  bottomfish: ["Herring", "Squid", "Octopus", "Jigs", "Anchovies", "Clams", "Sand shrimp"],
+  bottomfish: ["Herring", "Squid", "Octopus", "Jigs", "Anchovies", 
+    "Clams", "Sand shrimp", "Live sandlance", 
+    "Scampi-tailed jigs", "Soft plastic swimbaits",
+    "Metal jigs", "Cut fish", "Crab parts"
+  ],
+  lingcod: [
+    "Live herring", "Live greenling", "Large soft plastic swimbaits", 
+    "Metal jigs (8-16 oz)", "Cut salmon bellies", "Scampi jigs", 
+    "Octopus", "Whole squid", "Large curly tail grubs"
+  ],
+  rockfish: [
+    "Shrimp flies", "Herring chunks", "Small soft plastics", 
+    "Squid strips", "Metal jigs", "Small swimbaits", 
+    "Curly tail grubs", "Crab pieces", "Clam necks"
+  ],
   trout: ["Worms", "Powerbait", "Corn", "Spinners", "Spoons", "Flies", "Eggs", "Mealworms", "Maggots", "Nightcrawlers"],
   bass: ["Soft plastics", "Crankbaits", "Topwater lures", "Spinnerbaits", "Jigs", "Swimbaits", "Frogs", "Crawfish imitations"],
   sturgeon: ["Smelt", "Sand shrimp", "Lamprey", "Squid", "Herring", "Anchovies", "Salmon eggs", "Crawfish", "Pikeminnow"]

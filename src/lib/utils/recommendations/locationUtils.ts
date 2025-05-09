@@ -1,4 +1,3 @@
-
 import { FISHING_LOCATIONS, LOCATION_DETAILS } from "../../constants/fishingLocations";
 
 // Functions for location selection and management
@@ -138,10 +137,39 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         ]; // River locations
       }
     }
-  } else if (species === "Halibut" || species === "Lingcod") {
-    // Saltwater species
-    locationPool = ["Puget Sound", "Hood Canal", "Strait of Juan De Fuca", "San Juan Islands", "Sequim - Discovery Bay", "Tillamook Bay"];
-  } else if (species.includes("Bass")) {
+  } else if (species === "Halibut") {
+    // Saltwater species - deeper water
+    locationPool = [
+      "Puget Sound", 
+      "Hood Canal", 
+      "Strait of Juan De Fuca",
+      "Strait of Juan De Fuca - Neah Bay", 
+      "Strait of Juan De Fuca - Port Angeles",
+      "Strait of Juan De Fuca - Freshwater Bay",
+      "San Juan Islands", 
+      "Sequim - Discovery Bay", 
+      "Tillamook Bay"
+    ];
+  } else if (species === "Lingcod" || species === "Rockfish" || species === "Black Sea Bass" || species === "Cabezon") {
+    // Rocky habitat for lingcod and rockfish species
+    locationPool = [
+      "Puget Sound",
+      "Puget Sound - Tacoma Narrows",
+      "Puget Sound - Point No Point", 
+      "Puget Sound - Jefferson Head",
+      "Hood Canal",
+      "Hood Canal - Point Whitney",
+      "Hood Canal - Seabeck", 
+      "Strait of Juan De Fuca", 
+      "Strait of Juan De Fuca - Neah Bay",
+      "Strait of Juan De Fuca - Sekiu",
+      "Strait of Juan De Fuca - Pillar Point",
+      "San Juan Islands",
+      "San Juan Islands - Obstruction Pass",
+      "San Juan Islands - Lopez Island",
+      "Sequim - Washington Harbor"
+    ];
+  } else if (species.includes("Bass") && !species.includes("Sea")) {
     // Bass in Columbia River or its sloughs
     locationPool = [
       "Columbia River", 
@@ -165,9 +193,30 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "John Day River",
       "Tillamook Bay"
     ];
+  } else if (species === "Flounder" || species === "Sole") {
+    // Flatfish in sandy/muddy areas
+    locationPool = [
+      "Puget Sound - Edmonds",
+      "Puget Sound - Des Moines", 
+      "Puget Sound - Redondo",
+      "Hood Canal - Quilcene Bay",
+      "Hood Canal - Dabob Bay",
+      "Sequim - Washington Harbor",
+      "Sequim - Discovery Bay",
+      "Tillamook Bay"
+    ];
   } else {
     // Crab, shrimp, etc.
-    locationPool = ["Puget Sound", "Hood Canal", "Columbia River Estuary", "Tillamook Bay", "Sequim - Washington Harbor", "Sequim - Discovery Bay"];
+    locationPool = [
+      "Puget Sound", 
+      "Hood Canal", 
+      "Hood Canal - Quilcene Bay",
+      "Hood Canal - Dabob Bay",
+      "Columbia River Estuary", 
+      "Tillamook Bay", 
+      "Sequim - Washington Harbor", 
+      "Sequim - Discovery Bay"
+    ];
   }
   
   // Ensure we have a valid location pool

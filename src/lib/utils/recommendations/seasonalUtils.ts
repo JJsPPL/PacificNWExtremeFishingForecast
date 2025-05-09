@@ -7,13 +7,13 @@ export const getSeasonalSpecies = (month: number): string[] => {
   
   // Winter (Dec-Feb): Winter steelhead, resident Chinook
   if (month === 11 || month === 0 || month === 1) {
-    availableSpecies = ["Winter Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout"];
+    availableSpecies = ["Winter Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout", "Rockfish"];
   } 
-  // Spring (Mar-May): Spring Chinook, early steelhead, halibut
+  // Spring (Mar-May): Spring Chinook, early steelhead, halibut, lingcod season opens
   else if (month >= 2 && month <= 4) {
-    availableSpecies = ["Chinook Salmon (Spring)", "Steelhead", "Halibut", "Lingcod", "Sturgeon"];
+    availableSpecies = ["Chinook Salmon (Spring)", "Steelhead", "Halibut", "Lingcod", "Rockfish", "Sturgeon", "Surfperch"];
   }
-  // Summer (Jun-Aug): Summer Chinook, sockeye, pink (odd years), coho
+  // Summer (Jun-Aug): Summer Chinook, sockeye, pink (odd years), coho, good bottomfishing
   else if (month >= 5 && month <= 7) {
     availableSpecies = [
       "Chinook Salmon (Summer)", 
@@ -21,13 +21,16 @@ export const getSeasonalSpecies = (month: number): string[] => {
       new Date().getFullYear() % 2 === 1 ? "Pink Salmon" : "Coho Salmon (early)",
       "Halibut",
       "Lingcod",
+      "Rockfish",
+      "Black Sea Bass",
+      "Cabezon",
       "Smallmouth Bass",
       "Sturgeon"
     ];
   }
-  // Fall (Sep-Nov): Fall Chinook, coho, chum
+  // Fall (Sep-Nov): Fall Chinook, coho, chum, lingcod and rockfish still open
   else {
-    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Dungeness Crab", "Cutthroat Trout"];
+    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Lingcod", "Rockfish", "Dungeness Crab", "Cutthroat Trout", "Flounder"];
   }
   
   return availableSpecies;
@@ -133,7 +136,7 @@ export const createSummerRecommendations = (date: Date): FishingRecommendation[]
 export const createFallRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
   
-  if (date.getDate() % 3 === 0) {
+  if (date.getDate() % 4 === 0) {
     const detailedTactics = "Tidewater bobber fishing with eggs or spinners during the first push of tide. Set bobber depth to suspend bait 12-18 inches off bottom. Use cured salmon eggs with scent enhancement. For spinners, blue/silver or pink/silver in sizes 4-5 work best. Target current seams where brackish and fresh water mix.";
     
     recommendations.push({
@@ -143,7 +146,7 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
       waterConditions: "Tidal influence, brackish water, 54-62°F. Best on incoming tide, especially on morning high tides.",
       bestTime: "First light or on incoming tide, particularly when high tide occurs in early morning hours."
     });
-  } else if (date.getDate() % 3 === 1) {
+  } else if (date.getDate() % 4 === 1) {
     const detailedTactics = "Small pink or orange spinners, size 3-4. Cast across stream and retrieve at medium speed with occasional twitches. Focus on deep pools below riffles and near woody debris. In clear water, switch to 1/4 oz pink jigs under a bobber set 2-3 feet deep.";
     
     recommendations.push({
@@ -153,7 +156,7 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
       waterConditions: "Clear to slightly stained, 48-56°F. Best after light rainfall brings river up slightly.",
       bestTime: "First and last light when fish are most aggressive. Cloudy days extend the bite window substantially."
     });
-  } else if (date.getDate() % 3 === 2) {
+  } else if (date.getDate() % 4 === 2) {
     const detailedTactics = "Back-bouncing eggs or drift fishing with corkies and yarn in deeper runs. Use 15-20lb mainline with 12lb leader. Pink or orange corkies with matching yarn on size 1/0-2/0 hook. Maintain contact with bottom while drifting through deep slots and tailouts.";
     
     recommendations.push({
@@ -162,6 +165,17 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
       tactics: detailedTactics,
       waterConditions: "Medium flow, visibility 2-3 feet, 52-58°F. Fish congregate at tributary mouths and in deeper holes.",
       bestTime: "Overcast days during mid-morning when light penetration is moderate. After a front passes often triggers feeding."
+    });
+  } else if (date.getDate() % 4 === 3) {
+    // Add new fall lingcod recommendation for Puget Sound
+    const detailedTactics = "Drift fish rocky structures using heavy jigs (8-16oz) in white, glow, or chartreuse colors. Target underwater humps, rock piles and artificial reefs in 60-120 feet of water. Work jigs with sharp lift-and-drop motions, keeping contact with the bottom. Add scent to soft plastic tails for enhanced attraction.";
+    
+    recommendations.push({
+      species: "Lingcod",
+      location: "Puget Sound - Tacoma Narrows",
+      tactics: detailedTactics,
+      waterConditions: "Tidal currents, 52-58°F. Best fishing during moderate current flow rather than slack tide or maximum flow.",
+      bestTime: "First few hours after sunrise, especially during neap tides when current flow is more moderate."
     });
   }
   

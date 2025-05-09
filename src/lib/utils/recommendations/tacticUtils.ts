@@ -7,11 +7,15 @@ export const getTacticsForSpecies = (species: string): string[] => {
     return FISHING_TACTICS.salmon;
   } else if (species.includes("Steelhead")) {
     return FISHING_TACTICS.steelhead;
-  } else if (species === "Halibut" || species === "Lingcod") {
+  } else if (species === "Halibut") {
     return FISHING_TACTICS.halibut;
+  } else if (species === "Lingcod") {
+    return FISHING_TACTICS.lingcod;
+  } else if (species === "Rockfish" || species === "Black Sea Bass" || species === "Cabezon") {
+    return FISHING_TACTICS.rockfish;
   } else if (species.includes("Trout")) {
     return FISHING_TACTICS.trout;
-  } else if (species.includes("Bass")) {
+  } else if (species.includes("Bass") && !species.includes("Sea")) {
     return FISHING_TACTICS.bass;
   } else if (species === "Sturgeon") {
     return FISHING_TACTICS.sturgeon;
@@ -25,9 +29,13 @@ export const getBaitForSpecies = (species: string): string[] => {
     return FISHING_BAITS.salmon;
   } else if (species.includes("Steelhead")) {
     return FISHING_BAITS.steelhead;
+  } else if (species === "Lingcod") {
+    return FISHING_BAITS.lingcod;
+  } else if (species === "Rockfish" || species === "Black Sea Bass" || species === "Cabezon") {
+    return FISHING_BAITS.rockfish;
   } else if (species.includes("Trout")) {
     return FISHING_BAITS.trout;
-  } else if (species.includes("Bass")) {
+  } else if (species.includes("Bass") && !species.includes("Sea")) {
     return FISHING_BAITS.bass;
   } else if (species === "Sturgeon") {
     return FISHING_BAITS.sturgeon;
@@ -52,6 +60,18 @@ export const enhanceTactics = (tactics: string, species: string, location: strin
     } else if (location && location.includes("Snohomish")) {
       enhancedTactics += " Target the lower sections with tidewater influence. Coho often hold in deeper pools with wood cover. Scent is critical - use additional squid oil or herring scent on lures.";
     }
+  } else if (species === "Lingcod") {
+    if (location && (location.includes("Puget Sound") || location.includes("Hood Canal"))) {
+      enhancedTactics += " Focus on rock piles, underwater ledges and artificial reefs in 60-120 feet of water. Fish the slower parts of tide changes when current allows your jig to stay near bottom.";
+    } else if (location && location.includes("Juan De Fuca")) {
+      enhancedTactics += " Target underwater plateaus and pinnacles in 80-160 feet. Use heavy jigs (12-16oz) to maintain bottom contact in strong currents. Best fishing occurs during slack tide periods.";
+    }
+  } else if (species === "Rockfish") {
+    if (location && location.includes("Neah Bay")) {
+      enhancedTactics += " Fish close to bottom structure in 60-120 feet of water. Use lighter jigs (4-8oz) and keep your presentation within 10 feet of the bottom. Work jigs with sharp, erratic movements.";
+    } else if (location && location.includes("San Juan")) {
+      enhancedTactics += " Target rocky reefs in 50-100 feet. Multiple hook setups with shrimp flies work well. Fish early morning or evening hours when rockfish are most active.";
+    }
   }
   
   return enhancedTactics;
@@ -65,6 +85,10 @@ export const enhanceBait = (bait: string, species: string, location: string): st
     enhancedBait += ". Cure eggs with salt, sugar and sodium sulfite for at least 24 hours. Add pink or orange BorX O Fire for additional color.";
   } else if (species === "Coho Salmon" && location && location.includes("Cowlitz")) {
     enhancedBait += ". For spinners, sizes 4-5 work best. Tie cluster eggs in netting material for longer lasting presentations.";
+  } else if (species === "Lingcod" && (location && location.includes("Puget Sound") || location.includes("Hood Canal"))) {
+    enhancedBait += ". Use extra-large curly tail grubs in white, chartreuse or glow colors. Add scent oils to soft plastics for increased attraction in deeper water.";
+  } else if (species === "Rockfish" && location && location.includes("Hood Canal")) {
+    enhancedBait += ". Smaller presentations often work better for rockfish. Use 2-4 inch soft plastics or small strips of squid on jigheads for best results.";
   }
   
   return enhancedBait;
