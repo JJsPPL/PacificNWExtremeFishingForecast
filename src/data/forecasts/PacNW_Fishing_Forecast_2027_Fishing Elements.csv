@@ -1,0 +1,366 @@
+Date,Day,Month,Season,Moon_Phase,Moon_Position,Barometric_Pressure,Pressure_Trend,Tide_Height,Tide_Phase,Water_Temperature,Water_Flow,Water_Clarity,Fishing_Score,Fishing_Quality
+2027-01-01 00:00:00,Friday,January,Winter,First Quarter,Setting,30.15,Stable,3.3,Unknown,41,3494,Slightly Colored,100,Excellent
+2027-01-02 00:00:00,Saturday,January,Winter,First Quarter,Setting,30.04,Falling,3.6,Incoming,42,4047,Colored,100,Excellent
+2027-01-03 00:00:00,Sunday,January,Winter,First Quarter,Setting,29.86,Falling,3.9,Incoming,40,3176,Slightly Colored,100,Excellent
+2027-01-04 00:00:00,Monday,January,Winter,First Quarter,Setting,29.93,Rising,4.1,Incoming,40,3037,Slightly Colored,100,Excellent
+2027-01-05 00:00:00,Tuesday,January,Winter,Waxing Crescent,Setting,29.96,Stable,4.3,Incoming,39,3345,Slightly Colored,100,Excellent
+2027-01-06 00:00:00,Wednesday,January,Winter,Waxing Crescent,Setting,29.78,Falling,4.4,Incoming,40,4070,Colored,100,Excellent
+2027-01-07 00:00:00,Thursday,January,Winter,New Moon,Setting,29.81,Stable,4.5,High Slack,40,4894,Colored,100,Excellent
+2027-01-08 00:00:00,Friday,January,Winter,New Moon,Setting,30.01,Rising,4.5,High Slack,42,4031,Colored,100,Excellent
+2027-01-09 00:00:00,Saturday,January,Winter,New Moon,Setting,29.68,Falling,4.4,High Slack,38,3678,Slightly Colored,100,Excellent
+2027-01-10 00:00:00,Sunday,January,Winter,Waxing Crescent,Setting,29.99,Rising,4.3,Outgoing,40,4770,Colored,100,Excellent
+2027-01-11 00:00:00,Monday,January,Winter,Waxing Crescent,Setting,30.09,Rising,4.1,Outgoing,42,4787,Colored,100,Excellent
+2027-01-12 00:00:00,Tuesday,January,Winter,First Quarter,Setting,30.24,Rising,3.8,Outgoing,38,4510,Colored,100,Excellent
+2027-01-13 00:00:00,Wednesday,January,Winter,Waxing Gibbous,Setting,30.11,Falling,3.6,Outgoing,40,3262,Slightly Colored,100,Excellent
+2027-01-14 00:00:00,Thursday,January,Winter,Waxing Gibbous,Setting,29.84,Falling,3.2,Outgoing,41,4896,Colored,100,Excellent
+2027-01-15 00:00:00,Friday,January,Winter,First Quarter,Setting,29.58,Falling,2.9,Outgoing,41,4704,Colored,100,Excellent
+2027-01-16 00:00:00,Saturday,January,Winter,First Quarter,Setting,30.35,Rising,2.6,Outgoing,38,3504,Slightly Colored,100,Excellent
+2027-01-17 00:00:00,Sunday,January,Winter,First Quarter,Setting,29.7,Falling,2.3,Outgoing,38,3838,Slightly Colored,100,Excellent
+2027-01-18 00:00:00,Monday,January,Winter,Waxing Gibbous,Setting,29.84,Rising,2,Outgoing,40,4912,Colored,99,Excellent
+2027-01-19 00:00:00,Tuesday,January,Winter,Waxing Gibbous,Setting,30,Rising,1.8,Outgoing,42,4522,Colored,99,Excellent
+2027-01-20 00:00:00,Wednesday,January,Winter,Full Moon,Setting,29.99,Stable,1.7,Outgoing,39,3465,Slightly Colored,100,Excellent
+2027-01-21 00:00:00,Thursday,January,Winter,Full Moon,Setting,29.68,Falling,1.5,Outgoing,42,3937,Slightly Colored,100,Excellent
+2027-01-22 00:00:00,Friday,January,Winter,Full Moon,Setting,29.73,Rising,1.5,Low Slack,41,4703,Colored,100,Excellent
+2027-01-23 00:00:00,Saturday,January,Winter,Full Moon,Setting,29.6,Falling,1.5,Low Slack,40,4575,Colored,100,Excellent
+2027-01-24 00:00:00,Sunday,January,Winter,Full Moon,Setting,29.68,Rising,1.6,Incoming,39,3891,Slightly Colored,100,Excellent
+2027-01-25 00:00:00,Monday,January,Winter,Full Moon,Setting,30.02,Rising,1.8,Incoming,38,4309,Colored,100,Excellent
+2027-01-26 00:00:00,Tuesday,January,Winter,Full Moon,Setting,30.35,Rising,2,Incoming,40,7095,Murky,100,Excellent
+2027-01-27 00:00:00,Wednesday,January,Winter,Waxing Gibbous,Setting,29.96,Falling,2.2,Incoming,41,3091,Slightly Colored,100,Excellent
+2027-01-28 00:00:00,Thursday,January,Winter,Waxing Gibbous,Setting,30.1,Rising,2.5,Incoming,41,3381,Slightly Colored,100,Excellent
+2027-01-29 00:00:00,Friday,January,Winter,Waxing Gibbous,Setting,30.41,Rising,2.8,Incoming,41,5849,Colored,97,Excellent
+2027-01-30 00:00:00,Saturday,January,Winter,Waxing Gibbous,Setting,29.86,Falling,3.1,Incoming,42,3064,Slightly Colored,100,Excellent
+2027-01-31 00:00:00,Sunday,January,Winter,First Quarter,Setting,30.36,Rising,3.5,Incoming,39,8467,Murky,100,Excellent
+2027-02-01 00:00:00,Monday,February,Winter,First Quarter,Setting,30.05,Falling,3.8,Incoming,41,4845,Colored,100,Excellent
+2027-02-02 00:00:00,Tuesday,February,Winter,First Quarter,Setting,29.54,Falling,4,Incoming,38,4060,Colored,100,Excellent
+2027-02-03 00:00:00,Wednesday,February,Winter,First Quarter,Setting,29.93,Rising,4.2,Incoming,41,4060,Colored,100,Excellent
+2027-02-04 00:00:00,Thursday,February,Winter,Waxing Crescent,Setting,29.54,Falling,4.4,Incoming,42,4011,Colored,100,Excellent
+2027-02-05 00:00:00,Friday,February,Winter,Waxing Crescent,Setting,30.39,Rising,4.5,High Slack,40,3038,Slightly Colored,100,Excellent
+2027-02-06 00:00:00,Saturday,February,Winter,New Moon,Setting,29.94,Falling,4.5,High Slack,40,7213,Murky,97,Excellent
+2027-02-07 00:00:00,Sunday,February,Winter,New Moon,Setting,29.82,Falling,4.5,High Slack,39,3971,Slightly Colored,100,Excellent
+2027-02-08 00:00:00,Monday,February,Winter,New Moon,Setting,30.41,Rising,4.4,High Slack,40,6054,Murky,92,Excellent
+2027-02-09 00:00:00,Tuesday,February,Winter,Waxing Crescent,Setting,30.01,Falling,4.2,Outgoing,42,4677,Colored,100,Excellent
+2027-02-10 00:00:00,Wednesday,February,Winter,Waxing Crescent,Setting,30.31,Rising,4,Outgoing,38,8253,Murky,90,Excellent
+2027-02-11 00:00:00,Thursday,February,Winter,Waxing Gibbous,Setting,30,Falling,3.7,Outgoing,38,4594,Colored,96,Excellent
+2027-02-12 00:00:00,Friday,February,Winter,Waxing Gibbous,Setting,29.72,Falling,3.4,Outgoing,42,7447,Murky,100,Excellent
+2027-02-13 00:00:00,Saturday,February,Winter,First Quarter,Setting,29.67,Stable,3.1,Outgoing,41,3061,Slightly Colored,100,Excellent
+2027-02-14 00:00:00,Sunday,February,Winter,First Quarter,Setting,30.14,Rising,2.8,Outgoing,40,4929,Colored,100,Excellent
+2027-02-15 00:00:00,Monday,February,Winter,First Quarter,Setting,29.85,Falling,2.5,Outgoing,40,3453,Slightly Colored,100,Excellent
+2027-02-16 00:00:00,Tuesday,February,Winter,Waxing Gibbous,Setting,29.85,Stable,2.2,Outgoing,39,3414,Slightly Colored,100,Excellent
+2027-02-17 00:00:00,Wednesday,February,Winter,Waxing Gibbous,Setting,29.71,Falling,1.9,Outgoing,38,6873,Murky,100,Excellent
+2027-02-18 00:00:00,Thursday,February,Winter,Full Moon,Setting,29.87,Rising,1.7,Outgoing,41,4462,Colored,100,Excellent
+2027-02-19 00:00:00,Friday,February,Winter,Full Moon,Setting,29.7,Falling,1.6,Low Slack,42,4799,Colored,100,Excellent
+2027-02-20 00:00:00,Saturday,February,Winter,Full Moon,Setting,30.18,Rising,1.5,Outgoing,38,3193,Slightly Colored,100,Excellent
+2027-02-21 00:00:00,Sunday,February,Winter,Full Moon,Setting,29.83,Falling,1.5,Low Slack,40,4596,Colored,100,Excellent
+2027-02-22 00:00:00,Monday,February,Winter,Full Moon,Setting,30.05,Rising,1.6,Incoming,39,3487,Slightly Colored,100,Excellent
+2027-02-23 00:00:00,Tuesday,February,Winter,Full Moon,Setting,30.3,Rising,1.7,Low Slack,41,5185,Colored,97,Excellent
+2027-02-24 00:00:00,Wednesday,February,Winter,Full Moon,Setting,30.15,Falling,1.9,Incoming,42,3071,Slightly Colored,100,Excellent
+2027-02-25 00:00:00,Thursday,February,Winter,Waxing Gibbous,Setting,29.97,Falling,2.1,Incoming,42,5623,Colored,100,Excellent
+2027-02-26 00:00:00,Friday,February,Winter,Waxing Gibbous,Setting,29.67,Falling,2.4,Incoming,41,6814,Murky,100,Excellent
+2027-02-27 00:00:00,Saturday,February,Winter,Waxing Gibbous,Setting,30.05,Rising,2.7,Incoming,40,4594,Colored,100,Excellent
+2027-02-28 00:00:00,Sunday,February,Winter,Waxing Gibbous,Setting,30.36,Rising,3,Incoming,38,3697,Slightly Colored,100,Excellent
+2027-03-01 00:00:00,Monday,March,Spring,First Quarter,Setting,29.93,Falling,3.3,Incoming,46,5526,Colored,100,Excellent
+2027-03-02 00:00:00,Tuesday,March,Spring,First Quarter,Setting,29.87,Falling,3.6,Incoming,48,7750,Murky,100,Excellent
+2027-03-03 00:00:00,Wednesday,March,Spring,First Quarter,Setting,30.1,Rising,3.9,Incoming,51,5556,Colored,100,Excellent
+2027-03-04 00:00:00,Thursday,March,Spring,First Quarter,Setting,30.21,Rising,4.1,Incoming,50,9231,Murky,100,Excellent
+2027-03-05 00:00:00,Friday,March,Spring,Waxing Crescent,Setting,29.66,Falling,4.3,Incoming,50,6685,Murky,100,Excellent
+2027-03-06 00:00:00,Saturday,March,Spring,Waxing Crescent,Setting,29.93,Rising,4.4,Incoming,50,7901,Murky,100,Excellent
+2027-03-07 00:00:00,Sunday,March,Spring,New Moon,Setting,30.11,Rising,4.5,High Slack,51,9462,Murky,96,Excellent
+2027-03-08 00:00:00,Monday,March,Spring,New Moon,Setting,29.63,Falling,4.5,High Slack,45,6880,Murky,100,Excellent
+2027-03-09 00:00:00,Tuesday,March,Spring,New Moon,Setting,29.92,Rising,4.4,High Slack,52,7782,Murky,100,Excellent
+2027-03-10 00:00:00,Wednesday,March,Spring,Waxing Crescent,Setting,29.85,Falling,4.3,Outgoing,46,6038,Murky,100,Excellent
+2027-03-11 00:00:00,Thursday,March,Spring,Waxing Crescent,Setting,30.29,Rising,4.1,Outgoing,52,7188,Murky,97,Excellent
+2027-03-12 00:00:00,Friday,March,Spring,First Quarter,Setting,30.28,Stable,3.8,Outgoing,45,9187,Murky,100,Excellent
+2027-03-13 00:00:00,Saturday,March,Spring,Waxing Gibbous,Setting,30.37,Rising,3.6,Outgoing,46,6109,Murky,93,Excellent
+2027-03-14 00:00:00,Sunday,March,Spring,Waxing Gibbous,Setting,29.96,Falling,3.3,Outgoing,49,7116,Murky,98,Excellent
+2027-03-15 00:00:00,Monday,March,Spring,First Quarter,Setting,29.74,Falling,2.9,Outgoing,47,7380,Murky,100,Excellent
+2027-03-16 00:00:00,Tuesday,March,Spring,First Quarter,Setting,29.86,Rising,2.6,Outgoing,47,6521,Murky,100,Excellent
+2027-03-17 00:00:00,Wednesday,March,Spring,First Quarter,Setting,29.88,Stable,2.3,Outgoing,45,5813,Colored,100,Excellent
+2027-03-18 00:00:00,Thursday,March,Spring,Waxing Gibbous,Setting,29.9,Stable,2.1,Outgoing,51,11346,Murky,100,Excellent
+2027-03-19 00:00:00,Friday,March,Spring,Waxing Gibbous,Setting,30.67,Rising,1.8,Outgoing,45,5732,Colored,98,Excellent
+2027-03-20 00:00:00,Saturday,March,Spring,Full Moon,Setting,30.12,Falling,1.7,Outgoing,52,6565,Murky,100,Excellent
+2027-03-21 00:00:00,Sunday,March,Spring,Full Moon,Setting,30.49,Rising,1.5,Outgoing,52,7982,Murky,100,Excellent
+2027-03-22 00:00:00,Monday,March,Spring,Full Moon,Setting,30.27,Falling,1.5,Low Slack,48,6193,Murky,100,Excellent
+2027-03-23 00:00:00,Tuesday,March,Spring,Full Moon,Setting,30.21,Falling,1.5,Low Slack,47,7995,Murky,100,Excellent
+2027-03-24 00:00:00,Wednesday,March,Spring,Full Moon,Setting,30.31,Rising,1.6,Incoming,51,7635,Murky,100,Excellent
+2027-03-25 00:00:00,Thursday,March,Spring,Full Moon,Setting,29.98,Falling,1.8,Incoming,49,7580,Murky,100,Excellent
+2027-03-26 00:00:00,Friday,March,Spring,Full Moon,Setting,30.21,Rising,2,Incoming,48,5838,Colored,100,Excellent
+2027-03-27 00:00:00,Saturday,March,Spring,Waxing Gibbous,Setting,30.43,Rising,2.2,Incoming,50,7302,Murky,96,Excellent
+2027-03-28 00:00:00,Sunday,March,Spring,Waxing Gibbous,Setting,29.79,Falling,2.5,Incoming,47,6921,Murky,100,Excellent
+2027-03-29 00:00:00,Monday,March,Spring,Waxing Gibbous,Setting,30.2,Rising,2.8,Incoming,45,6579,Murky,96,Excellent
+2027-03-30 00:00:00,Tuesday,March,Spring,Waxing Gibbous,Setting,30.08,Falling,3.1,Incoming,47,6203,Murky,100,Excellent
+2027-03-31 00:00:00,Wednesday,March,Spring,First Quarter,Setting,29.79,Falling,3.4,Incoming,52,7754,Murky,100,Excellent
+2027-04-01 00:00:00,Thursday,April,Spring,First Quarter,Setting,30.04,Rising,3.7,Incoming,48,7018,Murky,100,Excellent
+2027-04-02 00:00:00,Friday,April,Spring,First Quarter,Setting,29.86,Falling,4,Incoming,52,6304,Murky,100,Excellent
+2027-04-03 00:00:00,Saturday,April,Spring,First Quarter,Setting,29.84,Stable,4.2,Incoming,48,7175,Murky,100,Excellent
+2027-04-04 00:00:00,Sunday,April,Spring,Waxing Crescent,Setting,30.11,Rising,4.4,Incoming,45,8117,Murky,100,Excellent
+2027-04-05 00:00:00,Monday,April,Spring,Waxing Crescent,Setting,30.14,Stable,4.5,High Slack,49,7716,Murky,100,Excellent
+2027-04-06 00:00:00,Tuesday,April,Spring,New Moon,Setting,30.17,Stable,4.5,High Slack,52,6252,Murky,100,Excellent
+2027-04-07 00:00:00,Wednesday,April,Spring,New Moon,Setting,29.97,Falling,4.5,High Slack,52,6677,Murky,100,Excellent
+2027-04-08 00:00:00,Thursday,April,Spring,New Moon,Setting,30.33,Rising,4.4,High Slack,46,7041,Murky,96,Excellent
+2027-04-09 00:00:00,Friday,April,Spring,Waxing Crescent,Setting,30.19,Falling,4.2,Outgoing,47,6872,Murky,100,Excellent
+2027-04-10 00:00:00,Saturday,April,Spring,Waxing Crescent,Setting,30.38,Rising,4,Outgoing,46,11357,Murky,97,Excellent
+2027-04-11 00:00:00,Sunday,April,Spring,Waxing Gibbous,Setting,30,Falling,3.7,Outgoing,51,6906,Murky,98,Excellent
+2027-04-12 00:00:00,Monday,April,Spring,Waxing Gibbous,Setting,29.86,Falling,3.4,Outgoing,49,5905,Colored,100,Excellent
+2027-04-13 00:00:00,Tuesday,April,Spring,First Quarter,Setting,30.05,Rising,3.1,Outgoing,52,6248,Murky,100,Excellent
+2027-04-14 00:00:00,Wednesday,April,Spring,First Quarter,Setting,29.88,Falling,2.8,Outgoing,45,12101,Murky,100,Excellent
+2027-04-15 00:00:00,Thursday,April,Spring,First Quarter,Setting,30,Rising,2.5,Outgoing,48,9247,Murky,100,Excellent
+2027-04-16 00:00:00,Friday,April,Spring,Waxing Gibbous,Setting,30.68,Rising,2.2,Outgoing,50,5971,Colored,98,Excellent
+2027-04-17 00:00:00,Saturday,April,Spring,Waxing Gibbous,Setting,30.47,Falling,1.9,Outgoing,45,6214,Murky,98,Excellent
+2027-04-18 00:00:00,Sunday,April,Spring,Full Moon,Setting,29.83,Falling,1.7,Outgoing,48,7692,Murky,100,Excellent
+2027-04-19 00:00:00,Monday,April,Spring,Full Moon,Setting,29.74,Falling,1.6,Low Slack,50,7422,Murky,100,Excellent
+2027-04-20 00:00:00,Tuesday,April,Spring,Full Moon,Setting,30.15,Rising,1.5,Outgoing,50,7003,Murky,100,Excellent
+2027-04-21 00:00:00,Wednesday,April,Spring,Full Moon,Setting,30.11,Stable,1.5,Low Slack,50,7862,Murky,100,Excellent
+2027-04-22 00:00:00,Thursday,April,Spring,Full Moon,Setting,30.18,Rising,1.6,Incoming,46,6490,Murky,100,Excellent
+2027-04-23 00:00:00,Friday,April,Spring,Full Moon,Setting,30.39,Rising,1.7,Low Slack,47,6353,Murky,96,Excellent
+2027-04-24 00:00:00,Saturday,April,Spring,Full Moon,Setting,30.27,Falling,1.8,Incoming,48,6941,Murky,100,Excellent
+2027-04-25 00:00:00,Sunday,April,Spring,Waxing Gibbous,Setting,29.55,Falling,2.1,Incoming,47,5913,Colored,100,Excellent
+2027-04-26 00:00:00,Monday,April,Spring,Waxing Gibbous,Setting,29.81,Rising,2.3,Incoming,48,7032,Murky,100,Excellent
+2027-04-27 00:00:00,Tuesday,April,Spring,Waxing Gibbous,Setting,30.33,Rising,2.6,Incoming,50,7335,Murky,96,Excellent
+2027-04-28 00:00:00,Wednesday,April,Spring,Waxing Gibbous,Setting,30.29,Stable,3,Incoming,50,6678,Murky,100,Excellent
+2027-04-29 00:00:00,Thursday,April,Spring,First Quarter,Setting,30.03,Falling,3.3,Incoming,45,7640,Murky,100,Excellent
+2027-04-30 00:00:00,Friday,April,Spring,First Quarter,Setting,30.31,Rising,3.6,Incoming,47,6083,Murky,100,Excellent
+2027-05-01 00:00:00,Saturday,May,Spring,First Quarter,Setting,30.51,Rising,3.9,Incoming,50,7003,Murky,100,Excellent
+2027-05-02 00:00:00,Sunday,May,Spring,First Quarter,Setting,29.96,Falling,4.1,Incoming,52,5408,Colored,100,Excellent
+2027-05-03 00:00:00,Monday,May,Spring,Waxing Crescent,Setting,29.97,Stable,4.3,Incoming,45,7594,Murky,100,Excellent
+2027-05-04 00:00:00,Tuesday,May,Spring,Waxing Crescent,Setting,29.97,Stable,4.4,Incoming,45,7346,Murky,100,Excellent
+2027-05-05 00:00:00,Wednesday,May,Spring,New Moon,Setting,29.71,Falling,4.5,High Slack,45,7433,Murky,100,Excellent
+2027-05-06 00:00:00,Thursday,May,Spring,New Moon,Setting,29.86,Rising,4.5,High Slack,52,9513,Murky,100,Excellent
+2027-05-07 00:00:00,Friday,May,Spring,New Moon,Setting,29.62,Falling,4.4,High Slack,51,10853,Murky,100,Excellent
+2027-05-08 00:00:00,Saturday,May,Spring,Waxing Crescent,Setting,29.71,Rising,4.3,Outgoing,46,7849,Murky,100,Excellent
+2027-05-09 00:00:00,Sunday,May,Spring,Waxing Crescent,Setting,30.1,Rising,4.1,Outgoing,51,11622,Murky,100,Excellent
+2027-05-10 00:00:00,Monday,May,Spring,First Quarter,Setting,30.18,Rising,3.9,Outgoing,45,5768,Colored,100,Excellent
+2027-05-11 00:00:00,Tuesday,May,Spring,Waxing Gibbous,Setting,30.59,Rising,3.6,Outgoing,50,6766,Murky,93,Excellent
+2027-05-12 00:00:00,Wednesday,May,Spring,Waxing Gibbous,Setting,29.65,Falling,3.3,Outgoing,45,7511,Murky,100,Excellent
+2027-05-13 00:00:00,Thursday,May,Spring,First Quarter,Setting,30.65,Rising,3,Outgoing,49,5646,Colored,100,Excellent
+2027-05-14 00:00:00,Friday,May,Spring,First Quarter,Setting,29.68,Falling,2.6,Outgoing,48,9412,Murky,100,Excellent
+2027-05-15 00:00:00,Saturday,May,Spring,First Quarter,Setting,30.28,Rising,2.3,Outgoing,49,6093,Murky,100,Excellent
+2027-05-16 00:00:00,Sunday,May,Spring,Waxing Gibbous,Setting,29.8,Falling,2.1,Outgoing,47,7662,Murky,100,Excellent
+2027-05-17 00:00:00,Monday,May,Spring,Waxing Gibbous,Setting,29.84,Stable,1.8,Outgoing,52,5451,Colored,100,Excellent
+2027-05-18 00:00:00,Tuesday,May,Spring,Full Moon,Setting,29.94,Rising,1.7,Outgoing,47,7766,Murky,100,Excellent
+2027-05-19 00:00:00,Wednesday,May,Spring,Full Moon,Setting,29.86,Falling,1.6,Low Slack,49,6842,Murky,100,Excellent
+2027-05-20 00:00:00,Thursday,May,Spring,Full Moon,Setting,30,Rising,1.5,Outgoing,51,10939,Murky,100,Excellent
+2027-05-21 00:00:00,Friday,May,Spring,Full Moon,Setting,29.68,Falling,1.5,Low Slack,52,5025,Colored,100,Excellent
+2027-05-22 00:00:00,Saturday,May,Spring,Full Moon,Setting,30.18,Rising,1.6,Incoming,48,5074,Colored,100,Excellent
+2027-05-23 00:00:00,Sunday,May,Spring,Full Moon,Setting,29.74,Falling,1.7,Low Slack,50,7420,Murky,100,Excellent
+2027-05-24 00:00:00,Monday,May,Spring,Full Moon,Setting,30.24,Rising,1.9,Incoming,45,6373,Murky,100,Excellent
+2027-05-25 00:00:00,Tuesday,May,Spring,Waxing Gibbous,Setting,30,Falling,2.2,Incoming,51,5748,Colored,100,Excellent
+2027-05-26 00:00:00,Wednesday,May,Spring,Waxing Gibbous,Setting,29.96,Stable,2.5,Incoming,48,6786,Murky,100,Excellent
+2027-05-27 00:00:00,Thursday,May,Spring,Waxing Gibbous,Setting,29.89,Falling,2.8,Incoming,45,7986,Murky,100,Excellent
+2027-05-28 00:00:00,Friday,May,Spring,Waxing Gibbous,Setting,29.63,Falling,3.1,Incoming,47,5865,Colored,100,Excellent
+2027-05-29 00:00:00,Saturday,May,Spring,First Quarter,Setting,30.05,Rising,3.4,Incoming,51,7335,Murky,100,Excellent
+2027-05-30 00:00:00,Sunday,May,Spring,First Quarter,Setting,30.33,Rising,3.7,Incoming,48,6462,Murky,100,Excellent
+2027-05-31 00:00:00,Monday,May,Spring,First Quarter,Setting,29.84,Falling,4,Incoming,52,6348,Murky,100,Excellent
+2027-06-01 00:00:00,Tuesday,June,Summer,First Quarter,Setting,30.18,Rising,4.2,Incoming,61,1561,Clear,100,Excellent
+2027-06-02 00:00:00,Wednesday,June,Summer,Waxing Crescent,Setting,29.8,Falling,4.4,Incoming,60,1438,Clear,100,Excellent
+2027-06-03 00:00:00,Thursday,June,Summer,Waxing Crescent,Setting,29.71,Falling,4.5,High Slack,58,1458,Clear,100,Excellent
+2027-06-04 00:00:00,Friday,June,Summer,New Moon,Setting,29.84,Rising,4.5,High Slack,59,977,Very Clear,100,Excellent
+2027-06-05 00:00:00,Saturday,June,Summer,New Moon,Setting,29.92,Rising,4.5,High Slack,60,1401,Clear,100,Excellent
+2027-06-06 00:00:00,Sunday,June,Summer,New Moon,Setting,29.86,Falling,4.4,High Slack,56,826,Very Clear,100,Excellent
+2027-06-07 00:00:00,Monday,June,Summer,Waxing Crescent,Setting,30.11,Rising,4.2,Outgoing,62,1516,Clear,100,Excellent
+2027-06-08 00:00:00,Tuesday,June,Summer,Waxing Crescent,Setting,30.05,Falling,4,Outgoing,59,3215,Slightly Colored,100,Excellent
+2027-06-09 00:00:00,Wednesday,June,Summer,Waxing Gibbous,Setting,29.79,Falling,3.7,Outgoing,62,6272,Murky,100,Excellent
+2027-06-10 00:00:00,Thursday,June,Summer,Waxing Gibbous,Setting,29.43,Falling,3.4,Outgoing,61,1629,Clear,100,Excellent
+2027-06-11 00:00:00,Friday,June,Summer,First Quarter,Setting,30,Rising,3.1,Outgoing,60,1680,Clear,100,Excellent
+2027-06-12 00:00:00,Saturday,June,Summer,First Quarter,Setting,29.73,Falling,2.8,Outgoing,58,1350,Clear,100,Excellent
+2027-06-13 00:00:00,Sunday,June,Summer,First Quarter,Setting,30.11,Rising,2.5,Outgoing,55,1467,Clear,100,Excellent
+2027-06-14 00:00:00,Monday,June,Summer,Waxing Gibbous,Setting,30.09,Stable,2.2,Outgoing,58,1387,Clear,100,Excellent
+2027-06-15 00:00:00,Tuesday,June,Summer,Waxing Gibbous,Setting,30,Falling,2,Outgoing,57,1481,Clear,100,Excellent
+2027-06-16 00:00:00,Wednesday,June,Summer,Full Moon,Setting,29.99,Stable,1.8,Outgoing,56,3415,Slightly Colored,100,Excellent
+2027-06-17 00:00:00,Thursday,June,Summer,Full Moon,Setting,30.01,Stable,1.6,Outgoing,62,3597,Slightly Colored,100,Excellent
+2027-06-18 00:00:00,Friday,June,Summer,Full Moon,Setting,29.85,Falling,1.5,Outgoing,60,1348,Clear,100,Excellent
+2027-06-19 00:00:00,Saturday,June,Summer,Full Moon,Setting,30.06,Rising,1.5,Low Slack,63,1684,Clear,100,Excellent
+2027-06-20 00:00:00,Sunday,June,Summer,Full Moon,Setting,29.89,Falling,1.5,Low Slack,61,1401,Clear,100,Excellent
+2027-06-21 00:00:00,Monday,June,Summer,Full Moon,Setting,30.24,Rising,1.7,Incoming,58,1449,Clear,100,Excellent
+2027-06-22 00:00:00,Tuesday,June,Summer,Full Moon,Setting,30,Falling,1.8,Incoming,59,1050,Clear,100,Excellent
+2027-06-23 00:00:00,Wednesday,June,Summer,Waxing Gibbous,Setting,30.27,Rising,2.1,Incoming,64,1378,Clear,100,Excellent
+2027-06-24 00:00:00,Thursday,June,Summer,Waxing Gibbous,Setting,29.37,Falling,2.3,Incoming,55,1563,Clear,100,Excellent
+2027-06-25 00:00:00,Friday,June,Summer,Waxing Gibbous,Setting,30.09,Rising,2.6,Incoming,64,1312,Clear,100,Excellent
+2027-06-26 00:00:00,Saturday,June,Summer,Waxing Gibbous,Setting,29.56,Falling,2.9,Incoming,55,1654,Clear,100,Excellent
+2027-06-27 00:00:00,Sunday,June,Summer,First Quarter,Setting,29.7,Rising,3.3,Incoming,61,5104,Colored,100,Excellent
+2027-06-28 00:00:00,Monday,June,Summer,First Quarter,Setting,30.41,Rising,3.6,Incoming,62,1653,Clear,100,Excellent
+2027-06-29 00:00:00,Tuesday,June,Summer,First Quarter,Setting,30.53,Rising,3.8,Incoming,63,5217,Colored,100,Excellent
+2027-06-30 00:00:00,Wednesday,June,Summer,First Quarter,Setting,29.82,Falling,4.1,Incoming,63,1311,Clear,100,Excellent
+2027-07-01 00:00:00,Thursday,July,Summer,Waxing Crescent,Setting,29.88,Rising,4.3,Incoming,59,1314,Clear,100,Excellent
+2027-07-02 00:00:00,Friday,July,Summer,Waxing Crescent,Setting,30.08,Rising,4.4,Incoming,61,1774,Clear,100,Excellent
+2027-07-03 00:00:00,Saturday,July,Summer,New Moon,Setting,30.5,Rising,4.5,High Slack,64,1199,Clear,100,Excellent
+2027-07-04 00:00:00,Sunday,July,Summer,New Moon,Setting,30.19,Falling,4.5,High Slack,63,1769,Clear,100,Excellent
+2027-07-05 00:00:00,Monday,July,Summer,New Moon,Setting,29.77,Falling,4.4,High Slack,56,1023,Clear,100,Excellent
+2027-07-06 00:00:00,Tuesday,July,Summer,Waxing Crescent,Setting,30.32,Rising,4.3,Outgoing,59,1336,Clear,100,Excellent
+2027-07-07 00:00:00,Wednesday,July,Summer,Waxing Crescent,Setting,30.44,Rising,4.1,Outgoing,56,1094,Clear,100,Excellent
+2027-07-08 00:00:00,Thursday,July,Summer,First Quarter,Setting,29.45,Falling,3.9,Outgoing,60,1083,Clear,100,Excellent
+2027-07-09 00:00:00,Friday,July,Summer,Waxing Gibbous,Setting,29.51,Rising,3.6,Outgoing,57,1379,Clear,100,Excellent
+2027-07-10 00:00:00,Saturday,July,Summer,Waxing Gibbous,Setting,30.35,Rising,3.3,Outgoing,63,1104,Clear,100,Excellent
+2027-07-11 00:00:00,Sunday,July,Summer,First Quarter,Setting,29.9,Falling,3,Outgoing,60,1313,Clear,100,Excellent
+2027-07-12 00:00:00,Monday,July,Summer,First Quarter,Setting,29.85,Stable,2.7,Outgoing,64,1016,Clear,100,Excellent
+2027-07-13 00:00:00,Tuesday,July,Summer,First Quarter,Setting,30.36,Rising,2.4,Outgoing,64,1756,Clear,100,Excellent
+2027-07-14 00:00:00,Wednesday,July,Summer,Waxing Gibbous,Setting,29.62,Falling,2.1,Outgoing,59,1482,Clear,100,Excellent
+2027-07-15 00:00:00,Thursday,July,Summer,Waxing Gibbous,Setting,29.33,Falling,1.9,Outgoing,64,1121,Clear,100,Excellent
+2027-07-16 00:00:00,Friday,July,Summer,Full Moon,Setting,30.05,Rising,1.7,Outgoing,61,1484,Clear,100,Excellent
+2027-07-17 00:00:00,Saturday,July,Summer,Full Moon,Setting,30.17,Rising,1.6,Low Slack,62,1626,Clear,100,Excellent
+2027-07-18 00:00:00,Sunday,July,Summer,Full Moon,Setting,29.61,Falling,1.5,Outgoing,61,1728,Clear,100,Excellent
+2027-07-19 00:00:00,Monday,July,Summer,Full Moon,Setting,30.02,Rising,1.5,Low Slack,58,1574,Clear,100,Excellent
+2027-07-20 00:00:00,Tuesday,July,Summer,Full Moon,Setting,29.8,Falling,1.6,Incoming,61,920,Very Clear,100,Excellent
+2027-07-21 00:00:00,Wednesday,July,Summer,Full Moon,Setting,29.84,Stable,1.7,Low Slack,55,3757,Slightly Colored,100,Excellent
+2027-07-22 00:00:00,Thursday,July,Summer,Full Moon,Setting,29.63,Falling,1.9,Incoming,60,1540,Clear,100,Excellent
+2027-07-23 00:00:00,Friday,July,Summer,Waxing Gibbous,Setting,29.91,Rising,2.2,Incoming,64,1051,Clear,100,Excellent
+2027-07-24 00:00:00,Saturday,July,Summer,Waxing Gibbous,Setting,29.61,Falling,2.5,Incoming,64,1607,Clear,100,Excellent
+2027-07-25 00:00:00,Sunday,July,Summer,Waxing Gibbous,Setting,30.06,Rising,2.8,Incoming,63,983,Very Clear,100,Excellent
+2027-07-26 00:00:00,Monday,July,Summer,Waxing Gibbous,Setting,29.96,Falling,3.1,Incoming,58,5959,Colored,100,Excellent
+2027-07-27 00:00:00,Tuesday,July,Summer,First Quarter,Setting,29.6,Falling,3.4,Incoming,55,1289,Clear,100,Excellent
+2027-07-28 00:00:00,Wednesday,July,Summer,First Quarter,Setting,29.4,Falling,3.7,Incoming,60,4463,Colored,100,Excellent
+2027-07-29 00:00:00,Thursday,July,Summer,First Quarter,Setting,30.02,Rising,4,Incoming,55,4396,Colored,100,Excellent
+2027-07-30 00:00:00,Friday,July,Summer,First Quarter,Setting,29.61,Falling,4.2,Incoming,58,1098,Clear,100,Excellent
+2027-07-31 00:00:00,Saturday,July,Summer,Waxing Crescent,Setting,29.71,Rising,4.4,Incoming,56,1676,Clear,100,Excellent
+2027-08-01 00:00:00,Sunday,August,Summer,Waxing Crescent,Setting,30.03,Rising,4.5,High Slack,57,1031,Clear,100,Excellent
+2027-08-02 00:00:00,Monday,August,Summer,New Moon,Setting,29.93,Falling,4.5,High Slack,55,1061,Clear,100,Excellent
+2027-08-03 00:00:00,Tuesday,August,Summer,New Moon,Setting,30.08,Rising,4.5,High Slack,55,1173,Clear,100,Excellent
+2027-08-04 00:00:00,Wednesday,August,Summer,New Moon,Setting,30.1,Stable,4.4,High Slack,61,1359,Clear,100,Excellent
+2027-08-05 00:00:00,Thursday,August,Summer,Waxing Crescent,Setting,29.93,Falling,4.2,Outgoing,56,1300,Clear,100,Excellent
+2027-08-06 00:00:00,Friday,August,Summer,Waxing Crescent,Setting,29.77,Falling,4,Outgoing,58,961,Very Clear,100,Excellent
+2027-08-07 00:00:00,Saturday,August,Summer,Waxing Gibbous,Setting,30.06,Rising,3.8,Outgoing,58,1100,Clear,100,Excellent
+2027-08-08 00:00:00,Sunday,August,Summer,Waxing Gibbous,Setting,30.12,Rising,3.5,Outgoing,57,1006,Clear,100,Excellent
+2027-08-09 00:00:00,Monday,August,Summer,First Quarter,Setting,29.93,Falling,3.2,Outgoing,59,1265,Clear,100,Excellent
+2027-08-10 00:00:00,Tuesday,August,Summer,First Quarter,Setting,29.76,Falling,2.8,Outgoing,62,1696,Clear,100,Excellent
+2027-08-11 00:00:00,Wednesday,August,Summer,First Quarter,Setting,29.57,Falling,2.5,Outgoing,58,891,Very Clear,100,Excellent
+2027-08-12 00:00:00,Thursday,August,Summer,Waxing Gibbous,Setting,30.26,Rising,2.2,Outgoing,60,1300,Clear,100,Excellent
+2027-08-13 00:00:00,Friday,August,Summer,Waxing Gibbous,Setting,30.39,Rising,2,Outgoing,57,921,Very Clear,100,Excellent
+2027-08-14 00:00:00,Saturday,August,Summer,Full Moon,Setting,29.69,Falling,1.8,Outgoing,56,1596,Clear,100,Excellent
+2027-08-15 00:00:00,Sunday,August,Summer,Full Moon,Setting,30.19,Rising,1.6,Outgoing,55,1020,Clear,100,Excellent
+2027-08-16 00:00:00,Monday,August,Summer,Full Moon,Setting,29.53,Falling,1.5,Outgoing,58,1332,Clear,100,Excellent
+2027-08-17 00:00:00,Tuesday,August,Summer,Full Moon,Setting,29.51,Stable,1.5,Low Slack,61,1136,Clear,100,Excellent
+2027-08-18 00:00:00,Wednesday,August,Summer,Full Moon,Setting,29.56,Stable,1.5,Low Slack,56,1310,Clear,100,Excellent
+2027-08-19 00:00:00,Thursday,August,Summer,Full Moon,Setting,29.93,Rising,1.7,Incoming,60,1330,Clear,100,Excellent
+2027-08-20 00:00:00,Friday,August,Summer,Full Moon,Setting,29.73,Falling,1.8,Incoming,58,1459,Clear,100,Excellent
+2027-08-21 00:00:00,Saturday,August,Summer,Waxing Gibbous,Setting,29.96,Rising,2,Incoming,63,1781,Clear,100,Excellent
+2027-08-22 00:00:00,Sunday,August,Summer,Waxing Gibbous,Setting,30.05,Rising,2.3,Incoming,56,1213,Clear,100,Excellent
+2027-08-23 00:00:00,Monday,August,Summer,Waxing Gibbous,Setting,29.4,Falling,2.6,Incoming,64,1744,Clear,100,Excellent
+2027-08-24 00:00:00,Tuesday,August,Summer,Waxing Gibbous,Setting,29.75,Rising,2.9,Incoming,57,1719,Clear,100,Excellent
+2027-08-25 00:00:00,Wednesday,August,Summer,First Quarter,Setting,29.99,Rising,3.2,Incoming,64,1353,Clear,100,Excellent
+2027-08-26 00:00:00,Thursday,August,Summer,First Quarter,Setting,29.58,Falling,3.5,Incoming,63,3478,Slightly Colored,100,Excellent
+2027-08-27 00:00:00,Friday,August,Summer,First Quarter,Setting,30.11,Rising,3.8,Incoming,61,1517,Clear,100,Excellent
+2027-08-28 00:00:00,Saturday,August,Summer,First Quarter,Setting,30.01,Falling,4.1,Incoming,56,1411,Clear,100,Excellent
+2027-08-29 00:00:00,Sunday,August,Summer,Waxing Crescent,Setting,30.04,Stable,4.3,Incoming,62,1448,Clear,100,Excellent
+2027-08-30 00:00:00,Monday,August,Summer,Waxing Crescent,Setting,30.19,Rising,4.4,Incoming,61,1439,Clear,100,Excellent
+2027-08-31 00:00:00,Tuesday,August,Summer,New Moon,Setting,29.63,Falling,4.5,High Slack,57,847,Very Clear,100,Excellent
+2027-09-01 00:00:00,Wednesday,September,Fall,New Moon,Setting,29.94,Rising,4.5,High Slack,53,2237,Slightly Colored,100,Excellent
+2027-09-02 00:00:00,Thursday,September,Fall,New Moon,Setting,29.63,Falling,4.4,High Slack,50,2159,Slightly Colored,100,Excellent
+2027-09-03 00:00:00,Friday,September,Fall,Waxing Crescent,Setting,30.05,Rising,4.3,Outgoing,48,1752,Clear,100,Excellent
+2027-09-04 00:00:00,Saturday,September,Fall,Waxing Crescent,Setting,29.98,Falling,4.1,Outgoing,51,2099,Slightly Colored,100,Excellent
+2027-09-05 00:00:00,Sunday,September,Fall,First Quarter,Setting,29.84,Falling,3.9,Outgoing,54,2162,Slightly Colored,100,Excellent
+2027-09-06 00:00:00,Monday,September,Fall,Waxing Gibbous,Setting,29.48,Falling,3.6,Outgoing,52,3896,Slightly Colored,100,Excellent
+2027-09-07 00:00:00,Tuesday,September,Fall,Waxing Gibbous,Setting,29.52,Stable,3.3,Outgoing,54,2511,Slightly Colored,100,Excellent
+2027-09-08 00:00:00,Wednesday,September,Fall,First Quarter,Setting,29.56,Stable,3,Outgoing,49,1687,Clear,100,Excellent
+2027-09-09 00:00:00,Thursday,September,Fall,First Quarter,Setting,29.62,Rising,2.7,Outgoing,48,1530,Clear,100,Excellent
+2027-09-10 00:00:00,Friday,September,Fall,First Quarter,Setting,30.05,Rising,2.4,Outgoing,54,2788,Slightly Colored,100,Excellent
+2027-09-11 00:00:00,Saturday,September,Fall,Waxing Gibbous,Setting,29.99,Falling,2.1,Outgoing,49,2631,Slightly Colored,100,Excellent
+2027-09-12 00:00:00,Sunday,September,Fall,Waxing Gibbous,Setting,29.68,Falling,1.9,Outgoing,50,2773,Slightly Colored,100,Excellent
+2027-09-13 00:00:00,Monday,September,Fall,Full Moon,Setting,29.29,Falling,1.7,Outgoing,50,5300,Colored,100,Excellent
+2027-09-14 00:00:00,Tuesday,September,Fall,Full Moon,Setting,29.66,Rising,1.6,Low Slack,51,2034,Slightly Colored,100,Excellent
+2027-09-15 00:00:00,Wednesday,September,Fall,Full Moon,Setting,29.88,Rising,1.5,Outgoing,48,1584,Clear,100,Excellent
+2027-09-16 00:00:00,Thursday,September,Fall,Full Moon,Setting,30.04,Rising,1.5,Low Slack,52,2741,Slightly Colored,100,Excellent
+2027-09-17 00:00:00,Friday,September,Fall,Full Moon,Setting,29.76,Falling,1.6,Incoming,50,2423,Slightly Colored,100,Excellent
+2027-09-18 00:00:00,Saturday,September,Fall,Full Moon,Setting,29.54,Falling,1.7,Low Slack,54,3234,Slightly Colored,100,Excellent
+2027-09-19 00:00:00,Sunday,September,Fall,Full Moon,Setting,29.79,Rising,1.9,Incoming,53,1835,Clear,100,Excellent
+2027-09-20 00:00:00,Monday,September,Fall,Waxing Gibbous,Setting,29.46,Falling,2.2,Incoming,53,2188,Slightly Colored,100,Excellent
+2027-09-21 00:00:00,Tuesday,September,Fall,Waxing Gibbous,Setting,29.85,Rising,2.4,Incoming,54,1741,Clear,100,Excellent
+2027-09-22 00:00:00,Wednesday,September,Fall,Waxing Gibbous,Setting,29.98,Rising,2.8,Incoming,53,4930,Colored,100,Excellent
+2027-09-23 00:00:00,Thursday,September,Fall,Waxing Gibbous,Setting,29.81,Falling,3.1,Incoming,52,1737,Clear,100,Excellent
+2027-09-24 00:00:00,Friday,September,Fall,First Quarter,Setting,30,Rising,3.4,Incoming,48,2798,Slightly Colored,100,Excellent
+2027-09-25 00:00:00,Saturday,September,Fall,First Quarter,Setting,30.04,Stable,3.7,Incoming,49,4979,Colored,100,Excellent
+2027-09-26 00:00:00,Sunday,September,Fall,First Quarter,Setting,29.78,Falling,4,Incoming,48,4037,Colored,100,Excellent
+2027-09-27 00:00:00,Monday,September,Fall,First Quarter,Setting,29.85,Rising,4.2,Incoming,50,2031,Slightly Colored,100,Excellent
+2027-09-28 00:00:00,Tuesday,September,Fall,Waxing Crescent,Setting,29.68,Falling,4.3,High Slack,52,4891,Colored,100,Excellent
+2027-09-29 00:00:00,Wednesday,September,Fall,Waxing Crescent,Setting,29.71,Stable,4.5,Incoming,51,2809,Slightly Colored,100,Excellent
+2027-09-30 00:00:00,Thursday,September,Fall,New Moon,Setting,29.72,Stable,4.5,High Slack,53,2214,Slightly Colored,100,Excellent
+2027-10-01 00:00:00,Friday,October,Fall,New Moon,Setting,29.89,Rising,4.5,High Slack,50,2539,Slightly Colored,100,Excellent
+2027-10-02 00:00:00,Saturday,October,Fall,New Moon,Setting,30.17,Rising,4.4,High Slack,49,1769,Clear,100,Excellent
+2027-10-03 00:00:00,Sunday,October,Fall,Waxing Crescent,Setting,29.57,Falling,4.2,Outgoing,52,2067,Slightly Colored,100,Excellent
+2027-10-04 00:00:00,Monday,October,Fall,Waxing Crescent,Setting,29.9,Rising,4,Outgoing,49,1565,Clear,100,Excellent
+2027-10-05 00:00:00,Tuesday,October,Fall,Waxing Gibbous,Setting,30.12,Rising,3.8,Outgoing,48,2598,Slightly Colored,100,Excellent
+2027-10-06 00:00:00,Wednesday,October,Fall,Waxing Gibbous,Setting,30.01,Falling,3.5,Outgoing,51,2221,Slightly Colored,100,Excellent
+2027-10-07 00:00:00,Thursday,October,Fall,First Quarter,Setting,30.11,Rising,3.2,Outgoing,53,2349,Slightly Colored,100,Excellent
+2027-10-08 00:00:00,Friday,October,Fall,First Quarter,Setting,29.76,Falling,2.9,Outgoing,53,3651,Slightly Colored,100,Excellent
+2027-10-09 00:00:00,Saturday,October,Fall,First Quarter,Setting,29.57,Falling,2.5,Outgoing,54,2442,Slightly Colored,100,Excellent
+2027-10-10 00:00:00,Sunday,October,Fall,Waxing Gibbous,Setting,29.87,Rising,2.2,Outgoing,51,2795,Slightly Colored,100,Excellent
+2027-10-11 00:00:00,Monday,October,Fall,Waxing Gibbous,Setting,29.7,Falling,2,Outgoing,48,2551,Slightly Colored,100,Excellent
+2027-10-12 00:00:00,Tuesday,October,Fall,Full Moon,Setting,30.34,Rising,1.8,Outgoing,48,6717,Murky,100,Excellent
+2027-10-13 00:00:00,Wednesday,October,Fall,Full Moon,Setting,29.78,Falling,1.6,Outgoing,49,2309,Slightly Colored,100,Excellent
+2027-10-14 00:00:00,Thursday,October,Fall,Full Moon,Setting,29.28,Falling,1.5,Outgoing,53,4778,Colored,100,Excellent
+2027-10-15 00:00:00,Friday,October,Fall,Full Moon,Setting,29.76,Rising,1.5,Low Slack,53,2098,Slightly Colored,100,Excellent
+2027-10-16 00:00:00,Saturday,October,Fall,Full Moon,Setting,29.72,Stable,1.5,Low Slack,51,1696,Clear,100,Excellent
+2027-10-17 00:00:00,Sunday,October,Fall,Full Moon,Setting,29.82,Rising,1.6,Incoming,54,2765,Slightly Colored,100,Excellent
+2027-10-18 00:00:00,Monday,October,Fall,Full Moon,Setting,29.89,Rising,1.8,Incoming,52,2173,Slightly Colored,100,Excellent
+2027-10-19 00:00:00,Tuesday,October,Fall,Waxing Gibbous,Setting,30.37,Rising,2,Incoming,48,2598,Slightly Colored,100,Excellent
+2027-10-20 00:00:00,Wednesday,October,Fall,Waxing Gibbous,Setting,29.71,Falling,2.3,Incoming,52,2417,Slightly Colored,100,Excellent
+2027-10-21 00:00:00,Thursday,October,Fall,Waxing Gibbous,Setting,29.69,Stable,2.6,Incoming,50,2396,Slightly Colored,100,Excellent
+2027-10-22 00:00:00,Friday,October,Fall,Waxing Gibbous,Setting,29.42,Falling,2.9,Incoming,52,2145,Slightly Colored,100,Excellent
+2027-10-23 00:00:00,Saturday,October,Fall,First Quarter,Setting,29.69,Rising,3.2,Incoming,51,2865,Slightly Colored,100,Excellent
+2027-10-24 00:00:00,Sunday,October,Fall,First Quarter,Setting,30.05,Rising,3.5,Incoming,54,2805,Slightly Colored,100,Excellent
+2027-10-25 00:00:00,Monday,October,Fall,First Quarter,Setting,29.92,Falling,3.8,Incoming,49,2461,Slightly Colored,100,Excellent
+2027-10-26 00:00:00,Tuesday,October,Fall,First Quarter,Setting,30.46,Rising,4.1,Incoming,54,7109,Murky,100,Excellent
+2027-10-27 00:00:00,Wednesday,October,Fall,Waxing Crescent,Setting,29.22,Falling,4.3,Incoming,50,7091,Murky,100,Excellent
+2027-10-28 00:00:00,Thursday,October,Fall,Waxing Crescent,Setting,29.88,Rising,4.4,Incoming,51,1637,Clear,100,Excellent
+2027-10-29 00:00:00,Friday,October,Fall,New Moon,Setting,29.8,Falling,4.5,High Slack,52,4237,Colored,100,Excellent
+2027-10-30 00:00:00,Saturday,October,Fall,New Moon,Setting,29.57,Falling,4.5,High Slack,48,2534,Slightly Colored,100,Excellent
+2027-10-31 00:00:00,Sunday,October,Fall,New Moon,Setting,29.76,Rising,4.4,High Slack,50,2086,Slightly Colored,100,Excellent
+2027-11-01 00:00:00,Monday,November,Fall,Waxing Crescent,Setting,29.23,Falling,4.3,Outgoing,50,2625,Slightly Colored,100,Excellent
+2027-11-02 00:00:00,Tuesday,November,Fall,Waxing Crescent,Setting,29.08,Falling,4.1,Outgoing,54,1845,Clear,100,Excellent
+2027-11-03 00:00:00,Wednesday,November,Fall,First Quarter,Setting,29.6,Rising,3.9,Outgoing,50,4687,Colored,100,Excellent
+2027-11-04 00:00:00,Thursday,November,Fall,Waxing Gibbous,Setting,29.27,Falling,3.6,Outgoing,50,1588,Clear,100,Excellent
+2027-11-05 00:00:00,Friday,November,Fall,Waxing Gibbous,Setting,29.77,Rising,3.3,Outgoing,50,1646,Clear,100,Excellent
+2027-11-06 00:00:00,Saturday,November,Fall,First Quarter,Setting,29.38,Falling,3,Outgoing,53,2610,Slightly Colored,100,Excellent
+2027-11-07 00:00:00,Sunday,November,Fall,First Quarter,Setting,29.47,Rising,2.7,Outgoing,51,2118,Slightly Colored,100,Excellent
+2027-11-08 00:00:00,Monday,November,Fall,First Quarter,Setting,29.9,Rising,2.4,Outgoing,54,2484,Slightly Colored,100,Excellent
+2027-11-09 00:00:00,Tuesday,November,Fall,Waxing Gibbous,Setting,29.1,Falling,2.1,Outgoing,50,2306,Slightly Colored,100,Excellent
+2027-11-10 00:00:00,Wednesday,November,Fall,Waxing Gibbous,Setting,29.93,Rising,1.9,Outgoing,52,5815,Colored,100,Excellent
+2027-11-11 00:00:00,Thursday,November,Fall,Full Moon,Setting,29.5,Falling,1.7,Outgoing,50,1595,Clear,100,Excellent
+2027-11-12 00:00:00,Friday,November,Fall,Full Moon,Setting,30.09,Rising,1.6,Low Slack,50,2798,Slightly Colored,100,Excellent
+2027-11-13 00:00:00,Saturday,November,Fall,Full Moon,Setting,29.38,Falling,1.5,Outgoing,54,1921,Clear,100,Excellent
+2027-11-14 00:00:00,Sunday,November,Fall,Full Moon,Setting,29.99,Rising,1.5,Low Slack,53,1538,Clear,100,Excellent
+2027-11-15 00:00:00,Monday,November,Fall,Full Moon,Setting,29.7,Falling,1.6,Incoming,48,1818,Clear,100,Excellent
+2027-11-16 00:00:00,Tuesday,November,Fall,Full Moon,Setting,30.17,Rising,1.7,Low Slack,49,2063,Slightly Colored,100,Excellent
+2027-11-17 00:00:00,Wednesday,November,Fall,Full Moon,Setting,29.65,Falling,1.9,Incoming,52,6686,Murky,100,Excellent
+2027-11-18 00:00:00,Thursday,November,Fall,Waxing Gibbous,Setting,29.83,Rising,2.2,Incoming,50,2156,Slightly Colored,100,Excellent
+2027-11-19 00:00:00,Friday,November,Fall,Waxing Gibbous,Setting,30.03,Rising,2.4,Incoming,52,2251,Slightly Colored,100,Excellent
+2027-11-20 00:00:00,Saturday,November,Fall,Waxing Gibbous,Setting,29.64,Falling,2.7,Incoming,53,2974,Slightly Colored,100,Excellent
+2027-11-21 00:00:00,Sunday,November,Fall,Waxing Gibbous,Setting,29.76,Rising,3.1,Incoming,54,6593,Murky,100,Excellent
+2027-11-22 00:00:00,Monday,November,Fall,First Quarter,Setting,29.89,Rising,3.4,Incoming,51,6835,Murky,100,Excellent
+2027-11-23 00:00:00,Tuesday,November,Fall,First Quarter,Setting,29.54,Falling,3.7,Incoming,48,2321,Slightly Colored,100,Excellent
+2027-11-24 00:00:00,Wednesday,November,Fall,First Quarter,Setting,29.87,Rising,3.9,Incoming,54,2086,Slightly Colored,100,Excellent
+2027-11-25 00:00:00,Thursday,November,Fall,First Quarter,Setting,29.67,Falling,4.2,Incoming,53,5602,Colored,100,Excellent
+2027-11-26 00:00:00,Friday,November,Fall,Waxing Crescent,Setting,29.88,Rising,4.3,High Slack,54,1581,Clear,100,Excellent
+2027-11-27 00:00:00,Saturday,November,Fall,Waxing Crescent,Setting,29.67,Falling,4.5,Incoming,52,2708,Slightly Colored,100,Excellent
+2027-11-28 00:00:00,Sunday,November,Fall,New Moon,Setting,30.06,Rising,4.5,High Slack,54,2827,Slightly Colored,100,Excellent
+2027-11-29 00:00:00,Monday,November,Fall,New Moon,Setting,29.37,Falling,4.5,High Slack,48,1504,Clear,100,Excellent
+2027-11-30 00:00:00,Tuesday,November,Fall,New Moon,Setting,29.63,Rising,4.4,High Slack,52,4503,Colored,100,Excellent
+2027-12-01 00:00:00,Wednesday,December,Winter,Waxing Crescent,Setting,30.12,Rising,4.2,Outgoing,42,4486,Colored,98,Excellent
+2027-12-02 00:00:00,Thursday,December,Winter,Waxing Crescent,Setting,30.06,Falling,4,Outgoing,38,3130,Slightly Colored,100,Excellent
+2027-12-03 00:00:00,Friday,December,Winter,Waxing Gibbous,Setting,30.28,Rising,3.8,Outgoing,41,3264,Slightly Colored,100,Excellent
+2027-12-04 00:00:00,Saturday,December,Winter,Waxing Gibbous,Setting,30.06,Falling,3.5,Outgoing,39,3200,Slightly Colored,100,Excellent
+2027-12-05 00:00:00,Sunday,December,Winter,First Quarter,Setting,29.94,Falling,3.2,Outgoing,40,3009,Slightly Colored,100,Excellent
+2027-12-06 00:00:00,Monday,December,Winter,First Quarter,Setting,29.91,Stable,2.9,Outgoing,41,3955,Slightly Colored,100,Excellent
+2027-12-07 00:00:00,Tuesday,December,Winter,First Quarter,Setting,30.13,Rising,2.6,Outgoing,41,3969,Slightly Colored,100,Excellent
+2027-12-08 00:00:00,Wednesday,December,Winter,Waxing Gibbous,Setting,29.43,Falling,2.3,Outgoing,42,3045,Slightly Colored,100,Excellent
+2027-12-09 00:00:00,Thursday,December,Winter,Waxing Gibbous,Setting,30.07,Rising,2,Outgoing,40,4397,Colored,99,Excellent
+2027-12-10 00:00:00,Friday,December,Winter,Full Moon,Setting,29.82,Falling,1.8,Outgoing,42,3063,Slightly Colored,100,Excellent
+2027-12-11 00:00:00,Saturday,December,Winter,Full Moon,Setting,30.17,Rising,1.6,Outgoing,40,3307,Slightly Colored,100,Excellent
+2027-12-12 00:00:00,Sunday,December,Winter,Full Moon,Setting,29.57,Falling,1.5,Outgoing,39,3447,Slightly Colored,100,Excellent
+2027-12-13 00:00:00,Monday,December,Winter,Full Moon,Setting,30.2,Rising,1.5,Low Slack,40,3145,Slightly Colored,100,Excellent
+2027-12-14 00:00:00,Tuesday,December,Winter,Full Moon,Setting,29.45,Falling,1.5,Low Slack,38,3160,Slightly Colored,100,Excellent
+2027-12-15 00:00:00,Wednesday,December,Winter,Full Moon,Setting,29.65,Rising,1.6,Incoming,42,4965,Colored,100,Excellent
+2027-12-16 00:00:00,Thursday,December,Winter,Full Moon,Setting,29.74,Rising,1.8,Incoming,40,4099,Colored,100,Excellent
+2027-12-17 00:00:00,Friday,December,Winter,Waxing Gibbous,Setting,29.9,Rising,2,Incoming,41,6503,Murky,97,Excellent
+2027-12-18 00:00:00,Saturday,December,Winter,Waxing Gibbous,Setting,29.88,Stable,2.3,Incoming,40,3883,Slightly Colored,100,Excellent
+2027-12-19 00:00:00,Sunday,December,Winter,Waxing Gibbous,Setting,29.9,Stable,2.6,Incoming,40,3736,Slightly Colored,100,Excellent
+2027-12-20 00:00:00,Monday,December,Winter,Waxing Gibbous,Setting,30.09,Rising,2.9,Incoming,42,3361,Slightly Colored,100,Excellent
+2027-12-21 00:00:00,Tuesday,December,Winter,First Quarter,Setting,30.07,Stable,3.2,Incoming,38,3287,Slightly Colored,100,Excellent
+2027-12-22 00:00:00,Wednesday,December,Winter,First Quarter,Setting,29.76,Falling,3.5,Incoming,38,7832,Murky,100,Excellent
+2027-12-23 00:00:00,Thursday,December,Winter,First Quarter,Setting,29.41,Falling,3.8,Incoming,42,3512,Slightly Colored,100,Excellent
+2027-12-24 00:00:00,Friday,December,Winter,First Quarter,Setting,29.71,Rising,4,Incoming,40,3049,Slightly Colored,100,Excellent
+2027-12-25 00:00:00,Saturday,December,Winter,Waxing Crescent,Setting,30.05,Rising,4.3,Incoming,40,4018,Colored,100,Excellent
+2027-12-26 00:00:00,Sunday,December,Winter,Waxing Crescent,Setting,29.47,Falling,4.4,Incoming,42,4068,Colored,100,Excellent
+2027-12-27 00:00:00,Monday,December,Winter,New Moon,Setting,30.01,Rising,4.5,High Slack,38,4524,Colored,99,Excellent
+2027-12-28 00:00:00,Tuesday,December,Winter,New Moon,Setting,29.37,Falling,4.5,High Slack,40,3397,Slightly Colored,100,Excellent
+2027-12-29 00:00:00,Wednesday,December,Winter,New Moon,Setting,29.9,Rising,4.4,High Slack,38,4956,Colored,99,Excellent
+2027-12-30 00:00:00,Thursday,December,Winter,Waxing Crescent,Setting,30.07,Rising,4.3,Outgoing,39,3697,Slightly Colored,100,Excellent
+2027-12-31 00:00:00,Friday,December,Winter,Waxing Crescent,Setting,30.1,Stable,4.2,High Slack,38,4316,Colored,100,Excellent
