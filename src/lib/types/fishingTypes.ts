@@ -1,3 +1,4 @@
+
 import { Dispatch, SetStateAction } from "react";
 
 // Types for our fishing forecast data
@@ -18,6 +19,7 @@ export interface FishingForecast {
   barometricPressure: number;
   pressureTrend: string;
   recommendations: FishingRecommendation[];
+  isDuplicate?: boolean; // Added this property to fix TypeScript errors
 }
 
 // Moon phases used in calculations
