@@ -1,5 +1,5 @@
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -9,10 +9,15 @@ import { ForecastEnhancedAlert } from "@/components/upload/UploadStatusIndicator
 
 export const ExcelUploader = () => {
   const [processedData, setProcessedData] = useState<any[] | null>(null);
+  const [isEnhanced, setIsEnhanced] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   
-  const isForecastEnhanced = localStorage.getItem('fishingForecastData') !== null;
+  // Check if forecast is enhanced on mount and when processed data changes
+  useEffect(() => {
+    const storedData = localStorage.getItem('fishingForecastData');
+    setIsEnhanced(storedData !== null);
+  }, [processedData]);
 
   return (
     <Card className="w-full relative">
@@ -29,7 +34,7 @@ export const ExcelUploader = () => {
         <div className="space-y-4">
           <UploadInstructions />
           
-          <ForecastEnhancedAlert isEnhanced={isForecastEnhanced && !processedData} />
+          <ForecastEnhancedAlert isEnhanced={isEnhanced && !processedData} />
           
           <UploadForm 
             fileInputRef={fileInputRef} 

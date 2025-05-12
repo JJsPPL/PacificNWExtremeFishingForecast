@@ -1,3 +1,4 @@
+
 import { processExcelForecast } from './forecastImport';
 import { FishingForecast } from '../types/fishingTypes';
 
@@ -15,17 +16,22 @@ export const importAllForecasts = async (files: FileList): Promise<Map<string, F
       for (const [date, forecast] of forecasts.entries()) {
         if (allForecasts.has(date)) {
           const existing = allForecasts.get(date)!;
+          // Mark as duplicate and only replace if new forecast has better rating
+          forecast.isDuplicate = true;
           if (existing.rating < forecast.rating) {
             allForecasts.set(date, forecast);
           }
         } else {
+          forecast.isDuplicate = false;
           allForecasts.set(date, forecast);
         }
       }
+      
+      console.log(`Processed ${forecasts.size} forecasts from ${file.name}`);
     } catch (error) {
       console.error(`Error processing ${file.name}:`, error);
     }
   }
   
   return allForecasts;
-}; 
+};

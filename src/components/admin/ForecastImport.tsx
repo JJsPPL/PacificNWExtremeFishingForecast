@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { importAllForecasts } from '../../lib/utils/batchImport';
 import { FishingForecast } from '../../lib/types/fishingTypes';
@@ -25,7 +26,7 @@ const ForecastImport: React.FC<ForecastImportProps> = ({ onImportComplete }) => 
       
       // Calculate stats
       const totalRows = forecasts.size;
-      const duplicatesRemoved = Array.from(forecasts.values()).filter(f => f.rating < 90).length;
+      const duplicatesRemoved = Array.from(forecasts.values()).filter(f => f.isDuplicate === true).length;
       
       setStats({
         total: totalRows,
@@ -37,9 +38,14 @@ const ForecastImport: React.FC<ForecastImportProps> = ({ onImportComplete }) => 
         onImportComplete(forecasts);
       }
     } catch (err) {
+      console.error('Import error:', err);
       setError(err instanceof Error ? err.message : 'Failed to import files');
     } finally {
       setIsLoading(false);
+      // Reset the file input to allow selecting the same file again
+      if (event.target) {
+        event.target.value = '';
+      }
     }
   };
 
@@ -92,4 +98,4 @@ const ForecastImport: React.FC<ForecastImportProps> = ({ onImportComplete }) => 
   );
 };
 
-export default ForecastImport; 
+export default ForecastImport;

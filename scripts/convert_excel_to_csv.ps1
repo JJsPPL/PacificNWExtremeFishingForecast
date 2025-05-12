@@ -1,11 +1,12 @@
+
 $excel = New-Object -ComObject Excel.Application
 $excel.Visible = $false
 $excel.DisplayAlerts = $false
 
 # Source directory containing Excel files
-$sourceDir = "C:\MyProgram\Fishing\AWESOME Final Fishing Forecasts"
+$sourceDir = "C:\MyProgram\Fishing\PacificNWExtremeFishingForecast\Final Fishing Forecasts"
 # Destination directory for CSV files
-$destDir = "C:\MyProgram\Fishing\AWESOME Final Fishing Forecasts\CSV"
+$destDir = "C:\MyProgram\Fishing\PacificNWExtremeFishingForecast\CSV"
 
 # Create destination directory if it doesn't exist
 if (!(Test-Path -Path $destDir)) {
@@ -33,4 +34,4 @@ foreach ($file in $excelFiles) {
 }
 
 $excel.Quit()
-[System.Runtime.Interopservices.Marshal]::ReleaseComObject($excel) | Out-Null 
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($excel) | Out-Null

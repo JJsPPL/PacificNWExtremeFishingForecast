@@ -1,5 +1,6 @@
+
 # Source directory containing CSV files
-$sourceDir = "C:\MyProgram\Fishing\AWESOME Final Fishing Forecasts\CSV"
+$sourceDir = "C:\MyProgram\Fishing\PacificNWExtremeFishingForecast\CSV"
 # Destination directory in the application
 $destDir = "src/data/forecasts"
 
@@ -11,4 +12,4 @@ if (!(Test-Path -Path $destDir)) {
 # Copy all CSV files
 Copy-Item -Path "$sourceDir\*.csv" -Destination $destDir -Force
 
-Write-Host "CSV files have been copied to the application's data directory." 
+Write-Host "CSV files have been copied to the application's data directory."

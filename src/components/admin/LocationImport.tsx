@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { processExcelFile, convertToLocationFormat } from '../../lib/utils/excelImport';
 
@@ -8,6 +9,7 @@ interface LocationImportProps {
 const LocationImport: React.FC<LocationImportProps> = ({ onImportComplete }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -15,6 +17,7 @@ const LocationImport: React.FC<LocationImportProps> = ({ onImportComplete }) => 
 
     setIsLoading(true);
     setError(null);
+    setSuccess(null);
 
     try {
       // Validate file type
@@ -29,11 +32,17 @@ const LocationImport: React.FC<LocationImportProps> = ({ onImportComplete }) => 
       // Call the callback with the processed data
       if (onImportComplete) {
         onImportComplete(formattedData);
+        setSuccess(`Successfully imported ${Object.values(formattedData.locations).flat().length} locations from ${file.name}`);
       }
     } catch (err) {
+      console.error('Location import error:', err);
       setError(err instanceof Error ? err.message : 'Failed to import file');
     } finally {
       setIsLoading(false);
+      // Reset the file input to allow selecting the same file again
+      if (event.target) {
+        event.target.value = '';
+      }
     }
   };
 
@@ -72,8 +81,14 @@ const LocationImport: React.FC<LocationImportProps> = ({ onImportComplete }) => 
           {error}
         </div>
       )}
+
+      {success && (
+        <div className="text-green-600">
+          {success}
+        </div>
+      )}
     </div>
   );
 };
 
-export default LocationImport; 
+export default LocationImport;
