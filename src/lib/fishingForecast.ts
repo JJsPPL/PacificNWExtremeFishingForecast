@@ -1,4 +1,3 @@
-
 import { addDays, format, isSameDay } from "date-fns";
 import { FishingForecast, FishingRecommendation, MoonPhase, MoonPosition, TideState } from "./types/fishingTypes";
 import { generateRecommendations } from "./utils/recommendations";
@@ -124,18 +123,24 @@ export const getForecastForDate = (date: Date): FishingForecast => {
 
   // Generate salmon run status based on month
   let salmonRunStatus: string;
-  if (month === 4 || month === 5) { // May-June
-    salmonRunStatus = "Spring Chinook runs active in Columbia River and tributaries. Counts increasing at Bonneville Dam.";
+  if (month === 2 || month === 3) { // March-April
+    salmonRunStatus = "Early Spring Chinook beginning to enter the Willamette and Columbia systems. Fish counts increasing at Willamette Falls fish ladder and Bonneville Dam.";
+  } else if (month === 4) { // May
+    salmonRunStatus = "Spring Chinook runs at peak in Willamette River system. Good numbers reported passing Willamette Falls fish ladder. Columbia River Spring Chinook counts strong at Bonneville Dam.";
+  } else if (month === 5) { // June
+    salmonRunStatus = "Late Spring Chinook and early Summer Chinook runs active. Summer steelhead entering the Willamette system with increasing numbers at Willamette Falls.";
   } else if (month === 6 || month === 7) { // July-August
-    salmonRunStatus = "Summer Chinook and Sockeye runs at peak. Coho beginning to stage in estuaries.";
-  } else if (month >= 8 && month <= 10) { // September-November
-    salmonRunStatus = "Fall Chinook and Coho runs active throughout river systems. Strong returns reported in Cowlitz and Lewis Rivers.";
+    salmonRunStatus = "Summer Chinook and Sockeye runs at peak in Columbia River system. Summer steelhead passing Willamette Falls. Coho beginning to stage in estuaries.";
+  } else if (month === 8) { // September
+    salmonRunStatus = "Fall Chinook entering the Columbia and Willamette systems. Bonneville Dam counts increasing daily. Early Coho appearing in tributary mouths.";
+  } else if (month >= 9 && month <= 10) { // October-November
+    salmonRunStatus = "Fall Chinook and Coho runs at peak throughout Columbia and Willamette systems. Strong returns reported in Cowlitz, Lewis, and Clackamas Rivers. Willamette tributaries seeing good Coho numbers.";
   } else if (month === 11 || month === 0) { // December-January
-    salmonRunStatus = "Late Fall Chinook tapering off. Winter steelhead beginning their run into coastal streams.";
-  } else if (month === 1 || month === 2) { // February-March
-    salmonRunStatus = "Winter steelhead at peak run. Early Spring Chinook beginning to enter lower Columbia.";
+    salmonRunStatus = "Late Fall Chinook tapering off. Winter steelhead beginning their run into Willamette tributaries and coastal streams. Clackamas and Sandy rivers showing increasing winter steelhead counts.";
+  } else if (month === 1) { // February
+    salmonRunStatus = "Winter steelhead at peak run in Willamette tributaries. Early Spring Chinook beginning to enter lower Columbia and Willamette systems.";
   } else {
-    salmonRunStatus = "Pre-season preparation. Check WDFW and ODFW hatchery reports for pre-season forecasts.";
+    salmonRunStatus = "Pre-season preparation. Check WDFW, ODFW hatchery reports and dam counts for updated forecasts on Columbia and Willamette river systems.";
   }
   
   // Generate recommendations based on season, location, and conditions
@@ -150,9 +155,28 @@ export const getForecastForDate = (date: Date): FishingForecast => {
         tideInfo: "Best fishing on outgoing tides and slack tides when changing from low to high. Focus on current seams and deeper holes."
       };
     }
+    // If Willamette River location, provide specific tide-influenced tactics based on location
+    else if (rec.location && rec.location.includes("Willamette River")) {
+      // Lower Willamette has more tidal influence
+      if (rec.location.includes("Portland") || rec.location.includes("Multnomah Channel")) {
+        return {
+          ...rec,
+          tideInfo: "Tidal influence extends to Oregon City Falls. Best fishing during the last two hours of outgoing tide and first hour of incoming tide in lower sections."
+        };
+      } 
+      // Middle and upper Willamette sections
+      else {
+        return {
+          ...rec,
+          tideInfo: "Limited tidal influence. Focus on current breaks, confluence areas, and structure during stable river flows."
+        };
+      }
+    }
     // If species is salmon or steelhead (excluding specific rivers with custom tactics)
     else if ((rec.species.includes("Salmon") || rec.species.includes("Steelhead")) && 
-             !(rec.location && (rec.location.includes("Columbia River") || rec.location.includes("Nestucca River")))) {
+             !(rec.location && (rec.location.includes("Columbia River") || 
+                              rec.location.includes("Nestucca River") || 
+                              rec.location.includes("Willamette River")))) {
       return {
         ...rec,
         tideInfo: "Fish during tide changes with particular attention to current breaks and structure."

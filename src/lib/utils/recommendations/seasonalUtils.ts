@@ -1,181 +1,227 @@
 
 import { FishingRecommendation } from "../../types/fishingTypes";
+import { willametteRiverLocations } from "../../constants/locations/oregon/willamette";
 
-// Functions for seasonal recommendations
+// Get species availability based on month (0-11)
 export const getSeasonalSpecies = (month: number): string[] => {
-  let availableSpecies: string[] = [];
+  const species: string[] = [];
   
-  // Winter (Dec-Feb): Winter steelhead, resident Chinook
-  if (month === 11 || month === 0 || month === 1) {
-    availableSpecies = ["Winter Steelhead", "Chinook Salmon (resident)", "Dungeness Crab", "Sturgeon", "Cutthroat Trout", "Rockfish"];
-  } 
-  // Spring (Mar-May): Spring Chinook, early steelhead, halibut, lingcod season opens
-  else if (month >= 2 && month <= 4) {
-    availableSpecies = ["Chinook Salmon (Spring)", "Steelhead", "Halibut", "Lingcod", "Rockfish", "Sturgeon", "Surfperch"];
-  }
-  // Summer (Jun-Aug): Summer Chinook, sockeye, pink (odd years), coho, good bottomfishing
-  else if (month >= 5 && month <= 7) {
-    availableSpecies = [
-      "Chinook Salmon (Summer)", 
-      "Sockeye Salmon", 
-      new Date().getFullYear() % 2 === 1 ? "Pink Salmon" : "Coho Salmon (early)",
-      "Halibut",
-      "Lingcod",
-      "Rockfish",
-      "Black Sea Bass",
-      "Cabezon",
-      "Smallmouth Bass",
-      "Sturgeon"
-    ];
-  }
-  // Fall (Sep-Nov): Fall Chinook, coho, chum, lingcod and rockfish still open
-  else {
-    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Lingcod", "Rockfish", "Dungeness Crab", "Cutthroat Trout", "Flounder"];
+  // Spring Chinook (March-June)
+  if (month >= 2 && month <= 5) {
+    species.push("Chinook Salmon (King)");
   }
   
-  return availableSpecies;
+  // Summer Steelhead (May-October)
+  if (month >= 4 && month <= 9) {
+    species.push("Steelhead");
+  }
+  
+  // Fall Chinook (August-November)
+  if (month >= 7 && month <= 10) {
+    species.push("Chinook Salmon (King)");
+  }
+  
+  // Coho (September-December)
+  if (month >= 8 && month <= 11) {
+    species.push("Coho Salmon (Silver)");
+  }
+  
+  // Winter Steelhead (November-April)
+  if (month >= 10 || month <= 3) {
+    species.push("Steelhead");
+  }
+  
+  // Chum Salmon (October-December)
+  if (month >= 9 && month <= 11) {
+    species.push("Chum Salmon (Dog)");
+  }
+  
+  // Sockeye Salmon (June-August)
+  if (month >= 5 && month <= 7) {
+    species.push("Sockeye Salmon (Red)");
+  }
+  
+  // Year-round species
+  species.push(
+    "Lingcod",
+    "Rockfish",
+    "Black Sea Bass", 
+    "Cabezon",
+    "Surfperch",
+    "Smallmouth Bass",
+    "Largemouth Bass"
+  );
+  
+  // Seasonal Sturgeon (best in winter/spring)
+  if (month >= 10 || month <= 5) {
+    species.push("Sturgeon");
+  }
+  
+  // Summer ocean species (June-September)
+  if (month >= 5 && month <= 8) {
+    species.push("Albacore Tuna", "Halibut");
+  }
+  
+  // Trout - best in spring and fall
+  if ((month >= 2 && month <= 5) || (month >= 8 && month <= 10)) {
+    species.push("Rainbow Trout", "Cutthroat Trout", "Brown Trout");
+  }
+  
+  return species;
 };
 
+// Create winter recommendations
 export const createWinterRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
   
+  // Winter steelhead recommendations
+  recommendations.push({
+    species: "Steelhead",
+    location: "Sandy River - Oxbow Park",
+    tactics: "Drift fishing with eggs or yarn in deeper runs. Focus on slower water when temperatures are coldest.",
+    bait: "Cured eggs, yarn balls, or small jigs under a float",
+    waterConditions: "Look for water temperatures between 38-45°F with moderate visibility. Winter steelhead prefer moderate flows rather than high or low water conditions.",
+    bestTime: "Mid-day when water temperatures have risen slightly is often best in winter."
+  });
+  
+  // Sturgeon recommendations
   if (date.getDate() % 3 === 0) {
-    const detailedTactics = "Drift fishing with eggs or yarn balls in deeper slots. Focus on slower water near the seam where fast water meets slow. Use 10-12lb leader and size 4 hooks with small clusters of eggs or yarn. Let your presentation drift naturally with the current.";
-    
     recommendations.push({
-      species: "Winter Steelhead",
-      location: "Nestucca River - Beaver",
-      tactics: detailedTactics,
-      waterConditions: "Medium flow, slightly turbid, 42-45°F. Best after a rain event when water is dropping and clearing.",
-      bestTime: "Early morning within an hour of sunrise or late afternoon when shadow lines form across the river."
-    });
-  } else if (date.getDate() % 3 === 1) {
-    const detailedTactics = "Small presentations in clear water. Size 6 hooks with single eggs or 1/4 oz jigs in pink, orange, or purple. Maintain constant bottom contact while drifting through tailouts and transitional water.";
-    
-    recommendations.push({
-      species: "Winter Steelhead",
-      location: "Sequim - Dungeness River",
-      tactics: detailedTactics,
-      waterConditions: "Clear to slightly off-color, 38-42°F. Look for water with 2-3 feet of visibility.",
-      bestTime: "Mid-morning after frost thaws, typically 9-11am when water temperature rises slightly."
-    });
-  } else if (date.getDate() % 3 === 2) {
-    // Add more detailed winter tactics for Skykomish
-    const detailedTactics = "Side drifting with 3/8 oz weight and 30-36 inch leader. Use pink or orange corky with yarn. Focus on the inside edge of seams where fast water transitions to walking-speed current.";
-    
-    recommendations.push({
-      species: "Winter Steelhead",
-      location: "Skykomish River - Reiter Ponds",
-      tactics: detailedTactics,
-      waterConditions: "Green water with 1-2 feet visibility, 40-44°F. Best when water levels are dropping after a rain event.",
-      bestTime: "Best during stable barometric pressure, typically mid-day when the sun warms the water slightly."
+      species: "Sturgeon",
+      location: "Willamette River - Downtown Portland",
+      tactics: "Focus on deep holes with moderate current. Use heavy weights (6-10 oz) to hold bottom in winter flows.",
+      bait: "Smelt, sand shrimp, or pickled herring",
+      waterConditions: "Winter concentrations of sturgeon in the lower Willamette can be excellent, especially in deep holes with 15-40 feet of water.",
+      bestTime: "Incoming tide during mid-day hours when water temperature is highest"
     });
   }
   
   return recommendations;
 };
 
+// Create spring recommendations
 export const createSpringRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
+  const month = date.getMonth();
   
-  if (date.getDate() % 4 === 0) {
-    const detailedTactics = "Trolling with herring near deep channel edges. Use green label herring in a tight spin at 30-45 feet depth. Maintain speed of 1.2-1.5mph with the current. Target incoming tide for best results and focus on current breaks where baitfish concentrate.";
+  // Spring Chinook recommendations
+  if (month >= 2 && month <= 4) {  // March to May
+    const willametteLocations = [
+      "Willamette River - Oregon City", 
+      "Willamette River - Downtown Portland",
+      "Willamette River - Falls"
+    ];
+    
+    const locationIndex = date.getDate() % willametteLocations.length;
+    const selectedLocation = willametteLocations[locationIndex];
     
     recommendations.push({
-      species: "Chinook Salmon (Spring)",
-      location: "Columbia River",
-      tactics: detailedTactics,
-      waterConditions: "Clear water, moderate flow, 48-52°F. Look for slight color changes indicating current seams.",
-      bestTime: "Early morning or late afternoon when light penetration in the water is reduced."
+      species: "Chinook Salmon (King)",
+      location: selectedLocation,
+      tactics: "Trolling with flashers and herring or back-bouncing eggs in deeper holes. Target depths of 15-30 feet in the main river channel.",
+      bait: "Herring, spinners, or cured eggs",
+      waterConditions: "Spring Chinook prefer water temperatures between 48-56°F and moderate flows. Look for areas with clarity of 2-4 feet.",
+      bestTime: "Early morning and late afternoon typically produce the best bite. Hatchery counts show strongest spring Chinook returns from mid-April through May."
     });
-  } else if (date.getDate() % 4 === 1) {
-    // Add Sandy River spring Chinook tactics
-    const detailedTactics = "Back-bouncing eggs with 1-1.5 oz weight, 24-30 inch leader, and size 2/0 hook. Use cured salmon eggs with sand shrimp tails. Target the head and tail of deeper holes where current slows.";
-    
+  }
+  
+  // Late spring fishery for shad
+  if (month === 4 || month === 5) {  // May or June
     recommendations.push({
-      species: "Chinook Salmon (Spring)",
-      location: "Sandy River - Revenue Bridge",
-      tactics: detailedTactics,
-      waterConditions: "Slightly off-color, 46-52°F. Best when visibility is between 1-3 feet.",
-      bestTime: "First light until mid-morning, especially during rising barometric pressure."
+      species: "American Shad",
+      location: "Willamette River - Oregon City Falls",
+      tactics: "Cast small jigs, Dick Nite spoons, or shad darts across current and retrieve with the flow.",
+      bait: "Shad darts, small jigs, or Dick Nite spoons",
+      waterConditions: "Shad prefer water temperatures from 58-68°F. Look for zones with moderate current near the falls.",
+      bestTime: "Mid-morning through afternoon when water temperatures are rising. Peak run timing coincides with Columbia River counts in late May through mid-June."
     });
   }
   
   return recommendations;
 };
 
+// Create summer recommendations
 export const createSummerRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
+  const month = date.getMonth();
+  const day = date.getDate();
   
-  if (date.getDate() % 3 === 1) {
-    const detailedTactics = "Early morning with small spinners (size 4-5) or flies in riffles and tailouts. Gold, silver or copper spinners work best. When fly fishing, use smaller presentations - size 6-8 flies in pink, purple or orange. Work systematically through riffles and pocket water.";
+  // Summer Steelhead in the Willamette system
+  if (month >= 5 && month <= 7) {  // June to August
+    const willametteSthdLocations = [
+      "Willamette River - Oregon City Falls",
+      "Willamette River - Falls"
+    ];
+    
+    const locationIndex = date.getDate() % willametteSthdLocations.length;
     
     recommendations.push({
-      species: "Summer Steelhead",
-      location: "Nestucca River - Three Rivers",
-      tactics: detailedTactics,
-      waterConditions: "Clear water, moderate flow, 52-58°F. Look for oxygenated water with good bubble content.",
-      bestTime: "Early morning or late afternoon when sun is off the water. Evening hatches can trigger feeding behavior."
+      species: "Steelhead",
+      location: willametteSthdLocations[locationIndex],
+      tactics: "Cast spinners, drift beads under floats, or swing flies in areas with moderate current.",
+      bait: "Spinners, beads, or small flies",
+      waterConditions: "Summer steelhead prefer water temperatures between 52-64°F. Target areas with good oxygenation near the falls.",
+      bestTime: "Early morning and evening hours when water temperatures are coolest. Hatchery counts show peak summer steelhead passage at Willamette Falls from June through early August."
     });
-  } else if (date.getDate() % 3 === 0) {
-    // Add Deschutes summer steelhead tactics
-    const detailedTactics = "Swung flies with intermediate sink tip lines. Use traditional patterns like Freight Trains or Skunks in sizes 4-6. Maintain 45-degree downstream presentation and slow your swing through likely holding water.";
+  }
+  
+  // Smallmouth bass fishing in summer
+  if (month >= 5 && month <= 8 && date.getDate() % 3 === 0) {  // June to September, occasionally
+    const bassLocations = [
+      "Willamette River - Newberg",
+      "Willamette River - Salem",
+      "Willamette River - Corvallis"
+    ];
+    
+    const locationIndex = date.getDate() % bassLocations.length;
     
     recommendations.push({
-      species: "Summer Steelhead",
-      location: "Deschutes River",
-      tactics: detailedTactics,
-      waterConditions: "Clear with slight green tint, 58-64°F. Look for shaded areas during heat of day.",
-      bestTime: "Early morning and evening hours, especially during caddis hatches. Fish deeper during midday heat."
+      species: "Smallmouth Bass",
+      location: bassLocations[locationIndex],
+      tactics: "Cast crankbaits around rocky structure, use topwater lures early and late in the day, or drop-shot soft plastics in deeper holes.",
+      bait: "Crankbaits, topwater poppers, or soft plastic drop-shot rigs",
+      waterConditions: "Target areas with rocky structure, current breaks, or drop-offs. Smallmouth are most active in water temperatures between 65-75°F.",
+      bestTime: "Early morning, late evening, or night during the hottest parts of summer. Midday fishing can be productive in slightly deeper water."
     });
   }
   
   return recommendations;
 };
 
+// Create fall recommendations
 export const createFallRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
+  const month = date.getMonth();
   
-  if (date.getDate() % 4 === 0) {
-    const detailedTactics = "Tidewater bobber fishing with eggs or spinners during the first push of tide. Set bobber depth to suspend bait 12-18 inches off bottom. Use cured salmon eggs with scent enhancement. For spinners, blue/silver or pink/silver in sizes 4-5 work best. Target current seams where brackish and fresh water mix.";
+  // Fall Chinook recommendations - data aligned with Columbia River counts
+  if (month >= 8 && month <= 10) {  // September to November
+    const fallChinookLocations = [
+      "Willamette River - Portland",
+      "Willamette River - Oregon City",
+      "Multnomah Channel"
+    ];
+    
+    const locationIndex = date.getDate() % fallChinookLocations.length;
     
     recommendations.push({
-      species: "Coho Salmon",
-      location: "Nestucca River - Cloverdale",
-      tactics: detailedTactics,
-      waterConditions: "Tidal influence, brackish water, 54-62°F. Best on incoming tide, especially on morning high tides.",
-      bestTime: "First light or on incoming tide, particularly when high tide occurs in early morning hours."
+      species: "Chinook Salmon (King)",
+      location: fallChinookLocations[locationIndex],
+      tactics: "Trolling with flashers and herring or back-trolling with plugs in deeper holes and current seams.",
+      bait: "Herring, sardine-wrapped plugs, or spinners",
+      waterConditions: "Fall Chinook enter the system with the first significant fall rains. Target water temperatures between 50-62°F.",
+      bestTime: "Early morning and evening hours. Columbia River hatchery counts show peak returns in late September through mid-October."
     });
-  } else if (date.getDate() % 4 === 1) {
-    const detailedTactics = "Small pink or orange spinners, size 3-4. Cast across stream and retrieve at medium speed with occasional twitches. Focus on deep pools below riffles and near woody debris. In clear water, switch to 1/4 oz pink jigs under a bobber set 2-3 feet deep.";
-    
+  }
+  
+  // Coho recommendations - data aligned with Columbia River tributary counts
+  if (month >= 8 && month <= 10) {  // September to November
     recommendations.push({
-      species: "Coho Salmon", 
-      location: "Sequim - Dungeness River",
-      tactics: detailedTactics,
-      waterConditions: "Clear to slightly stained, 48-56°F. Best after light rainfall brings river up slightly.",
-      bestTime: "First and last light when fish are most aggressive. Cloudy days extend the bite window substantially."
-    });
-  } else if (date.getDate() % 4 === 2) {
-    const detailedTactics = "Back-bouncing eggs or drift fishing with corkies and yarn in deeper runs. Use 15-20lb mainline with 12lb leader. Pink or orange corkies with matching yarn on size 1/0-2/0 hook. Maintain contact with bottom while drifting through deep slots and tailouts.";
-    
-    recommendations.push({
-      species: "Coho Salmon",
-      location: "Cowlitz River",
-      tactics: detailedTactics,
-      waterConditions: "Medium flow, visibility 2-3 feet, 52-58°F. Fish congregate at tributary mouths and in deeper holes.",
-      bestTime: "Overcast days during mid-morning when light penetration is moderate. After a front passes often triggers feeding."
-    });
-  } else if (date.getDate() % 4 === 3) {
-    // Add new fall lingcod recommendation for Puget Sound
-    const detailedTactics = "Drift fish rocky structures using heavy jigs (8-16oz) in white, glow, or chartreuse colors. Target underwater humps, rock piles and artificial reefs in 60-120 feet of water. Work jigs with sharp lift-and-drop motions, keeping contact with the bottom. Add scent to soft plastic tails for enhanced attraction.";
-    
-    recommendations.push({
-      species: "Lingcod",
-      location: "Puget Sound - Tacoma Narrows",
-      tactics: detailedTactics,
-      waterConditions: "Tidal currents, 52-58°F. Best fishing during moderate current flow rather than slack tide or maximum flow.",
-      bestTime: "First few hours after sunrise, especially during neap tides when current flow is more moderate."
+      species: "Coho Salmon (Silver)",
+      location: "Multnomah Channel",
+      tactics: "Trolling with spinners or herring, or casting spinners from the bank where access allows.",
+      bait: "Blue/green spinners, herring, or cured eggs",
+      waterConditions: "Look for water temperatures between 48-58°F. Coho often move into the Willamette system with fall rains, following Columbia River migration patterns.",
+      bestTime: "Morning hours, especially after a rain event has increased flows. Peak runs typically occur from mid-September through October based on Columbia River tributary hatchery returns."
     });
   }
   

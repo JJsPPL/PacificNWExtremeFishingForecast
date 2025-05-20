@@ -28,6 +28,18 @@ export const generateRecommendations = (
   } else if (month >= 2 && month <= 4) {
     // Spring
     recommendations.push(...createSpringRecommendations(date));
+    
+    // Add Willamette-specific spring Chinook recommendation when hatchery counts are peaking
+    if (month === 3 && date.getDate() > 15) { // Second half of April = peak spring Chinook
+      recommendations.push({
+        species: "Chinook Salmon (King)",
+        location: "Willamette River - Oregon City Falls",
+        tactics: "Trolling with flashers and herring near the falls, focus on deeper holding water below the falls",
+        bait: "Herring with green/chartreuse flashers, sardine-wrapped plugs",
+        waterConditions: "Target areas with moderate current and depths of 15-30 feet. Spring Chinook hold in deeper water before ascending the fish ladder.",
+        bestTime: "Early morning hours when boat traffic is minimal. Hatchery data shows peak passage at Willamette Falls from mid-April through early May."
+      });
+    }
   } else if (month >= 5 && month <= 7) {
     // Summer - good time for tuna fishing off the coast
     if (date.getDate() % 7 === 0) { // Occasionally recommend tuna in summer
@@ -40,10 +52,35 @@ export const generateRecommendations = (
         bestTime: "Early morning and late afternoon typically produce the best bite."
       });
     }
+    
+    // Add Willamette-specific summer recommendation based on Columbia counts
+    if (month === 6 && (date.getDate() % 4 === 0)) { // July, occasional recommendation
+      recommendations.push({
+        species: "Smallmouth Bass",
+        location: "Willamette River - Newberg",
+        tactics: "Cast crankbaits along rocky banks and drop-offs, or use soft plastics in deeper holes",
+        bait: "Crankbaits, soft plastic tubes, or drop shot rigs with finesse worms",
+        waterConditions: "Focus on rocky structure and current breaks. Smallmouth become more active as water temperatures reach 65-75°F.",
+        bestTime: "Early morning and late evening for topwater action, midday in deeper water"
+      });
+    }
+    
     recommendations.push(...createSummerRecommendations(date));
   } else {
     // Fall
     recommendations.push(...createFallRecommendations(date));
+    
+    // Add fall Coho recommendation for Willamette based on Columbia River tributary counts
+    if (month === 9 && date.getDate() > 15) { // October - peak of Coho migration
+      recommendations.push({
+        species: "Coho Salmon (Silver)",
+        location: "Willamette River - Multnomah Channel",
+        tactics: "Trolling with spinners or herring in the deeper channel, focus on current breaks and eddies",
+        bait: "Blue/silver spinners, cut-plug herring, or cured eggs",
+        waterConditions: "Coho enter the system with increasing fall flows. Target slightly stained water with 2-4 feet of visibility.",
+        bestTime: "Early morning hours, especially after rainfall has increased flows. Hatchery data from Columbia tributaries indicates peak Coho returns in mid to late October."
+      });
+    }
   }
   
   // Generate unique recommendations
