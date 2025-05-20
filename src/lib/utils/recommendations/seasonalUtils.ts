@@ -1,4 +1,3 @@
-
 import { FishingRecommendation } from "../../types/fishingTypes";
 import { willametteRiverLocations } from "../../constants/locations/oregon/willamette";
 
@@ -104,36 +103,44 @@ export const createSpringRecommendations = (date: Date): FishingRecommendation[]
   const recommendations: FishingRecommendation[] = [];
   const month = date.getMonth();
   
-  // Spring Chinook recommendations
+  // Spring Chinook recommendations - Columbia River priority
   if (month >= 2 && month <= 4) {  // March to May
+    // Columbia River Spring Chinook recommendation
+    const columbiaLocations = [
+      "Columbia River - Bonneville Dam",
+      "Columbia River - Portland",
+      "Columbia River - Vancouver"
+    ];
+    
+    const locationIndex = date.getDate() % columbiaLocations.length;
+    const columbiaLocation = columbiaLocations[locationIndex];
+    
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: columbiaLocation,
+      tactics: "Trolling with flashers and herring near deeper channels. Target depths of 15-30 feet.",
+      bait: "Herring with flashers, sardine-wrapped K15 Kwikfish, or 3.5 spinners",
+      waterConditions: "Spring Chinook prefer water temperatures between 48-56°F with moderate clarity. Look for areas with 2-4 feet of visibility.",
+      bestTime: "Early morning hours are most productive. Bonneville Dam counts show strongest Spring Chinook returns from mid-April through May."
+    });
+    
+    // Willamette River Spring Chinook recommendation
     const willametteLocations = [
       "Willamette River - Oregon City", 
       "Willamette River - Downtown Portland",
       "Willamette River - Falls"
     ];
     
-    const locationIndex = date.getDate() % willametteLocations.length;
-    const selectedLocation = willametteLocations[locationIndex];
+    const willametteIndex = date.getDate() % willametteLocations.length;
+    const willametteLocation = willametteLocations[willametteIndex];
     
     recommendations.push({
       species: "Chinook Salmon (King)",
-      location: selectedLocation,
+      location: willametteLocation,
       tactics: "Trolling with flashers and herring or back-bouncing eggs in deeper holes. Target depths of 15-30 feet in the main river channel.",
       bait: "Herring, spinners, or cured eggs",
       waterConditions: "Spring Chinook prefer water temperatures between 48-56°F and moderate flows. Look for areas with clarity of 2-4 feet.",
-      bestTime: "Early morning and late afternoon typically produce the best bite. Hatchery counts show strongest spring Chinook returns from mid-April through May."
-    });
-  }
-  
-  // Late spring fishery for shad
-  if (month === 4 || month === 5) {  // May or June
-    recommendations.push({
-      species: "American Shad",
-      location: "Willamette River - Oregon City Falls",
-      tactics: "Cast small jigs, Dick Nite spoons, or shad darts across current and retrieve with the flow.",
-      bait: "Shad darts, small jigs, or Dick Nite spoons",
-      waterConditions: "Shad prefer water temperatures from 58-68°F. Look for zones with moderate current near the falls.",
-      bestTime: "Mid-morning through afternoon when water temperatures are rising. Peak run timing coincides with Columbia River counts in late May through mid-June."
+      bestTime: "Early morning and late afternoon typically produce the best bite. Willamette Falls fish ladder counts show strongest spring Chinook returns from mid-April through May."
     });
   }
   
@@ -144,7 +151,26 @@ export const createSpringRecommendations = (date: Date): FishingRecommendation[]
 export const createSummerRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
   const month = date.getMonth();
-  const day = date.getDate();
+  
+  // Summer Chinook in Columbia River
+  if (month >= 5 && month <= 7) {  // June to August
+    const columbiaLocations = [
+      "Columbia River - Bonneville Dam",
+      "Columbia River - Astoria",
+      "Columbia River - Portland"
+    ];
+    
+    const locationIndex = date.getDate() % columbiaLocations.length;
+    
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: columbiaLocations[locationIndex],
+      tactics: "Trolling with flashers and herring, back-trolling with plugs, or anchored with spinners in current seams.",
+      bait: "Herring with chartreuse or red flashers, K15 or K16 Kwikfish, size 5 or 6 spinners",
+      waterConditions: "Target water temperatures between 58-64°F. Look for current seams and structure where salmon hold.",
+      bestTime: "Early morning hours. Bonneville Dam counts show peak summer Chinook passage from mid-June through July."
+    });
+  }
   
   // Summer Steelhead in the Willamette system
   if (month >= 5 && month <= 7) {  // June to August
@@ -185,6 +211,22 @@ export const createSummerRecommendations = (date: Date): FishingRecommendation[]
     });
   }
   
+  // Add Tuna recommendations in summer (high priority)
+  if (month >= 6 && month <= 8) {  // July to September
+    const tunaLocations = ["Oregon Coast - 30-50 miles offshore", "Washington Coast - 40-60 miles offshore"];
+    const locationIndex = date.getDate() % tunaLocations.length;
+    
+    recommendations.push({
+      species: "Albacore Tuna",
+      location: tunaLocations[locationIndex],
+      tactics: "Trolling with cedar plugs and clones at 6-7 knots. Watch for temperature breaks, bird activity, and jumpers.",
+      bait: "Cedar plugs, tuna clones, and live anchovies when available",
+      waterConditions: "Target offshore waters with temperatures between 58-64°F. Look for clean blue water and clear temperature breaks.",
+      bestTime: "Early morning and late afternoon typically produce the best bite. Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results.",
+      tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results."
+    });
+  }
+  
   return recommendations;
 };
 
@@ -193,19 +235,38 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
   const recommendations: FishingRecommendation[] = [];
   const month = date.getMonth();
   
-  // Fall Chinook recommendations - data aligned with Columbia River counts
+  // Fall Chinook recommendations - Columbia River priority
   if (month >= 8 && month <= 10) {  // September to November
+    // Columbia River Fall Chinook
+    const columbiaLocations = [
+      "Columbia River - Bonneville Dam",
+      "Columbia River - Astoria",
+      "Columbia River - Portland"
+    ];
+    
+    const locationIndex = date.getDate() % columbiaLocations.length;
+    
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: columbiaLocations[locationIndex],
+      tactics: "Trolling with flashers and herring, back-trolling with plugs, or anchored with spinners in current seams.",
+      bait: "Herring, sardine-wrapped plugs, or spinners with red/orange/chartreuse blades",
+      waterConditions: "Fall Chinook enter the system with the first significant fall rains. Target water temperatures between 50-62°F.",
+      bestTime: "Early morning and evening hours. Bonneville Dam counts show peak returns from late August through early October."
+    });
+    
+    // Willamette River Fall Chinook
     const fallChinookLocations = [
       "Willamette River - Portland",
       "Willamette River - Oregon City",
       "Multnomah Channel"
     ];
     
-    const locationIndex = date.getDate() % fallChinookLocations.length;
+    const willametteIndex = date.getDate() % fallChinookLocations.length;
     
     recommendations.push({
       species: "Chinook Salmon (King)",
-      location: fallChinookLocations[locationIndex],
+      location: fallChinookLocations[willametteIndex],
       tactics: "Trolling with flashers and herring or back-trolling with plugs in deeper holes and current seams.",
       bait: "Herring, sardine-wrapped plugs, or spinners",
       waterConditions: "Fall Chinook enter the system with the first significant fall rains. Target water temperatures between 50-62°F.",
@@ -213,8 +274,19 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
     });
   }
   
-  // Coho recommendations - data aligned with Columbia River tributary counts
+  // Coho recommendations - priority for Columbia and tributaries
   if (month >= 8 && month <= 10) {  // September to November
+    // Columbia River Coho
+    recommendations.push({
+      species: "Coho Salmon (Silver)",
+      location: "Columbia River - Astoria",
+      tactics: "Trolling with spinners or herring along current seams and near river mouths.",
+      bait: "Green/blue spinners, herring with green flashers, or tuna belly strips",
+      waterConditions: "Look for water temperatures between 48-58°F. Coho often move into the system with fall rains.",
+      bestTime: "Morning hours, especially after a rain event has increased flows. Peak runs typically occur from mid-September through October based on Columbia River tributary hatchery returns."
+    });
+  
+    // Willamette/Multnomah Channel Coho
     recommendations.push({
       species: "Coho Salmon (Silver)",
       location: "Multnomah Channel",
