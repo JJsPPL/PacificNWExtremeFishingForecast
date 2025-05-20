@@ -12,3 +12,5 @@ export * from './puget-sound-tips';
 export * from './hood-canal-tips';
 export * from './strait-tips';
 export * from './sanjuan-tips';
+export * from './cowlitz-tips';
+export * from './lewis-tips';

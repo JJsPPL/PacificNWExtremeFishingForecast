@@ -41,14 +41,22 @@ export const getLocationPool = (species: string, date: Date, month: number): str
                 loc.includes("Calawah"))
         );
       } else {
+        // Columbia River tributaries - specifically highlight these
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
-        locationPool = washingtonLocations.length >= 4 ? 
-          [...washingtonLocations.slice(0, 4)] : 
-          [...washingtonLocations]; // Ocean/sound locations
+        const tributaryLocations = washingtonLocations.filter(loc => 
+          loc && (loc.includes("Cowlitz") || 
+                loc.includes("Lewis") || 
+                loc.includes("Kalama"))
+        );
+        
+        // If we have tributary locations, use them; otherwise use general Washington locations
+        locationPool = tributaryLocations.length > 0 ? 
+          [...tributaryLocations] : 
+          [...(washingtonLocations.slice(0, 4) || [])];
       }
     } else {
       // In non-summer months, give more weight to river locations
-      const dayMod = date.getDate() % 9; // Changed from 8 to 9 to incorporate Olympic Peninsula rivers
+      const dayMod = date.getDate() % 11; // Changed from 9 to 11 to incorporate more variety
       
       if (dayMod === 0) {
         // Focus on Oregon locations
@@ -101,37 +109,122 @@ export const getLocationPool = (species: string, date: Date, month: number): str
                 loc.includes("Sol Duc") || 
                 loc.includes("Calawah"))
         );
+      } else if (dayMod === 7) {
+        // Focus specifically on Cowlitz River system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && loc.includes("Cowlitz")
+        );
+      } else if (dayMod === 8) {
+        // Focus specifically on Lewis River system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && loc.includes("Lewis")
+        );
+      } else if (dayMod === 9) {
+        // Focus specifically on Kalama River system
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        locationPool = washingtonLocations.filter(loc => 
+          loc && loc.includes("Kalama")
+        );
       } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
-        // Special rivers known for coho and winter steelhead
+        // Special rivers known for coho and winter steelhead - heavily prioritize tributaries
         locationPool = [
-          "Cowlitz River", 
+          // Cowlitz River system - prominent for Coho and Winter Steelhead
           "Cowlitz River - Blue Creek",
           "Cowlitz River - Mission Bar",
-          "Lewis River", 
-          "Kalama River",
+          "Cowlitz River - Barrier Dam",
+          "Cowlitz River - Salmon Hatchery",
+          
+          // Lewis River system
+          "Lewis River - Mouth", 
+          "Lewis River - Hatchery",
+          "Lewis River - East Fork",
+          
+          // Kalama River
+          "Kalama River - Lower",
+          "Kalama River - Upper",
+          "Kalama River - Fallert Creek",
+          
+          // Other Washington systems
           "Skagit River",
           "Skagit River - Rockport",
           "Skykomish River - Reiter Ponds",
           "Snohomish River",
           "Snohomish River - Pilchuck Mouth",
           "Sequim - Dungeness River",
+          
+          // Oregon systems
           "Sandy River - Oxbow Park",
           "Clackamas River - McIver Park",
           "Willamette River - Falls",
           "Wilson River - Sollie Smith Bridge",
           "Trask River - Loren's Drift",
           "Kilchis River - Alderbrook",
+          "Nestucca River - Three Rivers",
+          
+          // Olympic Peninsula
           "Bogachiel River - Mouth",
           "Bogachiel River - Leyendecker Park",
           "Sol Duc River - Salmon Cascades",
           "Wynochee River - Black Creek"
+        ];
+      } else if (species === "Chinook Salmon") {
+        // Special rivers known for Chinook - prioritize Columbia and tributaries
+        locationPool = [
+          // Columbia River
+          "Columbia River - Bonneville Dam",
+          "Columbia River - Astoria", 
+          "Columbia River - Portland",
+          
+          // Cowlitz River system - prominent for Chinook
+          "Cowlitz River - Blue Creek",
+          "Cowlitz River - Mission Bar",
+          "Cowlitz River - Barrier Dam",
+          
+          // Lewis River system
+          "Lewis River - Mouth", 
+          "Lewis River - Hatchery",
+          
+          // Kalama River
+          "Kalama River - Lower",
+          "Kalama River - Upper",
+          
+          // Oregon systems
+          "Willamette River - Oregon City",
+          "Willamette River - Falls",
+          "Sandy River - Oxbow Park",
+          "Nestucca River - Three Rivers",
+          "Nestucca River - First Bridge",
+          
+          // Tillamook system
+          "Tillamook Bay",
+          "Wilson River - Sollie Smith Bridge",
+          "Trask River - Loren's Drift"
         ];
       } else {
         // Make sure we have valid data before trying to use it
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         
+        // Include some tributary rivers specifically
+        const tributaryLocations = [
+          // Cowlitz River locations
+          "Cowlitz River - Blue Creek",
+          "Cowlitz River - Mission Bar",
+          "Cowlitz River - Barrier Dam",
+          
+          // Lewis River locations
+          "Lewis River - Mouth",
+          "Lewis River - Hatchery",
+          
+          // Kalama River locations
+          "Kalama River - Lower",
+          "Kalama River - Upper"
+        ];
+        
         locationPool = [
+          ...tributaryLocations,
           ...(oregonLocations || []),
           ...(washingtonLocations.length >= 4 ? washingtonLocations.slice(4) : (washingtonLocations || []))
         ]; // River locations

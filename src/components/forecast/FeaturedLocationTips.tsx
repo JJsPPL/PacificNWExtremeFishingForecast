@@ -13,7 +13,9 @@ import {
   PugetSoundTips,
   HoodCanalTips,
   StraitTips,
-  SanJuanTips
+  SanJuanTips,
+  CowlitzTips,
+  LewisTips
 } from "./tips";
 
 interface FeaturedLocationTipsProps {
@@ -44,12 +46,14 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
   const hasHoodCanal = locations.some(loc => loc && loc.includes("Hood Canal"));
   const hasStrait = locations.some(loc => loc && loc.includes("Juan De Fuca"));
   const hasSanJuan = locations.some(loc => loc && loc.includes("San Juan"));
+  const hasCowlitz = locations.some(loc => loc && loc.includes("Cowlitz"));
+  const hasLewis = locations.some(loc => loc && loc.includes("Lewis"));
   
   // If no featured locations are present, return null
   if (!hasNestucca && !hasColumbia && !hasWillamette && !hasSandy && 
       !hasClackamas && !hasSnake && !hasTillamook && !hasOlympic && 
       !hasWynochee && !hasPugetSound && !hasHoodCanal && !hasStrait && 
-      !hasSanJuan) return null;
+      !hasSanJuan && !hasCowlitz && !hasLewis) return null;
   
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
@@ -71,6 +75,8 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
         {hasHoodCanal && <HoodCanalTips />}
         {hasStrait && <StraitTips />}
         {hasSanJuan && <SanJuanTips />}
+        {hasCowlitz && <CowlitzTips />}
+        {hasLewis && <LewisTips />}
       </div>
     </div>
   );

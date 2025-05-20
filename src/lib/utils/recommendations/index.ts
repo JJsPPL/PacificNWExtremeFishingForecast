@@ -15,8 +15,8 @@ export const generateRecommendations = (
   const month = date.getMonth();
   const recommendations: FishingRecommendation[] = [];
   
-  // Number of recommendations based on rating
-  const numRecommendations = rating >= 70 ? 4 : (rating >= 40 ? 3 : 2);
+  // Number of recommendations based on rating - increased for higher ratings
+  const numRecommendations = rating >= 70 ? 6 : (rating >= 40 ? 4 : 3);
   
   // Seasonal species availability
   let availableSpecies: string[] = getSeasonalSpecies(month);
@@ -75,6 +75,18 @@ export const generateRecommendations = (
         bestTime: "Early morning hours when boat traffic is minimal. Hatchery data shows peak passage at Willamette Falls from mid-April through early May."
       });
     }
+    
+    // Add Cowlitz-specific spring Chinook recommendation when hatchery counts are peaking
+    if (month === 3 && date.getDate() > 12) { // Mid-April = peak spring Chinook
+      recommendations.push({
+        species: "Chinook Salmon (King)",
+        location: "Cowlitz River - Mission Bar",
+        tactics: "Back-bouncing eggs or pulling plugs in deeper holes and current seams",
+        bait: "Cured salmon eggs with shrimp oil, or sardine-wrapped K15 Kwikfish in copper/chartreuse",
+        waterConditions: "Target areas with moderate current and depths of 6-15 feet. Spring Chinook hold in deeper water near structure.",
+        bestTime: "Early morning hours. Cowlitz Salmon Hatchery data shows peak returns in mid to late April."
+      });
+    }
   } else if (month >= 5 && month <= 7) {
     // Summer - good time for tuna fishing off the coast
     if (date.getDate() % 4 <= 2) { // More frequently recommend tuna in summer (75% of days)
@@ -101,15 +113,15 @@ export const generateRecommendations = (
       });
     }
     
-    // Add Willamette-specific summer recommendation based on Columbia counts
+    // Add Cowlitz-specific summer steelhead recommendation
     if (month === 6 && (date.getDate() % 4 === 0)) { // July, occasional recommendation
       recommendations.push({
-        species: "Smallmouth Bass",
-        location: "Willamette River - Newberg",
-        tactics: "Cast crankbaits along rocky banks and drop-offs, or use soft plastics in deeper holes",
-        bait: "Crankbaits, soft plastic tubes, or drop shot rigs with finesse worms",
-        waterConditions: "Focus on rocky structure and current breaks. Smallmouth become more active as water temperatures reach 65-75°F.",
-        bestTime: "Early morning and late evening for topwater action, midday in deeper water"
+        species: "Steelhead",
+        location: "Cowlitz River - Blue Creek",
+        tactics: "Cast spinners upstream and retrieve through runs, or drift jigs under a float",
+        bait: "Size 4 or 5 spinners in silver/blue, or pink/chartreuse jigs under a float",
+        waterConditions: "Summer steelhead prefer moderate flows with water temperatures between 52-62°F.",
+        bestTime: "Early morning hours when water temperatures are coolest. Cowlitz Salmon Hatchery shows peak summer steelhead returns in late June through July."
       });
     }
     
@@ -130,15 +142,15 @@ export const generateRecommendations = (
       });
     }
     
-    // Add fall Coho recommendation for Willamette based on Columbia River tributary counts
+    // Add fall Coho recommendation for Cowlitz River
     if (month === 9 && date.getDate() > 15) { // October - peak of Coho migration
       recommendations.push({
         species: "Coho Salmon (Silver)",
-        location: "Willamette River - Multnomah Channel",
-        tactics: "Trolling with spinners or herring in the deeper channel, focus on current breaks and eddies",
-        bait: "Blue/silver spinners, cut-plug herring, or cured eggs",
-        waterConditions: "Coho enter the system with increasing fall flows. Target slightly stained water with 2-4 feet of visibility.",
-        bestTime: "Early morning hours, especially after rainfall has increased flows. Hatchery data from Columbia tributaries indicates peak Coho returns in mid to late October."
+        location: "Cowlitz River - Blue Creek",
+        tactics: "Drift fishing with cured eggs or casting spinners in areas with moderate current",
+        bait: "Blue/silver or green/silver spinners, or cured eggs with blue dye",
+        waterConditions: "Coho prefer water temperatures between 48-56°F with moderate visibility.",
+        bestTime: "Morning hours, especially after rainfall has increased flows. Cowlitz Salmon Hatchery shows peak Coho returns in mid to late October."
       });
     }
   }
@@ -152,21 +164,24 @@ export const generateRecommendations = (
     const species = availableSpecies[speciesIndex];
     availableSpecies.splice(speciesIndex, 1); // Remove to avoid duplicates
     
-    // Priority locations based on species
+    // Priority locations based on species - heavily prioritize Columbia River tributaries
     const locationPool = getLocationPool(species, date, month);
     
     // Prioritize high-value locations for salmon and steelhead
     let prioritizedLocationPool = [...locationPool];
     if (species.includes("Salmon") || species === "Steelhead") {
-      // Priority order for salmon/steelhead locations
+      // Priority order for salmon/steelhead locations - elevating tributary systems
       const locationPriority: { [key: string]: number } = {
-        "Columbia River": 1,
-        "Willamette River": 2,
-        "Cowlitz River": 3,
-        "Lewis River": 4,
-        "Nestucca River": 5,
-        "Miami River": 6,
-        "Tillamook River": 7
+        "Cowlitz River": 1, 
+        "Lewis River": 2,
+        "Kalama River": 3,
+        "Columbia River": 4,
+        "Willamette River": 5,
+        "Nestucca River": 6,
+        "Sandy River": 7,
+        "Clackamas River": 8,
+        "Miami River": 9,
+        "Tillamook River": 10
       };
       
       // Sort locations by priority

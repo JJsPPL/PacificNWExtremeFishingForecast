@@ -1,3 +1,4 @@
+
 import { FishingRecommendation } from "../../types/fishingTypes";
 import { willametteRiverLocations } from "../../constants/locations/oregon/willamette";
 
@@ -83,6 +84,42 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
     bestTime: "Mid-day when water temperatures have risen slightly is often best in winter."
   });
   
+  // Winter steelhead recommendations for Cowlitz River
+  if (date.getDate() % 5 === 0 || date.getDate() % 5 === 1) { // More frequent representation
+    recommendations.push({
+      species: "Steelhead",
+      location: "Cowlitz River - Blue Creek",
+      tactics: "Drift fish with cured eggs or corky and yarn. Target inside seams and tailouts of deeper holes.",
+      bait: "Cured salmon eggs with shrimp oil, or pink/orange yarn with scent",
+      waterConditions: "Best fishing during moderate flows of 4,000-8,000 cfs. Check Mayfield Dam releases for current conditions.",
+      bestTime: "Early morning and late afternoon produce best results. Check WDFW hatchery returns for run timing."
+    });
+  }
+  
+  // Winter steelhead recommendations for Lewis River
+  if (date.getDate() % 5 === 2 || date.getDate() % 5 === 3) { // More frequent representation
+    recommendations.push({
+      species: "Steelhead",
+      location: "Lewis River - Hatchery",
+      tactics: "Side-drifting eggs or bobber dogging with jigs. Focus on water 3-8 feet deep with moderate current.",
+      bait: "Pink or orange jigs under a float, or cured eggs with light leader",
+      waterConditions: "Look for 2-4 feet of visibility. Water releases from Merwin Dam influence conditions - check flow data before fishing.",
+      bestTime: "Late morning through mid-afternoon when water temperatures rise slightly."
+    });
+  }
+  
+  // Winter steelhead recommendations for Nestucca River
+  if (date.getDate() % 5 === 4 || date.getDate() % 4 === 0) { // More frequent representation
+    recommendations.push({
+      species: "Steelhead",
+      location: "Nestucca River - Three Rivers",
+      tactics: "Drift fishing with yarn or beads, or swing flies through deeper runs. Focus on inside seams and tailouts.",
+      bait: "Pink or orange yarn balls, beads, or egg patterns",
+      waterConditions: "Best action during dropping flows after a rain event. Look for water with slight green tint and 2-4 feet of visibility.",
+      bestTime: "Mid-day hours when water temperatures have risen slightly."
+    });
+  }
+  
   // Sturgeon recommendations
   if (date.getDate() % 3 === 0) {
     recommendations.push({
@@ -144,6 +181,37 @@ export const createSpringRecommendations = (date: Date): FishingRecommendation[]
     });
   }
   
+  // Add Cowlitz River Spring Chinook recommendations
+  if (month >= 2 && month <= 4) { // March to May
+    const cowlitzLocations = [
+      "Cowlitz River - Blue Creek",
+      "Cowlitz River - Mission Bar"
+    ];
+    
+    const locationIndex = date.getDate() % cowlitzLocations.length;
+    
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: cowlitzLocations[locationIndex],
+      tactics: "Back-bouncing eggs or pulling plugs in deeper holes. Focus on current seams and deeper slots.",
+      bait: "Cured salmon eggs, K15 Kwikfish in sardine wrap, or size 5 spinners in red/chartreuse",
+      waterConditions: "Spring Chinook prefer moderate flows with slight color. Best fishing when visibility is 2-4 feet.",
+      bestTime: "Early morning through mid-day. Cowlitz Salmon Hatchery returns typically peak in late April through mid-May."
+    });
+  }
+  
+  // Add Lewis River Spring Chinook recommendations
+  if (month >= 2 && month <= 4 && (date.getDate() % 3 === 0)) { // March to May, every third day
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: "Lewis River - Mouth",
+      tactics: "Trolling with herring or spinners near the confluence with the Columbia. Target depths of 12-25 feet.",
+      bait: "Cut-plug herring with green flashers, or size 5 spinners in red/copper",
+      waterConditions: "Best fishing when Columbia River flows are moderate. Spring Chinook stage near the mouth before moving upstream.",
+      bestTime: "Early morning hours through mid-day. Lewis River hatchery returns typically peak in May."
+    });
+  }
+  
   return recommendations;
 };
 
@@ -191,6 +259,30 @@ export const createSummerRecommendations = (date: Date): FishingRecommendation[]
     });
   }
   
+  // Summer Steelhead in Cowlitz River
+  if (month >= 5 && month <= 7) {  // June to August
+    recommendations.push({
+      species: "Steelhead",
+      location: "Cowlitz River - Blue Creek",
+      tactics: "Cast spinners upstream and retrieve through runs, or drift corky and yarn under a float.",
+      bait: "Size 4 or 5 spinners in silver/blue, or pink/chartreuse jigs under a float",
+      waterConditions: "Target water temperatures between 52-64°F with moderate flows. Early morning fishing is best when temps rise above 65°F.",
+      bestTime: "Early morning and evening hours. Cowlitz Salmon Hatchery returns show peak summer run timing from late June through July."
+    });
+  }
+  
+  // Lewis River Summer Steelhead
+  if (month >= 5 && month <= 7 && date.getDate() % 4 === 0) { // June to August, every fourth day
+    recommendations.push({
+      species: "Steelhead",
+      location: "Lewis River - Hatchery",
+      tactics: "Cast spinners or jigs under floats through current seams and tailouts.",
+      bait: "Blue/silver spinners, or cerise/orange jigs under a float",
+      waterConditions: "Best fishing when water temperatures are between 52-62°F with moderate clarity.",
+      bestTime: "Early morning through mid-morning. Lewis River Hatchery reports typically show peak returns in late June through July."
+    });
+  }
+  
   // Smallmouth bass fishing in summer
   if (month >= 5 && month <= 8 && date.getDate() % 3 === 0) {  // June to September, occasionally
     const bassLocations = [
@@ -208,6 +300,18 @@ export const createSummerRecommendations = (date: Date): FishingRecommendation[]
       bait: "Crankbaits, topwater poppers, or soft plastic drop-shot rigs",
       waterConditions: "Target areas with rocky structure, current breaks, or drop-offs. Smallmouth are most active in water temperatures between 65-75°F.",
       bestTime: "Early morning, late evening, or night during the hottest parts of summer. Midday fishing can be productive in slightly deeper water."
+    });
+  }
+  
+  // Summer Chinook in Nestucca River
+  if (month === 5 && (date.getDate() % 4 === 0 || date.getDate() % 4 === 1)) { // June, more frequently
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: "Nestucca River - Three Rivers",
+      tactics: "Drift fishing with eggs or pulling plugs through deeper holes. Focus on deeper slots and current seams.",
+      bait: "Cured salmon eggs, or K15/K16 Kwikfish with sardine wrap",
+      waterConditions: "Best fishing during moderate flows with slight color. Target water temperatures between 52-62°F.",
+      bestTime: "Early morning hours. ODFW hatchery returns show peak summer Chinook passage from mid-June through early July."
     });
   }
   
@@ -295,6 +399,78 @@ export const createFallRecommendations = (date: Date): FishingRecommendation[] =
       waterConditions: "Look for water temperatures between 48-58°F. Coho often move into the Willamette system with fall rains, following Columbia River migration patterns.",
       bestTime: "Morning hours, especially after a rain event has increased flows. Peak runs typically occur from mid-September through October based on Columbia River tributary hatchery returns."
     });
+  }
+  
+  // Cowlitz River Fall Chinook
+  if (month >= 8 && month <= 9) { // September and October
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: "Cowlitz River - Mission Bar",
+      tactics: "Back-bouncing eggs or pulling plugs along deeper seams and slots. Focus on current breaks and structure.",
+      bait: "Cured salmon eggs with tuna oil, or K16 Kwikfish in metallic red/copper",
+      waterConditions: "Fall Chinook enter with increasing flows from fall rains. Target water temperatures between 52-62°F.",
+      bestTime: "Early morning and evening hours. Cowlitz Salmon Hatchery reports show peak returns from mid-September through early October."
+    });
+  }
+  
+  // Lewis River Fall Chinook
+  if (month >= 8 && month <= 9 && (date.getDate() % 3 === 0)) { // September and October, every third day
+    recommendations.push({
+      species: "Chinook Salmon (King)",
+      location: "Lewis River - Mouth",
+      tactics: "Trolling with herring near the confluence with the Columbia, or pulling plugs through deeper holes.",
+      bait: "Cut-plug herring with flashers, or K16 Kwikfish with sardine wrap",
+      waterConditions: "Fall Chinook stage at the mouth before moving upstream. Target water temperatures between 52-62°F.",
+      bestTime: "Early morning hours. Lewis River Hatchery returns typically peak in late September."
+    });
+  }
+  
+  // Coho in Cowlitz River
+  if (month >= 9 && month <= 10) { // October and November
+    recommendations.push({
+      species: "Coho Salmon (Silver)",
+      location: "Cowlitz River - Blue Creek",
+      tactics: "Drift fishing with cured eggs or casting spinners in areas with moderate current. Focus on tailouts and current seams.",
+      bait: "Blue/silver or green/silver spinners, or cured eggs with blue dye",
+      waterConditions: "Coho prefer water temperatures between 48-56°F with moderate visibility. Look for slightly stained water after rain events.",
+      bestTime: "Morning hours, especially after rainfall has increased flows. Cowlitz Salmon Hatchery returns typically show peak Coho returns in mid to late October."
+    });
+  }
+  
+  // Coho in Lewis River
+  if (month >= 9 && month <= 10 && (date.getDate() % 3 === 0 || date.getDate() % 3 === 1)) { // October and November, more frequently
+    recommendations.push({
+      species: "Coho Salmon (Silver)",
+      location: "Lewis River - Hatchery",
+      tactics: "Casting spinners or drift fishing with eggs. Focus on current seams and tailouts.",
+      bait: "Blue/silver spinners, or cured eggs with blue dye",
+      waterConditions: "Best fishing when water levels are dropping after a rain event. Target water temperatures between 48-56°F.",
+      bestTime: "Morning hours through mid-day. Lewis River Hatchery typically shows peak Coho returns in mid to late October."
+    });
+  }
+  
+  // Nestucca River Fall Chinook and Coho
+  if (month >= 9 && month <= 10) { // October and November
+    // Alternate between Chinook and Coho based on date
+    if (date.getDate() % 2 === 0) {
+      recommendations.push({
+        species: "Chinook Salmon (King)",
+        location: "Nestucca River - First Bridge",
+        tactics: "Drift fishing with eggs or bobber fishing with prawns. Focus on deeper slots and current breaks.",
+        bait: "Cured salmon eggs with tuna oil, or fresh prawns",
+        waterConditions: "Fall Chinook move upriver with increasing flows from rain events. Target water temperatures between 48-58°F.",
+        bestTime: "Morning hours after rainfall has increased river flows. ODFW fish trap data shows peak returns in early to mid-October."
+      });
+    } else {
+      recommendations.push({
+        species: "Coho Salmon (Silver)",
+        location: "Nestucca River - Three Rivers",
+        tactics: "Casting blue/silver spinners or drift fishing with blue-dyed eggs. Target current seams and tailouts.",
+        bait: "Blue/silver spinners, or cured eggs with blue dye",
+        waterConditions: "Coho prefer water temperatures between 44-54°F with moderate visibility. Best fishing when river is dropping after a rain event.",
+        bestTime: "Morning hours, especially after rainfall. ODFW fish trap returns typically show peak Coho returns in late October through mid-November."
+      });
+    }
   }
   
   return recommendations;
