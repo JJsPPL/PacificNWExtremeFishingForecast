@@ -15,7 +15,8 @@ import {
   StraitTips,
   SanJuanTips,
   CowlitzTips,
-  LewisTips
+  LewisTips,
+  WindTips
 } from "./tips";
 
 interface FeaturedLocationTipsProps {
@@ -48,12 +49,14 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
   const hasSanJuan = locations.some(loc => loc && loc.includes("San Juan"));
   const hasCowlitz = locations.some(loc => loc && loc.includes("Cowlitz"));
   const hasLewis = locations.some(loc => loc && loc.includes("Lewis"));
+  const hasWind = locations.some(loc => loc && loc.includes("Wind"));
+  const hasSequim = locations.some(loc => loc && loc.includes("Sequim"));
   
   // If no featured locations are present, return null
   if (!hasNestucca && !hasColumbia && !hasWillamette && !hasSandy && 
       !hasClackamas && !hasSnake && !hasTillamook && !hasOlympic && 
       !hasWynochee && !hasPugetSound && !hasHoodCanal && !hasStrait && 
-      !hasSanJuan && !hasCowlitz && !hasLewis) return null;
+      !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim) return null;
   
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
@@ -77,6 +80,9 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
         {hasSanJuan && <SanJuanTips />}
         {hasCowlitz && <CowlitzTips />}
         {hasLewis && <LewisTips />}
+        {hasWind && <WindTips />}
+        {/* Add Sequim tips to Strait tips since they're closely related */}
+        {hasSequim && <StraitTips />}
       </div>
     </div>
   );

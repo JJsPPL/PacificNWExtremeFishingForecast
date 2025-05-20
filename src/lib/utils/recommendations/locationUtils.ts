@@ -1,3 +1,4 @@
+
 import { FISHING_LOCATIONS, LOCATION_DETAILS } from "../../constants/fishingLocations";
 
 // Functions for location selection and management
@@ -21,18 +22,21 @@ export const getLocationPool = (species: string, date: Date, month: number): str
                  loc.includes("Trask") ||
                  loc.includes("Wilson") ||
                  loc.includes("Kilchis") ||
-                 loc.includes("Miami"))
+                 loc.includes("Miami") ||
+                 loc.includes("Wind"))
         );
       } else if (date.getDate() % 5 === 1) {
-        // Sometimes focus on Sequim area
+        // Focus on Sequim and San Juan areas
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
-        locationPool = washingtonLocations.filter(loc => loc && loc.includes("Sequim"));
+        locationPool = washingtonLocations.filter(loc => 
+          loc && (loc.includes("Sequim") || loc.includes("San Juan"))
+        );
       } else if (date.getDate() % 5 === 2) {
-        // Sometimes focus on Snake River
+        // Focus on Snake River
         const idahoLocations = FISHING_LOCATIONS.Idaho || [];
         locationPool = idahoLocations.filter(loc => loc && loc.includes("Snake"));
       } else if (date.getDate() % 5 === 3) {
-        // Sometimes focus on Wynochee/Bogachiel system
+        // Focus on Wynochee/Bogachiel system
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
           loc && (loc.includes("Wynochee") || 
@@ -46,39 +50,45 @@ export const getLocationPool = (species: string, date: Date, month: number): str
         const tributaryLocations = washingtonLocations.filter(loc => 
           loc && (loc.includes("Cowlitz") || 
                 loc.includes("Lewis") || 
-                loc.includes("Kalama"))
+                loc.includes("Kalama") ||
+                loc.includes("Wind"))
         );
         
-        // If we have tributary locations, use them; otherwise use general Washington locations
-        locationPool = tributaryLocations.length > 0 ? 
-          [...tributaryLocations] : 
-          [...(washingtonLocations.slice(0, 4) || [])];
+        // Include ALL relevant Columbia tributaries, not just a few
+        locationPool = tributaryLocations;
       }
     } else {
       // In non-summer months, give more weight to river locations
-      const dayMod = date.getDate() % 11; // Changed from 9 to 11 to incorporate more variety
+      const dayMod = date.getDate() % 11;
       
       if (dayMod === 0) {
-        // Focus on Oregon locations
+        // Focus on Oregon locations - Include ALL major Oregon rivers
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         locationPool = oregonLocations.filter(loc => 
           loc && (loc.includes("Nestucca") || 
                  loc.includes("Sandy") || 
                  loc.includes("Willamette") ||
-                 loc.includes("Clackamas"))
+                 loc.includes("Clackamas") ||
+                 loc.includes("Tillamook") ||
+                 loc.includes("Wilson") ||
+                 loc.includes("Trask"))
         );
       } else if (dayMod === 1) {
-        // Focus on Sequim and Olympic Peninsula
+        // Focus on Sequim and San Juan Islands
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
-          loc && (loc.includes("Sequim") || loc === "Bogachiel River - Mouth")
+          loc && (loc.includes("Sequim") || 
+                 loc.includes("San Juan") || 
+                 loc === "Bogachiel River - Mouth")
         );
       } else if (dayMod === 2) {
-        // Focus on Columbia River sections
+        // Focus on Columbia River sections and Wind River
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
-        locationPool = oregonLocations.filter(loc => 
-          loc && loc.includes("Columbia")
-        );
+        const washingtonLocations = FISHING_LOCATIONS.Washington || [];
+        const windLocations = washingtonLocations.filter(loc => loc && loc.includes("Wind"));
+        const columbiaLocations = oregonLocations.filter(loc => loc && loc.includes("Columbia"));
+        
+        locationPool = [...columbiaLocations, ...windLocations];
       } else if (dayMod === 3) {
         // Focus on Snake River
         const idahoLocations = FISHING_LOCATIONS.Idaho || [];
@@ -86,7 +96,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           loc && loc.includes("Snake")
         );
       } else if (dayMod === 4) {
-        // Focus on Tillamook River system
+        // Focus on Tillamook River system - include ALL Tillamook basin rivers
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         locationPool = oregonLocations.filter(loc => 
           loc && (loc.includes("Tillamook") || 
@@ -102,7 +112,7 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           loc && loc.includes("Wynochee")
         );
       } else if (dayMod === 6) {
-        // Focus on Bogachiel/Sol Duc/Calawah system
+        // Focus on Olympic Peninsula rivers
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
           loc && (loc.includes("Bogachiel") || 
@@ -122,24 +132,38 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           loc && loc.includes("Lewis")
         );
       } else if (dayMod === 9) {
-        // Focus specifically on Kalama River system
+        // Focus specifically on Wind River system
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         locationPool = washingtonLocations.filter(loc => 
-          loc && loc.includes("Kalama")
+          loc && loc.includes("Wind")
         );
       } else if (species === "Coho Salmon" || species === "Winter Steelhead") {
-        // Special rivers known for coho and winter steelhead - heavily prioritize tributaries
+        // For Coho and Winter Steelhead - include ALL tributary rivers, not just a selection
         locationPool = [
-          // Cowlitz River system - prominent for Coho and Winter Steelhead
+          // Columbia River
+          "Columbia River - Bonneville Dam",
+          "Columbia River - Astoria", 
+          "Columbia River - Portland",
+          
+          // Cowlitz River system
           "Cowlitz River - Blue Creek",
           "Cowlitz River - Mission Bar",
           "Cowlitz River - Barrier Dam",
           "Cowlitz River - Salmon Hatchery",
+          "Cowlitz River - Trout Hatchery",
           
           // Lewis River system
           "Lewis River - Mouth", 
           "Lewis River - Hatchery",
           "Lewis River - East Fork",
+          "Lewis River - North Fork",
+          "Lewis River - South Fork",
+          
+          // Wind River system
+          "Wind River - Mouth",
+          "Wind River - Shipherd Falls",
+          "Wind River - Trout Creek",
+          "Drano Lake",
           
           // Kalama River
           "Kalama River - Lower",
@@ -156,12 +180,24 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           
           // Oregon systems
           "Sandy River - Oxbow Park",
+          "Sandy River - Cedar Creek",
+          "Sandy River - Revenue Bridge",
+          "Sandy River - Dodge Park",
           "Clackamas River - McIver Park",
+          "Clackamas River - Carver",
+          "Clackamas River - Barton",
           "Willamette River - Falls",
+          
+          // Tillamook system
           "Wilson River - Sollie Smith Bridge",
           "Trask River - Loren's Drift",
           "Kilchis River - Alderbrook",
+          "Tillamook River - Highway 101 Bridge",
+          
+          // Nestucca system
           "Nestucca River - Three Rivers",
+          "Nestucca River - First Bridge",
+          "Nestucca River - Beaver",
           
           // Olympic Peninsula
           "Bogachiel River - Mouth",
@@ -170,14 +206,14 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           "Wynochee River - Black Creek"
         ];
       } else if (species === "Chinook Salmon") {
-        // Special rivers known for Chinook - prioritize Columbia and tributaries
+        // Special rivers known for Chinook - include ALL known Chinook hotspots
         locationPool = [
           // Columbia River
           "Columbia River - Bonneville Dam",
           "Columbia River - Astoria", 
           "Columbia River - Portland",
           
-          // Cowlitz River system - prominent for Chinook
+          // Cowlitz River system
           "Cowlitz River - Blue Creek",
           "Cowlitz River - Mission Bar",
           "Cowlitz River - Barrier Dam",
@@ -185,6 +221,11 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           // Lewis River system
           "Lewis River - Mouth", 
           "Lewis River - Hatchery",
+          "Lewis River - North Fork",
+          
+          // Wind River system
+          "Wind River - Mouth",
+          "Wind River - Shipherd Falls",
           
           // Kalama River
           "Kalama River - Lower",
@@ -194,44 +235,64 @@ export const getLocationPool = (species: string, date: Date, month: number): str
           "Willamette River - Oregon City",
           "Willamette River - Falls",
           "Sandy River - Oxbow Park",
+          "Sandy River - Dodge Park",
+          "Clackamas River - McIver Park",
+          "Clackamas River - Carver",
           "Nestucca River - Three Rivers",
           "Nestucca River - First Bridge",
           
           // Tillamook system
           "Tillamook Bay",
           "Wilson River - Sollie Smith Bridge",
-          "Trask River - Loren's Drift"
+          "Trask River - Loren's Drift",
+          
+          // Sequim/San Juan
+          "Sequim - Dungeness River", 
+          "San Juan Islands - Thatcher Pass",
+          "San Juan Islands - Rosario Strait"
         ];
       } else {
         // Make sure we have valid data before trying to use it
         const oregonLocations = FISHING_LOCATIONS.Oregon || [];
         const washingtonLocations = FISHING_LOCATIONS.Washington || [];
         
-        // Include some tributary rivers specifically
+        // Include ALL tributary rivers, not just a selection
         const tributaryLocations = [
           // Cowlitz River locations
           "Cowlitz River - Blue Creek",
           "Cowlitz River - Mission Bar",
           "Cowlitz River - Barrier Dam",
+          "Cowlitz River - Salmon Hatchery",
           
           // Lewis River locations
           "Lewis River - Mouth",
           "Lewis River - Hatchery",
+          "Lewis River - East Fork",
+          
+          // Wind River locations
+          "Wind River - Mouth",
+          "Wind River - Shipherd Falls",
+          "Wind River - Trout Creek",
           
           // Kalama River locations
           "Kalama River - Lower",
-          "Kalama River - Upper"
+          "Kalama River - Upper",
+          
+          // Nestucca River
+          "Nestucca River - Three Rivers",
+          "Nestucca River - First Bridge",
+          "Nestucca River - Beaver",
+          
+          // Tillamook system
+          "Wilson River - Sollie Smith Bridge",
+          "Trask River - Loren's Drift"
         ];
         
-        locationPool = [
-          ...tributaryLocations,
-          ...(oregonLocations || []),
-          ...(washingtonLocations.length >= 4 ? washingtonLocations.slice(4) : (washingtonLocations || []))
-        ]; // River locations
+        locationPool = tributaryLocations;
       }
     }
   } else if (species === "Halibut") {
-    // Saltwater species - deeper water
+    // Saltwater species - include expanded Puget Sound, Strait, and San Juan locations
     locationPool = [
       "Puget Sound", 
       "Hood Canal", 
@@ -240,11 +301,14 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "Strait of Juan De Fuca - Port Angeles",
       "Strait of Juan De Fuca - Freshwater Bay",
       "San Juan Islands", 
+      "San Juan Islands - Thatcher Pass", 
+      "San Juan Islands - Obstruction Pass", 
+      "San Juan Islands - Rosario Strait",
       "Sequim - Discovery Bay", 
       "Tillamook Bay"
     ];
   } else if (species === "Lingcod" || species === "Rockfish" || species === "Black Sea Bass" || species === "Cabezon") {
-    // Rocky habitat for lingcod and rockfish species
+    // Rocky habitat for lingcod and rockfish species - include expanded San Juan locations
     locationPool = [
       "Puget Sound",
       "Puget Sound - Tacoma Narrows",
@@ -260,6 +324,8 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "San Juan Islands",
       "San Juan Islands - Obstruction Pass",
       "San Juan Islands - Lopez Island",
+      "San Juan Islands - Thatcher Pass",
+      "San Juan Islands - Rosario Strait",
       "Sequim - Washington Harbor"
     ];
   } else if (species.includes("Bass") && !species.includes("Sea")) {
@@ -308,7 +374,8 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "Columbia River Estuary", 
       "Tillamook Bay", 
       "Sequim - Washington Harbor", 
-      "Sequim - Discovery Bay"
+      "Sequim - Discovery Bay",
+      "San Juan Islands"
     ];
   }
   

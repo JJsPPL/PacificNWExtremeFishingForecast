@@ -14,3 +14,5 @@ export * from './strait-tips';
 export * from './sanjuan-tips';
 export * from './cowlitz-tips';
 export * from './lewis-tips';
+export * from './wind-tips';
+
