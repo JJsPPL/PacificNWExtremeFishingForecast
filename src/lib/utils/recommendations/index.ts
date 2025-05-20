@@ -29,7 +29,17 @@ export const generateRecommendations = (
     // Spring
     recommendations.push(...createSpringRecommendations(date));
   } else if (month >= 5 && month <= 7) {
-    // Summer
+    // Summer - good time for tuna fishing off the coast
+    if (date.getDate() % 7 === 0) { // Occasionally recommend tuna in summer
+      recommendations.push({
+        species: "Albacore Tuna",
+        location: date.getDate() % 2 === 0 ? "Oregon Coast - 30-50 miles offshore" : "Washington Coast - 40-60 miles offshore",
+        tactics: "Trolling with cedar plugs and clones at 6-7 knots. Watch for temperature breaks and bird activity.",
+        bait: "Cedar plugs, tuna clones, and live anchovies when available",
+        waterConditions: "Target offshore waters with temperatures between 58-64°F. Look for clean blue water and clear temperature breaks.",
+        bestTime: "Early morning and late afternoon typically produce the best bite."
+      });
+    }
     recommendations.push(...createSummerRecommendations(date));
   } else {
     // Fall

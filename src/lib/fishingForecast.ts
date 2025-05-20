@@ -143,11 +143,19 @@ export const getForecastForDate = (date: Date): FishingForecast => {
   
   // Enhance recommendations with tide-specific information
   const enhancedRecommendations = recommendations.map(rec => {
-    // If species is salmon or steelhead, include tide tactics
-    if (rec.species.includes("Salmon") || rec.species.includes("Steelhead")) {
+    // If Columbia River or Nestucca River locations, provide specific tide tactics
+    if (rec.location && (rec.location.includes("Columbia River") || rec.location.includes("Nestucca River"))) {
       return {
         ...rec,
-        tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results. Focus on current seams and tide rips."
+        tideInfo: "Best fishing on outgoing tides and slack tides when changing from low to high. Focus on current seams and deeper holes."
+      };
+    }
+    // If species is salmon or steelhead (excluding specific rivers with custom tactics)
+    else if ((rec.species.includes("Salmon") || rec.species.includes("Steelhead")) && 
+             !(rec.location && (rec.location.includes("Columbia River") || rec.location.includes("Nestucca River")))) {
+      return {
+        ...rec,
+        tideInfo: "Fish during tide changes with particular attention to current breaks and structure."
       };
     }
     // If species is Lingcod or Rockfish, include tidal information relevant to these species
@@ -157,11 +165,11 @@ export const getForecastForDate = (date: Date): FishingForecast => {
         tideInfo: "Fish during slack tide or moderate current periods for better bottom contact. Target structure during tide changes."
       };
     }
-    // If albacore tuna, include offshore information
+    // If albacore tuna, include specific tide tactics for tuna
     else if (rec.species && rec.species.includes("Tuna")) {
       return {
         ...rec,
-        tideInfo: "Offshore species less affected by tides but affected by current breaks and temperature gradients."
+        tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results."
       };
     }
     return rec;
@@ -179,4 +187,3 @@ export const getForecastForDate = (date: Date): FishingForecast => {
     recommendations: enhancedRecommendations
   };
 };
-

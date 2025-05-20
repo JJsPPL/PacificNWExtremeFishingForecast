@@ -21,7 +21,8 @@ export const PNW_FISH_SPECIES = [
   "Rainbow Trout",
   "Brown Trout",
   "Flounder",
-  "Sole"
+  "Sole",
+  "Albacore Tuna"
 ];
 
 // Extended fishing tactics based on species
@@ -115,6 +116,18 @@ export const FISHING_TACTICS = {
     "Bottom fishing with lamprey",
     "Anchoring in deep holes",
     "Fishing mudlines during tide changes"
+  ],
+  tuna: [
+    "Trolling with cedar plugs",
+    "Live bait fishing with anchovies",
+    "Cast and retrieve with jigs",
+    "Trolling with clones or tuna feathers",
+    "Trolling with spreader bars",
+    "Kite fishing in choppy conditions",
+    "Running and gunning when birds are present",
+    "Slow trolling at 5-7 knots",
+    "Drifting with chunk baits",
+    "Vertical jigging in deeper waters"
   ]
 };
 
@@ -139,5 +152,17 @@ export const FISHING_BAITS = {
   ],
   trout: ["Worms", "Powerbait", "Corn", "Spinners", "Spoons", "Flies", "Eggs", "Mealworms", "Maggots", "Nightcrawlers"],
   bass: ["Soft plastics", "Crankbaits", "Topwater lures", "Spinnerbaits", "Jigs", "Swimbaits", "Frogs", "Crawfish imitations"],
-  sturgeon: ["Smelt", "Sand shrimp", "Lamprey", "Squid", "Herring", "Anchovies", "Salmon eggs", "Crawfish", "Pikeminnow"]
+  sturgeon: ["Smelt", "Sand shrimp", "Lamprey", "Squid", "Herring", "Anchovies", "Salmon eggs", "Crawfish", "Pikeminnow"],
+  tuna: [
+    "Cedar plugs", 
+    "Tuna clones", 
+    "Tuna feathers", 
+    "Live anchovies", 
+    "Spreader bars", 
+    "Swimbaits", 
+    "Metal jigs",
+    "Hoochies",
+    "Chunks of mackerel or herring",
+    "Surface iron jigs"
+  ]
 };
