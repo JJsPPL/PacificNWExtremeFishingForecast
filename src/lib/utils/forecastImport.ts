@@ -1,4 +1,4 @@
-import { FishingForecast, FishingRecommendation, MoonPhase } from '../types/fishingTypes';
+import { FishingForecast, FishingRecommendation, MoonPhase, MoonPosition } from '../types/fishingTypes';
 
 interface ExcelForecastData {
   date: string;
@@ -44,7 +44,7 @@ export const processExcelForecast = async (file: File): Promise<Map<string, Fish
             date: new Date(dateStr),
             rating: convertQualityToRating(rowData.quality),
             moonPhase: convertToMoonPhase(rowData.moonphase),
-            moonRising: determineMoonRising(rowData.moonphase),
+            moonPosition: determineMoonPosition(rowData.moonphase), // Changed from moonRising to moonPosition
             barometricPressure: parseFloat(rowData.barometricpressure) || 29.92,
             pressureTrend: determinePressureTrend(parseFloat(rowData.barometricpressure)),
             recommendations: generateRecommendationsFromData(rowData)
@@ -94,8 +94,20 @@ const convertToMoonPhase = (phase: string): string => {
   return moonPhaseMap[phase.toLowerCase()] || MoonPhase.New;
 };
 
-const determineMoonRising = (phase: string): boolean => {
-  return ['waxing crescent', 'waxing gibbous', 'first quarter'].includes(phase.toLowerCase());
+// Changed from determineMoonRising to determineMoonPosition to match the updated interface
+const determineMoonPosition = (phase: string): string => {
+  // Default to Moon Rising if we can't determine a better position
+  // In a real implementation, this would use time of day and moon phase to determine position
+  const moonPhaseStr = phase.toLowerCase();
+  if (['waxing crescent', 'waxing gibbous', 'first quarter'].includes(moonPhaseStr)) {
+    return MoonPosition.Rising;
+  } else if (['waning crescent', 'waning gibbous', 'last quarter'].includes(moonPhaseStr)) {
+    return MoonPosition.Setting;
+  } else if (moonPhaseStr === 'full') {
+    return MoonPosition.Overhead;
+  } else {
+    return MoonPosition.Underfoot;
+  }
 };
 
 const determinePressureTrend = (pressure: number): string => {
