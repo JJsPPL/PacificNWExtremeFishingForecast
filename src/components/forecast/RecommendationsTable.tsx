@@ -1,4 +1,5 @@
 
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FishingRecommendation } from "@/lib/types/fishingTypes";
 import { Book } from "lucide-react";
@@ -70,3 +71,4 @@ export const RecommendationsTable = ({ recommendations }: RecommendationsTablePr
     </Table>
   );
 };
+

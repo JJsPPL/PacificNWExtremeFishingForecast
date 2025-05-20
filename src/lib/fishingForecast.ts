@@ -143,28 +143,25 @@ export const getForecastForDate = (date: Date): FishingForecast => {
   
   // Enhance recommendations with tide-specific information
   const enhancedRecommendations = recommendations.map(rec => {
-    // If species is salmon or steelhead, include tide tactics from Saltwater Fishing Journal
+    // If species is salmon or steelhead, include tide tactics
     if (rec.species.includes("Salmon") || rec.species.includes("Steelhead")) {
       return {
         ...rec,
-        tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results. Focus on current seams and tide rips.",
-        bookReference: "Saltwater Fishing Journal, 6th Ed. - John Martinis"
+        tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results. Focus on current seams and tide rips."
       };
     }
     // If species is Lingcod or Rockfish, include tidal information relevant to these species
     else if (rec.species === "Lingcod" || rec.species === "Rockfish") {
       return {
         ...rec,
-        tideInfo: "Fish during slack tide or moderate current periods for better bottom contact. Target structure during tide changes.",
-        bookReference: "Saltwater Fishing Journal, 6th Ed. - John Martinis"
+        tideInfo: "Fish during slack tide or moderate current periods for better bottom contact. Target structure during tide changes."
       };
     }
-    // If albacore tuna, reference the Dark Side book
+    // If albacore tuna, include offshore information
     else if (rec.species && rec.species.includes("Tuna")) {
       return {
         ...rec,
-        tideInfo: "Offshore species less affected by tides but affected by current breaks and temperature gradients.",
-        bookReference: "The Dark Side: One Man's Journey to the 125 Line and Back - Del Stephens"
+        tideInfo: "Offshore species less affected by tides but affected by current breaks and temperature gradients."
       };
     }
     return rec;
@@ -182,3 +179,4 @@ export const getForecastForDate = (date: Date): FishingForecast => {
     recommendations: enhancedRecommendations
   };
 };
+
