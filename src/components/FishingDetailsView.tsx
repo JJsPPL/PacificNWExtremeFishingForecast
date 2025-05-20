@@ -1,7 +1,7 @@
 
 import { format, addDays, subDays } from "date-fns";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Wind, ArrowLeft, ArrowRight } from "lucide-react";
+import { Moon, Wind, ArrowLeft, ArrowRight, Anchor } from "lucide-react";
 import { getForecastForDate } from "@/lib/fishingForecast";
 import { RatingStars } from "./ratings/RatingStars";
 import { ForecastFactorCard } from "./forecast/ForecastFactorCard";
@@ -124,7 +124,7 @@ export const FishingDetailsView = ({
             icon={<Moon className="h-5 w-5 text-indigo-500" />}
             title="Moon Phase"
             value={forecast.moonPhase}
-            detail={`${forecast.moonRising ? "Moon Rising" : "Moon Setting"}`}
+            detail={`${forecast.moonPosition}`}
           />
           <ForecastFactorCard 
             icon={<Wind className="h-5 w-5 text-blue-500" />}
@@ -133,6 +133,30 @@ export const FishingDetailsView = ({
             detail={`${forecast.pressureTrend}`}
           />
         </div>
+
+        {/* New tide information section */}
+        {forecast.tideData && (
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-3">Tide Information</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <ForecastFactorCard 
+                icon={<Anchor className="h-5 w-5 text-teal-500" />}
+                title="Tide Status"
+                value={forecast.tideData.currentDirection || "Not Available"}
+                detail={`High: ${forecast.tideData.highTide || "N/A"}, Low: ${forecast.tideData.lowTide || "N/A"}`}
+              />
+              
+              {forecast.salmonRunStatus && (
+                <div className="sm:col-span-2">
+                  <div className="p-3 border rounded-md">
+                    <h4 className="text-sm font-medium text-muted-foreground">Salmon Run Status</h4>
+                    <p className="text-base font-medium">{forecast.salmonRunStatus}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <h3 className="text-lg font-medium mb-3">
           {filteredRecommendations.length < forecast.recommendations.length 

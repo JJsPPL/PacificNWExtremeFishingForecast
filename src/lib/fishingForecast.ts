@@ -1,6 +1,6 @@
 
 import { addDays, format, isSameDay } from "date-fns";
-import { FishingForecast, FishingRecommendation, MoonPhase } from "./types/fishingTypes";
+import { FishingForecast, FishingRecommendation, MoonPhase, MoonPosition, TideState } from "./types/fishingTypes";
 import { generateRecommendations } from "./utils/recommendations";
 
 // Generate mock data for a fishing forecast
@@ -47,11 +47,23 @@ export const getForecastForDate = (date: Date): FishingForecast => {
     moonBonus += 15; // Three days leading to first quarter
   }
   
-  // Determine if moon is rising (simplified)
+  // Determine moon position (more detailed than just rising)
   const hourOfDay = date.getHours();
-  const moonRising = hourOfDay >= 12 && hourOfDay <= 24; // Simplification: moon rises in evening
-  if (moonRising) {
-    moonBonus += 10; // Bonus for moon rising
+  let moonPosition: string;
+  
+  if (hourOfDay >= 11 && hourOfDay <= 13) {
+    moonPosition = MoonPosition.Overhead;
+  } else if (hourOfDay >= 0 && hourOfDay <= 2) {
+    moonPosition = MoonPosition.Underfoot;
+  } else if (hourOfDay >= 6 && hourOfDay <= 10) {
+    moonPosition = MoonPosition.Rising;
+  } else {
+    moonPosition = MoonPosition.Setting;
+  }
+  
+  // Apply moon position bonuses
+  if (moonPosition === MoonPosition.Overhead || moonPosition === MoonPosition.Underfoot) {
+    moonBonus += 15; // Peak feeding times according to solunar theory
   }
   
   // Calculate barometric pressure (simplified simulation)
@@ -99,17 +111,74 @@ export const getForecastForDate = (date: Date): FishingForecast => {
   
   // Ensure rating is between 0-100
   rating = Math.max(0, Math.min(100, rating));
+
+  // Generate tide data based on the date
+  // This is a simplified model - in reality, would be based on actual tide tables
+  const tideHour = (date.getHours() + date.getDate()) % 12;
+  let tideData = {
+    highTide: `${(tideHour + 2) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'}`,
+    lowTide: `${(tideHour + 8) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
+    slackTide: `${(tideHour + 5) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'} & ${(tideHour + 11) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
+    currentDirection: tideHour < 6 ? TideState.IncomingTide : TideState.OutgoingTide
+  };
+
+  // Generate salmon run status based on month
+  let salmonRunStatus: string;
+  if (month === 4 || month === 5) { // May-June
+    salmonRunStatus = "Spring Chinook runs active in Columbia River and tributaries. Counts increasing at Bonneville Dam.";
+  } else if (month === 6 || month === 7) { // July-August
+    salmonRunStatus = "Summer Chinook and Sockeye runs at peak. Coho beginning to stage in estuaries.";
+  } else if (month >= 8 && month <= 10) { // September-November
+    salmonRunStatus = "Fall Chinook and Coho runs active throughout river systems. Strong returns reported in Cowlitz and Lewis Rivers.";
+  } else if (month === 11 || month === 0) { // December-January
+    salmonRunStatus = "Late Fall Chinook tapering off. Winter steelhead beginning their run into coastal streams.";
+  } else if (month === 1 || month === 2) { // February-March
+    salmonRunStatus = "Winter steelhead at peak run. Early Spring Chinook beginning to enter lower Columbia.";
+  } else {
+    salmonRunStatus = "Pre-season preparation. Check WDFW and ODFW hatchery reports for pre-season forecasts.";
+  }
   
   // Generate recommendations based on season, location, and conditions
   const recommendations = generateRecommendations(date, rating, moonPhase, barometricPressure);
+  
+  // Enhance recommendations with tide-specific information
+  const enhancedRecommendations = recommendations.map(rec => {
+    // If species is salmon or steelhead, include tide tactics from Saltwater Fishing Journal
+    if (rec.species.includes("Salmon") || rec.species.includes("Steelhead")) {
+      return {
+        ...rec,
+        tideInfo: "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results. Focus on current seams and tide rips.",
+        bookReference: "Saltwater Fishing Journal, 6th Ed. - John Martinis"
+      };
+    }
+    // If species is Lingcod or Rockfish, include tidal information relevant to these species
+    else if (rec.species === "Lingcod" || rec.species === "Rockfish") {
+      return {
+        ...rec,
+        tideInfo: "Fish during slack tide or moderate current periods for better bottom contact. Target structure during tide changes.",
+        bookReference: "Saltwater Fishing Journal, 6th Ed. - John Martinis"
+      };
+    }
+    // If albacore tuna, reference the Dark Side book
+    else if (rec.species && rec.species.includes("Tuna")) {
+      return {
+        ...rec,
+        tideInfo: "Offshore species less affected by tides but affected by current breaks and temperature gradients.",
+        bookReference: "The Dark Side: One Man's Journey to the 125 Line and Back - Del Stephens"
+      };
+    }
+    return rec;
+  });
   
   return {
     date,
     rating: Math.round(rating),
     moonPhase,
-    moonRising,
+    moonPosition,
     barometricPressure,
     pressureTrend,
-    recommendations
+    tideData,
+    salmonRunStatus,
+    recommendations: enhancedRecommendations
   };
 };

@@ -1,6 +1,7 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FishingRecommendation } from "@/lib/types/fishingTypes";
+import { Book } from "lucide-react";
 
 interface RecommendationsTableProps {
   recommendations: FishingRecommendation[];
@@ -35,6 +36,17 @@ export const RecommendationsTable = ({ recommendations }: RecommendationsTablePr
               {rec.bait && (
                 <div className="text-xs text-muted-foreground mt-1">
                   <span className="font-medium">Recommended bait: </span>{rec.bait}
+                </div>
+              )}
+              {rec.tideInfo && (
+                <div className="text-xs text-muted-foreground mt-1">
+                  <span className="font-medium">Tide tactics: </span>{rec.tideInfo}
+                </div>
+              )}
+              {rec.bookReference && (
+                <div className="text-xs flex items-center text-blue-600 dark:text-blue-400 mt-1">
+                  <Book className="h-3 w-3 mr-1" />
+                  <span>{rec.bookReference}</span>
                 </div>
               )}
             </TableCell>
