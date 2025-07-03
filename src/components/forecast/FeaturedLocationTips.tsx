@@ -16,14 +16,16 @@ import {
   SanJuanTips,
   CowlitzTips,
   LewisTips,
-  WindTips
+  WindTips,
+  SockeyeTips
 } from "./tips";
 
 interface FeaturedLocationTipsProps {
   locations: string[];
+  species?: string[];
 }
 
-export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) => {
+export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocationTipsProps) => {
   const hasNestucca = locations.some(loc => loc && loc.includes("Nestucca"));
   const hasColumbia = locations.some(loc => loc && loc.includes("Columbia"));
   const hasWillamette = locations.some(loc => loc && loc.includes("Willamette"));
@@ -51,12 +53,13 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
   const hasLewis = locations.some(loc => loc && loc.includes("Lewis"));
   const hasWind = locations.some(loc => loc && loc.includes("Wind"));
   const hasSequim = locations.some(loc => loc && loc.includes("Sequim"));
+  const hasSockeye = species.some(sp => sp && sp.includes("Sockeye"));
   
   // If no featured locations are present, return null
   if (!hasNestucca && !hasColumbia && !hasWillamette && !hasSandy && 
       !hasClackamas && !hasSnake && !hasTillamook && !hasOlympic && 
       !hasWynochee && !hasPugetSound && !hasHoodCanal && !hasStrait && 
-      !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim) return null;
+      !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim && !hasSockeye) return null;
   
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
@@ -83,6 +86,7 @@ export const FeaturedLocationTips = ({ locations }: FeaturedLocationTipsProps) =
         {hasWind && <WindTips />}
         {/* Add Sequim tips to Strait tips since they're closely related */}
         {hasSequim && <StraitTips />}
+        {hasSockeye && <SockeyeTips />}
       </div>
     </div>
   );

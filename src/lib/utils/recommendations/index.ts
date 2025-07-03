@@ -101,11 +101,23 @@ export const generateRecommendations = (
       });
     }
     
-    // Add Columbia-specific summer Chinook recommendation
-    if (month === 6 && (date.getDate() % 3 === 0)) { // July, occasional recommendation
+    // Add Sockeye Salmon recommendation - peak summer run in Columbia River system
+    if (month === 6 && (date.getDate() % 2 === 0)) { // July, frequent recommendation for current Sockeye run
+      recommendations.push({
+        species: "Sockeye Salmon (Red)",
+        location: "Columbia River - Bonneville Dam",
+        tactics: "Trolling with small spoons and hoochies, or drift fishing with flies near dam structures",
+        bait: "Red/pink hoochies, silver spoons, or cured roe with red dye",
+        waterConditions: "Sockeye prefer cooler water temperatures (55-62°F). Target areas near current breaks and dam structures where fish stage.",
+        bestTime: "Early morning hours. Current Bonneville Dam counts show strong Sockeye passage during July as part of the summer Columbia River run."
+      });
+    }
+    
+    // Add Columbia-specific summer Chinook recommendation (different timing to avoid duplicates)
+    if (month === 6 && (date.getDate() % 3 === 1)) { // July, different modulo to prevent overlap
       recommendations.push({
         species: "Chinook Salmon (King)",
-        location: "Columbia River - Bonneville Dam",
+        location: "Columbia River - Below Bonneville Dam",
         tactics: "Trolling with flashers and herring in deeper channels, or pulling plugs along current seams",
         bait: "Herring with red/chartreuse flashers, K16 Kwikfish, or large spinners",
         waterConditions: "Target deeper holding water with temperatures between 58-64°F. Focus on current seams and structure.",
@@ -114,7 +126,7 @@ export const generateRecommendations = (
     }
     
     // Add Cowlitz-specific summer steelhead recommendation
-    if (month === 6 && (date.getDate() % 4 === 0)) { // July, occasional recommendation
+    if (month === 6 && (date.getDate() % 5 === 0)) { // July, different modulo to prevent overlap
       recommendations.push({
         species: "Steelhead",
         location: "Cowlitz River - Blue Creek",
@@ -236,5 +248,10 @@ export const generateRecommendations = (
     });
   }
   
-  return recommendations;
+  // Remove duplicates based on species + location combination
+  const uniqueRecommendations = recommendations.filter((rec, index, self) => 
+    index === self.findIndex(r => r.species === rec.species && r.location === rec.location)
+  );
+  
+  return uniqueRecommendations;
 };

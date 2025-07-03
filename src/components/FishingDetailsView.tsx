@@ -169,6 +169,7 @@ export const FishingDetailsView = ({
         {/* Tips for featured Oregon locations */}
         <FeaturedLocationTips 
           locations={filteredRecommendations.map(rec => rec.location)}
+          species={filteredRecommendations.map(rec => rec.species)}
         />
       </CardContent>
     </Card>
