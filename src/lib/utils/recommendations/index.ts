@@ -21,20 +21,22 @@ export const generateRecommendations = (
   // Seasonal species availability
   let availableSpecies: string[] = getSeasonalSpecies(month);
   
-  // Priority species order (based on provided importance)
+  // Priority species order (based on user requirements: Salmon > Steelhead > Sturgeon > Tuna > Halibut > Others)
   const priorityOrder: { [key: string]: number } = {
     "Chinook Salmon (King)": 1,
     "Coho Salmon (Silver)": 2,
-    "Chum Salmon (Dog)": 3,
-    "Pink Salmon (Humpy)": 4,
-    "Sockeye Salmon (Red)": 5,
+    "Sockeye Salmon (Red)": 3,
+    "Chum Salmon (Dog)": 4,
+    "Pink Salmon (Humpy)": 5,
     "Steelhead": 6,
-    "Albacore Tuna": 7,
-    "Halibut": 8,
-    "Sturgeon": 9,
-    "Lingcod": 10,
-    "Black Sea Bass": 11,
-    "Rockfish": 12
+    "Sturgeon": 7,
+    "Albacore Tuna": 8,
+    "Halibut": 9,
+    "Lingcod": 20,
+    "Black Sea Bass": 30,
+    "Rockfish": 40,
+    "Smallmouth Bass": 50,
+    "Rainbow Trout": 25
   };
   
   // Sort species by priority
