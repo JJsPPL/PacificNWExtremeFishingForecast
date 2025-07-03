@@ -48,9 +48,45 @@ export const generateRecommendations = (
   if (month === 11 || month === 0 || month === 1) {
     // Winter
     recommendations.push(...createWinterRecommendations(date));
+    
+    // Add Sturgeon recommendation - winter/spring is peak season
+    if ((month === 1 || month === 0) && (date.getDate() % 3 === 0)) { // January-February
+      recommendations.push({
+        species: "Sturgeon",
+        location: "Columbia River - Below Bonneville Dam",
+        tactics: "Anchor fishing with heavy sinkers. Use circle hooks and be prepared for long fights.",
+        bait: "Sand shrimp, salmon eggs, anchovies, or sardines",
+        waterConditions: "Target deeper holes and channels with moderate to strong current. Sturgeon prefer water temperatures between 45-55°F.",
+        bestTime: "Incoming tides typically produce the best action. Check regulations for current retention rules."
+      });
+    }
   } else if (month >= 2 && month <= 4) {
     // Spring
     recommendations.push(...createSpringRecommendations(date));
+    
+    // Add Spring Trout recommendation
+    if ((month === 2 || month === 3) && (date.getDate() % 4 === 0)) { // March-April
+      recommendations.push({
+        species: "Rainbow Trout",
+        location: "Clackamas River - Carver",
+        tactics: "Drift fishing with eggs or casting spinners in deeper pools. Focus on current seams and drop-offs.",
+        bait: "Cured salmon eggs, small spinners, or PowerBait in deeper holes",
+        waterConditions: "Spring trout fishing is best with water temperatures between 45-58°F and moderate visibility.",
+        bestTime: "Early morning through late morning. Spring conditions often provide excellent trout fishing."
+      });
+    }
+    
+    // Add Spring Sturgeon recommendation - continuation from winter
+    if (month === 2 && (date.getDate() % 3 === 1)) { // March
+      recommendations.push({
+        species: "Sturgeon",
+        location: "Columbia River - Portland",
+        tactics: "Anchor fishing with heavy sinkers in deeper holes. Target areas with strong current.",
+        bait: "Sand shrimp, salmon eggs, anchovies, or sardines",
+        waterConditions: "Target deeper holes and channels with moderate to strong current. Spring sturgeon prefer water temperatures between 48-58°F.",
+        bestTime: "Incoming tides typically produce the best action. Spring is peak time for keeper-sized sturgeon."
+      });
+    }
     
     // Add Columbia-specific spring Chinook recommendation when hatchery counts are peaking
     if (month === 3 && date.getDate() > 10) { // April = peak spring Chinook
@@ -113,27 +149,27 @@ export const generateRecommendations = (
       });
     }
     
-    // Add Columbia-specific summer Chinook recommendation (different timing to avoid duplicates)
-    if (month === 6 && (date.getDate() % 3 === 1)) { // July, different modulo to prevent overlap
+    // Add Pink Salmon recommendation - odd years have massive runs (2025 is odd year)
+    if (month === 6 && date.getFullYear() % 2 === 1 && (date.getDate() % 3 === 0)) { // July, odd years only
       recommendations.push({
-        species: "Chinook Salmon (King)",
-        location: "Columbia River - Below Bonneville Dam",
-        tactics: "Trolling with flashers and herring in deeper channels, or pulling plugs along current seams",
-        bait: "Herring with red/chartreuse flashers, K16 Kwikfish, or large spinners",
-        waterConditions: "Target deeper holding water with temperatures between 58-64°F. Focus on current seams and structure.",
-        bestTime: "Early morning hours. Bonneville Dam counts show peak summer Chinook passage from mid-June through July."
+        species: "Pink Salmon (Humpy)",
+        location: "Puget Sound - Edmonds",
+        tactics: "Small spinners, spoons, or pink hoochies. Fish near structure and current edges.",
+        bait: "Pink hoochies, small silver spoons, or size 2-3 spinners in pink/silver",
+        waterConditions: "Pink salmon prefer saltwater temperatures between 52-60°F. Target areas with good current flow and structure.",
+        bestTime: "Early morning and evening hours. Pink salmon runs peak in odd years with massive numbers entering Puget Sound."
       });
     }
     
-    // Add Cowlitz-specific summer steelhead recommendation
-    if (month === 6 && (date.getDate() % 5 === 0)) { // July, different modulo to prevent overlap
+    // Add Halibut recommendation - summer ocean fishing
+    if ((month === 5 || month === 6) && (date.getDate() % 4 === 0)) { // June-July
       recommendations.push({
-        species: "Steelhead",
-        location: "Cowlitz River - Blue Creek",
-        tactics: "Cast spinners upstream and retrieve through runs, or drift jigs under a float",
-        bait: "Size 4 or 5 spinners in silver/blue, or pink/chartreuse jigs under a float",
-        waterConditions: "Summer steelhead prefer moderate flows with water temperatures between 52-62°F.",
-        bestTime: "Early morning hours when water temperatures are coolest. Cowlitz Salmon Hatchery shows peak summer steelhead returns in late June through July."
+        species: "Halibut",
+        location: "Oregon Coast - 20-40 miles offshore",
+        tactics: "Bottom fishing with heavy sinkers and circle hooks. Target sandy/muddy bottoms near underwater structure.",
+        bait: "Whole salmon heads, large herring, or octopus",
+        waterConditions: "Target depths of 100-300 feet over sandy bottoms. Look for areas with good current flow and baitfish activity.",
+        bestTime: "All day fishing can be productive, but early morning often produces the best bite for larger fish."
       });
     }
     
@@ -141,6 +177,18 @@ export const generateRecommendations = (
   } else {
     // Fall
     recommendations.push(...createFallRecommendations(date));
+    
+    // Add Chum Salmon recommendation - fall run
+    if (month === 9 && (date.getDate() % 3 === 0)) { // October
+      recommendations.push({
+        species: "Chum Salmon (Dog)",
+        location: "Puget Sound - Edmonds",
+        tactics: "Cast spinners or drift with flies near creek mouths and spawning areas",
+        bait: "Small spinners in silver/green, or fly patterns that mimic small baitfish",
+        waterConditions: "Chum prefer water temperatures between 45-55°F. Target areas near freshwater inflows and spawning tributaries.",
+        bestTime: "Early morning and evening hours. Chum runs peak in October with fish staging near spawning areas."
+      });
+    }
     
     // Add fall Coho recommendation for Columbia River system based on tributary counts
     if (month === 9 && date.getDate() > 10) { // October - peak of Coho migration

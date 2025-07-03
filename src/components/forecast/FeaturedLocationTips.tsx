@@ -17,7 +17,12 @@ import {
   CowlitzTips,
   LewisTips,
   WindTips,
-  SockeyeTips
+  SockeyeTips,
+  PinkSalmonTips,
+  ChumSalmonTips,
+  SturgeonTips,
+  HalibutTips,
+  TroutTips
 } from "./tips";
 
 interface FeaturedLocationTipsProps {
@@ -54,12 +59,19 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
   const hasWind = locations.some(loc => loc && loc.includes("Wind"));
   const hasSequim = locations.some(loc => loc && loc.includes("Sequim"));
   const hasSockeye = species.some(sp => sp && sp.includes("Sockeye"));
+  const hasPinkSalmon = species.some(sp => sp && sp.includes("Pink"));
+  const hasChumSalmon = species.some(sp => sp && sp.includes("Chum"));
+  const hasSturgeon = species.some(sp => sp && sp.includes("Sturgeon"));
+  const hasHalibut = species.some(sp => sp && sp.includes("Halibut"));
+  const hasTrout = species.some(sp => sp && sp.includes("Trout"));
   
-  // If no featured locations are present, return null
+  // If no featured locations or species are present, return null
   if (!hasNestucca && !hasColumbia && !hasWillamette && !hasSandy && 
       !hasClackamas && !hasSnake && !hasTillamook && !hasOlympic && 
       !hasWynochee && !hasPugetSound && !hasHoodCanal && !hasStrait && 
-      !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim && !hasSockeye) return null;
+      !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim && 
+      !hasSockeye && !hasPinkSalmon && !hasChumSalmon && !hasSturgeon && 
+      !hasHalibut && !hasTrout) return null;
   
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
@@ -87,6 +99,11 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
         {/* Add Sequim tips to Strait tips since they're closely related */}
         {hasSequim && <StraitTips />}
         {hasSockeye && <SockeyeTips />}
+        {hasPinkSalmon && <PinkSalmonTips />}
+        {hasChumSalmon && <ChumSalmonTips />}
+        {hasSturgeon && <SturgeonTips />}
+        {hasHalibut && <HalibutTips />}
+        {hasTrout && <TroutTips />}
       </div>
     </div>
   );

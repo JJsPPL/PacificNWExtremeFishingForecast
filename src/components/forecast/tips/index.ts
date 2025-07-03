@@ -16,4 +16,9 @@ export * from './cowlitz-tips';
 export * from './lewis-tips';
 export * from './wind-tips';
 export * from './sockeye-tips';
+export * from './pink-salmon-tips';
+export * from './chum-salmon-tips';
+export * from './sturgeon-tips';
+export * from './halibut-tips';
+export * from './trout-tips';
 
