@@ -125,6 +125,18 @@ export const generateRecommendations = (
         bestTime: "Early morning hours. Cowlitz Salmon Hatchery data shows peak returns in mid to late April."
       });
     }
+    
+    // Add current summer steelhead runs - Cowlitz River system (July 2025 data)
+    if (month === 6 && (date.getDate() % 3 === 2)) { // July summer steelhead
+      recommendations.push({
+        species: "Steelhead",
+        location: "Cowlitz River - Blue Creek",
+        tactics: "Drift fishing with cured eggs or casting spinners in deeper holes. Focus on current seams and structure.",
+        bait: "Cured salmon eggs, blue/silver or green/silver spinners, small spoons",
+        waterConditions: "Current conditions: 2,340 CFS flow, 12-foot visibility, 53.6°F water temp. Excellent summer steelhead conditions.",
+        bestTime: "Early morning through late morning. Tacoma Power reports 407 summer steelhead collected at separator in recent week - strong run timing."
+      });
+    }
   } else if (month >= 5 && month <= 7) {
     // Summer - good time for tuna fishing off the coast
     if (date.getDate() % 4 <= 2) { // More frequently recommend tuna in summer (75% of days)
@@ -139,15 +151,27 @@ export const generateRecommendations = (
       });
     }
     
-    // Add Sockeye Salmon recommendation - peak summer run in Columbia River system
-    if (month === 6 && (date.getDate() % 2 === 0)) { // July, frequent recommendation for current Sockeye run
+    // Add Sockeye Salmon recommendation - Current strong runs in Columbia River system (July 2025 data)
+    if (month === 6 && (date.getDate() % 2 === 0)) { // July, frequent recommendation for current strong Sockeye run
       recommendations.push({
         species: "Sockeye Salmon (Red)",
         location: "Columbia River - Bonneville Dam",
-        tactics: "Trolling with small spoons and hoochies, or drift fishing with flies near dam structures",
-        bait: "Red/pink hoochies, silver spoons, or cured roe with red dye",
-        waterConditions: "Sockeye prefer cooler water temperatures (55-62°F). Target areas near current breaks and dam structures where fish stage.",
-        bestTime: "Early morning hours. Current Bonneville Dam counts show strong Sockeye passage during July as part of the summer Columbia River run."
+        tactics: "Trolling with small spoons and hoochies, or drift fishing with flies near dam structures. Target current breaks below spillway.",
+        bait: "Red/pink hoochies, silver/blue spoons, or cured roe with red dye. Small presentations are key for Sockeye.",
+        waterConditions: "Sockeye prefer cooler water temperatures (55-62°F). Target areas near current breaks and dam structures where fish stage. Water visibility 8-12 feet ideal.",
+        bestTime: "Early morning hours when water temps are coolest. Current Bonneville Dam counts show 122-388 Sockeye daily passage in July 2025, indicating strong summer run timing."
+      });
+    }
+    
+    // Add strong Columbia River Sockeye runs at upper dams - peak summer migration
+    if (month === 6 && (date.getDate() % 3 === 1)) { // July, Rock Island/Wanapum areas
+      recommendations.push({
+        species: "Sockeye Salmon (Red)",
+        location: "Columbia River - Rock Island Dam area",
+        tactics: "Trolling with small spoons and spinners in deeper water near dam tailraces. Focus on morning and evening bites.",
+        bait: "Small silver/blue spoons, red hoochies, or sockeye flies. Match natural salmon fry colors.",
+        waterConditions: "Target deeper pools with good current flow. Sockeye are schooling fish - when you find one, there are usually more nearby.",
+        bestTime: "Early morning prime time. Current Rock Island Dam counts show 400-978 Sockeye daily in July 2025 - exceptional numbers for summer run."
       });
     }
     
@@ -213,6 +237,18 @@ export const generateRecommendations = (
         bait: "Blue/silver or green/silver spinners, or cured eggs with blue dye",
         waterConditions: "Coho prefer water temperatures between 48-56°F with moderate visibility.",
         bestTime: "Morning hours, especially after rainfall has increased flows. Cowlitz Salmon Hatchery shows peak Coho returns in mid to late October."
+      });
+    }
+    
+    // Add current Columbia River steelhead fishing - strong summer runs (July 2025 data)
+    if (month === 6 && (date.getDate() % 4 === 3)) { // July steelhead opportunities
+      recommendations.push({
+        species: "Steelhead", 
+        location: "Columbia River - Section 8 (Longview area)",
+        tactics: "Bank fishing with spinners and drift fishing with eggs near current breaks. Boat trolling also productive.",
+        bait: "Blue/silver or chartreuse spinners, cured eggs, or small spoons",
+        waterConditions: "Target areas with moderate current and structure. Steelhead are actively feeding in the mainstem.",
+        bestTime: "Early morning and evening hours most productive. Current creel surveys show consistent steelhead retention in Section 8 with 11 fish kept by 27 boats on recent survey day."
       });
     }
   }
