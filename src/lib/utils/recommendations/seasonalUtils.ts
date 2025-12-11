@@ -70,11 +70,12 @@ export const getSeasonalSpecies = (month: number): string[] => {
   return species;
 };
 
-// Create winter recommendations
+// Create winter recommendations (December 2025 - updated regulations)
 export const createWinterRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
+  const month = date.getMonth();
   
-  // Winter steelhead recommendations
+  // Winter steelhead recommendations - WDFW 2025-26 season (Dec 1 - March 31)
   recommendations.push({
     species: "Steelhead",
     location: "Sandy River - Oxbow Park",
@@ -84,20 +85,59 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
     bestTime: "Mid-day when water temperatures have risen slightly is often best in winter."
   });
   
-  // Winter steelhead recommendations for Cowlitz River
-  if (date.getDate() % 5 === 0 || date.getDate() % 5 === 1) { // More frequent representation
+  // Washington Coastal Steelhead - 2025-26 Season (Dec 1 - March 31)
+  // Humptulips closes Feb 2, Chehalis closes Feb 16 per WDFW Nov 26, 2025 announcement
+  if (date.getDate() % 5 === 0 || date.getDate() % 5 === 1) {
     recommendations.push({
       species: "Steelhead",
       location: "Cowlitz River - Blue Creek",
       tactics: "Drift fish with cured eggs or corky and yarn. Target inside seams and tailouts of deeper holes.",
       bait: "Cured salmon eggs with shrimp oil, or pink/orange yarn with scent",
       waterConditions: "Best fishing during moderate flows of 4,000-8,000 cfs. Check Mayfield Dam releases for current conditions.",
-      bestTime: "Early morning and late afternoon produce best results. Check WDFW hatchery returns for run timing."
+      bestTime: "Early morning and late afternoon. 2025-26 coastal steelhead season runs Dec 1 - March 31."
     });
   }
   
-  // Winter steelhead recommendations for Lewis River
-  if (date.getDate() % 5 === 2 || date.getDate() % 5 === 3) { // More frequent representation
+  // Chehalis River system - open until Feb 16, 2026 per WDFW regulations
+  if (date.getDate() % 5 === 2) {
+    recommendations.push({
+      species: "Steelhead",
+      location: "Chehalis River - Porter",
+      tactics: "Drift fishing with eggs or jigs under a float. Focus on deeper slots and current seams.",
+      bait: "Cured eggs, pink/orange jigs, or beads under a float",
+      waterConditions: "Best with 2-4 feet visibility and moderate flows. Winter steelhead staging in lower river reaches.",
+      bestTime: "Mid-morning through early afternoon. Note: Chehalis system closes to steelhead Feb 16, 2026 per WDFW emergency rules."
+    });
+  }
+  
+  // Humptulips River - open until Feb 2, 2026 per WDFW regulations
+  if (month === 11 || (month === 0 && date.getDate() <= 31) || (month === 1 && date.getDate() <= 2)) {
+    if (date.getDate() % 6 === 3) {
+      recommendations.push({
+        species: "Steelhead",
+        location: "Humptulips River",
+        tactics: "Drift fishing with eggs or floating jigs in deeper runs. Target inside seams and tailouts.",
+        bait: "Cured salmon eggs, pink/cerise jigs under float, or yarn balls",
+        waterConditions: "Best during moderate winter flows with slight color. Target water temps between 38-45°F.",
+        bestTime: "Mid-day hours when water has warmed slightly. Note: Humptulips closes to steelhead Feb 2, 2026 per WDFW emergency rules."
+      });
+    }
+  }
+  
+  // Wynoochee River winter steelhead
+  if (date.getDate() % 5 === 4) {
+    recommendations.push({
+      species: "Steelhead",
+      location: "Wynoochee River - Dam Access",
+      tactics: "Drift fishing with eggs or swing flies through deeper runs. Focus on tailouts and current seams below dam.",
+      bait: "Cured eggs, beads, or steelhead flies in purple/pink",
+      waterConditions: "Dam-controlled flows provide consistent conditions. Best with 2-4 feet visibility.",
+      bestTime: "Mid-morning through mid-afternoon. Dec 1 - March 31 season per WDFW 2025-26 regulations."
+    });
+  }
+  
+  // Lewis River winter steelhead
+  if (date.getDate() % 5 === 2 || date.getDate() % 5 === 3) {
     recommendations.push({
       species: "Steelhead",
       location: "Lewis River - Hatchery",
@@ -108,19 +148,32 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
     });
   }
   
-  // Winter steelhead recommendations for Nestucca River
-  if (date.getDate() % 5 === 4 || date.getDate() % 4 === 0) { // More frequent representation
+  // Nestucca River winter steelhead - Oregon regulation update Dec 1-31: closed to Chinook
+  if (date.getDate() % 5 === 4 || date.getDate() % 4 === 0) {
     recommendations.push({
       species: "Steelhead",
       location: "Nestucca River - Three Rivers",
       tactics: "Drift fishing with yarn or beads, or swing flies through deeper runs. Focus on inside seams and tailouts.",
       bait: "Pink or orange yarn balls, beads, or egg patterns",
       waterConditions: "Best action during dropping flows after a rain event. Look for water with slight green tint and 2-4 feet of visibility.",
-      bestTime: "Mid-day hours when water temperatures have risen slightly."
+      bestTime: "Mid-day hours when water temperatures have risen slightly. Note: Chinook salmon closed Dec 1-31 per ODFW regulations."
     });
   }
   
-  // Sturgeon recommendations
+  // Tillamook Bay rivers winter steelhead - Oregon regulation update Dec 1-31: closed to Chinook  
+  if (date.getDate() % 6 === 1) {
+    recommendations.push({
+      species: "Steelhead",
+      location: "Wilson River - Mills Bridge",
+      tactics: "Drift fishing with eggs or jigs under a float. Target deeper holes and current seams.",
+      bait: "Cured salmon eggs, pink/cerise jigs, or yarn balls",
+      waterConditions: "Best during moderate flows with 2-4 feet visibility after rain.",
+      bestTime: "Mid-morning through early afternoon. Note: All Tillamook rivers closed to Chinook Dec 1-31 per ODFW regulations."
+    });
+  }
+  
+  // Sturgeon recommendations - winter/spring prime season
+  // 2026 Columbia River sturgeon season updates: delayed openers in Bonneville/The Dalles pools
   if (date.getDate() % 3 === 0) {
     recommendations.push({
       species: "Sturgeon",
@@ -129,6 +182,18 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
       bait: "Smelt, sand shrimp, or pickled herring",
       waterConditions: "Winter concentrations of sturgeon in the lower Willamette can be excellent, especially in deep holes with 15-40 feet of water.",
       bestTime: "Incoming tide during mid-day hours when water temperature is highest"
+    });
+  }
+  
+  // John Day Pool sturgeon - opens Jan 1, 2026 per ODFW regulations
+  if (month === 11 && date.getDate() % 4 === 2) {
+    recommendations.push({
+      species: "Sturgeon",
+      location: "Columbia River - John Day Dam",
+      tactics: "Anchor fishing with heavy tackle in deeper water. Focus on main channel and deep holes.",
+      bait: "Smelt, sand shrimp, salmon heads, or pickled herring",
+      waterConditions: "Target 30-60 foot depths in main channel with moderate current.",
+      bestTime: "Mid-day on incoming tide. Note: John Day Pool retention opens Jan 1, 2026 - 43-54 inch fork length legal size per ODFW."
     });
   }
   

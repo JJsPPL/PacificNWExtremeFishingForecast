@@ -23,7 +23,8 @@ import {
   ChumSalmonTips,
   SturgeonTips,
   HalibutTips,
-  TroutTips
+  TroutTips,
+  WinterSteelheadTips
 } from "./tips";
 
 interface FeaturedLocationTipsProps {
@@ -59,6 +60,8 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
   const hasLewis = locations.some(loc => loc && loc.includes("Lewis"));
   const hasWind = locations.some(loc => loc && loc.includes("Wind"));
   const hasSequim = locations.some(loc => loc && loc.includes("Sequim"));
+  const hasChehalis = locations.some(loc => loc && loc.includes("Chehalis"));
+  const hasHumptulips = locations.some(loc => loc && loc.includes("Humptulips"));
   const hasSockeye = species.some(sp => sp && sp.includes("Sockeye"));
   const hasSummerChinook = species.some(sp => sp && sp.includes("Chinook"));
   const hasPinkSalmon = species.some(sp => sp && sp.includes("Pink"));
@@ -66,14 +69,20 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
   const hasSturgeon = species.some(sp => sp && sp.includes("Sturgeon"));
   const hasHalibut = species.some(sp => sp && sp.includes("Halibut"));
   const hasTrout = species.some(sp => sp && sp.includes("Trout"));
+  const hasSteelhead = species.some(sp => sp && sp.includes("Steelhead"));
+  
+  // Check current month for seasonal tips
+  const currentMonth = new Date().getMonth();
+  const isWinterSeason = currentMonth === 11 || currentMonth === 0 || currentMonth === 1 || currentMonth === 2;
   
   // If no featured locations or species are present, return null
   if (!hasNestucca && !hasColumbia && !hasWillamette && !hasSandy && 
       !hasClackamas && !hasSnake && !hasTillamook && !hasOlympic && 
       !hasWynochee && !hasPugetSound && !hasHoodCanal && !hasStrait && 
       !hasSanJuan && !hasCowlitz && !hasLewis && !hasWind && !hasSequim && 
+      !hasChehalis && !hasHumptulips &&
       !hasSockeye && !hasSummerChinook && !hasPinkSalmon && !hasChumSalmon && 
-      !hasSturgeon && !hasHalibut && !hasTrout) return null;
+      !hasSturgeon && !hasHalibut && !hasTrout && !hasSteelhead) return null;
   
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
@@ -82,6 +91,8 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
         Featured Location Tips
       </h4>
       <div className="mt-2 space-y-3">
+        {/* Show winter steelhead tips during Dec-March when steelhead is featured */}
+        {isWinterSeason && hasSteelhead && <WinterSteelheadTips />}
         {hasNestucca && <NestuccaTips />}
         {hasColumbia && <ColumbiaTips />}
         {hasWillamette && <WillametteTips />}
