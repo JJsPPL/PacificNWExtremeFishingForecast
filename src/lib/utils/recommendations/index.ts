@@ -48,10 +48,14 @@ export const generateRecommendations = (
   
   // Add seasonal-specific recommendations
   if (month === 11 || month === 0 || month === 1) {
-    // Winter
+    // Winter (December-February) - 2025-26 coastal steelhead season active
     recommendations.push(...createWinterRecommendations(date));
     
+    // December 2025 specific: Oregon coastal rivers closed to Chinook salmon
+    // Tillamook, Nestucca, Nehalem, Necanicum per ODFW Dec 1, 2025 regulations
+    
     // Add Sturgeon recommendation - winter/spring is peak season
+    // Note: 2026 Columbia River sturgeon delayed openers in Bonneville/The Dalles pools per ODFW
     if ((month === 1 || month === 0) && (date.getDate() % 3 === 0)) { // January-February
       recommendations.push({
         species: "Sturgeon",
@@ -59,7 +63,19 @@ export const generateRecommendations = (
         tactics: "Anchor fishing with heavy sinkers. Use circle hooks and be prepared for long fights.",
         bait: "Sand shrimp, salmon eggs, anchovies, or sardines",
         waterConditions: "Target deeper holes and channels with moderate to strong current. Sturgeon prefer water temperatures between 45-55°F.",
-        bestTime: "Incoming tides typically produce the best action. Check regulations for current retention rules."
+        bestTime: "Incoming tides. Note: 2026 sturgeon retention fisheries have delayed openers - check ODFW for current status."
+      });
+    }
+    
+    // Late season Coho - Columbia Zone open through December per ODFW
+    if (month === 11 && (date.getDate() % 4 === 1)) {
+      recommendations.push({
+        species: "Coho Salmon (Silver)",
+        location: "Columbia River - Buoy 10 to Tongue Point",
+        tactics: "Trolling with spinners or herring. Wild coho must be released per current regulations.",
+        bait: "Green/blue spinners, herring with green flashers",
+        waterConditions: "Late-season Coho available in lower Columbia. Target water temps 45-52°F.",
+        bestTime: "Early morning hours. Check ODFW regulation updates for current bag limits and open areas."
       });
     }
   } else if (month >= 2 && month <= 4) {

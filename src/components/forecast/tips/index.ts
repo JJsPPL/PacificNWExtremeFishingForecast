@@ -22,4 +22,5 @@ export * from './chum-salmon-tips';
 export * from './sturgeon-tips';
 export * from './halibut-tips';
 export * from './trout-tips';
+export * from './winter-steelhead-tips';
 
