@@ -109,6 +109,24 @@ export const getForecastForDate = (date: Date): FishingForecast => {
     rating -= 5;
   }
   
+  // 2026 DROUGHT ADJUSTMENT: Apply rating penalty based on historic patterns
+  // Similar to 2001, 2015, 2021 when precipitation was 50% of normal
+  const currentYear = date.getFullYear();
+  if (currentYear >= 2026) {
+    // Winter steelhead season - moderate impact (fish concentrated but harder to catch)
+    if (month >= 11 || month <= 3) {
+      rating -= 8; // 8-point penalty for low, clear water conditions
+    }
+    // Summer - severe impact expected (heat stress, potential closures)
+    if (month >= 5 && month <= 8) {
+      rating -= 15; // Significant penalty - similar to 2015 conditions
+    }
+    // Fall salmon - delayed runs expected
+    if (month >= 8 && month <= 10) {
+      rating -= 10; // Salmon staging in estuaries longer, waiting for rain
+    }
+  }
+  
   // Ensure rating is between 0-100
   rating = Math.max(0, Math.min(100, rating));
 
