@@ -48,14 +48,14 @@ export const generateRecommendations = (
   
   // Add seasonal-specific recommendations
   if (month === 11 || month === 0 || month === 1) {
-    // Winter (December-February) - 2025-26 coastal steelhead season active
+    // Winter (December-February) - coastal steelhead season active
     recommendations.push(...createWinterRecommendations(date));
-    
-    // December 2025 specific: Oregon coastal rivers closed to Chinook salmon
-    // Tillamook, Nestucca, Nehalem, Necanicum per ODFW Dec 1, 2025 regulations
-    
+
+    // December specific: Oregon coastal rivers closed to Chinook salmon
+    // Tillamook, Nestucca, Nehalem, Necanicum per ODFW Dec 1 regulations
+
     // Add Sturgeon recommendation - winter/spring is peak season
-    // Note: 2026 Columbia River sturgeon delayed openers in Bonneville/The Dalles pools per ODFW
+    // Note: Columbia River sturgeon delayed openers in Bonneville/The Dalles pools per ODFW
     if ((month === 1 || month === 0) && (date.getDate() % 3 === 0)) { // January-February
       recommendations.push({
         species: "Sturgeon",
@@ -63,7 +63,7 @@ export const generateRecommendations = (
         tactics: "Anchor fishing with heavy sinkers. Use circle hooks and be prepared for long fights.",
         bait: "Sand shrimp, salmon eggs, anchovies, or sardines",
         waterConditions: "Target deeper holes and channels with moderate to strong current. Sturgeon prefer water temperatures between 45-55°F.",
-        bestTime: "Incoming tides. Note: 2026 sturgeon retention fisheries have delayed openers - check ODFW for current status."
+        bestTime: "Incoming tides. Note: sturgeon retention fisheries have delayed openers - check ODFW for current status."
       });
     }
     
@@ -142,7 +142,7 @@ export const generateRecommendations = (
       });
     }
     
-    // Add current summer steelhead runs - Cowlitz River system (July 2025 data)
+    // Add current summer steelhead runs - Cowlitz River system
     if (month === 6 && (date.getDate() % 3 === 2)) { // July summer steelhead
       recommendations.push({
         species: "Steelhead",
@@ -167,7 +167,7 @@ export const generateRecommendations = (
       });
     }
     
-    // Add Sockeye Salmon recommendation - Current strong runs in Columbia River system (July 2025 data)
+    // Add Sockeye Salmon recommendation - Current strong runs in Columbia River system
     if (month === 6 && (date.getDate() % 2 === 0)) { // July, frequent recommendation for current strong Sockeye run
       recommendations.push({
         species: "Sockeye Salmon (Red)",
@@ -175,7 +175,7 @@ export const generateRecommendations = (
         tactics: "Trolling with small spoons and hoochies, or drift fishing with flies near dam structures. Target current breaks below spillway.",
         bait: "Red/pink hoochies, silver/blue spoons, or cured roe with red dye. Small presentations are key for Sockeye.",
         waterConditions: "Sockeye prefer cooler water temperatures (55-62°F). Target areas near current breaks and dam structures where fish stage. Water visibility 8-12 feet ideal.",
-        bestTime: "Early morning hours when water temps are coolest. Current Bonneville Dam counts show 122-388 Sockeye daily passage in July 2025, indicating strong summer run timing."
+        bestTime: "Early morning hours when water temps are coolest. Current Bonneville Dam counts show 122-388 Sockeye daily passage, indicating strong summer run timing."
       });
     }
     
@@ -187,11 +187,11 @@ export const generateRecommendations = (
         tactics: "Trolling with small spoons and spinners in deeper water near dam tailraces. Focus on morning and evening bites.",
         bait: "Small silver/blue spoons, red hoochies, or sockeye flies. Match natural salmon fry colors.",
         waterConditions: "Target deeper pools with good current flow. Sockeye are schooling fish - when you find one, there are usually more nearby.",
-        bestTime: "Early morning prime time. Current Rock Island Dam counts show 400-978 Sockeye daily in July 2025 - exceptional numbers for summer run."
+        bestTime: "Early morning prime time. Current Rock Island Dam counts show 400-978 Sockeye daily - exceptional numbers for summer run."
       });
     }
     
-    // Add Pink Salmon recommendation - odd years have massive runs (2025 is odd year)
+    // Add Pink Salmon recommendation - odd years have massive runs
     if (month === 6 && date.getFullYear() % 2 === 1 && (date.getDate() % 3 === 0)) { // July, odd years only
       recommendations.push({
         species: "Pink Salmon (Humpy)",
@@ -256,7 +256,7 @@ export const generateRecommendations = (
       });
     }
     
-    // Add current Columbia River steelhead fishing - strong summer runs (July 2025 data)
+    // Add current Columbia River steelhead fishing - strong summer runs
     if (month === 6 && (date.getDate() % 4 === 3)) { // July steelhead opportunities
       recommendations.push({
         species: "Steelhead", 

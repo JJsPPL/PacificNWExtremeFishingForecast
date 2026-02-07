@@ -98,8 +98,8 @@ export const WASHINGTON_RIVER_SEASONS = {
   }
 };
 
-// 2026 Columbia River Salmon Run Forecasts (latest data)
-export const SALMON_RUN_FORECASTS_2026 = {
+// Columbia River Salmon Run Forecasts (latest data)
+export const SALMON_RUN_FORECASTS = {
   "Columbia River": {
     "Spring Chinook": {
       totalForecast: 222300,
@@ -171,12 +171,12 @@ export const OREGON_HOTSPOTS = {
     "The Gorge section offers excellent smallmouth bass fishing",
     "Sturgeon fishing is productive year-round, with seasonal retention periods",
     "Tributary mouths concentrate fish during migration periods",
-    "2026 Spring Chinook forecast: 222,300 total (147,300 upriver) - strong season expected",
+    "Spring Chinook forecast: 222,300 total (147,300 upriver) - strong season expected",
     "Fall Chinook 2025: 717,400-736,200 forecast, above 2024 actual of 669,505"
   ],
   "Cowlitz River": [
     "Premier SW Washington salmon and steelhead river",
-    "2026 Spring Chinook forecast: 9,300 to mouth of Columbia",
+    "Spring Chinook forecast: 9,300 to mouth of Columbia",
     "Blue Creek, Mission Bar, and Barrier Dam are top fishing access points",
     "Hatchery steelhead releases from Cowlitz Salmon Hatchery and Trout Hatchery",
     "Winter steelhead peak December through February"
@@ -204,14 +204,14 @@ export const OREGON_HOTSPOTS = {
   ]
 };
 
-// WDFW/ODFW Regulation Highlights for 2025-2026
+// WDFW/ODFW Regulation Highlights
 export const REGULATION_HIGHLIGHTS = {
   "Columbia River": [
     "Fall Chinook/Coho: Opens Aug 1 (Buoy 10 to Hwy 395 Bridge)",
     "Spring Chinook: Season announced separately based on run forecasts",
     "Steelhead: Restrictions apply throughout - check current emergency rules",
     "Sturgeon: Seasonal retention periods vary by section",
-    "2026 Willamette: No two-rod endorsement (hatchery forecast below 34,000 threshold)"
+    "Willamette: No two-rod endorsement (hatchery forecast below 34,000 threshold)"
   ],
   "Puget Sound": [
     "Pink salmon: +2 extra to daily limit in inner marine areas through Sept 30",

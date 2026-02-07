@@ -1,6 +1,7 @@
 
 import { FishingRecommendation } from "../../types/fishingTypes";
 import { willametteRiverLocations } from "../../constants/locations/oregon/willamette";
+import { getSeasonLabel, getCurrentYear } from "../dateUtils";
 
 // Get species availability based on month (0-11)
 export const getSeasonalSpecies = (month: number): string[] => {
@@ -85,12 +86,14 @@ export const getSeasonalSpecies = (month: number): string[] => {
   return species;
 };
 
-// Create winter recommendations (December 2025 - updated regulations)
+// Create winter recommendations (updated regulations)
 export const createWinterRecommendations = (date: Date): FishingRecommendation[] => {
   const recommendations: FishingRecommendation[] = [];
   const month = date.getMonth();
+  const seasonLabel = getSeasonLabel();
+  const year = getCurrentYear();
 
-  // Winter steelhead recommendations - WDFW 2025-26 season (Dec 1 - March 31)
+  // Winter steelhead recommendations - WDFW season (Dec 1 - March 31)
   recommendations.push({
     species: "Steelhead",
     location: "Sandy River - Oxbow Park",
@@ -100,8 +103,8 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
     bestTime: "Mid-day when water temperatures have risen slightly is often best in winter."
   });
 
-  // Washington Coastal Steelhead - 2025-26 Season (Dec 1 - March 31)
-  // Humptulips closes Feb 2, Chehalis closes Feb 16 per WDFW Nov 26, 2025 announcement
+  // Washington Coastal Steelhead - current season (Dec 1 - March 31)
+  // Humptulips closes Feb 2, Chehalis closes Feb 16 per WDFW announcement
   if (date.getDate() % 5 === 0 || date.getDate() % 5 === 1) {
     recommendations.push({
       species: "Steelhead",
@@ -109,11 +112,11 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
       tactics: "Drift fish with cured eggs or corky and yarn. Target inside seams and tailouts of deeper holes.",
       bait: "Cured salmon eggs with shrimp oil, or pink/orange yarn with scent",
       waterConditions: "Best fishing during moderate flows of 4,000-8,000 cfs. Check Mayfield Dam releases for current conditions.",
-      bestTime: "Early morning and late afternoon. 2025-26 coastal steelhead season runs Dec 1 - March 31."
+      bestTime: `Early morning and late afternoon. ${seasonLabel} coastal steelhead season runs Dec 1 - March 31.`
     });
   }
 
-  // Chehalis River system - open until Feb 16, 2026 per WDFW regulations
+  // Chehalis River system - open until Feb 16 per WDFW regulations
   if (date.getDate() % 5 === 2) {
     recommendations.push({
       species: "Steelhead",
@@ -121,11 +124,11 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
       tactics: "Drift fishing with eggs or jigs under a float. Focus on deeper slots and current seams.",
       bait: "Cured eggs, pink/orange jigs, or beads under a float",
       waterConditions: "Best with 2-4 feet visibility and moderate flows. Winter steelhead staging in lower river reaches.",
-      bestTime: "Mid-morning through early afternoon. Note: Chehalis system closes to steelhead Feb 16, 2026 per WDFW emergency rules."
+      bestTime: "Mid-morning through early afternoon. Note: Chehalis system closes to steelhead Feb 16 per WDFW emergency rules."
     });
   }
 
-  // Humptulips River - open until Feb 2, 2026 per WDFW regulations
+  // Humptulips River - open until Feb 2 per WDFW regulations
   if (month === 11 || (month === 0 && date.getDate() <= 31) || (month === 1 && date.getDate() <= 2)) {
     if (date.getDate() % 6 === 3) {
       recommendations.push({
@@ -134,7 +137,7 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
         tactics: "Drift fishing with eggs or floating jigs in deeper runs. Target inside seams and tailouts.",
         bait: "Cured salmon eggs, pink/cerise jigs under float, or yarn balls",
         waterConditions: "Best during moderate winter flows with slight color. Target water temps between 38-45\u00B0F.",
-        bestTime: "Mid-day hours when water has warmed slightly. Note: Humptulips closes to steelhead Feb 2, 2026 per WDFW emergency rules."
+        bestTime: "Mid-day hours when water has warmed slightly. Note: Humptulips closes to steelhead Feb 2 per WDFW emergency rules."
       });
     }
   }
@@ -147,7 +150,7 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
       tactics: "Drift fishing with eggs or swing flies through deeper runs. Focus on tailouts and current seams below dam.",
       bait: "Cured eggs, beads, or steelhead flies in purple/pink",
       waterConditions: "Dam-controlled flows provide consistent conditions. Best with 2-4 feet visibility.",
-      bestTime: "Mid-morning through mid-afternoon. Dec 1 - March 31 season per WDFW 2025-26 regulations."
+      bestTime: `Mid-morning through mid-afternoon. Dec 1 - March 31 season per WDFW ${seasonLabel} regulations.`
     });
   }
 
@@ -188,7 +191,7 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
   }
 
   // Sturgeon recommendations - winter/spring prime season
-  // 2026 Columbia River sturgeon season updates: delayed openers in Bonneville/The Dalles pools
+  // Columbia River sturgeon season updates: delayed openers in Bonneville/The Dalles pools
   if (date.getDate() % 3 === 0) {
     recommendations.push({
       species: "Sturgeon",
@@ -200,7 +203,7 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
     });
   }
 
-  // John Day Pool sturgeon - opens Jan 1, 2026 per ODFW regulations
+  // John Day Pool sturgeon - opens Jan 1 per ODFW regulations
   if (month === 11 && date.getDate() % 4 === 2) {
     recommendations.push({
       species: "Sturgeon",
@@ -208,7 +211,7 @@ export const createWinterRecommendations = (date: Date): FishingRecommendation[]
       tactics: "Anchor fishing with heavy tackle in deeper water. Focus on main channel and deep holes.",
       bait: "Smelt, sand shrimp, salmon heads, or pickled herring",
       waterConditions: "Target 30-60 foot depths in main channel with moderate current.",
-      bestTime: "Mid-day on incoming tide. Note: John Day Pool retention opens Jan 1, 2026 - 43-54 inch fork length legal size per ODFW."
+      bestTime: `Mid-day on incoming tide. Note: John Day Pool retention opens Jan 1 - 43-54 inch fork length legal size per ODFW.`
     });
   }
 

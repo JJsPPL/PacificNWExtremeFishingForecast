@@ -1,11 +1,14 @@
-import { Fish } from "lucide-react";
+import { isOddYear, getCurrentYear } from "@/lib/utils/dateUtils";
 
 export const PinkSalmonTips = () => {
+  const year = getCurrentYear();
+  const oddYear = isOddYear();
+
   return (
     <div>
       <h5 className="text-sm font-medium">Pink Salmon (Humpy) Insider Tips:</h5>
       <ul className="text-xs mt-1 ml-4 list-disc space-y-1">
-        <li>2025 is an odd year - expect massive Pink salmon runs in Puget Sound</li>
+        <li>{year} is {oddYear ? "an odd year - expect massive Pink salmon runs in Puget Sound" : "an even year - Pink salmon runs will be minimal (they return in odd years)"}</li>
         <li>Peak runs typically occur from mid-July through August</li>
         <li>Use small lures - Pink salmon have smaller mouths than other salmon</li>
         <li>Pink and silver colors are most effective</li>

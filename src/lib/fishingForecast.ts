@@ -5,6 +5,7 @@ import { generateRecommendations } from "./utils/recommendations";
 import { fetchPressureData, fetchWeatherData, type PressureData, type WeatherData } from "./api/weatherApi";
 import { getMoonData, getMoonFishingScore, type MoonData } from "./api/moonApi";
 import { calculateFishingScore, type FishingScore } from "./api/fishingScoreEngine";
+import { IS_DROUGHT_YEAR } from "./utils/recommendations/conditionUtils";
 
 // Cache for live data to avoid redundant API calls
 let cachedPressure: { data: PressureData; timestamp: number } | null = null;
@@ -102,12 +103,11 @@ function buildForecast(
     moonPosition = MoonPosition.Setting;
   }
 
-  // 2026 DROUGHT ADJUSTMENT: Apply rating penalty based on historic patterns
+  // DROUGHT ADJUSTMENT: Apply rating penalty based on historic patterns
   // Similar to 2001, 2015, 2021 when precipitation was 50% of normal
   const month = date.getMonth();
   let droughtAdjustedRating = score.total;
-  const currentYear = date.getFullYear();
-  if (currentYear >= 2026) {
+  if (IS_DROUGHT_YEAR) {
     // Winter steelhead season - moderate impact (fish concentrated but harder to catch)
     if (month >= 11 || month <= 3) {
       droughtAdjustedRating -= 8; // 8-point penalty for low, clear water conditions

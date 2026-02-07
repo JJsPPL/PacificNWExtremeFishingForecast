@@ -10,7 +10,7 @@ export interface FishingRecommendation {
   waterConditions?: string;
   bestTime?: string;
   speciesScore?: number; // Species-specific fishing score 0-100
-  runForecast?: string; // Salmon run forecast data for 2026
+  runForecast?: string; // Salmon run forecast data for current year
   tideInfo?: string;  // Added tide information
   bookReference?: string;  // Added for book references
 }

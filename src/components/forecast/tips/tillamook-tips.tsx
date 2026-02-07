@@ -1,12 +1,14 @@
 
-import React from 'react';
+import { getCurrentMonthYearShort } from "@/lib/utils/dateUtils";
 
 export const TillamookTips = () => {
+  const monthYear = getCurrentMonthYearShort();
+
   return (
     <div className="space-y-2">
-      <h5 className="font-semibold text-sm">Tillamook River System Tips (Updated Dec 2025):</h5>
+      <h5 className="font-semibold text-sm">Tillamook River System Tips (Updated {monthYear}):</h5>
       <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-        <li><strong>Dec 2025 Regulation:</strong> ALL Tillamook rivers CLOSED to Chinook salmon Dec 1-31 per ODFW. Steelhead fishing open.</li>
+        <li><strong>{monthYear} Regulation:</strong> ALL Tillamook rivers CLOSED to Chinook salmon Dec 1-31 per ODFW. Steelhead fishing open.</li>
         <li>The Tillamook River system includes five major rivers: Tillamook, Trask, Wilson, Kilchis, and Miami.</li>
         <li>Winter steelhead are available from December through March, with peak activity in January.</li>
         <li>The Wilson and Trask Rivers are considered the premier steelhead fisheries in the system.</li>

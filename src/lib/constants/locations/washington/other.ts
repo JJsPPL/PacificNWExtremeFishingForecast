@@ -495,7 +495,7 @@ export const otherLocationDetails = {
     waterType: "River",
     accessType: "Public",
     regulations: "Check WDFW regulations. Flaming Geyser and other state parks.",
-    notes: "Major pink salmon river (odd years, 2025 forecast: 1.8M). Chinook, coho, chum, steelhead."
+    notes: "Major pink salmon river (odd years). Chinook, coho, chum, steelhead."
   },
   "Puyallup River": {
     waterType: "River",

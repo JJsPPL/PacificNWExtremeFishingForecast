@@ -1,9 +1,10 @@
 
 import { LOCATION_DETAILS } from "../../constants/fishingLocations";
+import { getCurrentYear } from "../dateUtils";
 
-// 2025-26 DROUGHT ALERT: Pacific Northwest experiencing 50% below normal precipitation
+// DROUGHT ALERT: Pacific Northwest experiencing 50% below normal precipitation
 // Based on historic drought years (2001, 2015, 2021) with similar conditions
-const DROUGHT_YEAR_2026 = true;
+export const IS_DROUGHT_YEAR = true;
 const DROUGHT_SEVERITY = 0.50; // 50% of normal precipitation
 
 // Get drought impact modifier based on location and species
@@ -27,14 +28,14 @@ export const getDroughtImpact = (location: string | undefined, month: number): {
       return {
         impactLevel: 'moderate',
         ratingModifier: -10,
-        description: '⚠️ 2026 DROUGHT ALERT: Rivers running 40-60% below normal winter flows (similar to 2015). Low, clear water conditions require stealth tactics.',
+        description: `⚠️ ${getCurrentYear()} DROUGHT ALERT: Rivers running 40-60% below normal winter flows (similar to 2015). Low, clear water conditions require stealth tactics.`,
         tactics: 'Downsize to 6-8lb fluorocarbon leaders, use smaller 1/8oz jigs, fish early morning/late evening, target "broken water" (riffles, tailouts) where fish feel secure.'
       };
     } else if (isDamControlled) {
       return {
         impactLevel: 'minimal',
         ratingModifier: -5,
-        description: '2026 Drought Impact: Dam-controlled flows providing more stable conditions than rain-dependent rivers. Check dam release schedules.',
+        description: `${getCurrentYear()} Drought Impact: Dam-controlled flows providing more stable conditions than rain-dependent rivers. Check dam release schedules.`,
         tactics: 'Standard winter presentations work, but lighter leaders (8-10lb) recommended in clearer water.'
       };
     }
@@ -46,7 +47,7 @@ export const getDroughtImpact = (location: string | undefined, month: number): {
       return {
         impactLevel: 'severe',
         ratingModifier: -20,
-        description: '🔴 2026 DROUGHT CRITICAL: Historic low flows expected similar to 2015. Water temps may exceed 68°F. Emergency closures possible. Fish mortality risk.',
+        description: `🔴 ${getCurrentYear()} DROUGHT CRITICAL: Historic low flows expected similar to 2015. Water temps may exceed 68°F. Emergency closures possible. Fish mortality risk.`,
         tactics: 'Avoid fishing when water temps >65°F. Fish only before 9AM. Release fish quickly. Consider coastal ocean fishing as alternative.'
       };
     }
@@ -57,7 +58,7 @@ export const getDroughtImpact = (location: string | undefined, month: number): {
     return {
       impactLevel: 'moderate',
       ratingModifier: -12,
-      description: '⚠️ 2026 Drought Impact: Fall salmon runs likely delayed 2-4 weeks waiting for rain. Fish staging in lower rivers and estuaries longer.',
+      description: `⚠️ ${getCurrentYear()} Drought Impact: Fall salmon runs likely delayed 2-4 weeks waiting for rain. Fish staging in lower rivers and estuaries longer.`,
       tactics: 'Target estuary and lower river sections. Salmon concentrated in deeper, cooler pools. Watch for first significant rain events to trigger migration.'
     };
   }
@@ -103,18 +104,19 @@ export const generateWaterConditions = (location: string | undefined, month: num
   // Get the location details if they exist
   const locationDetail = location ? (LOCATION_DETAILS[location as keyof typeof LOCATION_DETAILS]) : undefined;
   
-  // Check drought impact for 2026
+  // Check drought impact for current year
   const droughtImpact = getDroughtImpact(location, month);
+  const year = getCurrentYear();
   
   let waterConditions: string;
   
   if (location && location.includes("River") && (month < 5 || month > 8)) {
-    // Winter 2025-26 drought conditions - significantly lower flows
-    const conditions = DROUGHT_YEAR_2026 ? [
-      `⚠️ DROUGHT 2026: River at 40-50% normal winter flow. Crystal clear water with 4-6+ feet visibility. Water temps 38-42°F. Stealth approach critical.`,
+    // Winter drought conditions - significantly lower flows
+    const conditions = IS_DROUGHT_YEAR ? [
+      `⚠️ DROUGHT ${year}: River at 40-50% normal winter flow. Crystal clear water with 4-6+ feet visibility. Water temps 38-42°F. Stealth approach critical.`,
       `LOW WATER ALERT: Flows 50-60% of average. 3-5 feet visibility with gin-clear pools. Use lighter 6-8lb leaders and natural colors.`,
       `DROUGHT CONDITIONS: River running low and clear. Fish holding in deeper pockets and "broken water" (riffles/tailouts). Early AM/late PM best.`,
-      `2026 SNOW DROUGHT: Below-normal snowpack = sustained low flows. Fish concentrated in limited holding water. Downsize presentations.`
+      `${year} SNOW DROUGHT: Below-normal snowpack = sustained low flows. Fish concentrated in limited holding water. Downsize presentations.`
     ] : [
       `Water levels fluctuating with rainfall, typically 42-46°F in winter months. Focus on periods of dropping water levels after rain.`,
       `Slightly off-color water with 1-3 feet visibility. Cold water temperatures between 38-44°F require slower presentations.`,
@@ -124,7 +126,7 @@ export const generateWaterConditions = (location: string | undefined, month: num
     waterConditions = conditions[(date.getDate() * 1) % conditions.length];
     
     // Add drought tactics if applicable
-    if (DROUGHT_YEAR_2026 && droughtImpact.impactLevel !== 'minimal') {
+    if (IS_DROUGHT_YEAR && droughtImpact.impactLevel !== 'minimal') {
       waterConditions += ` ${droughtImpact.tactics}`;
     }
     
@@ -144,9 +146,9 @@ export const generateWaterConditions = (location: string | undefined, month: num
     waterConditions = conditions[(date.getDate() * 2) % conditions.length];
   } else {
     // Default conditions with drought consideration
-    if (DROUGHT_YEAR_2026) {
-      waterConditions = date.getDate() % 2 === 0 ? 
-        "2026 DROUGHT: Clear water with very low flow (50% normal). Water temps 44-52°F. Fish holding in limited structure. Downsize gear and use natural presentations." : 
+    if (IS_DROUGHT_YEAR) {
+      waterConditions = date.getDate() % 2 === 0 ?
+        `${year} DROUGHT: Clear water with very low flow (50% normal). Water temps 44-52°F. Fish holding in limited structure. Downsize gear and use natural presentations.` :
         "LOW WATER CONDITIONS: Gin-clear water despite recent weather. Target deeper holding water and broken water areas. Light leaders (6-8lb) essential.";
     } else {
       waterConditions = date.getDate() % 2 === 0 ? 
@@ -167,8 +169,8 @@ export const generateWaterConditions = (location: string | undefined, month: num
 export const getBestTimeRecommendation = (date: Date): string => {
   const month = date.getMonth();
   
-  // 2026 Drought-specific timing recommendations
-  if (DROUGHT_YEAR_2026) {
+  // Drought-specific timing recommendations
+  if (IS_DROUGHT_YEAR) {
     const droughtBestTimes = [
       "🌅 DROUGHT TIP: Fish first light (30 min before sunrise to 2 hrs after). Low, clear water makes fish spooky in bright light.", 
       "🌙 LOW WATER: Late afternoon/evening (3 hrs before sunset). Fish feed more aggressively as light diminishes.",

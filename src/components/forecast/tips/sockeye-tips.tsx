@@ -1,12 +1,15 @@
-import { Fish } from "lucide-react";
+import { getCurrentMonthYear, getCurrentMonthYearShort } from "@/lib/utils/dateUtils";
 
 export const SockeyeTips = () => {
+  const monthYear = getCurrentMonthYear();
+  const monthYearShort = getCurrentMonthYearShort();
+
   return (
     <div>
-      <h5 className="text-sm font-medium">Sockeye Salmon Insider Tips (July 2025 Update):</h5>
+      <h5 className="text-sm font-medium">Sockeye Salmon Insider Tips ({monthYear} Update):</h5>
       <ul className="text-xs mt-1 ml-4 list-disc space-y-1">
-        <li>STRONG RUNS: Rock Island Dam showing 400-978 Sockeye daily (July 2025) - exceptional numbers</li>
-        <li>Bonneville Dam counts: 122-388 Sockeye daily passage in July - peak summer timing</li>
+        <li>STRONG RUNS: Rock Island Dam showing 400-978 Sockeye daily ({monthYearShort}) - exceptional numbers</li>
+        <li>Bonneville Dam counts: 122-388 Sockeye daily passage - peak summer timing</li>
         <li>Upper Columbia dams (Wanapum, Priest Rapids) also showing excellent counts</li>
         <li>Target areas near dam tailraces where fish stage before continuing upstream</li>
         <li>Use smaller presentations - Sockeye have smaller mouths than Chinook salmon</li>

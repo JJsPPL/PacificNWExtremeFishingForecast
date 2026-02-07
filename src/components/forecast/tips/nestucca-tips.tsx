@@ -1,12 +1,14 @@
 
-import { Fish } from "lucide-react";
+import { getCurrentMonthYearShort } from "@/lib/utils/dateUtils";
 
 export const NestuccaTips = () => {
+  const monthYear = getCurrentMonthYearShort();
+
   return (
     <div>
-      <h5 className="text-sm font-medium">Nestucca River Insider Tips (Updated Dec 2025):</h5>
+      <h5 className="text-sm font-medium">Nestucca River Insider Tips (Updated {monthYear}):</h5>
       <ul className="text-xs mt-1 ml-4 list-disc space-y-1">
-        <li><strong>Dec 2025 Regulation:</strong> CLOSED to all Chinook salmon Dec 1-31 per ODFW. Steelhead fishing remains open.</li>
+        <li><strong>{monthYear} Regulation:</strong> CLOSED to all Chinook salmon Dec 1-31 per ODFW. Steelhead fishing remains open.</li>
         <li><strong>Winter Steelhead:</strong> Season active Dec-March. Target fish holding in deeper runs and tailouts.</li>
         <li>The Three Rivers section holds fish year-round, with deeper holes just below the confluence</li>
         <li>The First Bridge area fishes best during higher water when fish are moving upriver</li>

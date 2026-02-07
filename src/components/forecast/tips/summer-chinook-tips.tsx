@@ -1,11 +1,14 @@
-import { Fish } from "lucide-react";
+import { getCurrentMonthYear, getCurrentMonthYearShort } from "@/lib/utils/dateUtils";
 
 export const SummerChinookTips = () => {
+  const monthYear = getCurrentMonthYear();
+  const monthYearShort = getCurrentMonthYearShort();
+
   return (
     <div>
-      <h5 className="text-sm font-medium">Summer Chinook Salmon Tips (July 2025 Update):</h5>
+      <h5 className="text-sm font-medium">Summer Chinook Salmon Tips ({monthYear} Update):</h5>
       <ul className="text-xs mt-1 ml-4 list-disc space-y-1">
-        <li>PEAK RUNS: Bonneville Dam showing 424-536 summer Chinook daily (July 2025) - excellent numbers</li>
+        <li>PEAK RUNS: Bonneville Dam showing 424-536 summer Chinook daily ({monthYearShort}) - excellent numbers</li>
         <li>All Columbia River summer Chinook counts are strong through the system</li>
         <li>Target deeper water below dam structures - fish stage in 15-30 foot depths</li>
         <li>Trolling with flashers and herring most effective technique</li>

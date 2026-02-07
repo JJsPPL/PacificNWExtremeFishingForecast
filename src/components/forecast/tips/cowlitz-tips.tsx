@@ -1,20 +1,23 @@
 
-import { Fish } from "lucide-react";
+import { getCurrentMonthYearShort, getCurrentYear } from "@/lib/utils/dateUtils";
 
 export const CowlitzTips = () => {
+  const monthYear = getCurrentMonthYearShort();
+  const year = getCurrentYear();
+
   return (
     <div>
-      <h5 className="text-sm font-medium">Cowlitz River Insider Tips (Updated Jan 2026):</h5>
-      
+      <h5 className="text-sm font-medium">Cowlitz River Insider Tips (Updated {monthYear}):</h5>
+
       {/* Drought Status for Cowlitz */}
       <div className="mt-1 p-2 bg-green-50 dark:bg-green-900/20 rounded text-xs">
         <span className="font-medium text-green-700 dark:text-green-400">✅ DROUGHT ADVANTAGE:</span>
-        <span className="text-green-600 dark:text-green-300"> Mayfield Dam releases provide stable flows despite 50% precip deficit. One of the best winter options in 2026.</span>
+        <span className="text-green-600 dark:text-green-300"> Mayfield Dam releases provide stable flows despite 50% precip deficit. One of the best winter options in {year}.</span>
       </div>
-      
+
       <ul className="text-xs mt-2 ml-4 list-disc space-y-1">
-        <li><strong>Jan 2026 Status:</strong> Winter steelhead season active (Dec 1 - March 31). Dam-controlled flows 4,000-5,500 cfs providing consistent conditions.</li>
-        <li><strong>2026 Drought Impact:</strong> Cowlitz faring BETTER than rain-dependent rivers. Mayfield Dam releases maintaining fishable flows when coastal streams are critically low.</li>
+        <li><strong>{monthYear} Status:</strong> Winter steelhead season active (Dec 1 - March 31). Dam-controlled flows 4,000-5,500 cfs providing consistent conditions.</li>
+        <li><strong>{year} Drought Impact:</strong> Cowlitz faring BETTER than rain-dependent rivers. Mayfield Dam releases maintaining fishable flows when coastal streams are critically low.</li>
         <li><strong>Current Hot Spots:</strong> Blue Creek producing well with fish concentrated in deeper holes. Focus on water 4-8ft deep with moderate current.</li>
         <li><strong>Low Water Tactics:</strong> Even with dam control, water is clearer than normal. Use 8lb fluorocarbon leaders, smaller jigs (1/8oz), natural colors (black/purple/olive).</li>
         <li>The Barrier Dam area concentrates fish and offers some of the best bank access, but gets crowded quickly</li>
