@@ -1,3 +1,4 @@
+
 import { Dispatch, SetStateAction } from "react";
 
 // Types for our fishing forecast data
@@ -10,17 +11,27 @@ export interface FishingRecommendation {
   bestTime?: string;
   speciesScore?: number; // Species-specific fishing score 0-100
   runForecast?: string; // Salmon run forecast data for 2026
+  tideInfo?: string;  // Added tide information
+  bookReference?: string;  // Added for book references
 }
 
 export interface FishingForecast {
   date: Date;
   rating: number;
   moonPhase: string;
-  moonRising: boolean;
+  moonRising?: boolean;  // Kept for backward compatibility
+  moonPosition: string;  // Changed from moonRising to more detailed position
   barometricPressure: number;
   pressureTrend: string;
+  tideData?: {       // Added tide data structure
+    highTide?: string;
+    lowTide?: string;
+    slackTide?: string;
+    currentDirection?: string; // incoming/outgoing
+  };
+  salmonRunStatus?: string; // Added salmon run status
   recommendations: FishingRecommendation[];
-  // Enhanced fields
+  // Enhanced fields from live API + scoring engine
   activityLevel?: string; // 'Excellent' | 'Very Good' | 'Good' | 'Fair' | 'Poor'
   moonIllumination?: number;
   moonRiseTime?: string;
@@ -42,6 +53,7 @@ export interface FishingForecast {
     points: number;
     description: string;
   }[];
+  isDuplicate?: boolean; // Added this property to fix TypeScript errors
 }
 
 // Moon phases used in calculations
@@ -54,4 +66,21 @@ export enum MoonPhase {
   WaningGibbous = "Waning Gibbous",
   LastQuarter = "Last Quarter",
   WaningCrescent = "Waning Crescent"
+}
+
+// Moon positions
+export enum MoonPosition {
+  Overhead = "Moon Overhead",
+  Rising = "Moon Rising",
+  Setting = "Moon Setting",
+  Underfoot = "Moon Underfoot"
+}
+
+// Tide states
+export enum TideState {
+  HighTide = "High Tide",
+  LowTide = "Low Tide",
+  SlackTide = "Slack Tide",
+  IncomingTide = "Incoming Tide",
+  OutgoingTide = "Outgoing Tide"
 }

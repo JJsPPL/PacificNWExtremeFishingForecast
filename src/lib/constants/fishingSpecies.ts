@@ -128,7 +128,12 @@ export const FISHING_TACTICS = {
     "Surface popping with large poppers during feeding frenzies",
     "Casting metal jigs into bird piles and surface boils",
     "Trolling with daisy chains and spreader bars",
-    "Slow trolling live bait behind the boat"
+    "Slow trolling live bait behind the boat",
+    "Trolling with clones or tuna feathers",
+    "Kite fishing in choppy conditions",
+    "Running and gunning when birds are present",
+    "Drifting with chunk baits",
+    "Vertical jigging in deeper waters"
   ]
 };
 
@@ -136,23 +141,39 @@ export const FISHING_TACTICS = {
 export const FISHING_BAITS = {
   salmon: ["Herring", "Anchovy", "Sand shrimp", "Eggs", "Prawns", "Spinners", "Plugs", "Cured eggs", "Sardine-wrapped plugs", "Tuna belly", "Sardines"],
   steelhead: ["Eggs", "Yarn", "Worms", "Jigs", "Spinners", "Flies", "Beads", "Prawns", "Corkies", "Shrimp"],
-  bottomfish: ["Herring", "Squid", "Octopus", "Jigs", "Anchovies", 
-    "Clams", "Sand shrimp", "Live sandlance", 
+  bottomfish: ["Herring", "Squid", "Octopus", "Jigs", "Anchovies",
+    "Clams", "Sand shrimp", "Live sandlance",
     "Scampi-tailed jigs", "Soft plastic swimbaits",
     "Metal jigs", "Cut fish", "Crab parts"
   ],
   lingcod: [
-    "Live herring", "Live greenling", "Large soft plastic swimbaits", 
-    "Metal jigs (8-16 oz)", "Cut salmon bellies", "Scampi jigs", 
+    "Live herring", "Live greenling", "Large soft plastic swimbaits",
+    "Metal jigs (8-16 oz)", "Cut salmon bellies", "Scampi jigs",
     "Octopus", "Whole squid", "Large curly tail grubs"
   ],
   rockfish: [
-    "Shrimp flies", "Herring chunks", "Small soft plastics", 
-    "Squid strips", "Metal jigs", "Small swimbaits", 
+    "Shrimp flies", "Herring chunks", "Small soft plastics",
+    "Squid strips", "Metal jigs", "Small swimbaits",
     "Curly tail grubs", "Crab pieces", "Clam necks"
   ],
   trout: ["Worms", "Powerbait", "Corn", "Spinners", "Spoons", "Flies", "Eggs", "Mealworms", "Maggots", "Nightcrawlers"],
   bass: ["Soft plastics", "Crankbaits", "Topwater lures", "Spinnerbaits", "Jigs", "Swimbaits", "Frogs", "Crawfish imitations"],
   sturgeon: ["Smelt", "Sand shrimp", "Lamprey", "Squid", "Herring", "Anchovies", "Salmon eggs", "Crawfish", "Pikeminnow"],
-  tuna: ["Cedar plugs", "Hoochies", "Chrome/blue metal jigs", "Live anchovies", "Swimbaits", "Rapala X-Raps", "Poppers", "Daisy chains", "Feather jigs", "Sardines", "Tuna clones"]
+  tuna: [
+    "Cedar plugs",
+    "Tuna clones",
+    "Tuna feathers",
+    "Live anchovies",
+    "Spreader bars",
+    "Swimbaits",
+    "Chrome/blue metal jigs",
+    "Hoochies",
+    "Rapala X-Raps",
+    "Poppers",
+    "Daisy chains",
+    "Feather jigs",
+    "Sardines",
+    "Chunks of mackerel or herring",
+    "Surface iron jigs"
+  ]
 };

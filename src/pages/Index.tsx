@@ -4,7 +4,6 @@ import { SearchFilters } from "@/components/SearchFilters";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { ForecastTabs } from "@/components/forecast/ForecastTabs";
-import { AdvertisementSection } from "@/components/layout/AdvertisementSection";
 import { AppFooter } from "@/components/layout/AppFooter";
 
 const Index = () => {
@@ -16,7 +15,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen sky-gradient-bg">
-      <div className="container mx-auto px-2 md:px-4 py-4 md:py-6 max-w-3xl">
+      <div className="container mx-auto px-2 md:px-4 py-4 md:py-6 max-w-5xl">
         <AppHeader />
         
         <PageTitle 
@@ -28,8 +27,6 @@ const Index = () => {
         
         <ForecastTabs filters={filters} />
       </div>
-      
-      <AdvertisementSection />
       
       <AppFooter />
     </div>

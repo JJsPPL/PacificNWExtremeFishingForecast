@@ -79,10 +79,7 @@ export const ForecastTabs = ({ filters }: ForecastTabsProps) => {
           selectedDate={selectedDate} 
           onSelectDate={(date) => {
             setSelectedDate(date);
-            const tabsList = document.querySelector('[value="details"]');
-            if (tabsList) {
-              (tabsList as HTMLElement).click();
-            }
+            setActiveTab("details");
           }}
           filterFunction={filterMatches}
         />

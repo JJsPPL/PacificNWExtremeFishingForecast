@@ -1,8 +1,12 @@
 import { FISHING_LOCATIONS, LOCATION_DETAILS } from "@/lib/constants/fishingLocations";
 import { getForecastForDate } from "@/lib/fishingForecast";
 
-// Explicitly add important species that should always be in filters
-export const IMPORTANT_SPECIES = ["Coho Salmon", "Winter Steelhead", "Chinook Salmon", "Summer Steelhead"];
+// Explicitly add important species that should always be in filters - updated based on current runs
+export const IMPORTANT_SPECIES = [
+  "Chinook Salmon (King)", "Coho Salmon (Silver)", "Sockeye Salmon (Red)", 
+  "Chum Salmon (Dog)", "Pink Salmon (Humpy)", "Steelhead", "Summer Steelhead", 
+  "Winter Steelhead", "Sturgeon", "Albacore Tuna", "Halibut", "Rainbow Trout"
+];
 
 // Add important locations that should always be in filters
 export const IMPORTANT_LOCATIONS = [
@@ -40,6 +44,24 @@ export const IMPORTANT_LOCATIONS = [
   "Bogachiel River - Leyendecker Park",
   "Sol Duc River - Salmon Cascades",
   "Calawah River - Mouth",
+  // Additional Columbia River zones based on current creel data
+  "Columbia River - Section 1 (Bonneville)",
+  "Columbia River - Section 2 (Camas/Washougal)",
+  "Columbia River - Section 3 (I-5 Area)",
+  "Columbia River - Section 4 (Vancouver)",
+  "Columbia River - Section 5 (Woodland)",
+  "Columbia River - Section 6 (Kalama)",
+  "Columbia River - Section 7 (Cowlitz)",
+  "Columbia River - Section 8 (Longview)",
+  "Columbia River - Section 9 (Cathlamet)",
+  "Columbia River - Section 10 (Cathlamet)",
+  // Upper Columbia dams with strong Sockeye runs
+  "Columbia River - Rock Island Dam",
+  "Columbia River - Wanapum Dam",
+  "Columbia River - Priest Rapids Dam",
+  "Columbia River - McNary Dam",
+  "Columbia River - John Day Dam",
+  "Columbia River - The Dalles Dam",
   
   // Oregon Locations
   "Columbia River - Buoy 10",

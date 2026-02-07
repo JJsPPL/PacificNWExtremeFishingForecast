@@ -1,6 +1,6 @@
 
 import { addDays, format, isSameDay } from "date-fns";
-import { FishingForecast, FishingRecommendation, MoonPhase } from "./types/fishingTypes";
+import { FishingForecast, FishingRecommendation, MoonPhase, MoonPosition, TideState } from "./types/fishingTypes";
 import { generateRecommendations } from "./utils/recommendations";
 import { fetchPressureData, fetchWeatherData, type PressureData, type WeatherData } from "./api/weatherApi";
 import { getMoonData, getMoonFishingScore, type MoonData } from "./api/moonApi";
@@ -90,18 +90,139 @@ function buildForecast(
   }
   const moonRising = hourOfDay >= moonRiseHour || hourOfDay < (moonRiseHour + 12) % 24;
 
-  // Generate recommendations
-  const recommendations = generateRecommendations(date, score.total, moonPhase, pressure.currentInHg);
+  // Determine moon position (more detailed than just rising) - from upstream
+  let moonPosition: string;
+  if (hourOfDay >= 11 && hourOfDay <= 13) {
+    moonPosition = MoonPosition.Overhead;
+  } else if (hourOfDay >= 0 && hourOfDay <= 2) {
+    moonPosition = MoonPosition.Underfoot;
+  } else if (hourOfDay >= 6 && hourOfDay <= 10) {
+    moonPosition = MoonPosition.Rising;
+  } else {
+    moonPosition = MoonPosition.Setting;
+  }
+
+  // 2026 DROUGHT ADJUSTMENT: Apply rating penalty based on historic patterns
+  // Similar to 2001, 2015, 2021 when precipitation was 50% of normal
+  const month = date.getMonth();
+  let droughtAdjustedRating = score.total;
+  const currentYear = date.getFullYear();
+  if (currentYear >= 2026) {
+    // Winter steelhead season - moderate impact (fish concentrated but harder to catch)
+    if (month >= 11 || month <= 3) {
+      droughtAdjustedRating -= 8; // 8-point penalty for low, clear water conditions
+    }
+    // Summer - severe impact expected (heat stress, potential closures)
+    if (month >= 5 && month <= 8) {
+      droughtAdjustedRating -= 15; // Significant penalty - similar to 2015 conditions
+    }
+    // Fall salmon - delayed runs expected
+    if (month >= 8 && month <= 10) {
+      droughtAdjustedRating -= 10; // Salmon staging in estuaries longer, waiting for rain
+    }
+  }
+  // Ensure rating is between 0-100
+  droughtAdjustedRating = Math.max(0, Math.min(100, droughtAdjustedRating));
+
+  // Generate tide data based on the date (upstream feature)
+  const tideHour = (date.getHours() + date.getDate()) % 12;
+  const tideData = {
+    highTide: `${(tideHour + 2) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'}`,
+    lowTide: `${(tideHour + 8) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
+    slackTide: `${(tideHour + 5) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'} & ${(tideHour + 11) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
+    currentDirection: tideHour < 6 ? TideState.IncomingTide : TideState.OutgoingTide
+  };
+
+  // Generate salmon run status based on month (upstream feature)
+  let salmonRunStatus: string;
+  if (month === 2 || month === 3) { // March-April
+    salmonRunStatus = "Early Spring Chinook beginning to enter the Columbia and Willamette systems. Fish counts increasing at Willamette Falls fish ladder and Bonneville Dam. Columbia River hatchery returns are the primary indicator of run strength.";
+  } else if (month === 4) { // May
+    salmonRunStatus = "Spring Chinook runs at peak in Columbia and Willamette river systems. Strong numbers reported passing Bonneville Dam and Willamette Falls fish ladder. Best fishing typically occurs 3-5 days after large count increases at dams.";
+  } else if (month === 5) { // June
+    salmonRunStatus = "Late Spring Chinook and early Summer Chinook runs active in Columbia system. Summer steelhead entering both Columbia and Willamette systems with increasing numbers at Bonneville Dam and Willamette Falls.";
+  } else if (month === 6 || month === 7) { // July-August
+    salmonRunStatus = "Summer Chinook and Sockeye runs at peak in Columbia River system. Summer steelhead passing Bonneville Dam and Willamette Falls. Coho beginning to stage in estuaries. Columbia River salmon counts typically precede Willamette system arrivals by 3-5 days.";
+  } else if (month === 8) { // September
+    salmonRunStatus = "Fall Chinook entering the Columbia system with strong numbers at Bonneville Dam. Fall Chinook beginning to appear in the Willamette and tributaries. Early Coho appearing in tributary mouths and lower river sections.";
+  } else if (month >= 9 && month <= 10) { // October-November
+    salmonRunStatus = "Fall Chinook and Coho runs at peak throughout Columbia and Willamette systems. Strong returns reported in Cowlitz, Lewis, and Willamette Rivers based on Columbia River tributary hatchery counts. Best fishing typically occurs within a week of peak dam passage.";
+  } else if (month === 11 || month === 0) { // December-January
+    salmonRunStatus = "Late Fall Chinook tapering off. Winter steelhead beginning their run into Columbia River tributaries, Willamette tributaries and coastal streams. Clackamas and Sandy rivers showing increasing winter steelhead counts.";
+  } else if (month === 1) { // February
+    salmonRunStatus = "Winter steelhead at peak run in Columbia and Willamette tributaries. Early Spring Chinook beginning to enter lower Columbia and Willamette systems. First arrivals at Bonneville Dam typically forecast the upcoming spring run strength.";
+  } else {
+    salmonRunStatus = "Pre-season preparation. Check WDFW, ODFW hatchery reports and dam counts for updated forecasts on Columbia and Willamette river systems.";
+  }
+
+  // Generate recommendations using the scoring engine rating
+  const recommendations = generateRecommendations(date, droughtAdjustedRating, moonPhase, pressure.currentInHg);
+
+  // Enhance recommendations with tide-specific information (upstream feature)
+  const enhancedRecommendations = recommendations.map(rec => {
+    // If Columbia River or Nestucca River locations, provide specific tide tactics
+    if (rec.location && (rec.location.includes("Columbia River") || rec.location.includes("Nestucca River"))) {
+      return {
+        ...rec,
+        tideInfo: rec.tideInfo || "Best fishing on outgoing tides and slack tides when changing from low to high. Focus on current seams and deeper holes."
+      };
+    }
+    // If Willamette River location, provide specific tide-influenced tactics based on location
+    else if (rec.location && rec.location.includes("Willamette River")) {
+      // Lower Willamette has more tidal influence
+      if (rec.location.includes("Portland") || rec.location.includes("Multnomah Channel")) {
+        return {
+          ...rec,
+          tideInfo: rec.tideInfo || "Tidal influence extends to Oregon City Falls. Best fishing during the last two hours of outgoing tide and first hour of incoming tide in lower sections."
+        };
+      }
+      // Middle and upper Willamette sections
+      else {
+        return {
+          ...rec,
+          tideInfo: rec.tideInfo || "Limited tidal influence. Focus on current breaks, confluence areas, and structure during stable river flows."
+        };
+      }
+    }
+    // If species is salmon or steelhead (excluding specific rivers with custom tactics)
+    else if ((rec.species.includes("Salmon") || rec.species.includes("Steelhead")) &&
+             !(rec.location && (rec.location.includes("Columbia River") ||
+                              rec.location.includes("Nestucca River") ||
+                              rec.location.includes("Willamette River")))) {
+      return {
+        ...rec,
+        tideInfo: rec.tideInfo || "Fish during tide changes with particular attention to current breaks and structure."
+      };
+    }
+    // If species is Lingcod or Rockfish, include tidal information relevant to these species
+    else if (rec.species === "Lingcod" || rec.species === "Rockfish") {
+      return {
+        ...rec,
+        tideInfo: rec.tideInfo || "Fish during slack tide or moderate current periods for better bottom contact. Target structure during tide changes."
+      };
+    }
+    // If albacore tuna, include specific tide tactics for tuna
+    else if (rec.species && rec.species.includes("Tuna")) {
+      return {
+        ...rec,
+        tideInfo: rec.tideInfo || "Fish the last two hours of incoming tide and first hour of outgoing tide for optimal results."
+      };
+    }
+    return rec;
+  });
 
   return {
     date,
-    rating: score.total,
+    rating: droughtAdjustedRating,
     moonPhase,
     moonRising,
+    moonPosition,
     barometricPressure: pressure.currentInHg,
     pressureTrend: pressure.trend,
-    recommendations,
-    // Enhanced fields
+    tideData,
+    salmonRunStatus,
+    recommendations: enhancedRecommendations,
+    // Enhanced fields from scoring engine
     activityLevel: score.activityLevel,
     moonIllumination: moon.illumination,
     moonRiseTime: moon.moonRiseApprox,

@@ -1,0 +1,366 @@
+Date,Day,Month,Season,Moon_Phase,Moon_Position,Barometric_Pressure,Pressure_Trend,Tide_Height,Tide_Phase,Water_Temperature,Water_Flow,Water_Clarity,Fishing_Score,Fishing_Quality
+2026-01-01 00:00:00,Thursday,January,Winter,Waxing Gibbous,Setting,30.06,Stable,3.3,Unknown,42,4780,Colored,100,Excellent
+2026-01-02 00:00:00,Friday,January,Winter,Waxing Gibbous,Setting,30.25,Rising,3.6,Incoming,41,3312,Slightly Colored,100,Excellent
+2026-01-03 00:00:00,Saturday,January,Winter,Waxing Gibbous,Setting,29.87,Falling,3.9,Incoming,40,4493,Colored,100,Excellent
+2026-01-04 00:00:00,Sunday,January,Winter,Waxing Gibbous,Setting,30.07,Rising,4.1,Incoming,42,4323,Colored,100,Excellent
+2026-01-05 00:00:00,Monday,January,Winter,Waxing Gibbous,Setting,29.71,Falling,4.3,Incoming,39,3366,Slightly Colored,100,Excellent
+2026-01-06 00:00:00,Tuesday,January,Winter,Waxing Gibbous,Setting,30.24,Rising,4.4,Incoming,42,3626,Slightly Colored,100,Excellent
+2026-01-07 00:00:00,Wednesday,January,Winter,Waxing Gibbous,Setting,30.13,Falling,4.5,High Slack,39,3437,Slightly Colored,99,Excellent
+2026-01-08 00:00:00,Thursday,January,Winter,Waxing Gibbous,Setting,30.26,Rising,4.5,High Slack,40,7993,Murky,85,Very Good
+2026-01-09 00:00:00,Friday,January,Winter,Waxing Gibbous,Setting,29.56,Falling,4.4,High Slack,42,7156,Murky,100,Excellent
+2026-01-10 00:00:00,Saturday,January,Winter,Waxing Gibbous,Setting,30.16,Rising,4.3,Outgoing,38,4901,Colored,91,Excellent
+2026-01-11 00:00:00,Sunday,January,Winter,Waxing Gibbous,Setting,29.67,Falling,4.1,Outgoing,38,4904,Colored,100,Excellent
+2026-01-12 00:00:00,Monday,January,Winter,First Quarter,Setting,30.12,Rising,3.8,Outgoing,39,4436,Colored,100,Excellent
+2026-01-13 00:00:00,Tuesday,January,Winter,First Quarter,Setting,30.2,Rising,3.6,Outgoing,42,8584,Murky,100,Excellent
+2026-01-14 00:00:00,Wednesday,January,Winter,First Quarter,Setting,30.12,Falling,3.2,Outgoing,40,7152,Murky,100,Excellent
+2026-01-15 00:00:00,Thursday,January,Winter,First Quarter,Setting,29.88,Falling,2.9,Outgoing,41,4451,Colored,100,Excellent
+2026-01-16 00:00:00,Friday,January,Winter,Waxing Crescent,Setting,30.18,Rising,2.6,Outgoing,38,4055,Colored,95,Excellent
+2026-01-17 00:00:00,Saturday,January,Winter,Waxing Crescent,Setting,29.69,Falling,2.3,Outgoing,41,4276,Colored,100,Excellent
+2026-01-18 00:00:00,Sunday,January,Winter,New Moon,Setting,30.01,Rising,2,Outgoing,42,6542,Murky,100,Excellent
+2026-01-19 00:00:00,Monday,January,Winter,New Moon,Setting,29.94,Falling,1.8,Outgoing,42,3809,Slightly Colored,100,Excellent
+2026-01-20 00:00:00,Tuesday,January,Winter,New Moon,Setting,30.09,Rising,1.7,Outgoing,41,3421,Slightly Colored,100,Excellent
+2026-01-21 00:00:00,Wednesday,January,Winter,Waxing Crescent,Setting,29.75,Falling,1.5,Outgoing,41,3499,Slightly Colored,100,Excellent
+2026-01-22 00:00:00,Thursday,January,Winter,Waxing Crescent,Setting,29.8,Rising,1.5,Low Slack,41,6466,Murky,91,Excellent
+2026-01-23 00:00:00,Friday,January,Winter,Waxing Gibbous,Setting,30.13,Rising,1.5,Low Slack,39,8154,Murky,79,Very Good
+2026-01-24 00:00:00,Saturday,January,Winter,Waxing Gibbous,Setting,29.58,Falling,1.6,Incoming,40,4919,Colored,100,Excellent
+2026-01-25 00:00:00,Sunday,January,Winter,First Quarter,Setting,30.09,Rising,1.8,Incoming,41,3833,Slightly Colored,100,Excellent
+2026-01-26 00:00:00,Monday,January,Winter,First Quarter,Setting,29.98,Falling,2,Incoming,41,4426,Colored,100,Excellent
+2026-01-27 00:00:00,Tuesday,January,Winter,First Quarter,Setting,30.43,Rising,2.2,Incoming,42,4404,Colored,100,Excellent
+2026-01-28 00:00:00,Wednesday,January,Winter,Waxing Gibbous,Setting,30.08,Falling,2.5,Incoming,39,4006,Colored,99,Excellent
+2026-01-29 00:00:00,Thursday,January,Winter,Waxing Gibbous,Setting,30.2,Rising,2.8,Incoming,41,3380,Slightly Colored,100,Excellent
+2026-01-30 00:00:00,Friday,January,Winter,Full Moon,Setting,29.84,Falling,3.1,Incoming,38,3130,Slightly Colored,100,Excellent
+2026-01-31 00:00:00,Saturday,January,Winter,Full Moon,Setting,29.68,Falling,3.5,Incoming,42,4518,Colored,100,Excellent
+2026-02-01 00:00:00,Sunday,February,Winter,Full Moon,Setting,30.2,Rising,3.8,Incoming,42,4570,Colored,100,Excellent
+2026-02-02 00:00:00,Monday,February,Winter,Full Moon,Setting,30.69,Rising,4,Incoming,42,4191,Colored,100,Excellent
+2026-02-03 00:00:00,Tuesday,February,Winter,Full Moon,Setting,29.83,Falling,4.2,Incoming,39,3936,Slightly Colored,100,Excellent
+2026-02-04 00:00:00,Wednesday,February,Winter,Full Moon,Setting,30.04,Rising,4.4,Incoming,41,4420,Colored,100,Excellent
+2026-02-05 00:00:00,Thursday,February,Winter,Full Moon,Setting,29.82,Falling,4.5,High Slack,39,4105,Colored,100,Excellent
+2026-02-06 00:00:00,Friday,February,Winter,Waxing Gibbous,Setting,30.15,Rising,4.5,High Slack,38,3239,Slightly Colored,94,Excellent
+2026-02-07 00:00:00,Saturday,February,Winter,Waxing Gibbous,Setting,30.07,Falling,4.5,High Slack,38,3241,Slightly Colored,99,Excellent
+2026-02-08 00:00:00,Sunday,February,Winter,Waxing Gibbous,Setting,29.96,Falling,4.4,High Slack,39,4490,Colored,92,Excellent
+2026-02-09 00:00:00,Monday,February,Winter,Waxing Gibbous,Setting,29.96,Stable,4.2,Outgoing,39,5846,Colored,100,Excellent
+2026-02-10 00:00:00,Tuesday,February,Winter,First Quarter,Setting,29.46,Falling,4,Outgoing,38,3125,Slightly Colored,100,Excellent
+2026-02-11 00:00:00,Wednesday,February,Winter,First Quarter,Setting,29.58,Rising,3.7,Outgoing,39,4078,Colored,100,Excellent
+2026-02-12 00:00:00,Thursday,February,Winter,First Quarter,Setting,29.51,Falling,3.4,Outgoing,38,4475,Colored,100,Excellent
+2026-02-13 00:00:00,Friday,February,Winter,First Quarter,Setting,30.35,Rising,3.1,Outgoing,38,4681,Colored,100,Excellent
+2026-02-14 00:00:00,Saturday,February,Winter,Waxing Crescent,Setting,30.1,Falling,2.8,Outgoing,39,3538,Slightly Colored,100,Excellent
+2026-02-15 00:00:00,Sunday,February,Winter,Waxing Crescent,Setting,30.4,Rising,2.5,Outgoing,42,4019,Colored,98,Excellent
+2026-02-16 00:00:00,Monday,February,Winter,New Moon,Setting,30.48,Rising,2.2,Outgoing,42,8083,Murky,96,Excellent
+2026-02-17 00:00:00,Tuesday,February,Winter,New Moon,Setting,30.26,Falling,1.9,Outgoing,42,9488,Murky,100,Excellent
+2026-02-18 00:00:00,Wednesday,February,Winter,New Moon,Setting,29.73,Falling,1.7,Outgoing,39,6526,Murky,100,Excellent
+2026-02-19 00:00:00,Thursday,February,Winter,Waxing Crescent,Setting,30.37,Rising,1.6,Low Slack,42,3833,Slightly Colored,98,Excellent
+2026-02-20 00:00:00,Friday,February,Winter,Waxing Crescent,Setting,29.99,Falling,1.5,Outgoing,38,3204,Slightly Colored,100,Excellent
+2026-02-21 00:00:00,Saturday,February,Winter,First Quarter,Setting,29.88,Falling,1.5,Low Slack,41,3099,Slightly Colored,100,Excellent
+2026-02-22 00:00:00,Sunday,February,Winter,Waxing Gibbous,Setting,30.26,Rising,1.6,Incoming,42,3600,Slightly Colored,100,Excellent
+2026-02-23 00:00:00,Monday,February,Winter,Waxing Gibbous,Setting,29.91,Falling,1.7,Low Slack,38,3953,Slightly Colored,96,Excellent
+2026-02-24 00:00:00,Tuesday,February,Winter,First Quarter,Setting,29.89,Stable,1.9,Incoming,41,4808,Colored,100,Excellent
+2026-02-25 00:00:00,Wednesday,February,Winter,First Quarter,Setting,30.03,Rising,2.1,Incoming,38,3759,Slightly Colored,100,Excellent
+2026-02-26 00:00:00,Thursday,February,Winter,First Quarter,Setting,30.27,Rising,2.4,Incoming,41,3013,Slightly Colored,100,Excellent
+2026-02-27 00:00:00,Friday,February,Winter,Waxing Gibbous,Setting,30.58,Rising,2.7,Incoming,39,3006,Slightly Colored,100,Excellent
+2026-02-28 00:00:00,Saturday,February,Winter,Waxing Gibbous,Setting,29.76,Falling,3,Incoming,39,3177,Slightly Colored,100,Excellent
+2026-03-01 00:00:00,Sunday,March,Spring,Full Moon,Setting,30.29,Rising,3.3,Incoming,52,7705,Murky,100,Excellent
+2026-03-02 00:00:00,Monday,March,Spring,Full Moon,Setting,30.62,Rising,3.6,Incoming,50,5873,Colored,100,Excellent
+2026-03-03 00:00:00,Tuesday,March,Spring,Full Moon,Setting,30.04,Falling,3.9,Incoming,47,9101,Murky,100,Excellent
+2026-03-04 00:00:00,Wednesday,March,Spring,Full Moon,Setting,29.63,Falling,4.1,Incoming,51,7236,Murky,100,Excellent
+2026-03-05 00:00:00,Thursday,March,Spring,Full Moon,Setting,30.1,Rising,4.3,Incoming,52,6784,Murky,100,Excellent
+2026-03-06 00:00:00,Friday,March,Spring,Full Moon,Setting,29.95,Falling,4.4,Incoming,47,7688,Murky,100,Excellent
+2026-03-07 00:00:00,Saturday,March,Spring,Full Moon,Setting,30.14,Rising,4.5,High Slack,48,6963,Murky,99,Excellent
+2026-03-08 00:00:00,Sunday,March,Spring,Waxing Gibbous,Setting,30.52,Rising,4.5,High Slack,48,5056,Colored,94,Excellent
+2026-03-09 00:00:00,Monday,March,Spring,Waxing Gibbous,Setting,30.16,Falling,4.4,High Slack,48,6342,Murky,94,Excellent
+2026-03-10 00:00:00,Tuesday,March,Spring,Waxing Gibbous,Setting,30.18,Stable,4.3,Outgoing,49,7449,Murky,100,Excellent
+2026-03-11 00:00:00,Wednesday,March,Spring,Waxing Gibbous,Setting,30.28,Rising,4.1,Outgoing,48,7691,Murky,93,Excellent
+2026-03-12 00:00:00,Thursday,March,Spring,First Quarter,Setting,30.14,Falling,3.8,Outgoing,51,9657,Murky,100,Excellent
+2026-03-13 00:00:00,Friday,March,Spring,First Quarter,Setting,29.91,Falling,3.6,Outgoing,47,5244,Colored,100,Excellent
+2026-03-14 00:00:00,Saturday,March,Spring,First Quarter,Setting,29.72,Falling,3.3,Outgoing,51,6424,Murky,100,Excellent
+2026-03-15 00:00:00,Sunday,March,Spring,First Quarter,Setting,30,Rising,2.9,Outgoing,50,7336,Murky,100,Excellent
+2026-03-16 00:00:00,Monday,March,Spring,Waxing Crescent,Setting,30.26,Rising,2.6,Outgoing,50,7930,Murky,97,Excellent
+2026-03-17 00:00:00,Tuesday,March,Spring,Waxing Crescent,Setting,30.29,Stable,2.3,Outgoing,52,6480,Murky,100,Excellent
+2026-03-18 00:00:00,Wednesday,March,Spring,New Moon,Setting,29.85,Falling,2.1,Outgoing,51,7889,Murky,100,Excellent
+2026-03-19 00:00:00,Thursday,March,Spring,New Moon,Setting,30.16,Rising,1.8,Outgoing,51,8964,Murky,100,Excellent
+2026-03-20 00:00:00,Friday,March,Spring,New Moon,Setting,29.99,Falling,1.7,Outgoing,50,6566,Murky,100,Excellent
+2026-03-21 00:00:00,Saturday,March,Spring,Waxing Crescent,Setting,29.96,Stable,1.5,Outgoing,49,7527,Murky,100,Excellent
+2026-03-22 00:00:00,Sunday,March,Spring,Waxing Crescent,Setting,30.36,Rising,1.5,Low Slack,52,6865,Murky,90,Excellent
+2026-03-23 00:00:00,Monday,March,Spring,Waxing Gibbous,Setting,30.2,Falling,1.5,Low Slack,47,12176,Murky,91,Excellent
+2026-03-24 00:00:00,Tuesday,March,Spring,Waxing Gibbous,Setting,30.09,Falling,1.6,Incoming,45,5187,Colored,100,Excellent
+2026-03-25 00:00:00,Wednesday,March,Spring,First Quarter,Setting,30.11,Stable,1.8,Incoming,45,6700,Murky,100,Excellent
+2026-03-26 00:00:00,Thursday,March,Spring,First Quarter,Setting,30.13,Stable,2,Incoming,47,5460,Colored,100,Excellent
+2026-03-27 00:00:00,Friday,March,Spring,First Quarter,Setting,30.04,Falling,2.2,Incoming,49,11724,Murky,100,Excellent
+2026-03-28 00:00:00,Saturday,March,Spring,Waxing Gibbous,Setting,30.29,Rising,2.5,Incoming,50,6528,Murky,96,Excellent
+2026-03-29 00:00:00,Sunday,March,Spring,Waxing Gibbous,Setting,30.16,Falling,2.8,Incoming,51,9298,Murky,100,Excellent
+2026-03-30 00:00:00,Monday,March,Spring,Full Moon,Setting,30.54,Rising,3.1,Incoming,45,6548,Murky,100,Excellent
+2026-03-31 00:00:00,Tuesday,March,Spring,Full Moon,Setting,30.22,Falling,3.4,Incoming,48,6225,Murky,100,Excellent
+2026-04-01 00:00:00,Wednesday,April,Spring,Full Moon,Setting,30.23,Stable,3.7,Incoming,45,6381,Murky,100,Excellent
+2026-04-02 00:00:00,Thursday,April,Spring,Full Moon,Setting,30.23,Stable,4,Incoming,49,7114,Murky,100,Excellent
+2026-04-03 00:00:00,Friday,April,Spring,Full Moon,Setting,30.24,Stable,4.2,Incoming,51,5493,Colored,100,Excellent
+2026-04-04 00:00:00,Saturday,April,Spring,Full Moon,Setting,30.11,Falling,4.4,Incoming,51,5090,Colored,100,Excellent
+2026-04-05 00:00:00,Sunday,April,Spring,Full Moon,Setting,30,Falling,4.5,High Slack,46,7334,Murky,100,Excellent
+2026-04-06 00:00:00,Monday,April,Spring,Full Moon,Setting,29.84,Falling,4.5,High Slack,50,11778,Murky,100,Excellent
+2026-04-07 00:00:00,Tuesday,April,Spring,Waxing Gibbous,Setting,30.23,Rising,4.5,High Slack,51,6397,Murky,89,Very Good
+2026-04-08 00:00:00,Wednesday,April,Spring,Waxing Gibbous,Setting,30.25,Stable,4.4,High Slack,47,5697,Colored,100,Excellent
+2026-04-09 00:00:00,Thursday,April,Spring,Waxing Gibbous,Setting,30.23,Stable,4.2,Outgoing,46,6373,Murky,100,Excellent
+2026-04-10 00:00:00,Friday,April,Spring,Waxing Gibbous,Setting,30.23,Stable,4,Outgoing,49,5765,Colored,100,Excellent
+2026-04-11 00:00:00,Saturday,April,Spring,First Quarter,Setting,30.25,Stable,3.7,Outgoing,45,6755,Murky,100,Excellent
+2026-04-12 00:00:00,Sunday,April,Spring,First Quarter,Setting,29.83,Falling,3.4,Outgoing,46,7360,Murky,100,Excellent
+2026-04-13 00:00:00,Monday,April,Spring,First Quarter,Setting,30.01,Rising,3.1,Outgoing,52,7757,Murky,100,Excellent
+2026-04-14 00:00:00,Tuesday,April,Spring,First Quarter,Setting,30.15,Rising,2.8,Outgoing,49,6905,Murky,100,Excellent
+2026-04-15 00:00:00,Wednesday,April,Spring,Waxing Crescent,Setting,30.2,Rising,2.5,Outgoing,46,5463,Colored,100,Excellent
+2026-04-16 00:00:00,Thursday,April,Spring,Waxing Crescent,Setting,29.81,Falling,2.2,Outgoing,46,5485,Colored,100,Excellent
+2026-04-17 00:00:00,Friday,April,Spring,New Moon,Setting,30.17,Rising,1.9,Outgoing,48,6237,Murky,100,Excellent
+2026-04-18 00:00:00,Saturday,April,Spring,New Moon,Setting,29.99,Falling,1.7,Outgoing,46,6755,Murky,100,Excellent
+2026-04-19 00:00:00,Sunday,April,Spring,New Moon,Setting,30.1,Rising,1.6,Low Slack,47,6553,Murky,98,Excellent
+2026-04-20 00:00:00,Monday,April,Spring,Waxing Crescent,Setting,30.04,Falling,1.5,Outgoing,51,7660,Murky,100,Excellent
+2026-04-21 00:00:00,Tuesday,April,Spring,Waxing Crescent,Setting,29.54,Falling,1.5,Low Slack,47,6598,Murky,100,Excellent
+2026-04-22 00:00:00,Wednesday,April,Spring,Waxing Gibbous,Setting,30.1,Rising,1.6,Incoming,50,7336,Murky,100,Excellent
+2026-04-23 00:00:00,Thursday,April,Spring,Waxing Gibbous,Setting,30.27,Rising,1.7,Low Slack,51,6545,Murky,86,Very Good
+2026-04-24 00:00:00,Friday,April,Spring,First Quarter,Setting,30.16,Falling,1.8,Incoming,52,5052,Colored,100,Excellent
+2026-04-25 00:00:00,Saturday,April,Spring,First Quarter,Setting,30.3,Rising,2.1,Incoming,45,5812,Colored,100,Excellent
+2026-04-26 00:00:00,Sunday,April,Spring,First Quarter,Setting,29.63,Falling,2.3,Incoming,45,6735,Murky,100,Excellent
+2026-04-27 00:00:00,Monday,April,Spring,Waxing Gibbous,Setting,30.46,Rising,2.6,Incoming,48,6439,Murky,96,Excellent
+2026-04-28 00:00:00,Tuesday,April,Spring,Waxing Gibbous,Setting,30.32,Falling,3,Incoming,51,7094,Murky,100,Excellent
+2026-04-29 00:00:00,Wednesday,April,Spring,Full Moon,Setting,29.89,Falling,3.3,Incoming,50,6917,Murky,100,Excellent
+2026-04-30 00:00:00,Thursday,April,Spring,Full Moon,Setting,30.26,Rising,3.6,Incoming,48,9322,Murky,100,Excellent
+2026-05-01 00:00:00,Friday,May,Spring,Full Moon,Setting,29.84,Falling,3.9,Incoming,48,7241,Murky,100,Excellent
+2026-05-02 00:00:00,Saturday,May,Spring,Full Moon,Setting,30.11,Rising,4.1,Incoming,51,6892,Murky,100,Excellent
+2026-05-03 00:00:00,Sunday,May,Spring,Full Moon,Setting,30.41,Rising,4.3,Incoming,47,5820,Colored,100,Excellent
+2026-05-04 00:00:00,Monday,May,Spring,Full Moon,Setting,30.61,Rising,4.4,Incoming,46,6833,Murky,100,Excellent
+2026-05-05 00:00:00,Tuesday,May,Spring,Full Moon,Setting,30.18,Falling,4.5,High Slack,49,6908,Murky,100,Excellent
+2026-05-06 00:00:00,Wednesday,May,Spring,Waxing Gibbous,Setting,30.4,Rising,4.5,High Slack,49,7432,Murky,89,Very Good
+2026-05-07 00:00:00,Thursday,May,Spring,Waxing Gibbous,Setting,30.18,Falling,4.4,High Slack,49,5823,Colored,99,Excellent
+2026-05-08 00:00:00,Friday,May,Spring,Waxing Gibbous,Setting,29.25,Falling,4.3,Outgoing,45,6327,Murky,100,Excellent
+2026-05-09 00:00:00,Saturday,May,Spring,Waxing Gibbous,Setting,30.23,Rising,4.1,Outgoing,49,5528,Colored,98,Excellent
+2026-05-10 00:00:00,Sunday,May,Spring,First Quarter,Setting,30.28,Rising,3.9,Outgoing,49,7169,Murky,100,Excellent
+2026-05-11 00:00:00,Monday,May,Spring,First Quarter,Setting,30.21,Falling,3.6,Outgoing,49,11030,Murky,100,Excellent
+2026-05-12 00:00:00,Tuesday,May,Spring,First Quarter,Setting,29.36,Falling,3.3,Outgoing,49,6221,Murky,100,Excellent
+2026-05-13 00:00:00,Wednesday,May,Spring,First Quarter,Setting,29.71,Rising,3,Outgoing,48,6749,Murky,100,Excellent
+2026-05-14 00:00:00,Thursday,May,Spring,Waxing Crescent,Setting,29.82,Rising,2.6,Outgoing,51,5892,Colored,100,Excellent
+2026-05-15 00:00:00,Friday,May,Spring,Waxing Crescent,Setting,30.14,Rising,2.3,Outgoing,48,5666,Colored,100,Excellent
+2026-05-16 00:00:00,Saturday,May,Spring,New Moon,Setting,29.83,Falling,2.1,Outgoing,51,7694,Murky,100,Excellent
+2026-05-17 00:00:00,Sunday,May,Spring,New Moon,Setting,29.7,Falling,1.8,Outgoing,47,5498,Colored,100,Excellent
+2026-05-18 00:00:00,Monday,May,Spring,New Moon,Setting,29.98,Rising,1.7,Outgoing,52,11116,Murky,100,Excellent
+2026-05-19 00:00:00,Tuesday,May,Spring,Waxing Crescent,Setting,30.09,Rising,1.6,Low Slack,49,6088,Murky,95,Excellent
+2026-05-20 00:00:00,Wednesday,May,Spring,Waxing Crescent,Setting,30.28,Rising,1.5,Outgoing,51,7415,Murky,97,Excellent
+2026-05-21 00:00:00,Thursday,May,Spring,First Quarter,Setting,29.88,Falling,1.5,Low Slack,48,6529,Murky,100,Excellent
+2026-05-22 00:00:00,Friday,May,Spring,Waxing Gibbous,Setting,30.06,Rising,1.6,Incoming,51,5670,Colored,100,Excellent
+2026-05-23 00:00:00,Saturday,May,Spring,Waxing Gibbous,Setting,30.37,Rising,1.7,Low Slack,45,6139,Murky,86,Very Good
+2026-05-24 00:00:00,Sunday,May,Spring,First Quarter,Setting,29.69,Falling,1.9,Incoming,46,7372,Murky,100,Excellent
+2026-05-25 00:00:00,Monday,May,Spring,First Quarter,Setting,30.1,Rising,2.2,Incoming,47,6274,Murky,100,Excellent
+2026-05-26 00:00:00,Tuesday,May,Spring,First Quarter,Setting,30.36,Rising,2.5,Incoming,51,6189,Murky,100,Excellent
+2026-05-27 00:00:00,Wednesday,May,Spring,Waxing Gibbous,Setting,29.55,Falling,2.8,Incoming,52,5070,Colored,100,Excellent
+2026-05-28 00:00:00,Thursday,May,Spring,Waxing Gibbous,Setting,30.04,Rising,3.1,Incoming,52,5204,Colored,100,Excellent
+2026-05-29 00:00:00,Friday,May,Spring,Full Moon,Setting,29.93,Falling,3.4,Incoming,48,5340,Colored,100,Excellent
+2026-05-30 00:00:00,Saturday,May,Spring,Full Moon,Setting,29.73,Falling,3.7,Incoming,48,5405,Colored,100,Excellent
+2026-05-31 00:00:00,Sunday,May,Spring,Full Moon,Setting,29.82,Rising,4,Incoming,47,8728,Murky,100,Excellent
+2026-06-01 00:00:00,Monday,June,Summer,Full Moon,Setting,30.09,Rising,4.2,Incoming,61,1299,Clear,100,Excellent
+2026-06-02 00:00:00,Tuesday,June,Summer,Full Moon,Setting,30.3,Rising,4.4,Incoming,64,1156,Clear,100,Excellent
+2026-06-03 00:00:00,Wednesday,June,Summer,Full Moon,Setting,30.38,Rising,4.5,High Slack,55,3128,Slightly Colored,100,Excellent
+2026-06-04 00:00:00,Thursday,June,Summer,Full Moon,Setting,29.81,Falling,4.5,High Slack,58,1229,Clear,100,Excellent
+2026-06-05 00:00:00,Friday,June,Summer,Waxing Gibbous,Setting,29.8,Stable,4.5,High Slack,56,1096,Clear,100,Excellent
+2026-06-06 00:00:00,Saturday,June,Summer,Waxing Gibbous,Setting,29.89,Rising,4.4,High Slack,59,1312,Clear,100,Excellent
+2026-06-07 00:00:00,Sunday,June,Summer,Waxing Gibbous,Setting,29.74,Falling,4.2,Outgoing,61,2418,Slightly Colored,100,Excellent
+2026-06-08 00:00:00,Monday,June,Summer,Waxing Gibbous,Setting,29.77,Stable,4,Outgoing,58,1312,Clear,100,Excellent
+2026-06-09 00:00:00,Tuesday,June,Summer,First Quarter,Setting,30.09,Rising,3.7,Outgoing,62,939,Very Clear,100,Excellent
+2026-06-10 00:00:00,Wednesday,June,Summer,First Quarter,Setting,30.37,Rising,3.4,Outgoing,59,1300,Clear,100,Excellent
+2026-06-11 00:00:00,Thursday,June,Summer,First Quarter,Setting,30.02,Falling,3.1,Outgoing,60,804,Very Clear,100,Excellent
+2026-06-12 00:00:00,Friday,June,Summer,First Quarter,Setting,30.17,Rising,2.8,Outgoing,63,1054,Clear,100,Excellent
+2026-06-13 00:00:00,Saturday,June,Summer,Waxing Crescent,Setting,30.03,Falling,2.5,Outgoing,60,5257,Colored,100,Excellent
+2026-06-14 00:00:00,Sunday,June,Summer,Waxing Crescent,Setting,30.47,Rising,2.2,Outgoing,64,6297,Murky,97,Excellent
+2026-06-15 00:00:00,Monday,June,Summer,New Moon,Setting,29.88,Falling,2,Outgoing,57,1330,Clear,100,Excellent
+2026-06-16 00:00:00,Tuesday,June,Summer,New Moon,Setting,30.27,Rising,1.8,Outgoing,58,1458,Clear,100,Excellent
+2026-06-17 00:00:00,Wednesday,June,Summer,New Moon,Setting,30.08,Falling,1.6,Outgoing,63,1690,Clear,100,Excellent
+2026-06-18 00:00:00,Thursday,June,Summer,Waxing Crescent,Setting,29.98,Falling,1.5,Outgoing,56,1715,Clear,100,Excellent
+2026-06-19 00:00:00,Friday,June,Summer,Waxing Crescent,Setting,30.12,Rising,1.5,Low Slack,61,1675,Clear,100,Excellent
+2026-06-20 00:00:00,Saturday,June,Summer,Waxing Gibbous,Setting,29.92,Falling,1.5,Low Slack,56,991,Very Clear,98,Excellent
+2026-06-21 00:00:00,Sunday,June,Summer,Waxing Gibbous,Setting,30.37,Rising,1.7,Incoming,61,1162,Clear,100,Excellent
+2026-06-22 00:00:00,Monday,June,Summer,First Quarter,Setting,29.71,Falling,1.8,Incoming,58,3295,Slightly Colored,100,Excellent
+2026-06-23 00:00:00,Tuesday,June,Summer,First Quarter,Setting,30.24,Rising,2.1,Incoming,64,1276,Clear,100,Excellent
+2026-06-24 00:00:00,Wednesday,June,Summer,First Quarter,Setting,29.67,Falling,2.3,Incoming,57,1128,Clear,100,Excellent
+2026-06-25 00:00:00,Thursday,June,Summer,Waxing Gibbous,Setting,30.27,Rising,2.6,Incoming,55,2136,Slightly Colored,100,Excellent
+2026-06-26 00:00:00,Friday,June,Summer,Waxing Gibbous,Setting,29.93,Falling,2.9,Incoming,55,1472,Clear,100,Excellent
+2026-06-27 00:00:00,Saturday,June,Summer,Full Moon,Setting,29.72,Falling,3.3,Incoming,62,1508,Clear,100,Excellent
+2026-06-28 00:00:00,Sunday,June,Summer,Full Moon,Setting,30.23,Rising,3.6,Incoming,63,955,Very Clear,100,Excellent
+2026-06-29 00:00:00,Monday,June,Summer,Full Moon,Setting,29.79,Falling,3.8,Incoming,59,1137,Clear,100,Excellent
+2026-06-30 00:00:00,Tuesday,June,Summer,Full Moon,Setting,29.78,Stable,4.1,Incoming,64,837,Very Clear,100,Excellent
+2026-07-01 00:00:00,Wednesday,July,Summer,Full Moon,Setting,29.78,Stable,4.3,Incoming,56,1314,Clear,100,Excellent
+2026-07-02 00:00:00,Thursday,July,Summer,Full Moon,Setting,29.93,Rising,4.4,Incoming,63,1255,Clear,100,Excellent
+2026-07-03 00:00:00,Friday,July,Summer,Full Moon,Setting,30.33,Rising,4.5,High Slack,59,1771,Clear,100,Excellent
+2026-07-04 00:00:00,Saturday,July,Summer,Waxing Gibbous,Setting,29.8,Falling,4.5,High Slack,60,904,Very Clear,100,Excellent
+2026-07-05 00:00:00,Sunday,July,Summer,Waxing Gibbous,Setting,29.79,Stable,4.4,High Slack,60,1777,Clear,100,Excellent
+2026-07-06 00:00:00,Monday,July,Summer,Waxing Gibbous,Setting,29.98,Rising,4.3,Outgoing,56,4247,Colored,100,Excellent
+2026-07-07 00:00:00,Tuesday,July,Summer,Waxing Gibbous,Setting,30.08,Rising,4.1,Outgoing,55,1311,Clear,100,Excellent
+2026-07-08 00:00:00,Wednesday,July,Summer,First Quarter,Setting,29.8,Falling,3.9,Outgoing,63,4660,Colored,100,Excellent
+2026-07-09 00:00:00,Thursday,July,Summer,First Quarter,Setting,29.91,Rising,3.6,Outgoing,64,1685,Clear,100,Excellent
+2026-07-10 00:00:00,Friday,July,Summer,First Quarter,Setting,29.91,Stable,3.3,Outgoing,60,1315,Clear,100,Excellent
+2026-07-11 00:00:00,Saturday,July,Summer,First Quarter,Setting,30.41,Rising,3,Outgoing,59,1068,Clear,100,Excellent
+2026-07-12 00:00:00,Sunday,July,Summer,Waxing Crescent,Setting,29.62,Falling,2.7,Outgoing,58,1671,Clear,100,Excellent
+2026-07-13 00:00:00,Monday,July,Summer,Waxing Crescent,Setting,30.25,Rising,2.4,Outgoing,57,1327,Clear,100,Excellent
+2026-07-14 00:00:00,Tuesday,July,Summer,New Moon,Setting,29.5,Falling,2.1,Outgoing,56,3120,Slightly Colored,100,Excellent
+2026-07-15 00:00:00,Wednesday,July,Summer,New Moon,Setting,29.86,Rising,1.9,Outgoing,62,1339,Clear,100,Excellent
+2026-07-16 00:00:00,Thursday,July,Summer,New Moon,Setting,30.1,Rising,1.7,Outgoing,62,1236,Clear,100,Excellent
+2026-07-17 00:00:00,Friday,July,Summer,Waxing Crescent,Setting,29.65,Falling,1.6,Low Slack,62,4394,Colored,100,Excellent
+2026-07-18 00:00:00,Saturday,July,Summer,Waxing Crescent,Setting,29.85,Rising,1.5,Outgoing,61,1347,Clear,100,Excellent
+2026-07-19 00:00:00,Sunday,July,Summer,First Quarter,Setting,29.99,Rising,1.5,Low Slack,56,1739,Clear,100,Excellent
+2026-07-20 00:00:00,Monday,July,Summer,Waxing Gibbous,Setting,29.93,Falling,1.6,Incoming,57,2917,Slightly Colored,100,Excellent
+2026-07-21 00:00:00,Tuesday,July,Summer,Waxing Gibbous,Setting,30.38,Rising,1.7,Low Slack,60,1048,Clear,98,Excellent
+2026-07-22 00:00:00,Wednesday,July,Summer,First Quarter,Setting,29.91,Falling,1.9,Incoming,55,851,Very Clear,100,Excellent
+2026-07-23 00:00:00,Thursday,July,Summer,First Quarter,Setting,29.32,Falling,2.2,Incoming,56,975,Very Clear,100,Excellent
+2026-07-24 00:00:00,Friday,July,Summer,First Quarter,Setting,29.65,Rising,2.5,Incoming,56,1250,Clear,100,Excellent
+2026-07-25 00:00:00,Saturday,July,Summer,Waxing Gibbous,Setting,30.02,Rising,2.8,Incoming,64,1195,Clear,100,Excellent
+2026-07-26 00:00:00,Sunday,July,Summer,Waxing Gibbous,Setting,30.02,Stable,3.1,Incoming,59,1197,Clear,100,Excellent
+2026-07-27 00:00:00,Monday,July,Summer,Full Moon,Setting,30.1,Rising,3.4,Incoming,59,1135,Clear,100,Excellent
+2026-07-28 00:00:00,Tuesday,July,Summer,Full Moon,Setting,29.72,Falling,3.7,Incoming,60,1305,Clear,100,Excellent
+2026-07-29 00:00:00,Wednesday,July,Summer,Full Moon,Setting,29.57,Falling,4,Incoming,64,1091,Clear,100,Excellent
+2026-07-30 00:00:00,Thursday,July,Summer,Full Moon,Setting,29.96,Rising,4.2,Incoming,59,6633,Murky,100,Excellent
+2026-07-31 00:00:00,Friday,July,Summer,Full Moon,Setting,29.36,Falling,4.4,Incoming,61,1456,Clear,100,Excellent
+2026-08-01 00:00:00,Saturday,August,Summer,Full Moon,Setting,30.13,Rising,4.5,High Slack,64,1268,Clear,100,Excellent
+2026-08-02 00:00:00,Sunday,August,Summer,Full Moon,Setting,30.2,Rising,4.5,High Slack,57,859,Very Clear,100,Excellent
+2026-08-03 00:00:00,Monday,August,Summer,Waxing Gibbous,Setting,29.8,Falling,4.5,High Slack,61,4576,Colored,100,Excellent
+2026-08-04 00:00:00,Tuesday,August,Summer,Waxing Gibbous,Setting,29.88,Rising,4.4,High Slack,64,1167,Clear,100,Excellent
+2026-08-05 00:00:00,Wednesday,August,Summer,Waxing Gibbous,Setting,29.91,Stable,4.2,Outgoing,64,4567,Colored,100,Excellent
+2026-08-06 00:00:00,Thursday,August,Summer,Waxing Gibbous,Setting,29.99,Rising,4,Outgoing,62,1905,Clear,100,Excellent
+2026-08-07 00:00:00,Friday,August,Summer,First Quarter,Setting,29.93,Falling,3.8,Outgoing,64,1286,Clear,100,Excellent
+2026-08-08 00:00:00,Saturday,August,Summer,First Quarter,Setting,30.18,Rising,3.5,Outgoing,59,1030,Clear,100,Excellent
+2026-08-09 00:00:00,Sunday,August,Summer,First Quarter,Setting,30.22,Stable,3.2,Outgoing,59,1297,Clear,100,Excellent
+2026-08-10 00:00:00,Monday,August,Summer,First Quarter,Setting,29.39,Falling,2.8,Outgoing,61,2081,Slightly Colored,100,Excellent
+2026-08-11 00:00:00,Tuesday,August,Summer,Waxing Crescent,Setting,29.7,Rising,2.5,Outgoing,63,1756,Clear,100,Excellent
+2026-08-12 00:00:00,Wednesday,August,Summer,Waxing Crescent,Setting,29.55,Falling,2.2,Outgoing,60,1409,Clear,100,Excellent
+2026-08-13 00:00:00,Thursday,August,Summer,New Moon,Setting,29.32,Falling,2,Outgoing,55,875,Very Clear,100,Excellent
+2026-08-14 00:00:00,Friday,August,Summer,New Moon,Setting,29.91,Rising,1.8,Outgoing,59,1588,Clear,100,Excellent
+2026-08-15 00:00:00,Saturday,August,Summer,New Moon,Setting,30.33,Rising,1.6,Outgoing,58,1769,Clear,100,Excellent
+2026-08-16 00:00:00,Sunday,August,Summer,Waxing Crescent,Setting,29.66,Falling,1.5,Outgoing,63,1575,Clear,100,Excellent
+2026-08-17 00:00:00,Monday,August,Summer,Waxing Crescent,Setting,29.89,Rising,1.5,Low Slack,59,1115,Clear,100,Excellent
+2026-08-18 00:00:00,Tuesday,August,Summer,Waxing Gibbous,Setting,29.76,Falling,1.5,Low Slack,57,1147,Clear,100,Excellent
+2026-08-19 00:00:00,Wednesday,August,Summer,Waxing Gibbous,Setting,29.34,Falling,1.7,Incoming,57,1283,Clear,100,Excellent
+2026-08-20 00:00:00,Thursday,August,Summer,First Quarter,Setting,29.48,Rising,1.8,Incoming,59,2018,Slightly Colored,100,Excellent
+2026-08-21 00:00:00,Friday,August,Summer,First Quarter,Setting,29.7,Rising,2,Incoming,60,1113,Clear,100,Excellent
+2026-08-22 00:00:00,Saturday,August,Summer,First Quarter,Setting,29.85,Rising,2.3,Incoming,61,4119,Colored,100,Excellent
+2026-08-23 00:00:00,Sunday,August,Summer,Waxing Gibbous,Setting,29.74,Falling,2.6,Incoming,56,5994,Colored,100,Excellent
+2026-08-24 00:00:00,Monday,August,Summer,Waxing Gibbous,Setting,29.77,Stable,2.9,Incoming,58,1037,Clear,100,Excellent
+2026-08-25 00:00:00,Tuesday,August,Summer,Full Moon,Setting,30,Rising,3.2,Incoming,58,1679,Clear,100,Excellent
+2026-08-26 00:00:00,Wednesday,August,Summer,Full Moon,Setting,30.14,Rising,3.5,Incoming,63,1669,Clear,100,Excellent
+2026-08-27 00:00:00,Thursday,August,Summer,Full Moon,Setting,29.59,Falling,3.8,Incoming,64,1429,Clear,100,Excellent
+2026-08-28 00:00:00,Friday,August,Summer,Full Moon,Setting,29.92,Rising,4.1,Incoming,58,1398,Clear,100,Excellent
+2026-08-29 00:00:00,Saturday,August,Summer,Full Moon,Setting,29.76,Falling,4.3,Incoming,58,975,Very Clear,100,Excellent
+2026-08-30 00:00:00,Sunday,August,Summer,Full Moon,Setting,29.61,Falling,4.4,Incoming,57,1363,Clear,100,Excellent
+2026-08-31 00:00:00,Monday,August,Summer,Full Moon,Setting,29.7,Rising,4.5,High Slack,55,1127,Clear,100,Excellent
+2026-09-01 00:00:00,Tuesday,September,Fall,Waxing Gibbous,Setting,30.06,Rising,4.5,High Slack,50,2106,Slightly Colored,100,Excellent
+2026-09-02 00:00:00,Wednesday,September,Fall,Waxing Gibbous,Setting,29.71,Falling,4.4,High Slack,50,2172,Slightly Colored,100,Excellent
+2026-09-03 00:00:00,Thursday,September,Fall,Waxing Gibbous,Setting,29.46,Falling,4.3,Outgoing,49,2256,Slightly Colored,100,Excellent
+2026-09-04 00:00:00,Friday,September,Fall,Waxing Gibbous,Setting,29.95,Rising,4.1,Outgoing,52,2571,Slightly Colored,100,Excellent
+2026-09-05 00:00:00,Saturday,September,Fall,First Quarter,Setting,29.62,Falling,3.9,Outgoing,53,5584,Colored,100,Excellent
+2026-09-06 00:00:00,Sunday,September,Fall,First Quarter,Setting,29.86,Rising,3.6,Outgoing,54,2765,Slightly Colored,100,Excellent
+2026-09-07 00:00:00,Monday,September,Fall,First Quarter,Setting,30.06,Rising,3.3,Outgoing,50,1939,Clear,100,Excellent
+2026-09-08 00:00:00,Tuesday,September,Fall,First Quarter,Setting,29.57,Falling,3,Outgoing,48,2838,Slightly Colored,100,Excellent
+2026-09-09 00:00:00,Wednesday,September,Fall,Waxing Crescent,Setting,30.04,Rising,2.7,Outgoing,54,5701,Colored,100,Excellent
+2026-09-10 00:00:00,Thursday,September,Fall,Waxing Crescent,Setting,29.7,Falling,2.4,Outgoing,51,2388,Slightly Colored,100,Excellent
+2026-09-11 00:00:00,Friday,September,Fall,New Moon,Setting,29.2,Falling,2.1,Outgoing,54,1965,Clear,100,Excellent
+2026-09-12 00:00:00,Saturday,September,Fall,New Moon,Setting,30.29,Rising,1.9,Outgoing,50,2294,Slightly Colored,100,Excellent
+2026-09-13 00:00:00,Sunday,September,Fall,New Moon,Setting,29.8,Falling,1.7,Outgoing,48,2064,Slightly Colored,100,Excellent
+2026-09-14 00:00:00,Monday,September,Fall,Waxing Crescent,Setting,29.47,Falling,1.6,Low Slack,54,1695,Clear,100,Excellent
+2026-09-15 00:00:00,Tuesday,September,Fall,Waxing Crescent,Setting,29.89,Rising,1.5,Outgoing,49,1629,Clear,100,Excellent
+2026-09-16 00:00:00,Wednesday,September,Fall,First Quarter,Setting,29.61,Falling,1.5,Low Slack,53,1819,Clear,100,Excellent
+2026-09-17 00:00:00,Thursday,September,Fall,Waxing Gibbous,Setting,29.48,Falling,1.6,Incoming,50,2564,Slightly Colored,100,Excellent
+2026-09-18 00:00:00,Friday,September,Fall,Waxing Gibbous,Setting,29.98,Rising,1.7,Low Slack,51,3637,Slightly Colored,100,Excellent
+2026-09-19 00:00:00,Saturday,September,Fall,First Quarter,Setting,29.7,Falling,1.9,Incoming,50,2407,Slightly Colored,100,Excellent
+2026-09-20 00:00:00,Sunday,September,Fall,First Quarter,Setting,29.62,Falling,2.2,Incoming,53,2904,Slightly Colored,100,Excellent
+2026-09-21 00:00:00,Monday,September,Fall,First Quarter,Setting,29.02,Falling,2.4,Incoming,51,1652,Clear,100,Excellent
+2026-09-22 00:00:00,Tuesday,September,Fall,Waxing Gibbous,Setting,29.56,Rising,2.8,Incoming,52,2324,Slightly Colored,100,Excellent
+2026-09-23 00:00:00,Wednesday,September,Fall,Waxing Gibbous,Setting,29.66,Rising,3.1,Incoming,51,1782,Clear,100,Excellent
+2026-09-24 00:00:00,Thursday,September,Fall,Full Moon,Setting,29.74,Rising,3.4,Incoming,51,4251,Colored,100,Excellent
+2026-09-25 00:00:00,Friday,September,Fall,Full Moon,Setting,29.52,Falling,3.7,Incoming,51,6792,Murky,100,Excellent
+2026-09-26 00:00:00,Saturday,September,Fall,Full Moon,Setting,30.09,Rising,4,Incoming,50,2678,Slightly Colored,100,Excellent
+2026-09-27 00:00:00,Sunday,September,Fall,Full Moon,Setting,29.54,Falling,4.2,Incoming,54,2837,Slightly Colored,100,Excellent
+2026-09-28 00:00:00,Monday,September,Fall,Full Moon,Setting,29.72,Rising,4.3,High Slack,50,1824,Clear,100,Excellent
+2026-09-29 00:00:00,Tuesday,September,Fall,Full Moon,Setting,30.05,Rising,4.5,Incoming,54,1827,Clear,100,Excellent
+2026-09-30 00:00:00,Wednesday,September,Fall,Full Moon,Setting,30.12,Rising,4.5,High Slack,49,1775,Clear,100,Excellent
+2026-10-01 00:00:00,Thursday,October,Fall,Waxing Gibbous,Setting,29.81,Falling,4.5,High Slack,50,2096,Slightly Colored,100,Excellent
+2026-10-02 00:00:00,Friday,October,Fall,Waxing Gibbous,Setting,29.87,Rising,4.4,High Slack,54,2151,Slightly Colored,100,Excellent
+2026-10-03 00:00:00,Saturday,October,Fall,Waxing Gibbous,Setting,29.77,Falling,4.2,Outgoing,54,2823,Slightly Colored,100,Excellent
+2026-10-04 00:00:00,Sunday,October,Fall,Waxing Gibbous,Setting,29.21,Falling,4,Outgoing,49,2157,Slightly Colored,100,Excellent
+2026-10-05 00:00:00,Monday,October,Fall,First Quarter,Setting,29.6,Rising,3.8,Outgoing,50,2948,Slightly Colored,100,Excellent
+2026-10-06 00:00:00,Tuesday,October,Fall,First Quarter,Setting,29.67,Rising,3.5,Outgoing,48,2428,Slightly Colored,100,Excellent
+2026-10-07 00:00:00,Wednesday,October,Fall,First Quarter,Setting,30.08,Rising,3.2,Outgoing,49,2490,Slightly Colored,100,Excellent
+2026-10-08 00:00:00,Thursday,October,Fall,First Quarter,Setting,30.08,Stable,2.9,Outgoing,48,1850,Clear,100,Excellent
+2026-10-09 00:00:00,Friday,October,Fall,Waxing Crescent,Setting,29.66,Falling,2.5,Outgoing,51,5565,Colored,100,Excellent
+2026-10-10 00:00:00,Saturday,October,Fall,Waxing Crescent,Setting,29.9,Rising,2.2,Outgoing,52,7039,Murky,100,Excellent
+2026-10-11 00:00:00,Sunday,October,Fall,New Moon,Setting,29.8,Falling,2,Outgoing,48,2546,Slightly Colored,100,Excellent
+2026-10-12 00:00:00,Monday,October,Fall,New Moon,Setting,30.1,Rising,1.8,Outgoing,49,2540,Slightly Colored,100,Excellent
+2026-10-13 00:00:00,Tuesday,October,Fall,New Moon,Setting,29.57,Falling,1.6,Outgoing,49,2214,Slightly Colored,100,Excellent
+2026-10-14 00:00:00,Wednesday,October,Fall,Waxing Crescent,Setting,29.56,Stable,1.5,Outgoing,49,1876,Clear,100,Excellent
+2026-10-15 00:00:00,Thursday,October,Fall,Waxing Crescent,Setting,30.08,Rising,1.5,Low Slack,48,2421,Slightly Colored,100,Excellent
+2026-10-16 00:00:00,Friday,October,Fall,Waxing Gibbous,Setting,29.91,Falling,1.5,Low Slack,54,2306,Slightly Colored,100,Excellent
+2026-10-17 00:00:00,Saturday,October,Fall,Waxing Gibbous,Setting,29.4,Falling,1.6,Incoming,51,2139,Slightly Colored,100,Excellent
+2026-10-18 00:00:00,Sunday,October,Fall,First Quarter,Setting,29.8,Rising,1.8,Incoming,50,2122,Slightly Colored,100,Excellent
+2026-10-19 00:00:00,Monday,October,Fall,First Quarter,Setting,30.46,Rising,2,Incoming,51,2618,Slightly Colored,100,Excellent
+2026-10-20 00:00:00,Tuesday,October,Fall,First Quarter,Setting,29.91,Falling,2.3,Incoming,52,4453,Colored,100,Excellent
+2026-10-21 00:00:00,Wednesday,October,Fall,Waxing Gibbous,Setting,29.67,Falling,2.6,Incoming,49,1937,Clear,100,Excellent
+2026-10-22 00:00:00,Thursday,October,Fall,Waxing Gibbous,Setting,29.98,Rising,2.9,Incoming,51,1545,Clear,100,Excellent
+2026-10-23 00:00:00,Friday,October,Fall,Full Moon,Setting,29.99,Stable,3.2,Incoming,50,2134,Slightly Colored,100,Excellent
+2026-10-24 00:00:00,Saturday,October,Fall,Full Moon,Setting,29.89,Falling,3.5,Incoming,52,1633,Clear,100,Excellent
+2026-10-25 00:00:00,Sunday,October,Fall,Full Moon,Setting,30.18,Rising,3.8,Incoming,50,2791,Slightly Colored,100,Excellent
+2026-10-26 00:00:00,Monday,October,Fall,Full Moon,Setting,29.52,Falling,4.1,Incoming,50,1973,Clear,100,Excellent
+2026-10-27 00:00:00,Tuesday,October,Fall,Full Moon,Setting,29.62,Rising,4.3,Incoming,49,5466,Colored,100,Excellent
+2026-10-28 00:00:00,Wednesday,October,Fall,Full Moon,Setting,29.97,Rising,4.4,Incoming,50,1635,Clear,100,Excellent
+2026-10-29 00:00:00,Thursday,October,Fall,Full Moon,Setting,29.74,Falling,4.5,High Slack,50,2695,Slightly Colored,100,Excellent
+2026-10-30 00:00:00,Friday,October,Fall,Waxing Gibbous,Setting,30.11,Rising,4.5,High Slack,54,2705,Slightly Colored,100,Excellent
+2026-10-31 00:00:00,Saturday,October,Fall,Waxing Gibbous,Setting,29.27,Falling,4.4,High Slack,49,1818,Clear,100,Excellent
+2026-11-01 00:00:00,Sunday,November,Fall,Waxing Gibbous,Setting,29.52,Rising,4.3,Outgoing,53,1641,Clear,100,Excellent
+2026-11-02 00:00:00,Monday,November,Fall,Waxing Gibbous,Setting,29.26,Falling,4.1,Outgoing,53,1964,Clear,100,Excellent
+2026-11-03 00:00:00,Tuesday,November,Fall,First Quarter,Setting,29.69,Rising,3.9,Outgoing,48,1634,Clear,100,Excellent
+2026-11-04 00:00:00,Wednesday,November,Fall,First Quarter,Setting,29.61,Falling,3.6,Outgoing,51,2938,Slightly Colored,100,Excellent
+2026-11-05 00:00:00,Thursday,November,Fall,First Quarter,Setting,29.95,Rising,3.3,Outgoing,52,1641,Clear,100,Excellent
+2026-11-06 00:00:00,Friday,November,Fall,First Quarter,Setting,30.02,Rising,3,Outgoing,53,4882,Colored,100,Excellent
+2026-11-07 00:00:00,Saturday,November,Fall,Waxing Crescent,Setting,29.7,Falling,2.7,Outgoing,52,1657,Clear,100,Excellent
+2026-11-08 00:00:00,Sunday,November,Fall,Waxing Crescent,Setting,29.83,Rising,2.4,Outgoing,49,2702,Slightly Colored,100,Excellent
+2026-11-09 00:00:00,Monday,November,Fall,New Moon,Setting,29.61,Falling,2.1,Outgoing,52,1727,Clear,100,Excellent
+2026-11-10 00:00:00,Tuesday,November,Fall,New Moon,Setting,30.1,Rising,1.9,Outgoing,54,2093,Slightly Colored,100,Excellent
+2026-11-11 00:00:00,Wednesday,November,Fall,New Moon,Setting,30.25,Rising,1.7,Outgoing,54,2926,Slightly Colored,100,Excellent
+2026-11-12 00:00:00,Thursday,November,Fall,Waxing Crescent,Setting,29.73,Falling,1.6,Low Slack,48,2983,Slightly Colored,100,Excellent
+2026-11-13 00:00:00,Friday,November,Fall,Waxing Crescent,Setting,29.48,Falling,1.5,Outgoing,50,6232,Murky,100,Excellent
+2026-11-14 00:00:00,Saturday,November,Fall,First Quarter,Setting,29.54,Rising,1.5,Low Slack,53,2882,Slightly Colored,100,Excellent
+2026-11-15 00:00:00,Sunday,November,Fall,Waxing Gibbous,Setting,30.16,Rising,1.6,Incoming,49,6235,Murky,96,Excellent
+2026-11-16 00:00:00,Monday,November,Fall,Waxing Gibbous,Setting,29.62,Falling,1.7,Low Slack,51,2612,Slightly Colored,100,Excellent
+2026-11-17 00:00:00,Tuesday,November,Fall,First Quarter,Setting,29.63,Stable,1.9,Incoming,52,4113,Colored,100,Excellent
+2026-11-18 00:00:00,Wednesday,November,Fall,First Quarter,Setting,29.97,Rising,2.2,Incoming,54,2806,Slightly Colored,100,Excellent
+2026-11-19 00:00:00,Thursday,November,Fall,First Quarter,Setting,30.14,Rising,2.4,Incoming,54,2063,Slightly Colored,100,Excellent
+2026-11-20 00:00:00,Friday,November,Fall,Waxing Gibbous,Setting,29.72,Falling,2.7,Incoming,54,2715,Slightly Colored,100,Excellent
+2026-11-21 00:00:00,Saturday,November,Fall,Waxing Gibbous,Setting,30.21,Rising,3.1,Incoming,50,2939,Slightly Colored,100,Excellent
+2026-11-22 00:00:00,Sunday,November,Fall,Full Moon,Setting,30.03,Falling,3.4,Incoming,50,2694,Slightly Colored,100,Excellent
+2026-11-23 00:00:00,Monday,November,Fall,Full Moon,Setting,29.85,Falling,3.7,Incoming,54,1739,Clear,100,Excellent
+2026-11-24 00:00:00,Tuesday,November,Fall,Full Moon,Setting,29.77,Falling,3.9,Incoming,48,2461,Slightly Colored,100,Excellent
+2026-11-25 00:00:00,Wednesday,November,Fall,Full Moon,Setting,29.94,Rising,4.2,Incoming,53,2720,Slightly Colored,100,Excellent
+2026-11-26 00:00:00,Thursday,November,Fall,Full Moon,Setting,29.58,Falling,4.3,High Slack,53,6009,Murky,100,Excellent
+2026-11-27 00:00:00,Friday,November,Fall,Full Moon,Setting,30.09,Rising,4.5,Incoming,50,1506,Clear,100,Excellent
+2026-11-28 00:00:00,Saturday,November,Fall,Full Moon,Setting,29.35,Falling,4.5,High Slack,51,2371,Slightly Colored,100,Excellent
+2026-11-29 00:00:00,Sunday,November,Fall,Waxing Gibbous,Setting,30.07,Rising,4.5,High Slack,50,5322,Colored,99,Excellent
+2026-11-30 00:00:00,Monday,November,Fall,Waxing Gibbous,Setting,30.25,Rising,4.4,High Slack,50,1509,Clear,100,Excellent
+2026-12-01 00:00:00,Tuesday,December,Winter,Waxing Gibbous,Setting,30.09,Falling,4.2,Outgoing,38,3817,Slightly Colored,100,Excellent
+2026-12-02 00:00:00,Wednesday,December,Winter,Waxing Gibbous,Setting,29.92,Falling,4,Outgoing,39,3188,Slightly Colored,100,Excellent
+2026-12-03 00:00:00,Thursday,December,Winter,First Quarter,Setting,29.59,Falling,3.8,Outgoing,41,3433,Slightly Colored,100,Excellent
+2026-12-04 00:00:00,Friday,December,Winter,First Quarter,Setting,30.31,Rising,3.5,Outgoing,42,4208,Colored,100,Excellent
+2026-12-05 00:00:00,Saturday,December,Winter,First Quarter,Setting,30.15,Falling,3.2,Outgoing,42,4833,Colored,100,Excellent
+2026-12-06 00:00:00,Sunday,December,Winter,First Quarter,Setting,29.91,Falling,2.9,Outgoing,38,4165,Colored,100,Excellent
+2026-12-07 00:00:00,Monday,December,Winter,Waxing Crescent,Setting,30.28,Rising,2.6,Outgoing,38,3926,Slightly Colored,100,Excellent
+2026-12-08 00:00:00,Tuesday,December,Winter,Waxing Crescent,Setting,29.75,Falling,2.3,Outgoing,41,3431,Slightly Colored,100,Excellent
+2026-12-09 00:00:00,Wednesday,December,Winter,New Moon,Setting,30.03,Rising,2,Outgoing,39,4897,Colored,100,Excellent
+2026-12-10 00:00:00,Thursday,December,Winter,New Moon,Setting,30.14,Rising,1.8,Outgoing,38,3640,Slightly Colored,100,Excellent
+2026-12-11 00:00:00,Friday,December,Winter,New Moon,Setting,30.25,Rising,1.6,Outgoing,39,7044,Murky,93,Excellent
+2026-12-12 00:00:00,Saturday,December,Winter,Waxing Crescent,Setting,29.39,Falling,1.5,Outgoing,38,7029,Murky,100,Excellent
+2026-12-13 00:00:00,Sunday,December,Winter,Waxing Crescent,Setting,29.89,Rising,1.5,Low Slack,42,3284,Slightly Colored,100,Excellent
+2026-12-14 00:00:00,Monday,December,Winter,First Quarter,Setting,29.97,Rising,1.5,Low Slack,42,7722,Murky,99,Excellent
+2026-12-15 00:00:00,Tuesday,December,Winter,Waxing Gibbous,Setting,29.42,Falling,1.6,Incoming,42,4744,Colored,100,Excellent
+2026-12-16 00:00:00,Wednesday,December,Winter,Waxing Gibbous,Setting,30.02,Rising,1.8,Incoming,39,6482,Murky,94,Excellent
+2026-12-17 00:00:00,Thursday,December,Winter,First Quarter,Setting,29.67,Falling,2,Incoming,42,4995,Colored,100,Excellent
+2026-12-18 00:00:00,Friday,December,Winter,First Quarter,Setting,29.89,Rising,2.3,Incoming,38,3644,Slightly Colored,100,Excellent
+2026-12-19 00:00:00,Saturday,December,Winter,First Quarter,Setting,29.75,Falling,2.6,Incoming,41,4313,Colored,100,Excellent
+2026-12-20 00:00:00,Sunday,December,Winter,Waxing Gibbous,Setting,30.07,Rising,2.9,Incoming,41,3603,Slightly Colored,100,Excellent
+2026-12-21 00:00:00,Monday,December,Winter,Waxing Gibbous,Setting,29.06,Falling,3.2,Incoming,41,5971,Colored,100,Excellent
+2026-12-22 00:00:00,Tuesday,December,Winter,Full Moon,Setting,30.21,Rising,3.5,Incoming,40,3146,Slightly Colored,100,Excellent
+2026-12-23 00:00:00,Wednesday,December,Winter,Full Moon,Setting,29.67,Falling,3.8,Incoming,40,3358,Slightly Colored,100,Excellent
+2026-12-24 00:00:00,Thursday,December,Winter,Full Moon,Setting,30.19,Rising,4,Incoming,39,6653,Murky,99,Excellent
+2026-12-25 00:00:00,Friday,December,Winter,Full Moon,Setting,29.71,Falling,4.3,Incoming,42,4575,Colored,100,Excellent
+2026-12-26 00:00:00,Saturday,December,Winter,Full Moon,Setting,29.36,Falling,4.4,Incoming,40,4299,Colored,100,Excellent
+2026-12-27 00:00:00,Sunday,December,Winter,Full Moon,Setting,29.76,Rising,4.5,High Slack,42,3618,Slightly Colored,100,Excellent
+2026-12-28 00:00:00,Monday,December,Winter,Full Moon,Setting,29.87,Rising,4.5,High Slack,41,4605,Colored,100,Excellent
+2026-12-29 00:00:00,Tuesday,December,Winter,Full Moon,Setting,30.18,Rising,4.4,High Slack,39,4923,Colored,97,Excellent
+2026-12-30 00:00:00,Wednesday,December,Winter,Full Moon,Setting,29.61,Falling,4.3,Outgoing,38,4689,Colored,100,Excellent
+2026-12-31 00:00:00,Thursday,December,Winter,Full Moon,Setting,29.6,Stable,4.2,High Slack,41,7944,Murky,100,Excellent
