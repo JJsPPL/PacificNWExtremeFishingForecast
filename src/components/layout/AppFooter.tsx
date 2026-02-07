@@ -6,17 +6,17 @@ export const AppFooter = () => {
     <footer className="mt-8 pt-6 pb-8 bg-slate-800 text-white">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Partners Section */}
-        <div className="pb-6 mb-6 border-b border-slate-600">
-          <h3 className="text-lg font-semibold mb-3">Our Partners</h3>
-          <div className="flex flex-wrap gap-4">
+        <div className="mb-8">
+          <h3 className="text-lg font-semibold mb-4 text-center">Our Partners</h3>
+          <div className="flex justify-center">
             <a
               href="https://DinoTradez.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors text-sm font-medium text-white"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-xl transition-all text-base font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105"
             >
               DinoTradez.com
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
