@@ -31,7 +31,7 @@ export const AppHeader = () => {
       
       <div className="logo-container mx-auto">
         <img 
-          src="/lovable-uploads/11a94d78-68db-4003-8e29-e4c614fe905f.png" 
+          src="/images/11a94d78-68db-4003-8e29-e4c614fe905f.png" 
           alt="Fishing on Moon Logo" 
           className="app-logo"
         />
