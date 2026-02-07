@@ -120,17 +120,17 @@ export const FishingDetailsView = ({
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <ForecastFactorCard 
+          <ForecastFactorCard
             icon={<Moon className="h-5 w-5 text-indigo-500" />}
             title="Moon Phase"
             value={forecast.moonPhase}
-            detail={`${forecast.moonRising ? "Moon Rising" : "Moon Setting"}`}
+            detail={`${forecast.moonRising ? "Moon Rising" : "Moon Setting"}${forecast.isFirstQuarterWindow ? " - PRIME Window!" : ""}${forecast.moonIllumination !== undefined ? ` (${forecast.moonIllumination}%)` : ""}`}
           />
-          <ForecastFactorCard 
+          <ForecastFactorCard
             icon={<Wind className="h-5 w-5 text-blue-500" />}
             title="Barometric Pressure"
             value={`${forecast.barometricPressure} inHg`}
-            detail={`${forecast.pressureTrend}`}
+            detail={`${forecast.pressureTrend}${forecast.pressureTrend.includes("Falling") ? " - Fish feeding!" : ""}`}
           />
         </div>
 

@@ -193,6 +193,18 @@ export const getLocationPool = (species: string, date: Date, month: number): str
       "John Day River",
       "Tillamook Bay"
     ];
+  } else if (species.includes("Tuna")) {
+    // Tuna fishing offshore OR/WA coast
+    locationPool = [
+      "Offshore Westport, WA (25-50 miles)",
+      "Offshore Ilwaco, WA (30-50 miles)",
+      "Offshore Astoria, OR (25-45 miles)",
+      "Offshore Newport, OR (30-60 miles)",
+      "Offshore Garibaldi, OR (25-50 miles)",
+      "Offshore Charleston, OR (30-50 miles)",
+      "Offshore Depoe Bay, OR (25-45 miles)",
+      "Offshore Neah Bay, WA (20-40 miles)",
+    ];
   } else if (species === "Flounder" || species === "Sole") {
     // Flatfish in sandy/muddy areas
     locationPool = [

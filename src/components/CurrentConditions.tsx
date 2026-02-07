@@ -1,10 +1,13 @@
 
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { FishingDetailsView } from "./FishingDetailsView";
 import { FishScoreIndicator } from "./FishScoreIndicator";
-import { getForecastForDate } from "@/lib/fishingForecast";
-import { MapPin } from "lucide-react";
+import { getForecastForDate, getLiveForecastForDate } from "@/lib/fishingForecast";
+import { MapPin, CloudRain, Thermometer, Wind, Moon, ArrowDown, ArrowUp, Minus, RefreshCw, Clock, Activity } from "lucide-react";
+import type { FishingForecast } from "@/lib/types/fishingTypes";
 
 interface CurrentConditionsProps {
   filterCondition?: boolean;
@@ -12,11 +15,65 @@ interface CurrentConditionsProps {
 
 export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsProps) => {
   const today = new Date();
-  const forecast = getForecastForDate(today);
-  
-  // Get top recommendation
+  const [forecast, setForecast] = useState<FishingForecast>(getForecastForDate(today));
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastRefresh, setLastRefresh] = useState<string>("");
+
+  // Auto-fetch live data on mount and every 15 minutes
+  useEffect(() => {
+    let mounted = true;
+
+    const loadLiveData = async () => {
+      setIsLoading(true);
+      try {
+        const liveForecast = await getLiveForecastForDate(new Date());
+        if (mounted) {
+          setForecast(liveForecast);
+          setLastRefresh(format(new Date(), "h:mm a"));
+        }
+      } catch {
+        // Fallback already handled in getLiveForecastForDate
+        if (mounted) {
+          setForecast(getForecastForDate(new Date()));
+          setLastRefresh(format(new Date(), "h:mm a") + " (offline)");
+        }
+      } finally {
+        if (mounted) setIsLoading(false);
+      }
+    };
+
+    loadLiveData();
+
+    // Refresh every 15 minutes
+    const interval = setInterval(loadLiveData, 15 * 60 * 1000);
+
+    return () => {
+      mounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
   const topRecommendation = forecast.recommendations[0];
-  
+
+  // Activity level color
+  const getActivityColor = (level: string | undefined) => {
+    switch (level) {
+      case 'Excellent': return 'bg-green-500 text-white';
+      case 'Very Good': return 'bg-emerald-400 text-white';
+      case 'Good': return 'bg-yellow-400 text-black';
+      case 'Fair': return 'bg-orange-400 text-white';
+      case 'Poor': return 'bg-red-500 text-white';
+      default: return 'bg-gray-400 text-white';
+    }
+  };
+
+  // Pressure trend icon
+  const PressureTrendIcon = ({ trend }: { trend: string }) => {
+    if (trend.includes('Falling')) return <ArrowDown className="h-4 w-4 text-green-500" />;
+    if (trend.includes('Rising')) return <ArrowUp className="h-4 w-4 text-red-400" />;
+    return <Minus className="h-4 w-4 text-yellow-500" />;
+  };
+
   if (!filterCondition) {
     return (
       <Card>
@@ -32,36 +89,148 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
       </Card>
     );
   }
-  
+
   return (
     <div className="space-y-4">
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle>Today's Fishing Forecast</CardTitle>
-          <CardDescription>{format(today, "EEEE, MMMM d, yyyy")}</CardDescription>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle>Today's Fishing Forecast</CardTitle>
+              <CardDescription>{format(today, "EEEE, MMMM d, yyyy")}</CardDescription>
+            </div>
+            <div className="flex items-center gap-2">
+              {forecast.dataSource === 'live' && (
+                <Badge variant="outline" className="text-xs bg-green-50 border-green-300 text-green-700">
+                  LIVE
+                </Badge>
+              )}
+              {isLoading && <RefreshCw className="h-4 w-4 animate-spin text-muted-foreground" />}
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
+          {/* Score and Activity Level */}
           <div className="flex justify-between items-center mb-4">
             <div>
               <div className="text-3xl font-bold">{forecast.rating}</div>
               <div className="text-sm text-muted-foreground">out of 100</div>
+              {forecast.activityLevel && (
+                <Badge className={`mt-1 ${getActivityColor(forecast.activityLevel)}`}>
+                  {forecast.activityLevel} Fishing
+                </Badge>
+              )}
             </div>
             <FishScoreIndicator score={forecast.rating} size="lg" />
           </div>
-          
+
+          {/* Conditions Grid */}
           <div className="py-2 mb-3 border-y">
             <div className="grid grid-cols-2 gap-3">
+              {/* Moon Phase */}
               <div>
-                <div className="text-sm font-medium text-muted-foreground">Moon Phase</div>
+                <div className="text-sm font-medium text-muted-foreground flex items-center gap-1">
+                  <Moon className="h-3.5 w-3.5" /> Moon Phase
+                </div>
                 <div className="font-medium">{forecast.moonPhase}</div>
+                {forecast.moonIllumination !== undefined && (
+                  <div className="text-xs text-muted-foreground">{forecast.moonIllumination}% illuminated</div>
+                )}
+                {forecast.isFirstQuarterWindow && (
+                  <Badge variant="outline" className="text-xs mt-1 bg-amber-50 border-amber-400 text-amber-700">
+                    Prime 1st Quarter Window!
+                  </Badge>
+                )}
               </div>
+
+              {/* Barometric Pressure */}
               <div>
-                <div className="text-sm font-medium text-muted-foreground">Pressure</div>
-                <div className="font-medium">{forecast.barometricPressure} inHg ({forecast.pressureTrend})</div>
+                <div className="text-sm font-medium text-muted-foreground flex items-center gap-1">
+                  <Activity className="h-3.5 w-3.5" /> Pressure
+                </div>
+                <div className="font-medium flex items-center gap-1">
+                  {forecast.barometricPressure} inHg
+                  <PressureTrendIcon trend={forecast.pressureTrend} />
+                </div>
+                <div className="text-xs text-muted-foreground">{forecast.pressureTrend}</div>
+                {forecast.pressureTrend.includes('Falling') && (
+                  <div className="text-xs text-green-600 font-medium">Dropping pressure = Prime fishing!</div>
+                )}
+              </div>
+
+              {/* Weather (if live data) */}
+              {forecast.temperature !== undefined && (
+                <div>
+                  <div className="text-sm font-medium text-muted-foreground flex items-center gap-1">
+                    <Thermometer className="h-3.5 w-3.5" /> Temperature
+                  </div>
+                  <div className="font-medium">{Math.round(forecast.temperature)}°F</div>
+                  {forecast.windSpeed !== undefined && (
+                    <div className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Wind className="h-3 w-3" /> {Math.round(forecast.windSpeed)} mph
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Solunar */}
+              {forecast.solunarRating && (
+                <div>
+                  <div className="text-sm font-medium text-muted-foreground flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5" /> Solunar
+                  </div>
+                  <div className="font-medium">{forecast.solunarRating}</div>
+                  {forecast.moonOverhead && (
+                    <div className="text-xs text-muted-foreground">
+                      Moon overhead: {forecast.moonOverhead}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Major/Minor Feeding Periods */}
+            {forecast.majorPeriods && forecast.majorPeriods.length > 0 && (
+              <div className="mt-3 pt-2 border-t">
+                <div className="text-xs font-medium text-muted-foreground mb-1">Peak Feeding Periods</div>
+                <div className="flex flex-wrap gap-2">
+                  {forecast.majorPeriods.map((p, i) => (
+                    <Badge key={`major-${i}`} variant="outline" className="text-xs bg-green-50 border-green-300">
+                      Major: {p.start} - {p.end}
+                    </Badge>
+                  ))}
+                  {forecast.minorPeriods?.map((p, i) => (
+                    <Badge key={`minor-${i}`} variant="outline" className="text-xs bg-blue-50 border-blue-300">
+                      Minor: {p.start} - {p.end}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Scoring Factors Breakdown */}
+          {forecast.scoringFactors && forecast.scoringFactors.length > 0 && (
+            <div className="mb-3">
+              <div className="text-sm font-medium text-muted-foreground mb-2">Scoring Factors</div>
+              <div className="space-y-1">
+                {forecast.scoringFactors.map((factor, i) => (
+                  <div key={i} className="flex items-center justify-between text-xs">
+                    <span className="flex items-center gap-1">
+                      <span className={`w-2 h-2 rounded-full ${
+                        factor.impact === 'positive' ? 'bg-green-500' :
+                        factor.impact === 'negative' ? 'bg-red-500' : 'bg-yellow-500'
+                      }`} />
+                      {factor.name}: <span className="text-muted-foreground">{factor.value}</span>
+                    </span>
+                    <span className="font-medium">+{factor.points}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-          
+          )}
+
+          {/* Top Recommendation */}
           {topRecommendation && (
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Top Recommendation</h3>
@@ -78,6 +247,13 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* Last Updated */}
+          {lastRefresh && (
+            <div className="mt-3 text-xs text-muted-foreground text-right">
+              Last updated: {lastRefresh}
             </div>
           )}
         </CardContent>

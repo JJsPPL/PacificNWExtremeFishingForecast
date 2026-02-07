@@ -25,12 +25,13 @@ export const getSeasonalSpecies = (month: number): string[] => {
       "Black Sea Bass",
       "Cabezon",
       "Smallmouth Bass",
-      "Sturgeon"
+      "Sturgeon",
+      "Albacore Tuna"
     ];
   }
   // Fall (Sep-Nov): Fall Chinook, coho, chum, lingcod and rockfish still open
   else {
-    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Lingcod", "Rockfish", "Dungeness Crab", "Cutthroat Trout", "Flounder"];
+    availableSpecies = ["Chinook Salmon (Fall)", "Coho Salmon", "Chum Salmon", "Lingcod", "Rockfish", "Dungeness Crab", "Cutthroat Trout", "Flounder", "Albacore Tuna"];
   }
   
   return availableSpecies;

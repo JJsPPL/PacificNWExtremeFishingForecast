@@ -19,6 +19,8 @@ export const getTacticsForSpecies = (species: string): string[] => {
     return FISHING_TACTICS.bass;
   } else if (species === "Sturgeon") {
     return FISHING_TACTICS.sturgeon;
+  } else if (species.includes("Tuna")) {
+    return FISHING_TACTICS.tuna;
   } else {
     return FISHING_TACTICS.crab;
   }
@@ -39,6 +41,8 @@ export const getBaitForSpecies = (species: string): string[] => {
     return FISHING_BAITS.bass;
   } else if (species === "Sturgeon") {
     return FISHING_BAITS.sturgeon;
+  } else if (species.includes("Tuna")) {
+    return FISHING_BAITS.tuna;
   } else {
     return FISHING_BAITS.bottomfish;
   }
@@ -74,6 +78,11 @@ export const enhanceTactics = (tactics: string, species: string, location: strin
     }
   }
   
+  // Tuna enhancements
+  if (species.includes("Tuna")) {
+    enhancedTactics += " Best 25-50 miles offshore in 58-65°F water. Look for temperature breaks, current edges, and bird activity. Albacore typically arrive off the OR/WA coast July through October, with peak action August-September.";
+  }
+
   return enhancedTactics;
 };
 
