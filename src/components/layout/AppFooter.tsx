@@ -15,7 +15,7 @@ export const AppFooter = () => {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-3 hover:scale-105 transition-transform"
             >
-              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-36 w-auto" />
+              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-52 w-auto" />
               <span className="text-base font-semibold text-slate-300">DinoTradez.com</span>
             </a>
             <a
@@ -24,7 +24,7 @@ export const AppFooter = () => {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-3 hover:scale-105 transition-transform"
             >
-              <img src="https://www.resumebuilderusa.com/og-image.png" alt="ResumeBuilderUSA" className="h-36 w-auto rounded-lg" />
+              <img src="https://www.resumebuilderusa.com/og-image.png" alt="ResumeBuilderUSA" className="h-52 w-auto rounded-lg" />
               <span className="text-base font-semibold text-slate-300">ResumeBuilderUSA.com</span>
             </a>
           </div>
