@@ -5,9 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { FishingDetailsView } from "./FishingDetailsView";
 import { FishScoreIndicator } from "./FishScoreIndicator";
+import { ScoreGauge } from "./ScoreGauge";
+import { FactorBreakdown } from "./FactorBreakdown";
 import { getForecastForDate, getLiveForecastForDate } from "@/lib/fishingForecast";
 import { MapPin, CloudRain, Thermometer, Wind, Moon, ArrowDown, ArrowUp, Minus, RefreshCw, Clock, Activity } from "lucide-react";
 import type { FishingForecast } from "@/lib/types/fishingTypes";
+import RegulationsDisclaimer from "./RegulationsDisclaimer";
 
 interface CurrentConditionsProps {
   filterCondition?: boolean;
@@ -101,7 +104,7 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
             </div>
             <div className="flex items-center gap-2">
               {forecast.dataSource === 'live' && (
-                <Badge variant="outline" className="text-xs bg-green-50 border-green-300 text-green-700">
+                <Badge variant="outline" className="text-xs bg-green-50 dark:bg-green-900/40 border-green-300 dark:border-green-600 text-green-700 dark:text-green-400">
                   LIVE
                 </Badge>
               )}
@@ -110,18 +113,12 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
           </div>
         </CardHeader>
         <CardContent>
-          {/* Score and Activity Level */}
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <div className="text-3xl font-bold">{forecast.rating}</div>
-              <div className="text-sm text-muted-foreground">out of 100</div>
-              {forecast.activityLevel && (
-                <Badge className={`mt-1 ${getActivityColor(forecast.activityLevel)}`}>
-                  {forecast.activityLevel} Fishing
-                </Badge>
-              )}
-            </div>
-            <FishScoreIndicator score={forecast.rating} size="lg" />
+          {/* Score Gauge */}
+          <div className="mb-4">
+            <ScoreGauge
+              score={forecast.rating}
+              activityLevel={forecast.activityLevel || 'Good'}
+            />
           </div>
 
           {/* Conditions Grid */}
@@ -137,7 +134,7 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
                   <div className="text-xs text-muted-foreground">{forecast.moonIllumination}% illuminated</div>
                 )}
                 {forecast.isFirstQuarterWindow && (
-                  <Badge variant="outline" className="text-xs mt-1 bg-amber-50 border-amber-400 text-amber-700">
+                  <Badge variant="outline" className="text-xs mt-1 bg-amber-50 dark:bg-amber-900/40 border-amber-400 dark:border-amber-600 text-amber-700 dark:text-amber-400">
                     Prime 1st Quarter Window!
                   </Badge>
                 )}
@@ -154,7 +151,7 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
                 </div>
                 <div className="text-xs text-muted-foreground">{forecast.pressureTrend}</div>
                 {forecast.pressureTrend.includes('Falling') && (
-                  <div className="text-xs text-green-600 font-medium">Dropping pressure = Prime fishing!</div>
+                  <div className="text-xs text-green-600 dark:text-green-400 font-medium">Dropping pressure = Prime fishing!</div>
                 )}
               </div>
 
@@ -195,12 +192,12 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
                 <div className="text-xs font-medium text-muted-foreground mb-1">Peak Feeding Periods</div>
                 <div className="flex flex-wrap gap-2">
                   {forecast.majorPeriods.map((p, i) => (
-                    <Badge key={`major-${i}`} variant="outline" className="text-xs bg-green-50 border-green-300">
+                    <Badge key={`major-${i}`} variant="outline" className="text-xs bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-700 dark:text-green-400">
                       Major: {p.start} - {p.end}
                     </Badge>
                   ))}
                   {forecast.minorPeriods?.map((p, i) => (
-                    <Badge key={`minor-${i}`} variant="outline" className="text-xs bg-blue-50 border-blue-300">
+                    <Badge key={`minor-${i}`} variant="outline" className="text-xs bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700 dark:text-blue-400">
                       Minor: {p.start} - {p.end}
                     </Badge>
                   ))}
@@ -209,26 +206,15 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
             )}
           </div>
 
-          {/* Scoring Factors Breakdown */}
+          {/* Factor Breakdown Bars */}
           {forecast.scoringFactors && forecast.scoringFactors.length > 0 && (
             <div className="mb-3">
-              <div className="text-sm font-medium text-muted-foreground mb-2">Scoring Factors</div>
-              <div className="space-y-1">
-                {forecast.scoringFactors.map((factor, i) => (
-                  <div key={i} className="flex items-center justify-between text-xs">
-                    <span className="flex items-center gap-1">
-                      <span className={`w-2 h-2 rounded-full ${
-                        factor.impact === 'positive' ? 'bg-green-500' :
-                        factor.impact === 'negative' ? 'bg-red-500' : 'bg-yellow-500'
-                      }`} />
-                      {factor.name}: <span className="text-muted-foreground">{factor.value}</span>
-                    </span>
-                    <span className="font-medium">+{factor.points}</span>
-                  </div>
-                ))}
-              </div>
+              <FactorBreakdown factors={forecast.scoringFactors} />
             </div>
           )}
+
+          {/* Regulations Disclaimer */}
+          <RegulationsDisclaimer />
 
           {/* Top Recommendation */}
           {topRecommendation && (
@@ -244,6 +230,11 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
                 {topRecommendation.bait && (
                   <div className="text-sm text-muted-foreground mt-1">
                     <span className="font-medium">Bait: </span>{topRecommendation.bait}
+                  </div>
+                )}
+                {topRecommendation.runForecast && (
+                  <div className="text-xs mt-2 text-teal-700 dark:text-teal-400">
+                    <span className="font-medium">Run Status: </span>{topRecommendation.runForecast}
                   </div>
                 )}
               </div>

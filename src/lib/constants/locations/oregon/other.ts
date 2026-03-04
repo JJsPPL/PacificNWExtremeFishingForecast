@@ -23,6 +23,13 @@ export const otherOregonLocations = [
   "Offshore Depoe Bay, OR (25-45 miles)",
   "Offshore Charleston, OR (30-50 miles)",
   "Offshore Brookings, OR (20-40 miles)",
+  // Additional Oregon locations
+  "Yaquina Bay",
+  "Tillamook Bay - Bar",
+  "Umpqua River - Tidewater",
+  "Rogue River - Gold Beach",
+  "Elk River",
+  "Offshore Florence, OR (25-45 miles)",
 ];
 
 export const otherOregonDetails = {
@@ -133,5 +140,41 @@ export const otherOregonDetails = {
     accessType: "Boat (charter or private)",
     regulations: "Check ODFW for ocean seasons. Note southern OR restrictions.",
     notes: "Southernmost OR port. Tuna, lingcod, rockfish. Sometimes closer to warm water."
+  },
+  "Yaquina Bay": {
+    waterType: "Bay/Estuary",
+    accessType: "Boat/Shore",
+    regulations: "Check ODFW for crabbing and fishing seasons",
+    notes: "Newport area. Excellent crabbing, fall chinook, halibut nearby. Major charter base."
+  },
+  "Tillamook Bay - Bar": {
+    waterType: "Bar/Ocean",
+    accessType: "Boat",
+    regulations: "Check ODFW for bar restrictions and safety",
+    notes: "Bar crossing for offshore fishing. Productive for salmon, bottomfish near bar. Check bar conditions."
+  },
+  "Umpqua River - Tidewater": {
+    waterType: "River/Estuary",
+    accessType: "Boat/Shore",
+    regulations: "Check ODFW for seasonal regulations",
+    notes: "Tidewater section of Umpqua. Fall chinook stage here. Striped bass, sturgeon, crab."
+  },
+  "Rogue River - Gold Beach": {
+    waterType: "River/Estuary",
+    accessType: "Boat/Shore",
+    regulations: "Check ODFW for Rogue River regulations",
+    notes: "Lower Rogue at Gold Beach. Fall chinook, spring chinook. World-class steelhead. Jet boat access."
+  },
+  "Elk River": {
+    waterType: "River",
+    accessType: "Public/Limited",
+    regulations: "Check ODFW regulations. Wild fish release.",
+    notes: "Small southern Oregon coastal river. Winter steelhead, fall chinook. Remote, less pressure."
+  },
+  "Offshore Florence, OR (25-45 miles)": {
+    waterType: "Ocean",
+    accessType: "Boat (charter or private)",
+    regulations: "Check ODFW for ocean seasons",
+    notes: "Central Oregon coast. Albacore tuna, halibut, lingcod, rockfish. Siuslaw River access."
   },
 };

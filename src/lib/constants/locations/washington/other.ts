@@ -78,7 +78,28 @@ export const otherLocations = [
   "Offshore Westport, WA (25-50 miles)",
   "Offshore Ilwaco, WA (30-50 miles)",
   "Offshore Neah Bay, WA (20-40 miles)",
-  "Offshore La Push, WA (25-45 miles)"
+  "Offshore La Push, WA (25-45 miles)",
+  // Additional Puget Sound locations
+  "Puget Sound - Bainbridge Island",
+  "Puget Sound - Kingston",
+  "Puget Sound - Dash Point",
+  "Puget Sound - Blake Island",
+  "Puget Sound - Manchester",
+  // Additional Hood Canal locations
+  "Hood Canal - Hamma Hamma River",
+  "Hood Canal - Duckabush River",
+  "Hood Canal - Dosewallips River",
+  // Additional San Juan locations
+  "San Juan Islands - San Juan Channel",
+  "San Juan Islands - Stuart Island",
+  "San Juan Islands - Orcas Island",
+  // Additional Strait locations
+  "Strait of Juan De Fuca - Ediz Hook",
+  "Strait of Juan De Fuca - Dungeness Spit",
+  // Additional South Puget Sound
+  "Green River - Auburn",
+  "Green River - Flaming Geyser",
+  "Samish River"
 ];
 
 // Other Washington location details
@@ -532,5 +553,101 @@ export const otherLocationDetails = {
     accessType: "Boat (charter or private)",
     regulations: "Check WDFW and Quileute tribal regulations",
     notes: "Remote ocean access. Excellent halibut, lingcod. Albacore tuna in season."
+  },
+  "Puget Sound - Bainbridge Island": {
+    waterType: "Sound/Island",
+    accessType: "Boat/Shore",
+    regulations: "Check WDFW regulations",
+    notes: "Good salmon trolling on east side. Point Monroe and Fort Ward productive for bottomfish."
+  },
+  "Puget Sound - Kingston": {
+    waterType: "Sound",
+    accessType: "Boat/Shore",
+    regulations: "Check WDFW regulations",
+    notes: "Ferry terminal pier fishing. Good for salmon, squid in winter. Appletree Cove productive."
+  },
+  "Puget Sound - Dash Point": {
+    waterType: "Sound/Point",
+    accessType: "Shore/Boat",
+    regulations: "Check WDFW regulations",
+    notes: "Dash Point State Park. Good salmon trolling. Shore access for bottomfish."
+  },
+  "Puget Sound - Blake Island": {
+    waterType: "Sound/Island",
+    accessType: "Boat only",
+    regulations: "Check WDFW regulations",
+    notes: "State park island. Good salmon trolling around island. Rockfish and lingcod near structure."
+  },
+  "Puget Sound - Manchester": {
+    waterType: "Sound",
+    accessType: "Shore/Boat",
+    regulations: "Check WDFW regulations",
+    notes: "Manchester State Park pier. Good for salmon, squid, bottomfish. Protected waters."
+  },
+  "Hood Canal - Hamma Hamma River": {
+    waterType: "River/Sound",
+    accessType: "Shore/Boat",
+    regulations: "Check WDFW regulations. Wild fish release.",
+    notes: "Chum salmon fishery at river mouth. Winter steelhead. Remote access."
+  },
+  "Hood Canal - Duckabush River": {
+    waterType: "River/Sound",
+    accessType: "Shore",
+    regulations: "Check WDFW regulations",
+    notes: "Small river with chum and coho runs. Limited bank access. Olympic National Forest."
+  },
+  "Hood Canal - Dosewallips River": {
+    waterType: "River/Sound",
+    accessType: "Shore",
+    regulations: "Check WDFW regulations. Wild fish release.",
+    notes: "Chum salmon at river mouth Oct-Dec. Winter steelhead. Olympic National Park access."
+  },
+  "San Juan Islands - San Juan Channel": {
+    waterType: "Channel/Current",
+    accessType: "Boat",
+    regulations: "Check WDFW regulations",
+    notes: "Strong currents between San Juan and Shaw islands. Good salmon trolling. Lingcod near kelp."
+  },
+  "San Juan Islands - Stuart Island": {
+    waterType: "Island/Sound",
+    accessType: "Boat",
+    regulations: "Check WDFW regulations",
+    notes: "Northern San Juans. Good for Chinook near Turn Point. Rocky structure for lingcod."
+  },
+  "San Juan Islands - Orcas Island": {
+    waterType: "Island/Sound",
+    accessType: "Boat/Shore",
+    regulations: "Check WDFW regulations",
+    notes: "Largest San Juan island. Good salmon trolling on east side. Rockfish around points."
+  },
+  "Strait of Juan De Fuca - Ediz Hook": {
+    waterType: "Spit/Strait",
+    accessType: "Shore/Boat",
+    regulations: "Check WDFW regulations",
+    notes: "Natural sand spit in Port Angeles Harbor. Good for salmon, lingcod, and halibut nearby."
+  },
+  "Strait of Juan De Fuca - Dungeness Spit": {
+    waterType: "Spit/Strait",
+    accessType: "Shore/Boat",
+    regulations: "National Wildlife Refuge restrictions apply. Check WDFW.",
+    notes: "Longest natural sand spit in US. Good for salmon near spit. Dungeness crab in bay."
+  },
+  "Green River - Auburn": {
+    waterType: "River",
+    accessType: "Public",
+    regulations: "Check WDFW regulations. Hatchery nearby.",
+    notes: "Urban fishing access. Pink salmon (odd years), Chinook, coho. Flaming Geyser State Park nearby."
+  },
+  "Green River - Flaming Geyser": {
+    waterType: "River",
+    accessType: "Public",
+    regulations: "Check WDFW regulations",
+    notes: "State park with excellent bank access. Good for salmon in fall. Steelhead in winter."
+  },
+  "Samish River": {
+    waterType: "River",
+    accessType: "Public/Limited",
+    regulations: "Check WDFW regulations",
+    notes: "Bellingham area river. Chinook, coho, chum runs. Winter steelhead. Sea-run cutthroat."
   }
 };

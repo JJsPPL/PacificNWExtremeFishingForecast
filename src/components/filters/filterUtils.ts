@@ -3,9 +3,11 @@ import { getForecastForDate } from "@/lib/fishingForecast";
 
 // Explicitly add important species that should always be in filters - updated based on current runs
 export const IMPORTANT_SPECIES = [
-  "Chinook Salmon (King)", "Coho Salmon (Silver)", "Sockeye Salmon (Red)", 
-  "Chum Salmon (Dog)", "Pink Salmon (Humpy)", "Steelhead", "Summer Steelhead", 
-  "Winter Steelhead", "Sturgeon", "Albacore Tuna", "Halibut", "Rainbow Trout"
+  "Chinook Salmon (King)", "Chinook Salmon (Spring)", "Chinook Salmon (Summer)",
+  "Chinook Salmon (Fall)", "Coho Salmon (Silver)", "Sockeye Salmon (Red)",
+  "Chum Salmon (Dog)", "Pink Salmon (Humpy)", "Steelhead", "Summer Steelhead",
+  "Winter Steelhead", "Sturgeon", "Albacore Tuna", "Halibut", "Lingcod",
+  "Rockfish", "Dungeness Crab", "Shrimp", "Rainbow Trout", "Cutthroat Trout"
 ];
 
 // Add important locations that should always be in filters
@@ -87,6 +89,48 @@ export const IMPORTANT_LOCATIONS = [
   "Kilchis River - Alderbrook",
   "Miami River - Mouth",
   
+  // Puget Sound
+  "Puget Sound - Edmonds",
+  "Puget Sound - Point No Point",
+  "Puget Sound - Possession Point",
+  "Puget Sound - Elliott Bay",
+  "Puget Sound - Tacoma Narrows",
+  "Puget Sound - Des Moines",
+  "Puget Sound - Jefferson Head",
+
+  // Hood Canal
+  "Hood Canal - Hoodsport",
+  "Hood Canal - Quilcene Bay",
+  "Hood Canal - Dabob Bay",
+  "Hood Canal - Point Whitney",
+  "Hood Canal - Seabeck",
+
+  // San Juan Islands
+  "San Juan Islands - Thatcher Pass",
+  "San Juan Islands - Rosario Strait",
+  "San Juan Islands - Lopez Island",
+  "San Juan Islands - Obstruction Pass",
+
+  // Strait of Juan De Fuca
+  "Strait of Juan De Fuca - Neah Bay",
+  "Strait of Juan De Fuca - Port Angeles",
+  "Strait of Juan De Fuca - Sekiu",
+
+  // North WA Rivers
+  "Skagit River",
+  "Skagit River - Rockport",
+  "Skykomish River - Reiter Ponds",
+  "Snohomish River",
+
+  // South Puget Sound Rivers
+  "Green River - Auburn",
+  "Puyallup River",
+  "Nisqually River",
+
+  // Sequim Area
+  "Sequim - Dungeness River",
+  "Sequim - Discovery Bay",
+
   // Idaho Locations
   "Snake River - Lewiston",
   "Snake River - Hells Canyon Dam",

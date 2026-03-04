@@ -3,7 +3,7 @@ import React from "react";
 
 export const AppFooter = () => {
   return (
-    <footer className="mt-8 pt-6 pb-8 bg-slate-800 text-white">
+    <footer className="mt-8 pt-6 pb-8 bg-slate-800 dark:bg-[#0c1018] text-white">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Partners Section */}
         <div className="mb-8">

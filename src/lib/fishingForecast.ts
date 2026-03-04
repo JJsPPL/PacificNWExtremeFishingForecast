@@ -5,6 +5,7 @@ import { generateRecommendations } from "./utils/recommendations";
 import { fetchPressureData, fetchWeatherData, type PressureData, type WeatherData } from "./api/weatherApi";
 import { getMoonData, getMoonFishingScore, type MoonData } from "./api/moonApi";
 import { calculateFishingScore, type FishingScore } from "./api/fishingScoreEngine";
+import { getTideDataForLocation, type TideData } from "./api/tidesApi";
 import { IS_DROUGHT_YEAR } from "./utils/recommendations/conditionUtils";
 
 // Cache for live data to avoid redundant API calls
@@ -35,13 +36,17 @@ export async function fetchLiveData(): Promise<{ pressure: PressureData; weather
 }
 
 // Generate forecast with live data (async version for today/current)
-export async function getLiveForecastForDate(date: Date): Promise<FishingForecast> {
+export async function getLiveForecastForDate(date: Date, locationName?: string): Promise<FishingForecast> {
   try {
-    const { pressure, weather } = await fetchLiveData();
+    // Fetch pressure, weather, and tides in parallel
+    const [{ pressure, weather }, tideData] = await Promise.all([
+      fetchLiveData(),
+      getTideDataForLocation(locationName || 'Columbia River - Portland', date).catch(() => null),
+    ]);
     const moon = getMoonData(date);
-    const score = calculateFishingScore(pressure, moon, date);
+    const score = calculateFishingScore(pressure, moon, date, undefined, tideData);
 
-    return buildForecast(date, pressure, weather, moon, score, 'live');
+    return buildForecast(date, pressure, weather, moon, score, 'live', tideData);
   } catch (error) {
     console.warn('Live data fetch failed, falling back to simulated:', error);
     return getForecastForDate(date);
@@ -64,7 +69,8 @@ function buildForecast(
   weather: WeatherData | null,
   moon: MoonData,
   score: FishingScore,
-  dataSource: 'live' | 'cached' | 'simulated'
+  dataSource: 'live' | 'cached' | 'simulated',
+  liveTideData?: TideData | null
 ): FishingForecast {
   // Map moon phase name to MoonPhase enum
   const moonPhaseMap: Record<string, string> = {
@@ -124,14 +130,30 @@ function buildForecast(
   // Ensure rating is between 0-100
   droughtAdjustedRating = Math.max(0, Math.min(100, droughtAdjustedRating));
 
-  // Generate tide data based on the date (upstream feature)
-  const tideHour = (date.getHours() + date.getDate()) % 12;
-  const tideData = {
-    highTide: `${(tideHour + 2) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'}`,
-    lowTide: `${(tideHour + 8) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
-    slackTide: `${(tideHour + 5) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'} & ${(tideHour + 11) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
-    currentDirection: tideHour < 6 ? TideState.IncomingTide : TideState.OutgoingTide
-  };
+  // Tide data: use real NOAA data if available, fall back to simulated
+  let tideData: FishingForecast['tideData'];
+  if (liveTideData) {
+    const stateMap: Record<string, string> = {
+      'incoming': TideState.IncomingTide,
+      'outgoing': TideState.OutgoingTide,
+      'slack': TideState.SlackTide,
+    };
+    tideData = {
+      highTide: liveTideData.nextHighTide || undefined,
+      lowTide: liveTideData.nextLowTide || undefined,
+      currentDirection: stateMap[liveTideData.currentState] || undefined,
+      isLastTwoHoursIncoming: liveTideData.isLastTwoHoursIncoming,
+      stationName: liveTideData.stationName,
+    };
+  } else {
+    // Simulated fallback for calendar/historical views
+    const tideHour = (date.getHours() + date.getDate()) % 12;
+    tideData = {
+      highTide: `${(tideHour + 2) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour < 6 ? 'AM' : 'PM'}`,
+      lowTide: `${(tideHour + 8) % 12 || 12}:${tideHour < 10 ? '0' + tideHour : tideHour}${tideHour >= 6 ? 'AM' : 'PM'}`,
+      currentDirection: tideHour < 6 ? TideState.IncomingTide : TideState.OutgoingTide,
+    };
+  }
 
   // Generate salmon run status based on month (upstream feature)
   let salmonRunStatus: string;

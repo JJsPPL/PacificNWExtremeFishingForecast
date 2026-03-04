@@ -1,7 +1,8 @@
 
 import { format, addDays, subDays } from "date-fns";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Wind, ArrowLeft, ArrowRight, Anchor } from "lucide-react";
+import { Moon, Wind, ArrowLeft, ArrowRight, Anchor, Waves } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { getForecastForDate } from "@/lib/fishingForecast";
 import { RatingStars } from "./ratings/RatingStars";
 import { ForecastFactorCard } from "./forecast/ForecastFactorCard";
@@ -9,6 +10,7 @@ import { RecommendationsTable } from "./forecast/RecommendationsTable";
 import { getRatingDescription } from "@/utils/ratingUtils";
 import { FeaturedLocationTips } from "./forecast/FeaturedLocationTips";
 import { Button } from "./ui/button";
+import RegulationsDisclaimer from "./RegulationsDisclaimer";
 
 interface FishingDetailsViewProps {
   selectedDate: Date | undefined;
@@ -134,16 +136,22 @@ export const FishingDetailsView = ({
           />
         </div>
 
-        {/* New tide information section */}
+        {/* Tide information section */}
         {forecast.tideData && (
           <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Tide Information</h3>
+            <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
+              <Waves className="h-5 w-5 text-teal-500" />
+              Tide Information
+              {forecast.tideData.isLastTwoHoursIncoming && (
+                <Badge className="bg-teal-600 text-white text-xs">PRIME TIDE</Badge>
+              )}
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <ForecastFactorCard
                 icon={<Anchor className="h-5 w-5 text-teal-500" />}
-                title="Tide Status"
+                title={forecast.tideData.stationName ? `Tides (${forecast.tideData.stationName})` : "Tide Status"}
                 value={forecast.tideData.currentDirection || "Not Available"}
-                detail={`High: ${forecast.tideData.highTide || "N/A"}, Low: ${forecast.tideData.lowTide || "N/A"}`}
+                detail={`Next High: ${forecast.tideData.highTide || "N/A"}, Next Low: ${forecast.tideData.lowTide || "N/A"}`}
               />
 
               {forecast.salmonRunStatus && (
@@ -157,6 +165,11 @@ export const FishingDetailsView = ({
             </div>
           </div>
         )}
+
+        {/* Regulations Disclaimer */}
+        <div className="mb-4">
+          <RegulationsDisclaimer />
+        </div>
 
         <h3 className="text-lg font-medium mb-3">
           {filteredRecommendations.length < forecast.recommendations.length

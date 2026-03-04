@@ -1,11 +1,17 @@
 // List of fish species in the PNW
+// Includes seasonal sub-types used by the fish run calendar
 export const PNW_FISH_SPECIES = [
   "Chinook Salmon (King)",
+  "Chinook Salmon (Spring)",
+  "Chinook Salmon (Summer)",
+  "Chinook Salmon (Fall)",
   "Coho Salmon (Silver)",
   "Sockeye Salmon (Red)",
   "Pink Salmon (Humpy)",
   "Chum Salmon (Dog)",
   "Steelhead",
+  "Winter Steelhead",
+  "Summer Steelhead",
   "Halibut",
   "Lingcod",
   "Rockfish",
@@ -23,7 +29,8 @@ export const PNW_FISH_SPECIES = [
   "Flounder",
   "Sole",
   "Albacore Tuna",
-  "Bluefin Tuna"
+  "Bluefin Tuna",
+  "Shad"
 ];
 
 // Extended fishing tactics based on species
@@ -111,6 +118,18 @@ export const FISHING_TACTICS = {
     "Baiting with fish carcasses",
     "Night fishing with lanterns"
   ],
+  shrimp: [
+    "Pot fishing in deep water (200-400 feet)",
+    "Setting pots on sandy/muddy bottoms near structure",
+    "Shrimp pots baited with cat food or fish heads",
+    "Pull pots at slack tide for best catch"
+  ],
+  shad: [
+    "Casting small darts upstream and retrieving with a slow swing",
+    "Using shad darts with light spinning gear (4-8 lb test)",
+    "Fly fishing with small, bright patterns",
+    "Drifting small spoons through current seams"
+  ],
   sturgeon: [
     "Bottom fishing with smelt",
     "Bottom fishing with sand shrimp",
@@ -175,5 +194,13 @@ export const FISHING_BAITS = {
     "Sardines",
     "Chunks of mackerel or herring",
     "Surface iron jigs"
+  ],
+  shrimp: [
+    "Cat food (canned)", "Fish heads", "Chicken necks",
+    "Commercial shrimp bait pellets", "Salmon carcasses"
+  ],
+  shad: [
+    "Shad darts (1/16 - 1/4 oz)", "Small spoons", "Bright flies",
+    "Chartreuse or white grubs", "Small spinners"
   ]
 };

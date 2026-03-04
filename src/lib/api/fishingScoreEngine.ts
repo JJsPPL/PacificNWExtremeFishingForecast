@@ -3,6 +3,7 @@
 
 import type { PressureData } from './weatherApi';
 import type { MoonData } from './moonApi';
+import type { TideData } from './tidesApi';
 
 export type FishActivityLevel = 'Excellent' | 'Very Good' | 'Good' | 'Fair' | 'Poor';
 
@@ -13,6 +14,7 @@ export interface FishingScore {
   moonScore: number;
   seasonScore: number;
   timeOfDayScore: number;
+  tideScore: number;
   factors: ScoreFactor[];
 }
 
@@ -27,6 +29,7 @@ export interface ScoreFactor {
 // Species sensitivity to barometric pressure (multiplier)
 export const SPECIES_PRESSURE_SENSITIVITY: Record<string, number> = {
   'Winter Steelhead': 1.30,
+  'Summer Steelhead': 1.25,
   'Steelhead': 1.25,
   'Chinook Salmon (King)': 1.20,
   'Chinook Salmon (Spring)': 1.20,
@@ -60,6 +63,7 @@ export const SPECIES_PRESSURE_SENSITIVITY: Record<string, number> = {
   'Sole': 0.90,
   'Albacore Tuna': 0.85,
   'Bluefin Tuna': 0.85,
+  'Shad': 1.00,
 };
 
 // A. Pressure Value Score (0-25 points)
@@ -152,12 +156,35 @@ function getTimeOfDayScore(hour: number, moonOverheadHour?: number): { score: nu
   return { score, description };
 }
 
+// E. Tide Score (0-15 points)
+function getTideScore(tideData: TideData | null | undefined): { score: number; description: string; value: string } {
+  if (!tideData) {
+    return { score: 7, description: 'No tide data available - neutral score applied', value: 'No data' };
+  }
+
+  if (tideData.isLastTwoHoursIncoming) {
+    return { score: 15, description: 'PRIME: Last 2 hours of incoming tide - fish feeding aggressively!', value: 'Incoming (PRIME)' };
+  }
+
+  switch (tideData.currentState) {
+    case 'incoming':
+      return { score: 10, description: 'Incoming tide - bait and fish moving with current', value: 'Incoming' };
+    case 'slack':
+      return { score: 8, description: 'Slack tide - brief window, fish repositioning', value: 'Slack' };
+    case 'outgoing':
+      return { score: 5, description: 'Outgoing tide - slower fishing, fish retreating', value: 'Outgoing' };
+    default:
+      return { score: 7, description: 'Tide state unknown - neutral score', value: 'Unknown' };
+  }
+}
+
 // Calculate overall fishing score
 export function calculateFishingScore(
   pressure: PressureData,
   moon: MoonData,
   date: Date,
-  species?: string
+  species?: string,
+  tideData?: TideData | null
 ): FishingScore {
   const factors: ScoreFactor[] = [];
   const hour = date.getHours();
@@ -253,10 +280,20 @@ export function calculateFishingScore(
     description: timeScore.description,
   });
 
-  // Calculate raw total
+  // 7. Tide score (0-15) - NEW
+  const tide = getTideScore(tideData);
+  factors.push({
+    name: 'Tides',
+    value: tide.value,
+    impact: tide.score >= 10 ? 'positive' : tide.score >= 7 ? 'neutral' : 'negative',
+    points: tide.score,
+    description: tide.description,
+  });
+
+  // Calculate raw total (max: 25+35+20+5+25+15+15 = 140)
   const pressureScore = pressureValue.score + pressureTrend.score;
   const totalMoonScore = moonScore + solunarBonus;
-  const rawTotal = pressureScore + totalMoonScore + season.score + timeScore.score;
+  const rawTotal = pressureScore + totalMoonScore + season.score + timeScore.score + tide.score;
 
   // Apply species sensitivity modifier if provided
   let total = rawTotal;
@@ -264,11 +301,11 @@ export function calculateFishingScore(
     const sensitivity = SPECIES_PRESSURE_SENSITIVITY[species] || 1.0;
     // Only apply sensitivity to pressure component
     const adjustedPressure = pressureScore * sensitivity;
-    total = adjustedPressure + totalMoonScore + season.score + timeScore.score;
+    total = adjustedPressure + totalMoonScore + season.score + timeScore.score + tide.score;
   }
 
-  // Normalize to 0-100 scale (max possible raw is ~125)
-  total = Math.min(100, Math.max(0, Math.round((total / 125) * 100)));
+  // Normalize to 0-100 scale (max possible raw is ~140 with tide factor)
+  total = Math.min(100, Math.max(0, Math.round((total / 140) * 100)));
 
   // Determine activity level
   let activityLevel: FishActivityLevel;
@@ -285,6 +322,7 @@ export function calculateFishingScore(
     moonScore: Math.round((totalMoonScore / 25) * 100),
     seasonScore: Math.round((season.score / 25) * 100),
     timeOfDayScore: Math.round((timeScore.score / 15) * 100),
+    tideScore: Math.round((tide.score / 15) * 100),
     factors,
   };
 }

@@ -23,11 +23,13 @@ export interface FishingForecast {
   moonPosition: string;  // Changed from moonRising to more detailed position
   barometricPressure: number;
   pressureTrend: string;
-  tideData?: {       // Added tide data structure
+  tideData?: {       // Tide data (NOAA live or simulated fallback)
     highTide?: string;
     lowTide?: string;
     slackTide?: string;
-    currentDirection?: string; // incoming/outgoing
+    currentDirection?: string; // incoming/outgoing/slack
+    isLastTwoHoursIncoming?: boolean; // PRIME fishing window
+    stationName?: string; // NOAA station name when live
   };
   salmonRunStatus?: string; // Added salmon run status
   recommendations: FishingRecommendation[];

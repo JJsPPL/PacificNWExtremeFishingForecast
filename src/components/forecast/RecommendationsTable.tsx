@@ -60,6 +60,11 @@ export const RecommendationsTable = ({ recommendations }: RecommendationsTablePr
                       <span className="font-medium">Best time: </span>{rec.bestTime}
                     </div>
                   )}
+                  {rec.runForecast && (
+                    <div className="text-xs mt-1 text-teal-700 dark:text-teal-400">
+                      <span className="font-medium">Run: </span>{rec.runForecast}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <span className="text-muted-foreground">No data</span>

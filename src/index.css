@@ -53,49 +53,49 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 210 25% 7.8%;
+    --foreground: 214 32% 91.4%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 214 21% 11.6%;
+    --card-foreground: 214 32% 91.4%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 214 21% 11.6%;
+    --popover-foreground: 214 32% 91.4%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 174 72% 50.4%;
+    --primary-foreground: 210 25% 7.8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 214 16% 17.6%;
+    --secondary-foreground: 214 32% 91.4%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 214 16% 17.6%;
+    --muted-foreground: 214 13% 54.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 40 88% 55.1%;
+    --accent-foreground: 210 25% 7.8%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 214 32% 91.4%;
 
-    --border: 216 12.2% 83.9%;
-    --input: 216 12.2% 83.9%;
-    --ring: 212.7 26.8% 8.4%;
+    --border: 214 16% 17.6%;
+    --input: 214 16% 17.6%;
+    --ring: 174 72% 50.4%;
 
-    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-background: 210 25% 7.8%;
 
-    --sidebar-foreground: 210 40% 98%;
+    --sidebar-foreground: 214 32% 91.4%;
 
-    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary: 174 72% 50.4%;
 
-    --sidebar-primary-foreground: 222.2 47.4% 11.2%;
+    --sidebar-primary-foreground: 210 25% 7.8%;
 
-    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent: 214 16% 17.6%;
 
-    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-accent-foreground: 214 32% 91.4%;
 
-    --sidebar-border: 216 12.2% 83.9%;
+    --sidebar-border: 214 16% 17.6%;
 
-    --sidebar-ring: 212.7 26.8% 8.4%;
+    --sidebar-ring: 174 72% 50.4%;
   }
 }
 
@@ -115,7 +115,7 @@
 }
 
 .dark .sky-gradient-bg {
-  background: linear-gradient(to bottom, #1e3a8a, #1e40af);
+  background: linear-gradient(to bottom, #0f1419, #131922, #171c24);
 }
 
 /* IMPORTANT: Override any other styling to ensure our logo shows correctly */
@@ -128,6 +128,11 @@
   border-radius: 50% !important; /* Make the logo circular */
   box-shadow: 0 0 15px 15px rgba(135, 206, 235, 0.6) !important; /* Blend with background */
   object-fit: contain !important; /* Ensure the entire image is visible */
+}
+
+.dark .app-logo {
+  box-shadow: 0 0 20px 12px rgba(45, 212, 191, 0.35),
+              0 0 40px 20px rgba(45, 212, 191, 0.15) !important;
 }
 
 .app-logo::after {
@@ -150,6 +155,13 @@
   justify-content: space-between !important;
   align-items: flex-start !important;
   margin-bottom: 2rem !important;
+}
+
+/* Glass card utility for frosted-glass surfaces */
+.glass-card {
+  background: rgba(23, 28, 36, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(38, 44, 53, 0.6);
 }
 
 /* Disclaimer image responsiveness */
