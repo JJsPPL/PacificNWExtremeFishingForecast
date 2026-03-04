@@ -24,7 +24,7 @@ export const AppFooter = () => {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
             >
-              <img src="https://www.resumebuilderusa.com/favicon.ico" alt="ResumeBuilderUSA" className="h-20 w-auto" />
+              <img src="https://www.resumebuilderusa.com/og-image.png" alt="ResumeBuilderUSA" className="h-20 w-auto rounded-lg" />
               <span className="text-sm font-semibold text-slate-300">ResumeBuilderUSA.com</span>
             </a>
           </div>
