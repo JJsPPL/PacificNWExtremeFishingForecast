@@ -2,9 +2,9 @@
 import { LOCATION_DETAILS } from "../../constants/fishingLocations";
 import { getCurrentYear } from "../dateUtils";
 
-// DROUGHT ALERT: Pacific Northwest experiencing 50% below normal precipitation
+// Drought flag — set to true only during confirmed drought years
 // Based on historic drought years (2001, 2015, 2021) with similar conditions
-export const IS_DROUGHT_YEAR = true;
+export const IS_DROUGHT_YEAR = false;
 const DROUGHT_SEVERITY = 0.50; // 50% of normal precipitation
 
 // Get drought impact modifier based on location and species
