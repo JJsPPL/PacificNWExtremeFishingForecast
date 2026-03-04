@@ -5,7 +5,6 @@ import { AppHeader } from "@/components/layout/AppHeader";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { ForecastTabs } from "@/components/forecast/ForecastTabs";
 import { AppFooter } from "@/components/layout/AppFooter";
-import { PartnersSection } from "@/components/layout/PartnersSection";
 
 const Index = () => {
   const [filters, setFilters] = useState({
@@ -28,7 +27,7 @@ const Index = () => {
         
         <ForecastTabs filters={filters} />
 
-        <PartnersSection />
+
       </div>
       
       <AppFooter />

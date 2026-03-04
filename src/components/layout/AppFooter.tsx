@@ -13,12 +13,9 @@ export const AppFooter = () => {
               href="https://DinoTradez.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-xl transition-all text-base font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105"
             >
-              DinoTradez.com
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
+              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-10 w-auto" />
             </a>
           </div>
         </div>
