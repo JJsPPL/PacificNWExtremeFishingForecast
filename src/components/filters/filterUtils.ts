@@ -46,17 +46,6 @@ export const IMPORTANT_LOCATIONS = [
   "Bogachiel River - Leyendecker Park",
   "Sol Duc River - Salmon Cascades",
   "Calawah River - Mouth",
-  // Additional Columbia River zones based on current creel data
-  "Columbia River - Section 1 (Bonneville)",
-  "Columbia River - Section 2 (Camas/Washougal)",
-  "Columbia River - Section 3 (I-5 Area)",
-  "Columbia River - Section 4 (Vancouver)",
-  "Columbia River - Section 5 (Woodland)",
-  "Columbia River - Section 6 (Kalama)",
-  "Columbia River - Section 7 (Cowlitz)",
-  "Columbia River - Section 8 (Longview)",
-  "Columbia River - Section 9 (Cathlamet)",
-  "Columbia River - Section 10 (Cathlamet)",
   // Upper Columbia dams with strong Sockeye runs
   "Columbia River - Rock Island Dam",
   "Columbia River - Wanapum Dam",
