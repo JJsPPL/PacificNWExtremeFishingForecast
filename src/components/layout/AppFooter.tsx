@@ -7,7 +7,7 @@ export const AppFooter = () => {
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Partners Section */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold mb-4 text-center">Our Partners</h3>
+          <h3 className="text-3xl font-bold mb-6 text-center">Our Partners</h3>
           <div className="flex flex-wrap justify-center gap-10">
             <a
               href="https://DinoTradez.com"
