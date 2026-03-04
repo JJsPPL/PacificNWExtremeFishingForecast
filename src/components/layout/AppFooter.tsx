@@ -8,14 +8,24 @@ export const AppFooter = () => {
         {/* Partners Section */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold mb-4 text-center">Our Partners</h3>
-          <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-8">
             <a
               href="https://DinoTradez.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              className="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
             >
-              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-10 w-auto" />
+              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-20 w-auto" />
+              <span className="text-sm font-semibold text-slate-300">DinoTradez.com</span>
+            </a>
+            <a
+              href="https://www.resumebuilderusa.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+            >
+              <img src="https://www.resumebuilderusa.com/favicon.ico" alt="ResumeBuilderUSA" className="h-20 w-auto" />
+              <span className="text-sm font-semibold text-slate-300">ResumeBuilderUSA.com</span>
             </a>
           </div>
         </div>
