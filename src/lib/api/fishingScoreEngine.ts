@@ -264,6 +264,8 @@ export function calculateFishingScore(
   });
 
   // 6. Time of day (0-15)
+  // Calendar dates have hour=0 (midnight) — use a prime fishing hour default for daily forecasts
+  const effectiveHour = (hour === 0 && date.getMinutes() === 0 && date.getSeconds() === 0) ? 6 : hour;
   const moonOverheadMatch = moon.moonOverhead.match(/(\d+):(\d+) (AM|PM)/);
   let moonOverheadHour: number | undefined;
   if (moonOverheadMatch) {
@@ -271,7 +273,7 @@ export function calculateFishingScore(
     if (moonOverheadMatch[3] === 'PM' && moonOverheadHour !== 12) moonOverheadHour += 12;
     if (moonOverheadMatch[3] === 'AM' && moonOverheadHour === 12) moonOverheadHour = 0;
   }
-  const timeScore = getTimeOfDayScore(hour, moonOverheadHour);
+  const timeScore = getTimeOfDayScore(effectiveHour, moonOverheadHour);
   factors.push({
     name: 'Time of Day',
     value: formatTimeOfDay(hour),

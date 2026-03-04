@@ -24,13 +24,13 @@ export const FishScoreIndicator = ({ score, size = "md" }: FishScoreIndicatorPro
     }
   };
 
-  // Determine how many fish to show (1-5 based on score)
-  const fishCount = Math.ceil(score / 20);
-  
+  // Determine how many fish to show (1-3 based on score)
+  const fishCount = score >= 80 ? 3 : score >= 50 ? 2 : 1;
+
   return (
-    <div className="flex items-center">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Fish 
+    <div className="flex items-center overflow-hidden">
+      {Array.from({ length: 3 }).map((_, index) => (
+        <Fish
           key={index}
           className={`${getSize()} ${index < fishCount ? getColor() : "text-gray-200"}`}
           fill={index < fishCount ? "currentColor" : "none"}
