@@ -158,7 +158,7 @@ function buildForecast(
   // Seasonal salmon run expectations (general patterns — NOT live data)
   // Always verify current conditions at WDFW/ODFW/DART fish counts
   let salmonRunStatus: string;
-  const verifyNote = "Verify current counts at Columbia Basin DART (www.cbr.washington.edu/dart) and WDFW/ODFW fish reports before planning trips.";
+  const verifyNote = "Verify current counts at Columbia Basin DART and WDFW/ODFW fish reports before planning trips.";
   if (month === 2 || month === 3) { // March-April
     salmonRunStatus = `Seasonal pattern: Early Spring Chinook typically begin entering the Columbia and Willamette systems. Monitor Bonneville Dam and Willamette Falls fish ladder counts for actual run strength. ${verifyNote}`;
   } else if (month === 4) { // May

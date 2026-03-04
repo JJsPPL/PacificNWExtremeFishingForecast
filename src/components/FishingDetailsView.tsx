@@ -158,7 +158,15 @@ export const FishingDetailsView = ({
                 <div className="sm:col-span-2">
                   <div className="p-3 border rounded-md">
                     <h4 className="text-sm font-medium text-muted-foreground">Salmon Run Status</h4>
-                    <p className="text-base font-medium">{forecast.salmonRunStatus}</p>
+                    <p className="text-base font-medium">
+                      {forecast.salmonRunStatus.replace("Columbia Basin DART", "").replace("and WDFW/ODFW", "and")}
+                      {" "}
+                      <a href="https://www.cbr.washington.edu/dart" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-400 underline">Columbia Basin DART</a>
+                      {" | "}
+                      <a href="https://wdfw.wa.gov/fishing/reports" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-400 underline">WDFW</a>
+                      {" | "}
+                      <a href="https://myodfw.com/recreation-report" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-400 underline">ODFW</a>
+                    </p>
                   </div>
                 </div>
               )}
