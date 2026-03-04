@@ -8,24 +8,24 @@ export const AppFooter = () => {
         {/* Partners Section */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold mb-4 text-center">Our Partners</h3>
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-10">
             <a
               href="https://DinoTradez.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+              className="flex flex-col items-center gap-3 hover:scale-105 transition-transform"
             >
-              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-20 w-auto" />
-              <span className="text-sm font-semibold text-slate-300">DinoTradez.com</span>
+              <img src="https://dinotradez.com/logo.png" alt="DinoTradez" className="h-36 w-auto" />
+              <span className="text-base font-semibold text-slate-300">DinoTradez.com</span>
             </a>
             <a
               href="https://www.resumebuilderusa.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+              className="flex flex-col items-center gap-3 hover:scale-105 transition-transform"
             >
-              <img src="https://www.resumebuilderusa.com/og-image.png" alt="ResumeBuilderUSA" className="h-20 w-auto rounded-lg" />
-              <span className="text-sm font-semibold text-slate-300">ResumeBuilderUSA.com</span>
+              <img src="https://www.resumebuilderusa.com/og-image.png" alt="ResumeBuilderUSA" className="h-36 w-auto rounded-lg" />
+              <span className="text-base font-semibold text-slate-300">ResumeBuilderUSA.com</span>
             </a>
           </div>
         </div>
