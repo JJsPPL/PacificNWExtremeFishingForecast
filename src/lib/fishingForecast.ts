@@ -155,26 +155,28 @@ function buildForecast(
     };
   }
 
-  // Generate salmon run status based on month (upstream feature)
+  // Seasonal salmon run expectations (general patterns — NOT live data)
+  // Always verify current conditions at WDFW/ODFW/DART fish counts
   let salmonRunStatus: string;
+  const verifyNote = "Verify current counts at Columbia Basin DART (www.cbr.washington.edu/dart) and WDFW/ODFW fish reports before planning trips.";
   if (month === 2 || month === 3) { // March-April
-    salmonRunStatus = "Early Spring Chinook beginning to enter the Columbia and Willamette systems. Fish counts increasing at Willamette Falls fish ladder and Bonneville Dam. Columbia River hatchery returns are the primary indicator of run strength.";
+    salmonRunStatus = `Seasonal pattern: Early Spring Chinook typically begin entering the Columbia and Willamette systems. Monitor Bonneville Dam and Willamette Falls fish ladder counts for actual run strength. ${verifyNote}`;
   } else if (month === 4) { // May
-    salmonRunStatus = "Spring Chinook runs at peak in Columbia and Willamette river systems. Strong numbers reported passing Bonneville Dam and Willamette Falls fish ladder. Best fishing typically occurs 3-5 days after large count increases at dams.";
+    salmonRunStatus = `Seasonal pattern: Spring Chinook runs historically peak in Columbia and Willamette systems. Best fishing typically occurs 3-5 days after large count increases at dams. ${verifyNote}`;
   } else if (month === 5) { // June
-    salmonRunStatus = "Late Spring Chinook and early Summer Chinook runs active in Columbia system. Summer steelhead entering both Columbia and Willamette systems with increasing numbers at Bonneville Dam and Willamette Falls.";
+    salmonRunStatus = `Seasonal pattern: Late Spring Chinook and early Summer Chinook runs typically active in Columbia system. Summer steelhead historically begin entering both Columbia and Willamette systems. ${verifyNote}`;
   } else if (month === 6 || month === 7) { // July-August
-    salmonRunStatus = "Summer Chinook and Sockeye runs at peak in Columbia River system. Summer steelhead passing Bonneville Dam and Willamette Falls. Coho beginning to stage in estuaries. Columbia River salmon counts typically precede Willamette system arrivals by 3-5 days.";
+    salmonRunStatus = `Seasonal pattern: Summer Chinook and Sockeye runs historically peak in the Columbia River system. Summer steelhead typically passing Bonneville Dam. Coho may begin staging in estuaries. ${verifyNote}`;
   } else if (month === 8) { // September
-    salmonRunStatus = "Fall Chinook entering the Columbia system with strong numbers at Bonneville Dam. Fall Chinook beginning to appear in the Willamette and tributaries. Early Coho appearing in tributary mouths and lower river sections.";
+    salmonRunStatus = `Seasonal pattern: Fall Chinook typically begin entering the Columbia system. Early Coho historically appear in tributary mouths and lower river sections. ${verifyNote}`;
   } else if (month >= 9 && month <= 10) { // October-November
-    salmonRunStatus = "Fall Chinook and Coho runs at peak throughout Columbia and Willamette systems. Strong returns reported in Cowlitz, Lewis, and Willamette Rivers based on Columbia River tributary hatchery counts. Best fishing typically occurs within a week of peak dam passage.";
+    salmonRunStatus = `Seasonal pattern: Fall Chinook and Coho runs historically peak throughout Columbia and Willamette systems. Best fishing typically occurs within a week of peak dam passage. ${verifyNote}`;
   } else if (month === 11 || month === 0) { // December-January
-    salmonRunStatus = "Late Fall Chinook tapering off. Winter steelhead beginning their run into Columbia River tributaries, Willamette tributaries and coastal streams. Clackamas and Sandy rivers showing increasing winter steelhead counts.";
+    salmonRunStatus = `Seasonal pattern: Late Fall Chinook typically tapering off. Winter steelhead historically begin their run into Columbia River tributaries and coastal streams. ${verifyNote}`;
   } else if (month === 1) { // February
-    salmonRunStatus = "Winter steelhead at peak run in Columbia and Willamette tributaries. Early Spring Chinook beginning to enter lower Columbia and Willamette systems. First arrivals at Bonneville Dam typically forecast the upcoming spring run strength.";
+    salmonRunStatus = `Seasonal pattern: Winter steelhead runs historically peak in Columbia and Willamette tributaries. Early Spring Chinook may begin entering lower Columbia and Willamette systems. ${verifyNote}`;
   } else {
-    salmonRunStatus = "Pre-season preparation. Check WDFW, ODFW hatchery reports and dam counts for updated forecasts on Columbia and Willamette river systems.";
+    salmonRunStatus = `Pre-season preparation. Check WDFW, ODFW hatchery reports and dam counts for updated forecasts. ${verifyNote}`;
   }
 
   // Generate recommendations using the scoring engine rating
