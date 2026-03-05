@@ -9,6 +9,8 @@ import { ForecastFactorCard } from "./forecast/ForecastFactorCard";
 import { RecommendationsTable } from "./forecast/RecommendationsTable";
 import { getRatingDescription } from "@/utils/ratingUtils";
 import { FeaturedLocationTips } from "./forecast/FeaturedLocationTips";
+import { GearRecommendations } from "./forecast/GearRecommendations";
+import { getGearForSpecies } from "@/lib/utils/recommendations/gearUtils";
 import { Button } from "./ui/button";
 import RegulationsDisclaimer from "./RegulationsDisclaimer";
 
@@ -186,6 +188,15 @@ export const FishingDetailsView = ({
         </h3>
 
         <RecommendationsTable recommendations={filteredRecommendations} />
+
+        {/* Contextual Gear Recommendations with Affiliate Links */}
+        <GearRecommendations
+          gear={getGearForSpecies(
+            filteredRecommendations.map(r => r.species),
+            selectedDate,
+            forecast.temperature
+          )}
+        />
 
         {/* Tips for featured Oregon locations */}
         <FeaturedLocationTips

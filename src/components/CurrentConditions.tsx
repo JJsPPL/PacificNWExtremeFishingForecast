@@ -8,8 +8,9 @@ import { FishScoreIndicator } from "./FishScoreIndicator";
 import { ScoreGauge } from "./ScoreGauge";
 import { FactorBreakdown } from "./FactorBreakdown";
 import { getForecastForDate, getLiveForecastForDate } from "@/lib/fishingForecast";
-import { MapPin, CloudRain, Thermometer, Wind, Moon, ArrowDown, ArrowUp, Minus, RefreshCw, Clock, Activity } from "lucide-react";
+import { MapPin, CloudRain, Thermometer, Wind, Moon, ArrowDown, ArrowUp, Minus, RefreshCw, Clock, Activity, ShoppingBag, ExternalLink } from "lucide-react";
 import type { FishingForecast } from "@/lib/types/fishingTypes";
+import { getGearForSpecies } from "@/lib/utils/recommendations/gearUtils";
 import RegulationsDisclaimer from "./RegulationsDisclaimer";
 
 interface CurrentConditionsProps {
@@ -240,6 +241,40 @@ export const CurrentConditions = ({ filterCondition = true }: CurrentConditionsP
               </div>
             </div>
           )}
+
+          {/* Quick Gear Pick for Top Recommendation */}
+          {topRecommendation && (() => {
+            const gear = getGearForSpecies([topRecommendation.species], today, forecast.temperature);
+            const topGear = gear.speciesGear.slice(0, 3);
+            if (topGear.length === 0) return null;
+            return (
+              <div className="mt-3">
+                <h3 className="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-1">
+                  <ShoppingBag className="h-3.5 w-3.5 text-amber-500" /> Gear for {topRecommendation.species}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  {topGear.map((item, i) => (
+                    <a
+                      key={i}
+                      href={item.amazonUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-2 rounded border border-border/60 hover:border-amber-500/50 transition-colors text-xs"
+                    >
+                      <div className="flex-1">
+                        <div className="font-medium leading-tight">{item.name}</div>
+                        <div className="text-amber-500 mt-0.5">{item.priceRange}</div>
+                      </div>
+                      <ExternalLink className="h-3 w-3 text-muted-foreground shrink-0" />
+                    </a>
+                  ))}
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-1 italic">
+                  As an Amazon Associate, we earn from qualifying purchases.
+                </p>
+              </div>
+            );
+          })()}
 
           {/* Last Updated */}
           {lastRefresh && (
