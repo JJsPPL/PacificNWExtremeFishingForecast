@@ -1,5 +1,6 @@
 
-import { Fish } from "lucide-react";
+import { useState } from "react";
+import { Fish, ChevronDown, ChevronUp } from "lucide-react";
 import { 
   NestuccaTips,
   ColumbiaTips,
@@ -84,41 +85,54 @@ export const FeaturedLocationTips = ({ locations, species = [] }: FeaturedLocati
       !hasSockeye && !hasSummerChinook && !hasPinkSalmon && !hasChumSalmon && 
       !hasSturgeon && !hasHalibut && !hasTrout && !hasSteelhead) return null;
   
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
-      <h4 className="font-medium flex items-center">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="flex items-center w-full text-left group"
+      >
         <Fish className="h-4 w-4 mr-2 text-blue-600 dark:text-blue-400" />
-        Featured Location Tips
-      </h4>
-      <div className="mt-2 space-y-3">
-        {/* Show winter steelhead tips during Dec-March when steelhead is featured */}
-        {isWinterSeason && hasSteelhead && <WinterSteelheadTips />}
-        {hasNestucca && <NestuccaTips />}
-        {hasColumbia && <ColumbiaTips />}
-        {hasWillamette && <WillametteTips />}
-        {hasSandy && <SandyTips />}
-        {hasClackamas && <ClackamasTips />}
-        {hasSnake && <SnakeTips />}
-        {hasTillamook && <TillamookTips />}
-        {hasOlympic && <OlympicTips />}
-        {hasWynochee && <WynocheeTips />}
-        {hasPugetSound && <PugetSoundTips />}
-        {hasHoodCanal && <HoodCanalTips />}
-        {hasStrait && <StraitTips />}
-        {hasSanJuan && <SanJuanTips />}
-        {hasCowlitz && <CowlitzTips />}
-        {hasLewis && <LewisTips />}
-        {hasWind && <WindTips />}
-        {/* Add Sequim tips to Strait tips since they're closely related */}
-        {hasSequim && <StraitTips />}
-        {hasSockeye && <SockeyeTips />}
-        {hasSummerChinook && <SummerChinookTips />}
-        {hasPinkSalmon && <PinkSalmonTips />}
-        {hasChumSalmon && <ChumSalmonTips />}
-        {hasSturgeon && <SturgeonTips />}
-        {hasHalibut && <HalibutTips />}
-        {hasTrout && <TroutTips />}
-      </div>
+        <h4 className="font-medium group-hover:text-blue-400 transition-colors">
+          Featured Location Tips
+        </h4>
+        {expanded
+          ? <ChevronUp className="h-5 w-5 ml-auto text-muted-foreground" />
+          : <ChevronDown className="h-5 w-5 ml-auto text-muted-foreground" />
+        }
+      </button>
+      {expanded && (
+        <div className="mt-2 space-y-3">
+          {/* Show winter steelhead tips during Dec-March when steelhead is featured */}
+          {isWinterSeason && hasSteelhead && <WinterSteelheadTips />}
+          {hasNestucca && <NestuccaTips />}
+          {hasColumbia && <ColumbiaTips />}
+          {hasWillamette && <WillametteTips />}
+          {hasSandy && <SandyTips />}
+          {hasClackamas && <ClackamasTips />}
+          {hasSnake && <SnakeTips />}
+          {hasTillamook && <TillamookTips />}
+          {hasOlympic && <OlympicTips />}
+          {hasWynochee && <WynocheeTips />}
+          {hasPugetSound && <PugetSoundTips />}
+          {hasHoodCanal && <HoodCanalTips />}
+          {hasStrait && <StraitTips />}
+          {hasSanJuan && <SanJuanTips />}
+          {hasCowlitz && <CowlitzTips />}
+          {hasLewis && <LewisTips />}
+          {hasWind && <WindTips />}
+          {/* Add Sequim tips to Strait tips since they're closely related */}
+          {hasSequim && <StraitTips />}
+          {hasSockeye && <SockeyeTips />}
+          {hasSummerChinook && <SummerChinookTips />}
+          {hasPinkSalmon && <PinkSalmonTips />}
+          {hasChumSalmon && <ChumSalmonTips />}
+          {hasSturgeon && <SturgeonTips />}
+          {hasHalibut && <HalibutTips />}
+          {hasTrout && <TroutTips />}
+        </div>
+      )}
     </div>
   );
 };
