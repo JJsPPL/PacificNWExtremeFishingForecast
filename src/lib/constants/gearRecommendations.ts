@@ -468,13 +468,6 @@ export const GEAR_BY_SPECIES: Record<string, SpeciesGearProfile> = {
         priceRange: '$5-$10',
         amazonUrl: amazonSearch('circle hook 8/0 sturgeon fishing'),
       },
-      {
-        name: 'Rod Holder / Bank Stick',
-        category: 'accessory',
-        description: 'Hold your rod while waiting — sturgeon is a patience game',
-        priceRange: '$15-$40',
-        amazonUrl: amazonSearch('fishing rod holder bank stick sturgeon'),
-      },
     ],
   },
 
