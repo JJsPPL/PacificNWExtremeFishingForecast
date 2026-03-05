@@ -51,7 +51,7 @@ function GearCard({ item }: { item: GearItem }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-1 rounded bg-amber-600 hover:bg-amber-500 text-white transition-colors"
           >
-            Amazon <ExternalLink className="h-3 w-3" />
+            Shop <ExternalLink className="h-3 w-3" />
           </a>
           {item.partnerUrl && (
             <a

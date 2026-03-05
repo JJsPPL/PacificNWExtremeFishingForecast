@@ -4,8 +4,10 @@ import {
   UNIVERSAL_GEAR,
   COLD_WEATHER_GEAR,
   SEASONAL_GEAR,
+  FEATURED_PRODUCTS,
   type GearItem,
   type SpeciesGearProfile,
+  type FeaturedProduct,
 } from '@/lib/constants/gearRecommendations';
 
 /** Map species names to gear profile keys */
@@ -138,4 +140,33 @@ export function getGearForSpecies(
     coldWeatherGear: coldGear,
     universalGear,
   };
+}
+
+/**
+ * Get featured product picks contextual to today's recommended species.
+ * Returns 3-4 products, rotated by date for variety.
+ */
+export function getFeaturedForSpecies(species: string[], date: Date): FeaturedProduct[] {
+  const keys = [...new Set(species.map(s => getGearKey(s)))];
+
+  // Find products matching any of the species keys
+  const matching = FEATURED_PRODUCTS.filter(p =>
+    p.speciesTags.some(tag => keys.includes(tag))
+  );
+
+  // Fallback to "all species" products if no match
+  const pool = matching.length > 0 ? matching : FEATURED_PRODUCTS.filter(p => p.speciesTags.length >= 4);
+
+  if (pool.length === 0) return FEATURED_PRODUCTS.slice(0, 4);
+
+  // Rotate selection based on date for variety
+  const dayOffset = date.getDate() + date.getMonth() * 31;
+  const result: FeaturedProduct[] = [];
+  const maxItems = Math.min(4, pool.length);
+
+  for (let i = 0; i < maxItems; i++) {
+    result.push(pool[(dayOffset + i) % pool.length]);
+  }
+
+  return result;
 }

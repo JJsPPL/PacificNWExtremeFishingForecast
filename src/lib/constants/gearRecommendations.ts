@@ -12,6 +12,15 @@ export interface GearItem {
   coldWeather?: boolean; // Show when temps below 45F
 }
 
+export interface FeaturedProduct {
+  name: string;
+  asin: string;
+  url: string;
+  speciesTags: string[];
+  categoryIcon: 'lure' | 'terminal' | 'line' | 'accessory';
+  priceRange: string;
+}
+
 export interface SpeciesGearProfile {
   essentials: GearItem[]; // Always show these
   recommended: GearItem[]; // Show 2-3 of these contextually
@@ -757,3 +766,130 @@ export const SEASONAL_GEAR: Record<string, GearItem[]> = {
     },
   ],
 };
+
+// ===== FEATURED PICKS (personal favorites with direct product links) =====
+const amazonProduct = (asin: string) =>
+  `https://www.amazon.com/dp/${asin}?tag=${TAG}`;
+
+export const FEATURED_PRODUCTS: FeaturedProduct[] = [
+  {
+    name: "Graybill's Tuna Belly Bait Scent",
+    asin: 'B08CS4RW9S',
+    url: amazonProduct('B08CS4RW9S'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$12-$18',
+  },
+  {
+    name: 'Pro-Cure Slam-Ola Garlic Powder Egg Cure',
+    asin: 'B00C92I1T4',
+    url: amazonProduct('B00C92I1T4'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$8-$14',
+  },
+  {
+    name: "Keith Archer's Ultimate Shrimp Cure High Octane",
+    asin: 'B0CYK34LNQ',
+    url: amazonProduct('B0CYK34LNQ'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$14-$20',
+  },
+  {
+    name: "Graybill's Bait Scent 8oz",
+    asin: 'B09787T4WX',
+    url: amazonProduct('B09787T4WX'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$12-$18',
+  },
+  {
+    name: 'Trout Magnet S.O.S. Fishing Line 6lb',
+    asin: 'B005AUI5O8',
+    url: amazonProduct('B005AUI5O8'),
+    speciesTags: ['trout'],
+    categoryIcon: 'line',
+    priceRange: '$6-$10',
+  },
+  {
+    name: "Keith Archer's Shrimp Cure Standard",
+    asin: 'B0CYJTYWDC',
+    url: amazonProduct('B0CYJTYWDC'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$12-$16',
+  },
+  {
+    name: "Graybill's Bait Scent (variant)",
+    asin: 'B09787Z3PF',
+    url: amazonProduct('B09787Z3PF'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$12-$18',
+  },
+  {
+    name: 'Pro-Cure UV Glow Egg Cure Double Red',
+    asin: 'B00C92I14Y',
+    url: amazonProduct('B00C92I14Y'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$8-$14',
+  },
+  {
+    name: 'Mepps Black Fury Spinner',
+    asin: 'B00E3XMNOQ',
+    url: amazonProduct('B00E3XMNOQ'),
+    speciesTags: ['trout', 'steelhead', 'bass'],
+    categoryIcon: 'lure',
+    priceRange: '$5-$9',
+  },
+  {
+    name: "Pro-Cure Brine 'N Bite 20oz",
+    asin: 'B0010FQ5JY',
+    url: amazonProduct('B0010FQ5JY'),
+    speciesTags: ['salmon', 'steelhead'],
+    categoryIcon: 'terminal',
+    priceRange: '$10-$16',
+  },
+  {
+    name: 'Pro-Cure Anise Plus Bait Oil',
+    asin: 'B00C92GQBO',
+    url: amazonProduct('B00C92GQBO'),
+    speciesTags: ['salmon', 'steelhead', 'trout', 'sturgeon', 'bass'],
+    categoryIcon: 'accessory',
+    priceRange: '$8-$12',
+  },
+  {
+    name: 'Pro-Cure Garlic Plus Bait Oil 8oz',
+    asin: 'B00C92FYVC',
+    url: amazonProduct('B00C92FYVC'),
+    speciesTags: ['salmon', 'steelhead', 'trout', 'sturgeon', 'bass'],
+    categoryIcon: 'accessory',
+    priceRange: '$8-$12',
+  },
+  {
+    name: 'Pro-Cure Sand Shrimp Bait Oil',
+    asin: 'B00C92G9DO',
+    url: amazonProduct('B00C92G9DO'),
+    speciesTags: ['sturgeon', 'salmon'],
+    categoryIcon: 'accessory',
+    priceRange: '$8-$12',
+  },
+  {
+    name: 'Berkley PowerBait Trout Dip Roe',
+    asin: 'B003ZZBPLU',
+    url: amazonProduct('B003ZZBPLU'),
+    speciesTags: ['trout'],
+    categoryIcon: 'lure',
+    priceRange: '$5-$8',
+  },
+  {
+    name: "Luhr-Jensen Kwikfish K15 Blazin' Pink UV",
+    asin: 'B009BQYZ9G',
+    url: amazonProduct('B009BQYZ9G'),
+    speciesTags: ['salmon'],
+    categoryIcon: 'lure',
+    priceRange: '$8-$14',
+  },
+];
