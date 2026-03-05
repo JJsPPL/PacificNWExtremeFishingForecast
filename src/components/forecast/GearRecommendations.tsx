@@ -53,16 +53,6 @@ function GearCard({ item }: { item: GearItem }) {
           >
             Shop <ExternalLink className="h-3 w-3" />
           </a>
-          {item.partnerUrl && (
-            <a
-              href={item.partnerUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white transition-colors"
-            >
-              CWS <ExternalLink className="h-3 w-3" />
-            </a>
-          )}
         </div>
       </div>
     </div>

@@ -7,7 +7,6 @@ export interface GearItem {
   description: string;
   priceRange: string;
   amazonUrl: string;
-  partnerUrl?: string; // ColdWaterStrong or other affiliate partners
   seasonal?: boolean; // Only show during certain conditions
   coldWeather?: boolean; // Show when temps below 45F
 }
@@ -37,8 +36,6 @@ const amazonSearch = (query: string) =>
 const amazonLink = (keywords: string) =>
   `https://www.amazon.com/s?k=${encodeURIComponent(keywords)}&tag=${TAG}`;
 
-// ColdWaterStrong partner links (update with actual affiliate URLs when available)
-const CWS_BASE = 'https://www.coldwaterstrong.com';
 
 export const GEAR_BY_SPECIES: Record<string, SpeciesGearProfile> = {
   // ===== SALMON (all types) =====
@@ -184,7 +181,7 @@ export const GEAR_BY_SPECIES: Record<string, SpeciesGearProfile> = {
         description: 'Felt or rubber sole — warm feet in cold PNW rivers',
         priceRange: '$80-$200',
         amazonUrl: amazonSearch('insulated wading boots felt sole fishing'),
-        partnerUrl: `${CWS_BASE}/collections/wading-boots`,
+
         coldWeather: true,
       },
       {
@@ -193,7 +190,7 @@ export const GEAR_BY_SPECIES: Record<string, SpeciesGearProfile> = {
         description: 'Essential for PNW river fishing year-round',
         priceRange: '$100-$400',
         amazonUrl: amazonSearch('breathable stockingfoot waders fishing'),
-        partnerUrl: `${CWS_BASE}/collections/waders`,
+
         coldWeather: true,
       },
     ],
@@ -639,7 +636,7 @@ export const GEAR_BY_SPECIES: Record<string, SpeciesGearProfile> = {
         description: 'Get past the breakers for better casting',
         priceRange: '$40-$150',
         amazonUrl: amazonSearch('surf fishing waders hip chest'),
-        partnerUrl: `${CWS_BASE}/collections/waders`,
+
       },
     ],
   },
@@ -706,7 +703,7 @@ export const COLD_WEATHER_GEAR: GearItem[] = [
     description: 'Waterproof, breathable — PNW rain is no joke',
     priceRange: '$60-$200',
     amazonUrl: amazonSearch('waterproof fishing rain jacket insulated'),
-    partnerUrl: `${CWS_BASE}/collections/jackets`,
+
     coldWeather: true,
   },
   {
@@ -715,7 +712,7 @@ export const COLD_WEATHER_GEAR: GearItem[] = [
     description: 'Stays warm when wet — critical for PNW winter fishing',
     priceRange: '$30-$80',
     amazonUrl: amazonSearch('merino wool base layer fishing'),
-    partnerUrl: `${CWS_BASE}/collections/base-layers`,
+
     coldWeather: true,
   },
   {
